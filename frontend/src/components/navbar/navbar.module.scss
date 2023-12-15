@@ -1,0 +1,47 @@
+.navbar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fff;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .search {
+    border-radius: 5px;
+
+    .searchInput {
+      border: none;
+      outline: none;
+      height: 35px;
+      border-radius: 5px;
+      padding-left: 10px;
+      width: 400px;
+    }
+    .searchBtn {
+      border: none;
+      color: rgb(107, 106, 106);
+      height: 35px;
+      width: 35px;
+      border-radius: 5px;
+    }
+  }
+
+  .userImg {
+    width: 35px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.iconWrapper {
+}

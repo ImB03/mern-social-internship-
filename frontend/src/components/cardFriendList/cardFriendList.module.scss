@@ -1,0 +1,24 @@
+.cardFriendList {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+  .quantityFriend {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: #abaaaa;
+  }
+
+  .friends {
+    .img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .userName {
+      letter-spacing: 0.3px;
+      font-size: 13px;
+    }
+  }
+}

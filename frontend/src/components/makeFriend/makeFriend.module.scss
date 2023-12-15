@@ -1,0 +1,56 @@
+.makeFriend {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+
+  .interact {
+    font-size: 12px;
+  }
+
+  .requests {
+    .userName {
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .time {
+      font-size: 12px;
+    }
+
+    .itemRequest {
+      border-radius: 10px;
+      margin-left: -10px;
+    }
+
+    .itemRequest:hover {
+      background-color: #ccc;
+    }
+
+    .img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .acceptBtn {
+      border-radius: 5px;
+      background-color: cornflowerblue;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .deleteBtn {
+      border-radius: 5px;
+      background-color: rgb(252, 84, 84);
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

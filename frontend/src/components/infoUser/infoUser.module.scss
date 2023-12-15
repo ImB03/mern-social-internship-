@@ -1,0 +1,97 @@
+.infoUser {
+  .img {
+    width: 112%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .wrapper {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+    .wrapperImg {
+      top: -140px;
+      background-color: #fff;
+      width: 220px;
+      height: 220px;
+      border-radius: 100%;
+
+      .avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .info {
+      .userName {
+        padding-top: 65px;
+        font-weight: bold;
+        line-height: 15px;
+      }
+
+      .contact {
+        .link {
+          font-size: 12px;
+        }
+      }
+      .interact {
+        .wrapperBtn {
+          .btnFriend {
+            background-color: cornflowerblue;
+            border: none;
+            border-radius: 5px;
+            padding: 6px;
+            color: white;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+          }
+          .btnMessenger {
+            background-color: cornflowerblue;
+            border: none;
+            border-radius: 5px;
+            padding: 6px;
+            color: white;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+          }
+          .btnMore {
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+          }
+        }
+
+        .wrapperBtn:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+      }
+      .quantity {
+        font-size: 13px;
+        color: rgb(125, 125, 125);
+      }
+    }
+
+    .navigate {
+      .itemNavigate{
+        font-size: 13px;
+        font-weight: bold;
+      }
+
+      .itemNavigate:hover {
+        background-color: rgb(238, 238, 238);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.hr {
+  background-color: rgb(159, 159, 159);
+  margin: 0;
+}

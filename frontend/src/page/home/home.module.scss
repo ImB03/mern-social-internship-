@@ -1,0 +1,21 @@
+.leftSide,
+.rightSide {
+  position: sticky;
+  top: 70px;
+  height: calc(100vh - 70px);
+  overflow: scroll;
+  z-index: 999;
+}
+
+// .leftSide,
+// .rightSide:hover {
+//   overflow-y: initial;
+// }
+
+.leftSide::-webkit-scrollbar {
+  display: none;
+}
+
+.rightSide::-webkit-scrollbar {
+  display: none;
+}
