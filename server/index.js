@@ -1,13 +1,15 @@
 import express from "express";
-import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
-import path from "path";
-import { fileURLToPath } from "url";
+import fileUpload from "express-fileupload";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+// import multer from "multer";
+// import { fileURLToPath } from "url";
+// import path from "path";
 
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
@@ -21,35 +23,48 @@ import { verifyToken } from "./middleware/verifyToken.js";
 // import { users, posts } from "./data/index.js";
 
 /* CONFIGURATIONS */
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config();
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 const app = express();
-app.use(express.json());
+dotenv.config();
+
+app.use(bodyParser.json());
+
+// Middleware Helmet
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+// Middleware Cookie parser và file upload
+app.use(cookieParser());
+app.use(fileUpload({ useTempFiles: true }));
+
+// Middleware ghi nhật ký
 app.use(morgan("common"));
-app.use(express.json({ limit: "30mb", extended: true }));
+
+// Middleware phân tích cơ thể
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
+
+// Middleware CORS
 app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+
+// app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
-export const upload = multer({ storage });
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/assets");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+// export const upload = multer({ storage });
 
-app.post("/createpost", verifyToken, upload.single("picture"), createPost);
-app.post("/signup", upload.single("picture"), signup);
+// app.post("/createpost", verifyToken, upload.single("picture"), createPost);
+// app.post("/signup", upload.single("picture"), signup);
 
 /* ROUTES */
-app.post("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 

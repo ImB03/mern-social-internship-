@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./navbar.module.scss";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.auth.user);
 
   return (
     <div className={`${styles.navbar} border d-flex align-items-center`}>
@@ -45,7 +45,8 @@ export default function Navbar() {
           >
             <i className={`${styles.icon} fa-regular fa-comments`}></i>
           </div>
-          <div
+          <Link
+            to="/auth"
             className={`ms-4 d-flex justify-content-center align-items-center`}
           >
             <img
@@ -53,7 +54,7 @@ export default function Navbar() {
               src="https://jademcallistercom.files.wordpress.com/2016/05/instagram-icon.png"
               alt=""
             />
-          </div>
+          </Link>
         </div>
       </div>
     </div>

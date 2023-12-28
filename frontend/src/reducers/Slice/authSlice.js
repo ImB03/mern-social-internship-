@@ -1,54 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  user: null,
-  token: null,
-  alert: "",
-  isLoading: false,
-};
-
 const authSlice = createSlice({
   name: "auth",
-  initialState,
+  initialState: {
+    user: null,
+    isLoading: false,
+    response: null,
+  },
   reducers: {
-    ACTION_SIGNIN: (state, action) => {
-      state.isLoading = true;
-    },
-
-    SIGNIN: (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoading = false;
-    },
     ACTION_SIGNUP: (state, action) => {
       state.isLoading = true;
     },
 
     SIGNUP: (state, action) => {
-      state.alert = action.payload;
+      state.response = action.payload.response;
+      alert(action.payload.response?.data.message);
+      if (action.payload.response.status === 200) {
+        action.payload.setIsSignup((prev) => !prev);
+      }
       state.isLoading = false;
     },
-    LOGOUT: (state) => {
-      state.user = null;
-      state.token = null;
+    ACTION_SIGNIN: (state, action) => {
+      state.isLoading = true;
     },
-    SET_FRIEND: (state, action) => {
-      if (state.user) {
-        state.user.friends = action.payload.friends;
-      } else {
-        console.error("user friends non-existent :(");
+
+    SIGNIN: (state, action) => {
+      state.response = action.payload.response;
+      alert(action.payload.response?.data.message);
+      if (action.payload.response?.status === 200) {
+        state.user = action.payload.response.data.user;
+        action.payload.navigate("/");
       }
+      state.isLoading = false;
     },
   },
 });
 
-export const {
-  ACTION_SIGNUP,
-  ACTION_SIGNIN,
-  SIGNUP,
-  SIGNIN,
-  LOGOUT,
-  SET_FRIEND,
-} = authSlice.actions;
+export const { ACTION_SIGNUP, ACTION_SIGNIN, SIGNUP, SIGNIN } =
+  authSlice.actions;
 
 export default authSlice.reducer;

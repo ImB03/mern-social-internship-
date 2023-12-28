@@ -5,36 +5,34 @@ import {
   ACTION_SIGNIN,
   SIGNUP,
   SIGNIN,
-} from "../Slice/authSlice";
-import { signUp, signIn } from "../../api";
+} from "../slice/authSlice";
+import { signup, signin } from "../../api";
 
 // SIGN UP
-function* SignUp(action) {
+function* Signup(action) {
   try {
-    const infoUser = yield call(() => signUp(action.payload.infoUser));
-    yield put(
-      SIGNUP({ result: infoUser.data, setIsSignup: action.payload.setIsSignup })
-    );
+    const response = yield call(() => signup(action.payload.dataUser));
+    yield put(SIGNUP({ response, setIsSignup: action.payload.setIsSignup }));
   } catch (error) {
+    yield put(SIGNUP({ response: error.response }));
     console.log(error);
   }
 }
 
 // SIGN IN
-function* SignIn(action) {
+function* Signin(action) {
   try {
-    const infoUser = yield call(() => signIn(action.payload.infoUser));
-    yield put(
-      SIGNIN({ result: infoUser.data, navigate: action.payload.navigate })
-    );
+    const response = yield call(() => signin(action.payload.dataUser));
+    yield put(SIGNIN({ response, navigate: action.payload.navigate }));
   } catch (error) {
+    yield put(SIGNUP({ response: error.response }));
     console.log(error);
   }
 }
 
 function* AuthSaga() {
-  yield takeEvery(ACTION_SIGNUP, SignUp);
-  yield takeEvery(ACTION_SIGNIN, SignIn);
+  yield takeEvery(ACTION_SIGNUP, Signup);
+  yield takeEvery(ACTION_SIGNIN, Signin);
 }
 
 export default AuthSaga;

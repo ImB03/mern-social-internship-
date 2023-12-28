@@ -1,9 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./auth.module.scss";
+import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const isLoading = useSelector(
+    (state) => state.auth.isLoading
+  );
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isSignup, setIsSignup] = useState(true);
+  const [dataUser, setDataUser] = useState({});
+
+  const getDataUser = (e) => {
+    setDataUser({ ...dataUser, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isSignup) {
+      dispatch(ACTION_SIGNUP({ dataUser, setIsSignup }));
+    } else {
+      dispatch(ACTION_SIGNIN({ dataUser, navigate }));
+    }
+  };
 
   return (
     <div
@@ -12,29 +35,33 @@ export default function Auth() {
       <div className="container-fluid d-flex justify-content-center align-items-center">
         <div
           className={`${styles.wrapper} ${
-            isSignUp && "flex-row-reverse"
+            isSignup && "flex-row-reverse"
           } d-flex  justify-content-center`}
         >
           <div
             className={`${styles.wrapperSideLeft}  ${
-              isSignUp ? styles.backgroundImgSignup : styles.backgroundImgSignin
+              isSignup ? styles.backgroundImgSignup : styles.backgroundImgSignin
             } p-5 col d-flex justify-content-center align-items-center`}
           >
             <div className={`${styles.sideLeft} col d-flex flex-column`}>
               <h1 className={`${styles.fontSize} mb-4`}>
-                {isSignUp ? "Social Media!" : "Hello World."}
+                {isSignup ? "Social Media!" : "Hello World."}
               </h1>
               <p className="mb-4 mt-3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
                 cum, alias totam numquam ipsa exercitationem dignissimos, error
                 nam, consequatur.
               </p>
-              <span>Don't you have an account?</span>
+              {isSignup ? (
+                <span>You have an account?</span>
+              ) : (
+                <span>Don't you have an account?</span>
+              )}
               <button
                 className={`${styles.registerBtn} mt-3`}
-                onClick={() => setIsSignUp(!isSignUp)}
+                onClick={() => setIsSignup(!isSignup)}
               >
-                {isSignUp ? "Login" : "Register"}
+                {isSignup ? "Login" : "Register"}
               </button>
             </div>
           </div>
@@ -43,27 +70,40 @@ export default function Auth() {
           >
             <div className={`${styles.sideRight} col d-flex flex-column`}>
               <h1 className={`${styles.title} mb-3`}>
-                {isSignUp ? "Register" : "Login"}
+                {isSignup ? "Register" : "Login"}
               </h1>
-              {isSignUp && (
+              {isSignup && (
                 <input
+                  onChange={getDataUser}
                   className={`${styles.input} mb-4 mt-2`}
                   type="text"
                   placeholder="Your name"
+                  name="username"
+                  // value={dataUser.username}
                 />
               )}
               <input
-                className={`${styles.input} mb-4 ${!isSignUp && "mt-2"}`}
-                type="text"
+                onChange={getDataUser}
+                className={`${styles.input} mb-4 ${!isSignup && "mt-2"}`}
+                type="email"
                 placeholder="Your email"
+                name="email"
+                // value={dataUser.useremail}
               />
               <input
+                onChange={getDataUser}
                 className={`${styles.input} mb-4`}
                 type="password"
                 placeholder="Your password"
+                name="password"
+                // value={dataUser.userpassword}
               />
-              <button className={`${styles.btn}`} onClick={null}>
-                {isSignUp ? "Register" : "Login"}
+              <button
+                // className={`${styles.btn} ${isLoading && styles.disabled}`}
+                className={`${styles.btn}`}
+                onClick={handleSubmit}
+              >
+                {isSignup ? "Register" : "Login"}
               </button>
             </div>
           </div>
@@ -71,6 +111,4 @@ export default function Auth() {
       </div>
     </div>
   );
-}
-{
 }

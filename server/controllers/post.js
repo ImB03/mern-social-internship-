@@ -2,37 +2,48 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 
 /* CREATE */
-export const createPost = async (req, res) => {
+export const createPost = async (req, res, next) => {
   try {
-    const { userId, description, picturePath } = req.body;
-    const user = await User.findById(userId);
+    const { description, picturePath } = req.body;
     const newPost = new Post({
-      userId,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      location: user.location,
       description,
-      userPicturePath: user.picturePath,
       picturePath,
-      likes: {},
-      comments: [],
+      // likes: {},
+      // comments: [],
     });
     await newPost.save();
 
-    const post = await Post.find();
-    res.status(201).json(post);
+    res.status(200).json({ message: "Create post successfully!" });
   } catch (err) {
-    res.status(409).json({ message: err.message });
+    console.error(err);
+    res.status(500).json({ message: "Create post unsuccessfully!" });
+    next(err);
   }
 };
 
-/* READ */
-export const getPost = async (req, res) => {
+/* GET POST */
+export const getAllPosts = async (req, res, next) => {
   try {
-    const post = await Post.find();
+    const posts = await Post.find();
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Get posts unsuccessfully" });
+    next(err);
+  }
+};
+
+export const getOnePost = async (req, res, next) => {
+  const postId = req.params.postId;
+  console.log("name:", postId);
+
+  try {
+    const post = await Post.findById(postId);
     res.status(200).json(post);
   } catch (err) {
-    res.status(404).json({ message: err.message });
+    console.error(err);
+    res.status(500).json({ message: "Get post unsuccessfully" });
+    next(err);
   }
 };
 

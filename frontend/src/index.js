@@ -20,49 +20,67 @@ import logger from "redux-logger";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import authSlice from "./reducers/Slice/authSlice";
-import modeSlice from "./reducers/Slice/modeSlice";
-import AuthSaga from "./reducers/Saga/authSaga";
-import postSlice from "./reducers/Slice/postSlice";
+import authSlice from "./reducers/slice/authSlice";
+import modeSlice from "./reducers/slice/modeSlice";
+import postSlice from "./reducers/slice/postSlice";
+import AuthSaga from "./reducers/saga/authSaga";
+import PostSaga from "./reducers/saga/postSaga";
+import PostState from "./hook/context/postState";
 
 const saga = createSagaMiddleware();
 
-const persistConfig = {
-  key: "root",
-  version: 1,
-  storage,
-};
+// const persistConfig = {
+//   key: "root",
+//   // version: 1,
+//   storage,
+// };
 
-const rootReducer = combineReducers({
-  auth: authSlice,
-  mode: modeSlice,
-  post: postSlice,
+// const rootReducer = combineReducers({
+//   auth: authSlice,
+//   mode: modeSlice,
+//   post: postSlice,
+// });
+
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// STORE
+
+// const store = configureStore({
+//   reducer: {
+//     persistedReducer,
+//   },
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({
+//       // serializableCheck: {
+//       //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       // },
+//       serializableCheck: false,
+//     }).concat(saga),
+// });
+
+export const store = configureStore({
+  reducer: {
+    post: postSlice,
+    auth: authSlice,
+  },
+  middleware: [saga],
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-const store = configureStore({
-  reducer: { persistedReducer },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }).concat(saga),
-});
-
-const persistor = persistStore(store);
+// const persistor = persistStore(store);
 
 saga.run(AuthSaga);
+saga.run(PostSaga);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      {/* <PersistGate persistor={persistor}> */}
+      <PostState>
         <App />
-      </PersistGate>
+      </PostState>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>
 );

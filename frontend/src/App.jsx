@@ -15,9 +15,7 @@ import { useSelector } from "react-redux";
 
 function App() {
   const [user, setUser] = useState(false);
-  const mode = useSelector((state) => state.persistedReducer.mode.mode);
-
-  console.log(mode);
+  // const mode = useSelector((state) => state.persistedReducer.mode.mode);
 
   return (
     <Router>

@@ -2,16 +2,18 @@ import express from "express";
 
 import {
   createPost,
-  getPost,
-  getPostOfUser,
-  likePost,
+  getOnePost,
+  getAllPosts,
+  // likePost,
 } from "../controllers/post.js";
-import { verifyToken } from "../middleware/verifyToken.js";
+// import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/getpost", verifyToken, getPost);
-router.get("/getuserpost/:userId", verifyToken, getPostOfUser);
-router.patch("/likepost/:postId/", verifyToken, likePost);
+router.post("/createpost", createPost);
+router.get("/getallposts", getAllPosts);
+router.get("/getonepost/:postId", getOnePost);
+// router.get("/getuserpost/:userId", verifyToken, getPostOfUser);
+// router.patch("/likepost/:postId/", verifyToken, likePost);
 
 export default router;
