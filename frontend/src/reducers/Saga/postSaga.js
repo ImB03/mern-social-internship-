@@ -7,8 +7,10 @@ import {
   GET_ALL_POSTS,
   ACTION_GET_POST,
   GET_POST,
+  UPDATE_POST,
+  ACTION_UPDATE_POST,
 } from "../slice/postSlice";
-import { createPost, getOnePost, getAllPosts } from "../../api";
+import { createPost, getOnePost, getAllPosts, updatePost } from "../../api";
 
 // CREATE POST
 function* CreatePost(action) {
@@ -21,7 +23,11 @@ function* CreatePost(action) {
       })
     );
   } catch (error) {
-    yield put(CREATE_POST({ response: error.response }));
+    yield put(
+      CREATE_POST({
+        response: error.response,
+      })
+    );
     console.log(error);
   }
 }
@@ -47,10 +53,30 @@ function* GetOnePost(action) {
   }
 }
 
+//UPDATE POST
+function* UpdatePost(action) {
+  try {
+    const response = yield call(() =>
+      updatePost(action.payload.postId, action.payload.dataPost)
+    );
+    yield put(
+      UPDATE_POST({ response, setIsUpdatePost: action.payload.setIsUpdatePost })
+    );
+  } catch (error) {
+    yield put(
+      UPDATE_POST({
+        response: error.response,
+      })
+    );
+    console.log(error);
+  }
+}
+
 function* PostSaga() {
   yield takeEvery(ACTION_CREATE_POST, CreatePost);
   yield takeEvery(ACTION_GET_ALL_POSTS, GetAllPosts);
   yield takeEvery(ACTION_GET_POST, GetOnePost);
+  yield takeEvery(ACTION_UPDATE_POST, UpdatePost);
 }
 
 export default PostSaga;

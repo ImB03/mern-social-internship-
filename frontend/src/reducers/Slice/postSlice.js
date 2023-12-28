@@ -34,6 +34,15 @@ const postSlice = createSlice({
       state.post = action.payload.response?.data;
       state.isLoading = false;
     },
+    ACTION_UPDATE_POST: (state) => {
+      state.isLoading = true;
+    },
+    UPDATE_POST: (state, action) => {
+      state.response = action.payload.response;
+      alert(action.payload.response?.data.message);
+      action.payload?.setIsUpdatePost(false);
+      state.isLoading = false;
+    },
 
     // SET_POST: (state, action) => {
     //   const updatedPosts = state.posts.map((post) => {
@@ -52,6 +61,8 @@ export const {
   GET_ALL_POSTS,
   ACTION_GET_POST,
   GET_POST,
+  ACTION_UPDATE_POST,
+  UPDATE_POST,
 } = postSlice.actions;
 
 export default postSlice.reducer;

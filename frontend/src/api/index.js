@@ -14,8 +14,8 @@ export const getOnePost = (postId) => API.get(`/post/getonepost/${postId}`);
 //   API.get(`/pagination?page=${page}`);
 
 export const createPost = (dataPost) => API.post("/post/createpost", dataPost);
-// export const updatePost = (postId, infoUpdatePost) =>
-//   API.patch(`/posts/${postId}`, infoUpdatePost);
+export const updatePost = (postId, dataPost) =>
+  API.patch(`/post/updatepost/${postId}`, dataPost);
 // export const deletePost = (postId) => API.delete(`/posts/${postId}`);
 // export const likePost = (postId) => API.patch(`/posts/likepost/${postId}`);
 // export const commentPost = (dataComment, postId) =>

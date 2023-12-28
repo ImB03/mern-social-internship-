@@ -13,6 +13,7 @@ import DropzoneFile from "../dropzoneFile/DropzoneFile";
 import {
   ACTION_CREATE_POST,
   ACTION_GET_ALL_POSTS,
+  ACTION_UPDATE_POST,
 } from "../../reducers/slice/postSlice";
 import { MyContext } from "../../hook/context/postState";
 
@@ -25,6 +26,9 @@ export default function ModalPost() {
   const [inputDescription, setInputDescription] = useState("");
   const [dataPost, setDataPost] = useState({});
 
+  console.log(setIsUpdatePost);
+  console.log(setIsCreatePost);
+
   useEffect(() => {
     setDataPost({
       ...dataPost,
@@ -32,18 +36,28 @@ export default function ModalPost() {
       picturePath: inputFiles,
     });
   }, [inputDescription, inputFiles]);
-  console.log(dataPost);
 
   useEffect(() => {
     setInputDescription(post.description);
     setInputFiles(post.picturePath);
   }, [post]);
 
+  useEffect(() => {
+    setInputDescription("");
+    setInputFiles("");
+  }, [setIsCreatePost, setIsUpdatePost]);
+
   const handleSubmit = () => {
     if (isCreatePost) {
       dispatch(ACTION_CREATE_POST({ dataPost, setIsCreatePost }));
     } else if (isUpdatePost) {
-      // dispatch(ACTION_UPDATE_POST());
+      dispatch(
+        ACTION_UPDATE_POST({
+          postId: post._id,
+          dataPost,
+          setIsUpdatePost,
+        })
+      );
     }
   };
 

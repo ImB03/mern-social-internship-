@@ -46,6 +46,25 @@ export const getOnePost = async (req, res, next) => {
   }
 };
 
+//UPDATE POST
+
+export const updatePost = async (req, res, next) => {
+  const postId = req.params.postId;
+  const dataPost = req.body;
+
+  try {
+    await Post.findByIdAndUpdate(postId, dataPost, {
+      new: true,
+    });
+
+    res.status(200).json({ message: "Update post successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Update post unsuccessfully" });
+    next(err);
+  }
+};
+
 export const getPostOfUser = async (req, res) => {
   try {
     const { userId } = req.params;
