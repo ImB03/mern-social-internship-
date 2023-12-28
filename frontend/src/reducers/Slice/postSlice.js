@@ -28,6 +28,7 @@ const postSlice = createSlice({
     },
     ACTION_GET_POST: (state) => {
       state.isLoading = true;
+      state.post = {};
     },
     GET_POST: (state, action) => {
       state.post = action.payload.response?.data;

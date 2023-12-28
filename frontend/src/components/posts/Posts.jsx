@@ -7,7 +7,6 @@ import { ACTION_GET_ALL_POSTS } from "../../reducers/slice/postSlice";
 
 export default function Posts() {
   const posts = useSelector((state) => state.post.posts);
-  console.log(posts);
 
   return (
     <div className={`${styles.posts} mt-3`}>

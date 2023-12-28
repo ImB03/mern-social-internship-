@@ -35,7 +35,6 @@ export const getAllPosts = async (req, res, next) => {
 
 export const getOnePost = async (req, res, next) => {
   const postId = req.params.postId;
-  console.log("name:", postId);
 
   try {
     const post = await Post.findById(postId);

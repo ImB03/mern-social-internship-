@@ -19,7 +19,7 @@ import { MyContext } from "../../hook/context/postState";
 export default function ModalPost() {
   const { isCreatePost, setIsCreatePost, setIsUpdatePost, isUpdatePost } =
     useContext(MyContext);
-  // const post = useSelector((state) => state.post.post);
+  const post = useSelector((state) => state.post.post);
   const dispatch = useDispatch();
   const [inputFiles, setInputFiles] = useState("");
   const [inputDescription, setInputDescription] = useState("");
@@ -29,22 +29,22 @@ export default function ModalPost() {
     setDataPost({
       ...dataPost,
       description: inputDescription,
-      picturePath: inputFiles ? inputFiles[0] : "",
+      picturePath: inputFiles,
     });
   }, [inputDescription, inputFiles]);
-
   console.log(dataPost);
 
-  // useEffect(() => {
-  //   setInputDescription(post.description);
-  // }, [post]);
+  useEffect(() => {
+    setInputDescription(post.description);
+    setInputFiles(post.picturePath);
+  }, [post]);
 
   const handleSubmit = () => {
-    // if (isCreatePost) {
-    dispatch(ACTION_CREATE_POST({ dataPost, setIsCreatePost }));
-    // } else if (isUpdatePost) {
-    // dispatch(ACTION_UPDATE_POST());
-    // }
+    if (isCreatePost) {
+      dispatch(ACTION_CREATE_POST({ dataPost, setIsCreatePost }));
+    } else if (isUpdatePost) {
+      // dispatch(ACTION_UPDATE_POST());
+    }
   };
 
   return (
@@ -92,6 +92,7 @@ export default function ModalPost() {
             cols="50"
             className={`${styles.inputText}`}
             placeholder="Username, what in your mind?"
+            value={inputDescription}
           />
           <div className={`${styles.inputFile} mt-3 p-3`}>
             <DropzoneFile

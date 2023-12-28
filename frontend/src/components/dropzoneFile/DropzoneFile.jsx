@@ -8,18 +8,19 @@ import { MyContext } from "../../hook/context/postState";
 
 export default function DropzoneFile({ inputFiles, setInputFiles }) {
   const onDrop = useCallback((acceptedFiles) => {
-    setInputFiles(acceptedFiles.map((file) => URL.createObjectURL(file)));
+    setInputFiles(acceptedFiles.map((file) => URL.createObjectURL(file))[0]);
   }, []);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div className={`${styles.dropzone}`}>
-      {inputFiles[0] ? (
+      {inputFiles? (
         <div className={`${styles.displayFiles} position-relative`}>
-          <img src={inputFiles[0]} className={`${styles.fileImg}`} alt="" />
+          <img src={inputFiles} className={`${styles.fileImg}`} alt="" />
           <div
             onClick={() => {
-              setInputFiles('');
+              setInputFiles("");
             }}
             className={`${styles.closeFile} position-absolute d-flex justify-content-center align-items-center`}
           >
