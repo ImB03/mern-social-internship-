@@ -9,21 +9,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 
 export default function DropdownMenu({ setIsDropdownMenu, postId }) {
-  const { setIsUpdatePost, isUpdatePost, isCreatePost } = useContext(MyContext);
+  const {
+    setIsUpdatePost,
+    isUpdatePost,
+    isCreatePost,
+    isDeletePost,
+    setIsDeletePost,
+  } = useContext(MyContext);
   const dispatch = useDispatch();
 
-  const handleGetPost = (postId) => {
+  console.log(isDeletePost);
+
+  const handleGetPost = () => {
     dispatch(ACTION_GET_POST(postId));
   };
 
+  const handleDeletePost = (postId) => {
+    // dispatch(ACTION_GET_POST(postId));
+  };
   return (
     <div className={`${styles.dropdownMenu} position-absolute`}>
-      {(isUpdatePost || isCreatePost) && <ModalPost />}
+      {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
       <div className="container-fluid p-2">
         <div className={`${styles.wrapper}`}>
           <div
             onClick={() => {
-              handleGetPost(postId);
+              handleGetPost();
               setIsDropdownMenu(false);
               setIsUpdatePost(true);
             }}
@@ -37,6 +48,12 @@ export default function DropdownMenu({ setIsDropdownMenu, postId }) {
             <div className={`${styles.name}`}>Update post</div>
           </div>
           <div
+            onClick={() => {
+              handleGetPost();
+              handleDeletePost(postId);
+              setIsDropdownMenu(false);
+              setIsDeletePost(true);
+            }}
             className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
           >
             <div

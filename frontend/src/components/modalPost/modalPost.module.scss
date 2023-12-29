@@ -42,6 +42,11 @@
         background-color: #c6c6c6;
       }
     }
+
+    .remindCaption {
+      letter-spacing: 1px;
+    }
+
     .user {
       .useImg {
         width: 45px;
@@ -90,7 +95,7 @@
         }
       }
     }
-    .postBtn {
+    .submitBtn {
       background-color: #749eebcc;
       border: none;
       color: #383838;
@@ -100,8 +105,46 @@
       font-weight: bold;
       letter-spacing: 0.5px;
     }
-    .postBtn:hover {
+
+    .submitBtn:hover {
       background-color: #6694ebe4;
+    }
+
+    .submitBtn:active {
+      background-color: #4883f0e4;
+    }
+
+    .wrapperBtn {
+      .cancelBtn,
+      .deleteBtn {
+        border: none;
+        color: #383838;
+        transition: all 0.1s ease;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      .cancelBtn {
+        background-color: #749eebcc;
+      }
+      .deleteBtn {
+        background-color: #fa6060;
+      }
+
+      .cancelBtn:hover {
+        background-color: #6694ebe4;
+      }
+      .deleteBtn:hover {
+        background-color: #f54e4e;
+      }
+      .cancelBtn:active {
+        background-color: #4883f0e4;
+      }
+      .deleteBtn:active {
+        background-color: #f63939;
+      }
     }
   }
 }

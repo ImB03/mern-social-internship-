@@ -16,11 +16,11 @@ import { MyContext } from "../../hook/context/postState";
 export default function Home() {
   const dispatch = useDispatch();
 
-  const { isCreatePost, isUpdatePost } = useContext(MyContext);
+  const { isCreatePost, isUpdatePost, isDeletePost } = useContext(MyContext);
 
   useEffect(() => {
     dispatch(ACTION_GET_ALL_POSTS());
-  }, [isCreatePost, dispatch, isUpdatePost]);
+  }, [isCreatePost, dispatch, isUpdatePost, isDeletePost]);
 
   return (
     <div className={`${styles.home}`}>

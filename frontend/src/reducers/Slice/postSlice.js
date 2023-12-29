@@ -43,6 +43,15 @@ const postSlice = createSlice({
       action.payload?.setIsUpdatePost(false);
       state.isLoading = false;
     },
+    ACTION_DELETE_POST: (state) => {
+      state.isLoading = true;
+    },
+    DELETE_POST: (state, action) => {
+      state.response = action.payload.response;
+      alert(action.payload.response?.data.message);
+      action.payload?.setIsDeletePost(false);
+      state.isLoading = false;
+    },
 
     // SET_POST: (state, action) => {
     //   const updatedPosts = state.posts.map((post) => {
@@ -63,6 +72,8 @@ export const {
   GET_POST,
   ACTION_UPDATE_POST,
   UPDATE_POST,
+  ACTION_DELETE_POST,
+  DELETE_POST,
 } = postSlice.actions;
 
 export default postSlice.reducer;

@@ -8,7 +8,8 @@ import ModalPost from "../modalPost/ModalPost";
 import { MyContext } from "../../hook/context/postState";
 
 export default function CreatePost() {
-  const { isCreatePost, setIsCreatePost, isUpdatePost } = useContext(MyContext);
+  const { isCreatePost, setIsCreatePost, isUpdatePost, isDeletePost } =
+    useContext(MyContext);
   // Thêm hoặc xóa lớp 'no-scroll' tùy thuộc vào trạng thái của modal
   if (isCreatePost) {
     document.body.classList.add(styles.cancelScroll);
@@ -18,7 +19,7 @@ export default function CreatePost() {
 
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
-      {(isUpdatePost || isCreatePost) && <ModalPost />}
+      {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
       <div className="container-fluid">
         <div className="d-flex align-items-center mt-2">
           <img

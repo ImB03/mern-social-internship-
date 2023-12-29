@@ -9,8 +9,16 @@ import {
   GET_POST,
   UPDATE_POST,
   ACTION_UPDATE_POST,
+  ACTION_DELETE_POST,
+  DELETE_POST,
 } from "../slice/postSlice";
-import { createPost, getOnePost, getAllPosts, updatePost } from "../../api";
+import {
+  createPost,
+  getOnePost,
+  getAllPosts,
+  updatePost,
+  deletePost,
+} from "../../api";
 
 // CREATE POST
 function* CreatePost(action) {
@@ -72,11 +80,30 @@ function* UpdatePost(action) {
   }
 }
 
+//DELETE POST
+
+function* DeletePost(action) {
+  try {
+    const response = yield call(() => deletePost(action.payload.postId));
+    yield put(
+      DELETE_POST({ response, setIsDeletePost: action.payload.setIsDeletePost })
+    );
+  } catch (error) {
+    yield put(
+      DELETE_POST({
+        response: error.response,
+      })
+    );
+    console.log(error);
+  }
+}
+
 function* PostSaga() {
   yield takeEvery(ACTION_CREATE_POST, CreatePost);
   yield takeEvery(ACTION_GET_ALL_POSTS, GetAllPosts);
   yield takeEvery(ACTION_GET_POST, GetOnePost);
   yield takeEvery(ACTION_UPDATE_POST, UpdatePost);
+  yield takeEvery(ACTION_DELETE_POST, DeletePost);
 }
 
 export default PostSaga;

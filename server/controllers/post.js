@@ -65,6 +65,22 @@ export const updatePost = async (req, res, next) => {
   }
 };
 
+//DELETE POST
+
+export const deletePost = async (req, res, next) => {
+  const postId = req.params.postId;
+
+  try {
+    await Post.findByIdAndRemove(postId);
+
+    res.status(200).json({ message: "Delete post successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Delete post unsuccessfully" });
+    next(err);
+  }
+};
+
 export const getPostOfUser = async (req, res) => {
   try {
     const { userId } = req.params;
