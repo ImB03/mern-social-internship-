@@ -33,8 +33,6 @@ export default function ModalPost() {
   const [inputDescription, setInputDescription] = useState("");
   const [dataPost, setDataPost] = useState({});
 
-  console.log(post._id);
-
   useEffect(() => {
     setDataPost({
       ...dataPost,

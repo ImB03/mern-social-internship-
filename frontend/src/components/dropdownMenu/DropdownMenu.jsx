@@ -24,9 +24,6 @@ export default function DropdownMenu({ setIsDropdownMenu, postId }) {
     dispatch(ACTION_GET_POST(postId));
   };
 
-  const handleDeletePost = (postId) => {
-    // dispatch(ACTION_GET_POST(postId));
-  };
   return (
     <div className={`${styles.dropdownMenu} position-absolute`}>
       {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
@@ -50,7 +47,6 @@ export default function DropdownMenu({ setIsDropdownMenu, postId }) {
           <div
             onClick={() => {
               handleGetPost();
-              handleDeletePost(postId);
               setIsDropdownMenu(false);
               setIsDeletePost(true);
             }}

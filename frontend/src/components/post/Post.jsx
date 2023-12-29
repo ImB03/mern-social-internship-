@@ -40,9 +40,11 @@ export default function Post({ post }) {
           </div>
         </div>
         <div className={`${styles.title} mt-3`}>{post.description}</div>
-        <img className={`${styles.img} mt-3`} src={post.picturePath} alt="" />
+        {post.picturePath !== "" && (
+          <img className={`${styles.img} mt-3`} src={post.picturePath} alt="" />
+        )}
         <div
-          className={`${styles.interact} mt-3 d-flex justify-content-start align-items-center`}
+          className={`${styles.interact} mt-3 pt-3 d-flex justify-content-start align-items-center`}
         >
           <div className="me-5 d-flex align-items-center">
             <div className={`${styles.icon} me-2`}>
