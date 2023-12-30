@@ -1,11 +1,10 @@
-.dropdownMenu {
-  // width: 350px;
+.dropdownNavMenu {
+  width: 300px;
   background-color: rgb(247, 247, 247);
-  right: 40px;
+  right: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  top: 75px;
   border-radius: 10px;
-
+  top: 60px;
   .wrapper {
     .item {
       transition: all 0.2s ease;
@@ -19,7 +18,8 @@
       .name {
         font-weight: bold;
         letter-spacing: 0.5px;
-        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
       }
     }
     .item:hover {

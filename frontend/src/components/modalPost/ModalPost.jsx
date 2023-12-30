@@ -27,11 +27,14 @@ export default function ModalPost() {
     isDeletePost,
     setIsDeletePost,
   } = useContext(MyContext);
-  const post = useSelector((state) => state.post.post);
+  const post = useSelector((state) => state.persistedReducer.post.post);
   const dispatch = useDispatch();
   const [inputFiles, setInputFiles] = useState("");
   const [inputDescription, setInputDescription] = useState("");
-  const [dataPost, setDataPost] = useState({});
+  const [dataPost, setDataPost] = useState({
+    description: "",
+    picturePath: "",
+  });
 
   useEffect(() => {
     setDataPost({

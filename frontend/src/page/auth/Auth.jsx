@@ -7,13 +7,15 @@ import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
   const isLoading = useSelector(
-    (state) => state.auth.isLoading
+    (state) => state.persistedReducer.auth.isLoading
   );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(true);
   const [dataUser, setDataUser] = useState({});
+
+  console.log(isSignup);
 
   const getDataUser = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
@@ -27,6 +29,22 @@ export default function Auth() {
       dispatch(ACTION_SIGNIN({ dataUser, navigate }));
     }
   };
+
+  // const handleKeyPress = (e) => {
+  //   if (3) {
+  //     // Kiểm tra xem keyCode có tồn tại không
+  //     const keyCode = e.keyCode || e.which;
+
+  //     // Tiếp tục xử lý chỉ khi keyCode tồn tại
+  //     if (keyCode === 13) {
+  //       // Ngăn chặn hành động mặc định của phím Enter
+  //       e.preventDefault();
+
+  //       // Gọi hàm xử lý submit
+  //       handleSubmit();
+  //     }
+  //   }
+  // };
 
   return (
     <div
@@ -102,6 +120,7 @@ export default function Auth() {
                 // className={`${styles.btn} ${isLoading && styles.disabled}`}
                 className={`${styles.btn}`}
                 onClick={handleSubmit}
+                // onKeyDown={() => handleKeyPress()}
               >
                 {isSignup ? "Register" : "Login"}
               </button>

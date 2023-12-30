@@ -57,10 +57,10 @@ export const signin = async (req, res, next) => {
         expiresIn: "2h",
       }
     );
-    delete user.password;
+
     res
       .status(200)
-      .json({ user: { token, user }, message: "Signin successful!" });
+      .json({ user: { user, token }, message: "Signin successful!" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Signin unsuccessful!" });

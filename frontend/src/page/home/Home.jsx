@@ -24,6 +24,7 @@ export default function Home() {
 
   return (
     <div className={`${styles.home}`}>
+       {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
       <div className="d-flex justify-content-between align-items-start">
         <div className={`${styles.leftSide} col-2`}>{/* <Menu /> */}</div>
         <div className={`${styles.middleSide} col-6 mb-5`}>

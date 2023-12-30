@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_ALL_POSTS } from "../../reducers/slice/postSlice";
 
 export default function Posts() {
-  const posts = useSelector((state) => state.post.posts);
+  const posts = useSelector((state) => state.persistedReducer.post.posts);
 
   return (
     <div className={`${styles.posts} mt-3`}>

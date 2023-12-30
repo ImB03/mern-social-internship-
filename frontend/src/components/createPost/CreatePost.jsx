@@ -19,7 +19,7 @@ export default function CreatePost() {
 
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
-      {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
+     
       <div className="container-fluid">
         <div className="d-flex align-items-center mt-2">
           <img

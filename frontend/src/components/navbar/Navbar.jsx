@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./navbar.module.scss";
+import DropdownNavMenu from "../dropdownNavMenu/DropdownNavMenu";
 
 export default function Navbar() {
+  const [isDropdownNavMenu, setIsDropdownNavMenu] = useState(false);
+
+  const [user, setUser] = useState(
+    useSelector((state) => state.persistedReducer.auth.user)
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    setUser(user);
+  }, [user]);
+
+  console.log(user);
 
   return (
     <div className={`${styles.navbar} border d-flex align-items-center`}>
@@ -31,30 +42,31 @@ export default function Navbar() {
 
         <div className="col d-flex justify-content-end align-items-center">
           <div
-            className={`${styles.iconWrapper} ms-4 d-flex justify-content-center align-items-center`}
-          >
-            <i className={`${styles.icon} fa-solid fa-bars`}></i>
-          </div>
-          <div
-            className={`${styles.iconWrapper} ms-4 d-flex justify-content-center align-items-center`}
+            className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
           >
             <i className={`${styles.icon} fa-regular fa-bell`}></i>
           </div>
           <div
-            className={`${styles.iconWrapper} ms-4 d-flex justify-content-center align-items-center`}
+            className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
           >
             <i className={`${styles.icon} fa-regular fa-comments`}></i>
           </div>
-          <Link
-            to="/auth"
-            className={`ms-4 d-flex justify-content-center align-items-center`}
+          <div
+            className={`${styles.avatarWrapper} position-relative ms-3 d-flex justify-content-center align-items-center`}
           >
             <img
               className={`${styles.userImg}`}
-              src="https://jademcallistercom.files.wordpress.com/2016/05/instagram-icon.png"
+              src="https://www.imgacademy.com/sites/default/files/img-academy-housing-hero.jpg"
               alt=""
             />
-          </Link>
+            <div
+              onClick={() => setIsDropdownNavMenu(!isDropdownNavMenu)}
+              className={`${styles.overlay} position-absolute`}
+            ></div>
+            {isDropdownNavMenu && (
+              <DropdownNavMenu setIsDropdownNavMenu={setIsDropdownNavMenu} />
+            )}
+          </div>
         </div>
       </div>
     </div>
