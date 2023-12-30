@@ -8,9 +8,15 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 import styles from "./dropdownNavMenu.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { LOGNOUT } from "../../reducers/slice/authSlice";
 
 export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
   const dispatch = useDispatch();
+
+  const handleLognout = () => {
+    dispatch(LOGNOUT());
+  };
 
   return (
     <div className={`${styles.dropdownNavMenu} position-absolute`}>
@@ -55,8 +61,10 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
             </div>
             <div className={`${styles.name}`}>Comments</div>
           </div>
-          <div
+          <Link
+            to="/auth"
             onClick={() => {
+              handleLognout();
               setIsDropdownNavMenu(false);
             }}
             className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
@@ -67,7 +75,7 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
               <LogoutOutlinedIcon className={`${styles.icon}`} />
             </div>
             <div className={`${styles.name}`}>Logout</div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

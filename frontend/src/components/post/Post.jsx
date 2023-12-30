@@ -15,7 +15,11 @@ export default function Post({ post }) {
   return (
     <div className={`${styles.post} position-relative p-3 mb-3`}>
       {isDropdownMenu && (
-        <DropdownMenu postId={post._id} setIsDropdownMenu={setIsDropdownMenu} />
+        <DropdownMenu
+          userId={post.userId}
+          postId={post._id}
+          setIsDropdownMenu={setIsDropdownMenu}
+        />
       )}
       <div className="container-fluid">
         <div className="d-flex justify-content-between align-items-center">

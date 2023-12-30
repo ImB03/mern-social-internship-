@@ -23,3 +23,8 @@ body {
   border-radius: 10px;
   background: #a7a6a6;
 }
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}

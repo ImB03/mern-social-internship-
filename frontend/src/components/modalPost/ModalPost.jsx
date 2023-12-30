@@ -27,7 +27,11 @@ export default function ModalPost() {
     isDeletePost,
     setIsDeletePost,
   } = useContext(MyContext);
-  const post = useSelector((state) => state.persistedReducer.post.post);
+  const post = useSelector((state) => state.post.post);
+  const user = useSelector((state) => state.auth.user.user);
+
+  
+
   const dispatch = useDispatch();
   const [inputFiles, setInputFiles] = useState("");
   const [inputDescription, setInputDescription] = useState("");
@@ -56,7 +60,12 @@ export default function ModalPost() {
 
   const handleSubmit = () => {
     if (isCreatePost) {
-      dispatch(ACTION_CREATE_POST({ dataPost, setIsCreatePost }));
+      dispatch(
+        ACTION_CREATE_POST({
+          dataPost: { ...dataPost, userId: user._id },
+          setIsCreatePost,
+        })
+      );
     } else if (isUpdatePost) {
       dispatch(
         ACTION_UPDATE_POST({

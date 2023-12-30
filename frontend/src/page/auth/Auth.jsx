@@ -7,7 +7,7 @@ import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
   const isLoading = useSelector(
-    (state) => state.persistedReducer.auth.isLoading
+    (state) => state.auth.isLoading
   );
 
   const dispatch = useDispatch();

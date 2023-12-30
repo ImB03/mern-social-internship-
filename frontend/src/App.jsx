@@ -15,13 +15,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function App() {
-  const [user, setUser] = useState(
-    useSelector((state) => state.persistedReducer.auth.user)
-  );
-
-  useEffect(() => {
-    setUser(user);
-  }, [user]);
+  const user = useSelector((state) => state.auth.user);
 
   return (
     <Router>

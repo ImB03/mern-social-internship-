@@ -5,7 +5,6 @@ const authSlice = createSlice({
   initialState: {
     user: null,
     isLoading: false,
-    response: null,
   },
   reducers: {
     ACTION_SIGNUP: (state, action) => {
@@ -13,30 +12,33 @@ const authSlice = createSlice({
     },
 
     SIGNUP: (state, action) => {
-      state.response = action.payload.response;
-      alert(action.payload.response?.data.message);
       if (action.payload.response.status === 200) {
         action.payload.setIsSignup((prev) => !prev);
       }
       state.isLoading = false;
+      alert(action.payload.response?.data.message);
     },
     ACTION_SIGNIN: (state, action) => {
       state.isLoading = true;
     },
 
     SIGNIN: (state, action) => {
-      state.response = action.payload.response;
-      alert(action.payload.response?.data.message);
       if (action.payload.response?.status === 200) {
         state.user = action.payload.response.data.user;
         action.payload.navigate("/");
       }
       state.isLoading = false;
+      alert(action.payload.response?.data.message);
+    },
+    LOGNOUT: (state, action) => {
+      state.isLoading = true;
+      state.user = null;
+      state.isLoading = false;
     },
   },
 });
 
-export const { ACTION_SIGNUP, ACTION_SIGNIN, SIGNUP, SIGNIN } =
+export const { ACTION_SIGNUP, ACTION_SIGNIN, SIGNUP, SIGNIN, LOGNOUT } =
   authSlice.actions;
 
 export default authSlice.reducer;

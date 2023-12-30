@@ -15,9 +15,9 @@ const postSlice = createSlice({
     },
     CREATE_POST: (state, action) => {
       state.response = action.payload.response;
-      alert(action.payload.response?.data.message);
       action.payload?.setIsCreatePost(false);
       state.isLoading = false;
+      alert(action.payload.response?.data.message);
     },
     ACTION_GET_ALL_POSTS: (state) => {
       state.isLoading = true;
@@ -39,27 +39,19 @@ const postSlice = createSlice({
     },
     UPDATE_POST: (state, action) => {
       state.response = action.payload.response;
-      alert(action.payload.response?.data.message);
       action.payload?.setIsUpdatePost(false);
       state.isLoading = false;
+      alert(action.payload.response?.data.message);
     },
     ACTION_DELETE_POST: (state) => {
       state.isLoading = true;
     },
     DELETE_POST: (state, action) => {
       state.response = action.payload.response;
-      alert(action.payload.response?.data.message);
       action.payload?.setIsDeletePost(false);
       state.isLoading = false;
+      alert(action.payload.response?.data.message);
     },
-
-    // SET_POST: (state, action) => {
-    //   const updatedPosts = state.posts.map((post) => {
-    //     if (post._id === action.payload.post._id) return action.payload.post;
-    //     return post;
-    //   });
-    //   state.posts = updatedPosts;
-    // },
   },
 });
 
