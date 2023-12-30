@@ -8,8 +8,6 @@ import DropdownNavMenu from "../dropdownNavMenu/DropdownNavMenu";
 export default function Navbar() {
   const [isDropdownNavMenu, setIsDropdownNavMenu] = useState(false);
 
-  const user = useSelector((state) => state.auth.user);
-
   return (
     <div className={`${styles.navbar} border d-flex align-items-center`}>
       <div className="container-fluid d-flex justify-content-between align-items-center">

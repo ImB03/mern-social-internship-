@@ -58,9 +58,12 @@ export const signin = async (req, res, next) => {
       }
     );
 
-    res
-      .status(200)
-      .json({ user: { user, token }, message: "Signin successful!" });
+    delete user._doc.password;
+
+    res.status(200).json({
+      user: { ...user._doc, token },
+      message: "Signin successful!",
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Signin unsuccessful!" });

@@ -28,7 +28,7 @@ export default function ModalPost() {
     setIsDeletePost,
   } = useContext(MyContext);
   const post = useSelector((state) => state.post.post);
-  const user = useSelector((state) => state.auth.user.user);
+  const user = useSelector((state) => state.auth.user);
 
   
 
