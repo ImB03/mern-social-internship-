@@ -8,15 +8,15 @@ import {
   deletePost,
   // likePost,
 } from "../controllers/post.js";
-// import { verifyToken } from "../middleware/verifyToken.js";
+import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
-router.post("/createpost", createPost);
+router.post("/createpost", verifyToken, createPost);
 router.get("/getallposts", getAllPosts);
-router.get("/getonepost/:postId", getOnePost);
-router.patch("/updatepost/:postId", updatePost);
-router.delete("/deletepost/:postId", deletePost);
+router.get("/getonepost/:postId", verifyToken, getOnePost);
+router.patch("/updatepost/:postId", verifyToken, updatePost);
+router.delete("/deletepost/:postId", verifyToken, deletePost);
 // router.get("/getuserpost/:userId", verifyToken, getPostOfUser);
 // router.patch("/likepost/:postId/", verifyToken, likePost);
 

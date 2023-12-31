@@ -6,10 +6,12 @@ import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
 import ModalPost from "../modalPost/ModalPost";
 import { MyContext } from "../../hook/context/postState";
+import { useSelector } from "react-redux";
 
 export default function CreatePost() {
   const { isCreatePost, setIsCreatePost, isUpdatePost, isDeletePost } =
     useContext(MyContext);
+
   // Thêm hoặc xóa lớp 'no-scroll' tùy thuộc vào trạng thái của modal
   if (isCreatePost) {
     document.body.classList.add(styles.cancelScroll);
@@ -19,7 +21,6 @@ export default function CreatePost() {
 
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
-     
       <div className="container-fluid">
         <div className="d-flex align-items-center mt-2">
           <img
@@ -28,7 +29,9 @@ export default function CreatePost() {
             alt=""
           />
           <div
-            onClick={() => setIsCreatePost(true)}
+            onClick={() => {
+              setIsCreatePost(true);
+            }}
             className={`${styles.createPostBtn} px-3 d-flex align-items-center`}
           >
             What's on your mind, Username ?

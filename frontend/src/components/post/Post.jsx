@@ -16,7 +16,7 @@ export default function Post({ post }) {
     <div className={`${styles.post} position-relative p-3 mb-3`}>
       {isDropdownMenu && (
         <DropdownMenu
-          userId={post.userId}
+          userId={post.creator}
           postId={post._id}
           setIsDropdownMenu={setIsDropdownMenu}
         />

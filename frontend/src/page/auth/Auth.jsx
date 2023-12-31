@@ -6,13 +6,11 @@ import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-  const isLoading = useSelector(
-    (state) => state.auth.isLoading
-  );
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isSignup, setIsSignup] = useState(true);
+  const [isSignup, setIsSignup] = useState(false);
   const [dataUser, setDataUser] = useState({});
 
   console.log(isSignup);

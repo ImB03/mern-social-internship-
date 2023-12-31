@@ -4,6 +4,22 @@ const API = axios.create({
   baseURL: "http://localhost:19000/api",
 });
 
+API.interceptors.request.use(
+  (req) => {
+    if (JSON.parse(localStorage.getItem("token"))) {
+      req.headers.authorization = `Bearer ${JSON.parse(
+        localStorage.getItem("token")
+      )}`;
+    }
+
+    return req;
+  },
+
+  (error) => {
+    console.log("Error at api", error);
+  }
+);
+
 export const getAllPosts = () => API.get("/post/getallposts");
 export const getOnePost = (postId) => API.get(`/post/getonepost/${postId}`);
 // export const stripePayment = (dataPayment) => API.post("/payment", dataPayment);

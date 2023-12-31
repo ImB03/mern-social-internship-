@@ -12,10 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_ALL_POSTS } from "../../reducers/slice/postSlice";
 import ModalPost from "../../components/modalPost/ModalPost";
 import { MyContext } from "../../hook/context/postState";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
-
   const { isCreatePost, isUpdatePost, isDeletePost } = useContext(MyContext);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className={`${styles.home}`}>
-       {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
+      {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
       <div className="d-flex justify-content-between align-items-start">
         <div className={`${styles.leftSide} col-2`}>{/* <Menu /> */}</div>
         <div className={`${styles.middleSide} col-6 mb-5`}>

@@ -4,9 +4,10 @@ import User from "../models/User.js";
 /* CREATE */
 export const createPost = async (req, res, next) => {
   try {
-    const { userId, description, picturePath } = req.body;
+    const { description, picturePath } = req.body;
+
     const newPost = new Post({
-      userId,
+      creator: req.user.userId,
       description,
       picturePath,
       // likes: {},

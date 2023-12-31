@@ -5,6 +5,7 @@ const authSlice = createSlice({
   initialState: {
     user: null,
     isLoading: false,
+    token: null,
   },
   reducers: {
     ACTION_SIGNUP: (state, action) => {
@@ -12,26 +13,33 @@ const authSlice = createSlice({
     },
 
     SIGNUP: (state, action) => {
+      // alert(action.payload.response?.data.message);
       if (action.payload.response.status === 200) {
         action.payload.setIsSignup((prev) => !prev);
       }
       state.isLoading = false;
-      alert(action.payload.response?.data.message);
     },
     ACTION_SIGNIN: (state, action) => {
       state.isLoading = true;
     },
 
     SIGNIN: (state, action) => {
+      // alert(action.payload.response?.data.message);
       if (action.payload.response?.status === 200) {
+        state.token = action.payload.response.data.user.token;
+
         state.user = action.payload.response.data.user;
         action.payload.navigate("/");
       }
+      localStorage.setItem(
+        "token",
+        JSON.stringify(action.payload.response.data.user.token)
+      );
       state.isLoading = false;
-      alert(action.payload.response?.data.message);
     },
     LOGNOUT: (state, action) => {
       state.isLoading = true;
+      localStorage.removeItem("token");
       state.user = null;
       state.isLoading = false;
     },

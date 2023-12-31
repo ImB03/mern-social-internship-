@@ -14,10 +14,10 @@ const postSlice = createSlice({
       state.isLoading = true; //fake loading
     },
     CREATE_POST: (state, action) => {
+      alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       action.payload?.setIsCreatePost(false);
       state.isLoading = false;
-      alert(action.payload.response?.data.message);
     },
     ACTION_GET_ALL_POSTS: (state) => {
       state.isLoading = true;
@@ -38,19 +38,19 @@ const postSlice = createSlice({
       state.isLoading = true;
     },
     UPDATE_POST: (state, action) => {
+      // alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       action.payload?.setIsUpdatePost(false);
       state.isLoading = false;
-      alert(action.payload.response?.data.message);
     },
     ACTION_DELETE_POST: (state) => {
       state.isLoading = true;
     },
     DELETE_POST: (state, action) => {
+      // alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       action.payload?.setIsDeletePost(false);
       state.isLoading = false;
-      alert(action.payload.response?.data.message);
     },
   },
 });

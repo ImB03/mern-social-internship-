@@ -17,6 +17,8 @@ import { useEffect } from "react";
 function App() {
   const user = useSelector((state) => state.auth.user);
 
+  console.log(JSON.parse(localStorage.getItem("token")));
+
   return (
     <Router>
       <Routes>
