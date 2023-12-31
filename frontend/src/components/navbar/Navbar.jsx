@@ -49,10 +49,19 @@ export default function Navbar() {
             />
             <div
               onClick={() => setIsDropdownNavMenu(!isDropdownNavMenu)}
-              className={`${styles.overlay} position-absolute`}
+              className={`${styles.overlayUserImg} position-absolute`}
             ></div>
+
             {isDropdownNavMenu && (
-              <DropdownNavMenu setIsDropdownNavMenu={setIsDropdownNavMenu} />
+              <>
+                <div
+                  onClick={() => {
+                    setIsDropdownNavMenu(false);
+                  }}
+                  className={`${styles.overlay} position-fixed`}
+                ></div>
+                <DropdownNavMenu setIsDropdownNavMenu={setIsDropdownNavMenu} />
+              </>
             )}
           </div>
         </div>

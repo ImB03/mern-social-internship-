@@ -13,14 +13,7 @@ export default function Post({ post }) {
   const [isDropdownMenu, setIsDropdownMenu] = useState(false);
 
   return (
-    <div className={`${styles.post} position-relative p-3 mb-3`}>
-      {isDropdownMenu && (
-        <DropdownMenu
-          userId={post.creator}
-          postId={post._id}
-          setIsDropdownMenu={setIsDropdownMenu}
-        />
-      )}
+    <div className={`${styles.post} p-3 mb-3`}>
       <div className="container-fluid">
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex justify-content-between align-items-center">
@@ -34,13 +27,31 @@ export default function Post({ post }) {
               <div className={`${styles.createTime}`}>1 min ago</div>
             </div>
           </div>
-          <div
-            onClick={() => {
-              setIsDropdownMenu(!isDropdownMenu);
-            }}
-            className={`${styles.option} d-flex justify-content-center align-items-center`}
-          >
-            <MoreHorizIcon className={`${styles.icon}`} />
+          <div className={`${styles.option} position-relative`}>
+            <div
+              onClick={() => {
+                setIsDropdownMenu(!isDropdownMenu);
+              }}
+              className={`${styles.wrapperIcon} position-absolute d-flex justify-content-center align-items-center`}
+            >
+              <MoreHorizIcon className={`${styles.icon} position-absolute`} />
+            </div>
+
+            {isDropdownMenu && (
+              <>
+                <div
+                  onClick={() => {
+                    setIsDropdownMenu(false);
+                  }}
+                  className={`${styles.overlay} position-fixed`}
+                ></div>
+                <DropdownMenu
+                  userId={post.creator}
+                  postId={post._id}
+                  setIsDropdownMenu={setIsDropdownMenu}
+                />
+              </>
+            )}
           </div>
         </div>
         <div className={`${styles.title} mt-3`}>{post.description}</div>
