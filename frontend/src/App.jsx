@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function App() {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.persistedReducer.auth.user);
 
   console.log(JSON.parse(localStorage.getItem("token")));
 

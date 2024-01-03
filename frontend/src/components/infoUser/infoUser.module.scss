@@ -49,6 +49,7 @@
             color: white;
             font-size: 13px;
             letter-spacing: 0.5px;
+            height: 35px;
           }
           .btnMessenger {
             background-color: cornflowerblue;
@@ -58,11 +59,14 @@
             color: white;
             font-size: 13px;
             letter-spacing: 0.5px;
+            height: 35px;
           }
           .btnMore {
             border: none;
             border-radius: 5px;
             padding: 5px;
+            height: 35px;
+            width: 35px;
           }
         }
 
@@ -78,7 +82,7 @@
     }
 
     .navigate {
-      .itemNavigate{
+      .itemNavigate {
         font-size: 13px;
         font-weight: bold;
       }

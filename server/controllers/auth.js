@@ -7,7 +7,7 @@ import User from "../models/User.js";
 export const signup = async (req, res, next) => {
   try {
     const {
-      username,
+      userName,
       email,
       password,
       // picturePath,
@@ -20,7 +20,7 @@ export const signup = async (req, res, next) => {
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = new User({
-      username,
+      userName,
       email,
       password: passwordHash,
       // picturePath,
@@ -50,9 +50,13 @@ export const signin = async (req, res, next) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials!" });
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "2h",
-    });
+    const token = jwt.sign(
+      { userId: user._id, userName: user.userName },
+      process.env.JWT_SECRET_KEY,
+      {
+        expiresIn: "2h",
+      }
+    );
 
     delete user._doc.password;
 

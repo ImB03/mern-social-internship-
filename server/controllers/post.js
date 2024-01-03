@@ -8,6 +8,7 @@ export const createPost = async (req, res, next) => {
 
     const newPost = new Post({
       creator: req.user.userId,
+      creatorName: req.user.userName,
       description,
       picturePath,
       // likes: {},

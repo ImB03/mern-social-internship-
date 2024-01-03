@@ -15,16 +15,12 @@ import { MyContext } from "../../hook/context/postState";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 
-export default function DropdownMenu({ setIsDropdownMenu, postId, userId }) {
-  const user = useSelector((state) => state.auth.user);
+export default function DropdownMenu({ setIsDropdownMenu, post }) {
+  const user = useSelector((state) => state.persistedReducer.auth.user);
 
-  const { setIsUpdatePost, isDeletePost, setIsDeletePost } =
+  const { setIsUpdatePost, handleGetPost, setIsDeletePost } =
     useContext(MyContext);
   const dispatch = useDispatch();
-
-  const handleGetPost = () => {
-    dispatch(ACTION_GET_POST(postId));
-  };
 
   return (
     <div className={`${styles.dropdownMenu} position-absolute`}>
@@ -43,7 +39,7 @@ export default function DropdownMenu({ setIsDropdownMenu, postId, userId }) {
             </div>
             <div className={`${styles.name}`}>Save post</div>
           </div>
-          {userId === user._id ? (
+          {post.creator === user._id ? (
             <div
               onClick={() => {
                 setIsDropdownMenu(false);
@@ -76,10 +72,10 @@ export default function DropdownMenu({ setIsDropdownMenu, postId, userId }) {
               </div>
             </div>
           )}
-          {userId === user._id && (
+          {post.creator === user._id && (
             <div
               onClick={() => {
-                handleGetPost();
+                handleGetPost(post._id);
                 setIsDropdownMenu(false);
                 setIsUpdatePost(true);
               }}
@@ -93,7 +89,7 @@ export default function DropdownMenu({ setIsDropdownMenu, postId, userId }) {
               <div className={`${styles.name}`}>Update post</div>
             </div>
           )}
-          {userId !== user._id && (
+          {post.creator !== user._id && (
             <>
               <div
                 onClick={() => {
@@ -121,7 +117,9 @@ export default function DropdownMenu({ setIsDropdownMenu, postId, userId }) {
                 >
                   <WebAssetOffOutlinedIcon className={`${styles.icon}`} />
                 </div>
-                <div className={`${styles.name}`}>Hidden all from Username</div>
+                <div className={`${styles.name}`}>
+                  Hidden all from {post.userName}
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -148,15 +146,15 @@ export default function DropdownMenu({ setIsDropdownMenu, postId, userId }) {
                   <NoAccountsOutlinedIcon className={`${styles.icon}`} />
                 </div>
                 <div className={`${styles.name}`}>
-                  Block Username's personal page
+                  Block {post.userName}'s personal page
                 </div>
               </div>
             </>
           )}
-          {userId === user._id && (
+          {post.creator === user._id && (
             <div
               onClick={() => {
-                handleGetPost();
+                handleGetPost(post._id);
                 setIsDropdownMenu(false);
                 setIsDeletePost(true);
               }}

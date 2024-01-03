@@ -1,11 +1,29 @@
 .dropdownNavMenu {
   width: 300px;
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(255 255 255);
   right: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 10px;
   top: 60px;
   .wrapper {
+    .wrapperItem {
+      background-color: rgb(255 255 255);
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+      .userAvatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+      }
+      .userName {
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 18px;
+      }
+    }
     .item {
       transition: all 0.2s ease;
       border-radius: 5px;

@@ -7,7 +7,7 @@ export const verifyToken = async (req, res, next) => {
     console.log(token);
 
     if (!token) {
-      return res.status(403).json({ message: "Have no token" });
+      return res.status(403).json({ message: "There is no token" });
     }
 
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, dataUser) => {

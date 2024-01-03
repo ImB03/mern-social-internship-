@@ -25,7 +25,7 @@ function* Signin(action) {
     const response = yield call(() => signin(action.payload.dataUser));
     yield put(SIGNIN({ response, navigate: action.payload.navigate }));
   } catch (error) {
-    yield put(SIGNUP({ response: error.response }));
+    yield put(SIGNIN({ response: error.response }));
     console.log(error);
   }
 }

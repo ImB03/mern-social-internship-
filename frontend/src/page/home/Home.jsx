@@ -16,7 +16,8 @@ import { useLocation } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { isCreatePost, isUpdatePost, isDeletePost } = useContext(MyContext);
+  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
+    useContext(MyContext);
 
   useEffect(() => {
     dispatch(ACTION_GET_ALL_POSTS());
@@ -24,18 +25,22 @@ export default function Home() {
 
   return (
     <div className={`${styles.home}`}>
-      {(isUpdatePost || isCreatePost || isDeletePost) && <ModalPost />}
+      {(isUpdatePost || isCreatePost || isDeletePost || isDetailPost) && (
+        <ModalPost />
+      )}
       <div className="d-flex justify-content-between align-items-start">
-        <div className={`${styles.leftSide} col-2`}>{/* <Menu /> */}</div>
-        <div className={`${styles.middleSide} col-6 mb-5`}>
+        <div className={`${styles.leftSide} col-2`}>
+          <Menu />
+        </div>
+        <div className={`${styles.middleSide} col-6`}>
           <Stories />
           <CreatePost />
           <Posts />
         </div>
         <div className={`${styles.rightSide} col-3`}>
           <Ad />
-          {/* <MakeFriend /> */}
-          {/* <FriendList /> */}
+          <MakeFriend />
+          <FriendList />
         </div>
       </div>
     </div>

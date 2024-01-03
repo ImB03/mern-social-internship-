@@ -13,7 +13,7 @@ const authSlice = createSlice({
     },
 
     SIGNUP: (state, action) => {
-      // alert(action.payload.response?.data.message);
+      alert(action.payload.response?.data.message);
       if (action.payload.response.status === 200) {
         action.payload.setIsSignup((prev) => !prev);
       }
@@ -24,7 +24,7 @@ const authSlice = createSlice({
     },
 
     SIGNIN: (state, action) => {
-      // alert(action.payload.response?.data.message);
+      alert(action.payload.response?.data.message);
       if (action.payload.response?.status === 200) {
         state.token = action.payload.response.data.user.token;
 

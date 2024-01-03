@@ -29,42 +29,42 @@ import PostState from "./hook/context/postState";
 
 const saga = createSagaMiddleware();
 
-// const persistConfig = {
-//   key: "root",
-//   // version: 1,
-//   storage,
-// };
+const persistConfig = {
+  key: "root",
+  // version: 1,
+  storage,
+};
 
-// const rootReducer = combineReducers({
-//   auth: authSlice,
-//   mode: modeSlice,
-//   post: postSlice,
-// });
+const rootReducer = combineReducers({
+  auth: authSlice,
+});
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // STORE
 
-// const store = configureStore({
-//   reducer: {
-//     persistedReducer,
-//   },
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       // serializableCheck: {
-//       //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       // },
-//       serializableCheck: false,
-//     }).concat(saga),
-// });
-
-export const store = configureStore({
+const store = configureStore({
   reducer: {
+    persistedReducer,
+    mode: modeSlice,
     post: postSlice,
-    auth: authSlice,
   },
-  middleware: [saga],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      // serializableCheck: {
+      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      // },
+      serializableCheck: false,
+    }).concat(saga),
 });
+
+// export const store = configureStore({
+//   reducer: {
+//     post: postSlice,
+//     auth: authSlice,
+//   },
+//   middleware: [saga],
+// });
 
 const persistor = persistStore(store);
 
@@ -76,11 +76,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <PersistGate persistor={persistor}> */}
-      <PostState>
-        <App />
-      </PostState>
-      {/* </PersistGate> */}
+      <PersistGate persistor={persistor}>
+        <PostState>
+          <App />
+        </PostState>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

@@ -6,7 +6,7 @@ import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isLoading = useSelector((state) => state.persistedReducer.auth.isLoading);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -94,8 +94,8 @@ export default function Auth() {
                   className={`${styles.input} mb-4 mt-2`}
                   type="text"
                   placeholder="Your name"
-                  name="username"
-                  // value={dataUser.username}
+                  name="userName"
+                  // value={dataUser.userName}
                 />
               )}
               <input

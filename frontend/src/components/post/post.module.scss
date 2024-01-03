@@ -32,10 +32,15 @@
   .userName {
     font-weight: 500;
     font-size: 16px;
+    font-weight: bold;
   }
 
   .createTime {
     font-size: 12px;
+
+    .icon {
+      font-size: 15px;
+    }
   }
 
   .title {
@@ -53,7 +58,19 @@
   .interact {
     border-top: 1px solid #dbdbdb;
 
-    .icon {
+    .wrapperIcon {
+      transition: all 0.1s ease;
+      border-radius: 5px;
+      cursor: pointer;
+      .icon {
+      }
+    }
+
+    .wrapperIcon:hover {
+      background-color: #eaeaea;
+    }
+    .wrapperIcon:active {
+      background-color: #dcdcdc;
     }
 
     .nameInteract {

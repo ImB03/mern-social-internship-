@@ -38,7 +38,7 @@ const postSlice = createSlice({
       state.isLoading = true;
     },
     UPDATE_POST: (state, action) => {
-      // alert(action.payload.response?.data.message);
+      alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       action.payload?.setIsUpdatePost(false);
       state.isLoading = false;
@@ -47,7 +47,7 @@ const postSlice = createSlice({
       state.isLoading = true;
     },
     DELETE_POST: (state, action) => {
-      // alert(action.payload.response?.data.message);
+      alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       action.payload?.setIsDeletePost(false);
       state.isLoading = false;

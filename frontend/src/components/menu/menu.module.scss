@@ -1,20 +1,33 @@
 .menu {
-  background-color: #fff;
+  background-color: #f6f3f3;
 
   .itemMenu {
-    background-color: #fff;
+    transition: all 0.1s ease;
     margin-left: -11px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+
+    .avatarUser {
+      width: 35px;
+      height: 35px;
+      border-radius: 100%;
+    }
+
+    .userName {
+      font-weight: bold;
+    }
 
     .img {
-      width: 30px;
+      width: 25px;
     }
 
     .name {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
   .itemMenu:hover {
-    background-color: #ccc;
+    background-color: #e0e0e0;
   }
 }

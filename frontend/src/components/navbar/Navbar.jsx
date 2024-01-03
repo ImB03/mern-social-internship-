@@ -12,9 +12,12 @@ export default function Navbar() {
     <div className={`${styles.navbar} border d-flex align-items-center`}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <div className="col d-flex justify-content-start align-items-center">
-          <div className={`${styles.logo} me-4 d-flex align-items-center`}>
+          <Link
+            to="/"
+            className={`${styles.logo} me-4 d-flex align-items-center`}
+          >
             Socialmedia
-          </div>
+          </Link>
           <div className={`${styles.search} border d-flex align-items-center `}>
             <button className={`${styles.searchBtn}`} onClick={() => {}}>
               <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>

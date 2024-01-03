@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 export default function CreatePost() {
   const { isCreatePost, setIsCreatePost, isUpdatePost, isDeletePost } =
     useContext(MyContext);
+  const user = useSelector((state) => state.persistedReducer.auth.user);
 
   // Thêm hoặc xóa lớp 'no-scroll' tùy thuộc vào trạng thái của modal
   if (isCreatePost) {
@@ -21,8 +22,8 @@ export default function CreatePost() {
 
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
-      <div className="container-fluid">
-        <div className="d-flex align-items-center mt-2">
+      <div className="container-fluid p-0">
+        <div className="d-flex align-items-center">
           <img
             className={`${styles.img} me-4`}
             src="https://jademcallistercom.files.wordpress.com/2016/05/instagram-icon.png"
@@ -34,7 +35,7 @@ export default function CreatePost() {
             }}
             className={`${styles.createPostBtn} px-3 d-flex align-items-center`}
           >
-            What's on your mind, Username ?
+            What's on your mind, {user.userName} ?
           </div>
         </div>
         <hr className={`${styles.hr} my-3`} />
@@ -55,7 +56,6 @@ export default function CreatePost() {
               <div className={`${styles.name}`}>Tag Friends</div>
             </div>
           </div>
-          <button className={`${styles.btn} px-3 py-1`}>Share</button>
         </div>
       </div>
     </div>

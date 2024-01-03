@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import styles from "./menu.module.scss";
 import Friends from "../../assets/1.png";
@@ -14,10 +15,12 @@ import Messages from "../../assets/10.png";
 import Fund from "../../assets/13.png";
 import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
+  const user = useSelector((state) => state.persistedReducer.auth.user);
+
   const Menu = [
-    // { img: "Friends", name: "Friends" },
     { img: Friends, name: "Friends" },
     { img: Groups, name: "Groups" },
     { img: Market, name: "Marketplace" },
@@ -35,14 +38,27 @@ export default function Menu() {
 
   return (
     <div className={`${styles.menu}`}>
-     <div className="container-fluid">
-          {Menu.map((item) => (
-            <div className={`${styles.itemMenu} col p-3 d-flex align-items-center`}>
-              <img className={`${styles.img} me-2`} src={item.img} alt="" />
-              <div className={`${styles.name}`}>{item.name}</div>
-            </div>
-          ))}
-     </div>
+      <div className="container-fluid pe-0">
+        <Link
+          to="/profile"
+          className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
+        >
+          <img
+            className={`${styles.avatarUser} me-2`}
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wTSQmZNeyfJ1GNYRHZjCpYLN6ul8o5R0kg&usqp=CAU"
+            alt=""
+          />
+          <div className={`${styles.userName}`}>{user.userName}</div>
+        </Link>
+        {Menu.map((item) => (
+          <div
+            className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
+          >
+            <img className={`${styles.img} me-2`} src={item.img} alt="" />
+            <div className={`${styles.name}`}>{item.name}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
