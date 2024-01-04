@@ -61,15 +61,8 @@ export default function Post({ post }) {
         {post.picturePath !== "" && (
           <img className={`${styles.img} mt-3`} src={post.picturePath} alt="" />
         )}
-
         <div
-          className={`${styles.infoInteract} pt-2 d-flex justify-content-between`}
-        >
-          <div className={`${styles.quantityLike}`}>Like</div>
-          <div className={`${styles.quantityComment}`}>Comment</div>
-        </div>
-        <div
-          className={`${styles.interact} mt-2 pt-2 d-flex justify-content-center align-items-center`}
+          className={`${styles.interact} mt-2 pt-1 d-flex justify-content-center align-items-center`}
         >
           <div
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}

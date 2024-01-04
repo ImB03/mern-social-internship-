@@ -19,6 +19,12 @@ export default function Home() {
   const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
     useContext(MyContext);
 
+  if (isCreatePost || isUpdatePost || isDeletePost || isDetailPost) {
+    document.body.classList.add(styles.cancelScroll);
+  } else {
+    document.body.classList.remove(styles.cancelScroll);
+  }
+
   useEffect(() => {
     dispatch(ACTION_GET_ALL_POSTS());
   }, [isCreatePost, dispatch, isUpdatePost, isDeletePost]);

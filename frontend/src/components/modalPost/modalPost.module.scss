@@ -19,6 +19,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
     background-color: white;
+
     .head {
       border-bottom: 0.5px solid #dbdbdb;
       .title {
@@ -84,6 +85,30 @@
         object-fit: cover;
       }
     }
+
+    .interact {
+      border-top: 1px solid #dbdbdb;
+      border-bottom: 1px solid #dbdbdb;
+
+      .wrapperIcon {
+        transition: all 0.1s ease;
+        border-radius: 5px;
+        cursor: pointer;
+        .icon {
+        }
+      }
+
+      .wrapperIcon:hover {
+        background-color: #eaeaea;
+      }
+      .wrapperIcon:active {
+        background-color: #dcdcdc;
+      }
+
+      .nameInteract {
+      }
+    }
+
     .inputText,
     .descriptionPost {
       border: none;
@@ -174,14 +199,48 @@
         background-color: #f63939;
       }
     }
-  }
-}
 
-.heightForpicturePost {
-  height: 650px;
-  max-height: 650px;
+    .foot {
+      .avatarUser {
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+      }
+
+      .wrapperComment {
+        background-color: #f0f2f5;
+        border-radius: 20px;
+
+        .inputComment {
+          background-color: transparent;
+          border: none;
+          outline: none;
+        }
+        .wrapperIcon {
+          border-radius: 100%;
+          width: 35px;
+          height: 35px;
+          transition: all 0.2s ease;
+          cursor: pointer;
+
+          .icon {
+            font-size: 20px;
+            color: #808080;
+          }
+        }
+
+        .wrapperIcon:hover {
+          background-color: #e0e0e0;
+        }
+        .wrapperIcon:active {
+          background-color: #d0d0d0;
+        }
+      }
+    }
+  }
 }
 
 .overflowY {
   overflow-y: scroll;
+  height: 500px;
 }

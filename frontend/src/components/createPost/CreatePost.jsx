@@ -9,16 +9,8 @@ import { MyContext } from "../../hook/context/postState";
 import { useSelector } from "react-redux";
 
 export default function CreatePost() {
-  const { isCreatePost, setIsCreatePost, isUpdatePost, isDeletePost } =
-    useContext(MyContext);
+  const { setIsCreatePost } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
-
-  // Thêm hoặc xóa lớp 'no-scroll' tùy thuộc vào trạng thái của modal
-  if (isCreatePost) {
-    document.body.classList.add(styles.cancelScroll);
-  } else {
-    document.body.classList.remove(styles.cancelScroll);
-  }
 
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
