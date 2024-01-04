@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ClearIcon from "@mui/icons-material/Clear";
 import PhotoLibraryOutlinedIcon from "@mui/icons-material/PhotoLibraryOutlined";
@@ -39,6 +39,7 @@ export default function ModalPost() {
   } = useContext(MyContext);
   const post = useSelector((state) => state.post.post);
   const user = useSelector((state) => state.persistedReducer.auth.user);
+  const inputCommentRef = useRef(null);
 
   const dispatch = useDispatch();
   const [inputFiles, setInputFiles] = useState("");
@@ -90,6 +91,11 @@ export default function ModalPost() {
         })
       );
     }
+  };
+
+  const handleCommentButtonClick = () => {
+    // Focus vào input khi nút bình luận được nhấn
+    inputCommentRef.current.focus();
   };
 
   return (
@@ -329,7 +335,7 @@ export default function ModalPost() {
                   <div className={`${styles.nameInteract}`}>Likes</div>
                 </div>
                 <div
-                  onClick={() => {}}
+                  onClick={handleCommentButtonClick}
                   className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
                 >
                   <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
@@ -355,22 +361,31 @@ export default function ModalPost() {
               <div className={`${styles.wrapperComment} p-2 col`}>
                 <div className="d-flex justify-content-between align-item-center">
                   <textarea
+                    ref={inputCommentRef}
                     className={`${styles.inputComment} col me-2`}
                     rows={1}
                     placeholder="Comment..."
                   />
-                  <div className={`${styles.wrapperIcon} d-flex justify-content-center align-items-center`}>
+                  <div
+                    className={`${styles.wrapperIcon} d-flex justify-content-center align-items-center`}
+                  >
                     <SendIcon className={`${styles.icon}`} />
                   </div>
                 </div>
                 <div className="d-flex">
-                  <div className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}>
+                  <div
+                    className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
+                  >
                     <EmojiEmotionsOutlinedIcon className={`${styles.icon}`} />
                   </div>
-                  <div className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}>
+                  <div
+                    className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
+                  >
                     <CameraAltOutlinedIcon className={`${styles.icon}`} />
                   </div>
-                  <div className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}>
+                  <div
+                    className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
+                  >
                     <GifBoxOutlinedIcon className={`${styles.icon}`} />
                   </div>
                 </div>
