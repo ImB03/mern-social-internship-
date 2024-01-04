@@ -107,7 +107,7 @@ export default function ModalPost() {
       ></div>
 
       {isDeletePost && (
-        <div className={`${styles.wrapperModal} position-absolute`}>
+        <div className={`${styles.wrapperModal} col-4 position-absolute`}>
           <div className="container-fluid p-3">
             <div
               className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
@@ -125,7 +125,7 @@ export default function ModalPost() {
               </div>
             </div>
             <div
-              className={`${styles.remindCaption} col-12 mt-3 d-flex justify-content-end`}
+              className={`${styles.remindCaption} col-12 mt-3 d-flex justify-content-start`}
             >
               Are you sure you want to delete the post? There will be no
               recovery!
@@ -152,7 +152,7 @@ export default function ModalPost() {
         </div>
       )}
       {(isCreatePost || isUpdatePost) && (
-        <div className={`${styles.wrapperModal} position-absolute`}>
+        <div className={`${styles.wrapperModal} col-4 position-absolute`}>
           <div className="container-fluid p-3">
             <div
               className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
