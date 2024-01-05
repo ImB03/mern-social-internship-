@@ -84,38 +84,38 @@ export const deletePost = async (req, res, next) => {
   }
 };
 
-export const getPostOfUser = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const post = await Post.find({ userId });
-    res.status(200).json(post);
-  } catch (err) {
-    res.status(404).json({ message: err.message });
-  }
-};
+// export const getPostOfUser = async (req, res) => {
+//   try {
+//     const { userId } = req.params;
+//     const post = await Post.find({ userId });
+//     res.status(200).json(post);
+//   } catch (err) {
+//     res.status(404).json({ message: err.message });
+//   }
+// };
 
 /* UPDATE */
-export const likePost = async (req, res) => {
-  try {
-    const { postId } = req.params;
-    const { userId } = req.body;
-    const post = await Post.findById(postId);
-    const isLiked = post.likes.get(userId);
+// export const likePost = async (req, res) => {
+//   try {
+//     const { postId } = req.params;
+//     const { userId } = req.body;
+//     const post = await Post.findById(postId);
+//     const isLiked = post.likes.get(userId);
 
-    if (isLiked) {
-      post.likes.delete(userId);
-    } else {
-      post.likes.set(userId, true);
-    }
+//     if (isLiked) {
+//       post.likes.delete(userId);
+//     } else {
+//       post.likes.set(userId, true);
+//     }
 
-    const updatedPost = await Post.findByIdAndUpdate(
-      postId,
-      { likes: post.likes },
-      { new: true }
-    );
+//     const updatedPost = await Post.findByIdAndUpdate(
+//       postId,
+//       { likes: post.likes },
+//       { new: true }
+//     );
 
-    res.status(200).json(updatedPost);
-  } catch (err) {
-    res.status(404).json({ message: err.message });
-  }
-};
+//     res.status(200).json(updatedPost);
+//   } catch (err) {
+//     res.status(404).json({ message: err.message });
+//   }
+// };

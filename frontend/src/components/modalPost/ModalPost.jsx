@@ -98,6 +98,12 @@ export default function ModalPost() {
     inputCommentRef.current.focus();
   };
 
+  useEffect(() => {
+    if (isDetailPost) {
+      inputCommentRef.current.focus();
+    }
+  }, []);
+
   return (
     <div
       className={`${styles.modalPost} position-fixed d-flex justify-content-center align-items-center`}
