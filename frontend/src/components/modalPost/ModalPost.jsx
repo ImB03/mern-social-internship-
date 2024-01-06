@@ -19,6 +19,7 @@ import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import styles from "./modalPost.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 import {
+  ACTION_COMMENT_POST,
   ACTION_CREATE_POST,
   ACTION_DELETE_POST,
   ACTION_GET_ALL_POSTS,
@@ -44,10 +45,13 @@ export default function ModalPost() {
   const dispatch = useDispatch();
   const [inputFiles, setInputFiles] = useState("");
   const [inputDescription, setInputDescription] = useState("");
+  const [inputComment, setInputComment] = useState("");
   const [dataPost, setDataPost] = useState({
     description: "",
     picturePath: "",
   });
+
+  console.log(inputComment);
 
   useEffect(() => {
     setDataPost({
@@ -91,6 +95,16 @@ export default function ModalPost() {
         })
       );
     }
+  };
+
+  const handleComment = () => {
+    dispatch(
+      ACTION_COMMENT_POST({
+        dataComment: inputComment,
+        setInputComment,
+        postId: post._id,
+      })
+    );
   };
 
   const handleCommentButtonClick = () => {
@@ -367,12 +381,14 @@ export default function ModalPost() {
               <div className={`${styles.wrapperComment} p-2 col`}>
                 <div className="d-flex justify-content-between align-item-center">
                   <textarea
+                    onChange={(e) => setInputComment(e.target.value)}
                     ref={inputCommentRef}
                     className={`${styles.inputComment} col me-2`}
                     rows={1}
                     placeholder="Comment..."
                   />
                   <div
+                    onClick={() => handleComment()}
                     className={`${styles.wrapperIcon} d-flex justify-content-center align-items-center`}
                   >
                     <SendIcon className={`${styles.icon}`} />

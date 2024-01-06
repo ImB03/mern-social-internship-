@@ -34,8 +34,8 @@ export const updatePost = (postId, dataPost) =>
   API.patch(`/post/updatepost/${postId}`, dataPost);
 export const deletePost = (postId) => API.delete(`/post/deletepost/${postId}`);
 // export const likePost = (postId) => API.patch(`/posts/likepost/${postId}`);
-// export const commentPost = (dataComment, postId) =>
-//   API.patch(`/posts/commentpost/${postId}`, { dataComment });
+export const commentPost = (dataComment, postId) =>
+  API.patch(`/post/commentpost`, { dataComment, postId });
 
 export const signup = (dataUser) => API.post("/auth/signup", dataUser);
 export const signin = (dataUser) => API.post("/auth/signin", dataUser);

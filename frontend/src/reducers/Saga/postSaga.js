@@ -11,6 +11,8 @@ import {
   ACTION_UPDATE_POST,
   ACTION_DELETE_POST,
   DELETE_POST,
+  COMMENT_POST,
+  ACTION_COMMENT_POST,
 } from "../slice/postSlice";
 import {
   createPost,
@@ -18,6 +20,7 @@ import {
   getAllPosts,
   updatePost,
   deletePost,
+  commentPost,
 } from "../../api";
 
 // CREATE POST
@@ -98,12 +101,36 @@ function* DeletePost(action) {
   }
 }
 
+//COMMENT POST
+
+function* CommentPost(action) {
+  try {
+    const response = yield call(() =>
+      commentPost(action.payload.dataComment, action.payload.postId)
+    );
+    yield put(
+      COMMENT_POST({
+        response,
+        setInputComment: action.payload.setInputComment,
+      })
+    );
+  } catch (error) {
+    yield put(
+      COMMENT_POST({
+        response: error.response,
+      })
+    );
+    console.log(error);
+  }
+}
+
 function* PostSaga() {
   yield takeEvery(ACTION_CREATE_POST, CreatePost);
   yield takeEvery(ACTION_GET_ALL_POSTS, GetAllPosts);
   yield takeEvery(ACTION_GET_POST, GetOnePost);
   yield takeEvery(ACTION_UPDATE_POST, UpdatePost);
   yield takeEvery(ACTION_DELETE_POST, DeletePost);
+  yield takeEvery(ACTION_COMMENT_POST, CommentPost);
 }
 
 export default PostSaga;

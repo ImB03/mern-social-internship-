@@ -52,6 +52,15 @@ const postSlice = createSlice({
       action.payload?.setIsDeletePost(false);
       state.isLoading = false;
     },
+    ACTION_COMMENT_POST: (state) => {
+      state.isLoading = true;
+    },
+    COMMENT_POST: (state, action) => {
+      alert(action.payload.response?.data.message);
+      state.response = action.payload.response;
+      action.payload?.setInputComment("");
+      state.isLoading = false;
+    },
   },
 });
 
@@ -66,6 +75,8 @@ export const {
   UPDATE_POST,
   ACTION_DELETE_POST,
   DELETE_POST,
+  ACTION_COMMENT_POST,
+  COMMENT_POST,
 } = postSlice.actions;
 
 export default postSlice.reducer;
