@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(ACTION_GET_ALL_POSTS());
-  }, [isCreatePost, dispatch, isUpdatePost, isDeletePost]);
+  }, [isCreatePost, dispatch, isUpdatePost, isDeletePost, isDetailPost]);
 
   return (
     <div className={`${styles.home}`}>

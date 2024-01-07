@@ -40,9 +40,9 @@ export default function ModalPost() {
     setIsDetailPost,
     handleGetPost,
   } = useContext(MyContext);
-  const post = useSelector((state) => state.post.post);
   const user = useSelector((state) => state.persistedReducer.auth.user);
-  const postId = post._id;
+  const post = useSelector((state) => state.post.post);
+
   const inputCommentRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -53,6 +53,8 @@ export default function ModalPost() {
     description: "",
     picturePath: "",
   });
+
+  console.log(post);
 
   const handleSubmit = () => {
     if (isCreatePost) {
@@ -108,10 +110,6 @@ export default function ModalPost() {
     setInputFiles(post.picturePath);
   }, [post]);
 
-  // useEffect(() => {
-  //   handleGetPost(postId);
-  // }, [post.comments]);
-
   useEffect(() => {
     setInputDescription("");
     setInputFiles("");
@@ -121,7 +119,7 @@ export default function ModalPost() {
     if (isDetailPost) {
       inputCommentRef.current.focus();
     }
-  }, []);
+  }, [isDetailPost]);
 
   return (
     <div
@@ -374,6 +372,12 @@ export default function ModalPost() {
 
                   <div className={`${styles.nameInteract}`}>Share</div>
                 </div>
+              </div>
+
+              <div className={`${styles.commentPart}`}>
+                {post?.comments?.map((comment) => (
+                  <div>{comment?.userComment}</div>
+                ))}
               </div>
             </div>
 
