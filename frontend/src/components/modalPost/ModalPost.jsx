@@ -23,6 +23,7 @@ import {
   ACTION_CREATE_POST,
   ACTION_DELETE_POST,
   ACTION_GET_ALL_POSTS,
+  ACTION_GET_POST,
   ACTION_UPDATE_POST,
 } from "../../reducers/slice/postSlice";
 import { MyContext } from "../../hook/context/postState";
@@ -37,9 +38,11 @@ export default function ModalPost() {
     setIsDeletePost,
     isDetailPost,
     setIsDetailPost,
+    handleGetPost,
   } = useContext(MyContext);
   const post = useSelector((state) => state.post.post);
   const user = useSelector((state) => state.persistedReducer.auth.user);
+  const postId = post._id;
   const inputCommentRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -50,26 +53,6 @@ export default function ModalPost() {
     description: "",
     picturePath: "",
   });
-
-  console.log(inputComment);
-
-  useEffect(() => {
-    setDataPost({
-      ...dataPost,
-      description: inputDescription,
-      picturePath: inputFiles,
-    });
-  }, [inputDescription, inputFiles]);
-
-  useEffect(() => {
-    setInputDescription(post.description);
-    setInputFiles(post.picturePath);
-  }, [post]);
-
-  useEffect(() => {
-    setInputDescription("");
-    setInputFiles("");
-  }, [setIsCreatePost, setIsUpdatePost]);
 
   const handleSubmit = () => {
     if (isCreatePost) {
@@ -111,6 +94,28 @@ export default function ModalPost() {
     // Focus vào input khi nút bình luận được nhấn
     inputCommentRef.current.focus();
   };
+
+  useEffect(() => {
+    setDataPost({
+      ...dataPost,
+      description: inputDescription,
+      picturePath: inputFiles,
+    });
+  }, [inputDescription, inputFiles]);
+
+  useEffect(() => {
+    setInputDescription(post.description);
+    setInputFiles(post.picturePath);
+  }, [post]);
+
+  // useEffect(() => {
+  //   handleGetPost(postId);
+  // }, [post.comments]);
+
+  useEffect(() => {
+    setInputDescription("");
+    setInputFiles("");
+  }, [setIsCreatePost, setIsUpdatePost]);
 
   useEffect(() => {
     if (isDetailPost) {
@@ -386,9 +391,12 @@ export default function ModalPost() {
                     className={`${styles.inputComment} col me-2`}
                     rows={1}
                     placeholder="Comment..."
+                    value={inputComment}
                   />
                   <div
-                    onClick={() => handleComment()}
+                    onClick={() => {
+                      handleComment();
+                    }}
                     className={`${styles.wrapperIcon} d-flex justify-content-center align-items-center`}
                   >
                     <SendIcon className={`${styles.icon}`} />

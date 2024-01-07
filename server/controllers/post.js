@@ -68,6 +68,33 @@ export const updatePost = async (req, res, next) => {
   }
 };
 
+export const commentPost = async (req, res, next) => {
+  const postId = req.body.postId;
+  const dataComment = req.body.dataComment;
+
+  try {
+    const post = await Post.findById(postId);
+
+    post.comments.push({
+      userId: req.user.userId,
+      userName: req.user.userName,
+      userPicturePath: req.user.userPicturePath,
+      userComment: dataComment,
+      commentAt: "",
+    });
+
+    await Post.findByIdAndUpdate(postId, post, {
+      new: true,
+    });
+
+    res.status(200).json({ message: "Comment successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Comment unsuccessfully" });
+    next(err);
+  }
+};
+
 //DELETE POST
 
 export const deletePost = async (req, res, next) => {
