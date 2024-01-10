@@ -15,11 +15,9 @@ import { MyContext } from "../../hook/context/postState";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 
-export default function DropdownCommentMenu({
-  post,
-  setIsDropdownCommentMenu,
-}) {
+export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
   const user = useSelector((state) => state.persistedReducer.auth.user);
+  const post = useSelector((state) => state.post.post);
 
   const { setIsUpdatePost, handleGetPost, setIsDeletePost } =
     useContext(MyContext);

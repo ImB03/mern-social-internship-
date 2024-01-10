@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { useSelector } from "react-redux";
 
 import styles from "./itemComment.module.scss";
+import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
 
-export default function ItemComment() {
+export default function ItemComment({ comment }) {
+  const [isDropdownCommentMenu, setIsDropdownCommentMenu] = useState(false);
+
   return (
     <div className={`${styles.itemComment} mt-3 d-flex`} key={comment.userId}>
       <img
@@ -36,7 +41,6 @@ export default function ItemComment() {
                   className={`${styles.overlay} position-fixed`}
                 ></div>
                 <DropdownCommentMenu
-                  post={post}
                   setIsDropdownCommentMenu={setIsDropdownCommentMenu}
                 />
               </>
