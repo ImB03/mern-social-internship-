@@ -13,15 +13,24 @@
       border-radius: 100%;
       .icon {
       }
+
+      
+    }
+
+    .wrapperIcon:hover {
+      background-color: #eaeaea;
+    }
+    .wrapperIcon:active {
+      background-color: #dcdcdc;
     }
   }
 
-  .wrapperIcon:hover {
-    background-color: #eaeaea;
-  }
-  .wrapperIcon:active {
-    background-color: #dcdcdc;
-  }
+  // .wrapperIcon:hover {
+  //   background-color: #eaeaea;
+  // }
+  // .wrapperIcon:active {
+  //   background-color: #dcdcdc;
+  // }
 
   .userImg {
     border-radius: 100%;

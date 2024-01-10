@@ -27,7 +27,7 @@ export const createPost = async (req, res, next) => {
 /* GET POST */
 export const getAllPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ _id: -1 });
     res.status(200).json(posts);
   } catch (err) {
     console.error(err);
@@ -41,6 +41,9 @@ export const getOnePost = async (req, res, next) => {
 
   try {
     const post = await Post.findById(postId);
+
+    post.comments.reverse();
+
     res.status(200).json(post);
   } catch (err) {
     console.error(err);
@@ -83,11 +86,13 @@ export const commentPost = async (req, res, next) => {
       commentAt: "",
     });
 
-    await Post.findByIdAndUpdate(postId, post, {
+    const updatedPost = await Post.findByIdAndUpdate(postId, post, {
       new: true,
     });
 
-    res.status(200).json({ message: "Comment successfully" });
+    updatedPost.comments.reverse();
+
+    res.status(200).json(updatedPost);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Comment unsuccessfully" });

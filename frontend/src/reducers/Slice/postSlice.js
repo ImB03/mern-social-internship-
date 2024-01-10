@@ -56,8 +56,8 @@ const postSlice = createSlice({
       state.isLoading = true;
     },
     COMMENT_POST: (state, action) => {
-      alert(action.payload.response?.data.message);
       state.response = action.payload.response;
+      state.post = action.payload.response?.data;
       action.payload?.setInputComment("");
       state.isLoading = false;
     },
