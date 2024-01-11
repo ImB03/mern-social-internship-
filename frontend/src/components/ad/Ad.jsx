@@ -4,7 +4,7 @@ import styles from "./ad.module.scss";
 
 export default function Ad() {
   return (
-    <div className={`${styles.ad} p-3 mt-3`}>
+    <div className={`${styles.ad} p-3`}>
       <div className="container-fluid d-flex flex-column">
         <b className="mt-2">Sponsored</b>
         <img

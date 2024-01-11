@@ -24,7 +24,6 @@ export default function Profile() {
           <InfoUser />
           <CreatePost />
           <Posts />
-          ...
         </div>
         <div className={`${styles.rightSide} col-3`}>
           <CardInfo />
