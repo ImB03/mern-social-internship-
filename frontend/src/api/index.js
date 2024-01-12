@@ -33,7 +33,7 @@ export const createPost = (dataPost) => API.post("/post/createpost", dataPost);
 export const updatePost = (postId, dataPost) =>
   API.patch(`/post/updatepost/${postId}`, dataPost);
 export const deletePost = (postId) => API.delete(`/post/deletepost/${postId}`);
-// export const likePost = (postId) => API.patch(`/posts/likepost/${postId}`);
+export const likePost = (postId) => API.patch(`/post/likepost`, { postId });
 export const commentPost = (dataComment, postId) =>
   API.patch(`/post/commentpost`, { dataComment, postId });
 

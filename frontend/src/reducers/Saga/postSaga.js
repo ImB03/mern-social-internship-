@@ -13,6 +13,8 @@ import {
   DELETE_POST,
   COMMENT_POST,
   ACTION_COMMENT_POST,
+  LIKE_POST,
+  ACTION_LIKE_POST,
 } from "../slice/postSlice";
 import {
   createPost,
@@ -21,6 +23,7 @@ import {
   updatePost,
   deletePost,
   commentPost,
+  likePost,
 } from "../../api";
 
 // CREATE POST
@@ -124,6 +127,24 @@ function* CommentPost(action) {
   }
 }
 
+function* LikePost(action) {
+  try {
+    const response = yield call(() => likePost(action.payload));
+    yield put(
+      LIKE_POST({
+        response,
+      })
+    );
+  } catch (error) {
+    yield put(
+      LIKE_POST({
+        response: error.response,
+      })
+    );
+    console.log(error);
+  }
+}
+
 function* PostSaga() {
   yield takeEvery(ACTION_CREATE_POST, CreatePost);
   yield takeEvery(ACTION_GET_ALL_POSTS, GetAllPosts);
@@ -131,6 +152,7 @@ function* PostSaga() {
   yield takeEvery(ACTION_UPDATE_POST, UpdatePost);
   yield takeEvery(ACTION_DELETE_POST, DeletePost);
   yield takeEvery(ACTION_COMMENT_POST, CommentPost);
+  yield takeEvery(ACTION_LIKE_POST, LikePost);
 }
 
 export default PostSaga;

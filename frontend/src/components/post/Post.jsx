@@ -9,10 +9,17 @@ import styles from "./post.module.scss";
 import DropdownMenu from "../dropdownMenu/DropdownMenu";
 import ModalPost from "../modalPost/ModalPost";
 import { MyContext } from "../../hook/context/postState";
+import { useDispatch } from "react-redux";
+import { ACTION_LIKE_POST } from "../../reducers/slice/postSlice";
 
 export default function Post({ post }) {
   const [isDropdownMenu, setIsDropdownMenu] = useState(false);
   const { setIsDetailPost, handleGetPost } = useContext(MyContext);
+  const dispatch = useDispatch();
+
+  const handleLike = () => {
+    dispatch(ACTION_LIKE_POST(post._id));
+  };
 
   return (
     <div className={`${styles.post} p-3 mb-3`}>
@@ -65,6 +72,7 @@ export default function Post({ post }) {
           className={`${styles.interact} mt-2 pt-1 d-flex justify-content-center align-items-center`}
         >
           <div
+            onClick={() => handleLike()}
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
             <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} />

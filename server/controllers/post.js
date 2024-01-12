@@ -127,27 +127,35 @@ export const deletePost = async (req, res, next) => {
 // };
 
 /* UPDATE */
-// export const likePost = async (req, res) => {
-//   try {
-//     const { postId } = req.params;
-//     const { userId } = req.body;
-//     const post = await Post.findById(postId);
-//     const isLiked = post.likes.get(userId);
+export const likePost = async (req, res, next) => {
+  try {
+    const { postId } = req.body;
+    const userId = req.user.userId;
 
-//     if (isLiked) {
-//       post.likes.delete(userId);
-//     } else {
-//       post.likes.set(userId, true);
-//     }
+    const post = await Post.findById(postId);
 
-//     const updatedPost = await Post.findByIdAndUpdate(
-//       postId,
-//       { likes: post.likes },
-//       { new: true }
-//     );
+    const isLiked = post.likes.includes(userId);
 
-//     res.status(200).json(updatedPost);
-//   } catch (err) {
-//     res.status(404).json({ message: err.message });
-//   }
-// };
+    console.log(isLiked);
+
+    if (isLiked) {
+      post.likes = post.likes.filter((itemUserId) => itemUserId !== userId);
+    } else {
+      post.likes.push(userId);
+    }
+
+    console.log(post.likes);
+
+    const updatedPost = await Post.findByIdAndUpdate(
+      postId,
+      { likes: post.likes },
+      { new: true }
+    );
+
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Like post unsuccessfully" });
+    next(err);
+  }
+};

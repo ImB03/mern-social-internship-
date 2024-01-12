@@ -7,7 +7,7 @@ import {
   updatePost,
   deletePost,
   commentPost,
-  // likePost,
+  likePost,
 } from "../controllers/post.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 
@@ -20,6 +20,6 @@ router.patch("/updatepost/:postId", verifyToken, updatePost);
 router.patch("/commentpost", verifyToken, commentPost);
 router.delete("/deletepost/:postId", verifyToken, deletePost);
 // router.get("/getuserpost/:userId", verifyToken, getPostOfUser);
-// router.patch("/likepost/:postId/", verifyToken, likePost);
+router.patch("/likepost", verifyToken, likePost);
 
 export default router;
