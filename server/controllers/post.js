@@ -144,15 +144,15 @@ export const likePost = async (req, res, next) => {
       post.likes.push(userId);
     }
 
-    console.log(post.likes);
-
     const updatedPost = await Post.findByIdAndUpdate(
       postId,
       { likes: post.likes },
       { new: true }
     );
 
-    res.status(200).json(updatedPost);
+    const posts = await Post.find().sort({ _id: -1 });
+
+    res.status(200).json({ post: updatedPost, posts });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Like post unsuccessfully" });

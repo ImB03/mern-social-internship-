@@ -66,7 +66,8 @@ const postSlice = createSlice({
     },
     LIKE_POST: (state, action) => {
       state.response = action.payload.response;
-      state.post = action.payload.response?.data;
+      state.post = action.payload.response?.data?.post;
+      state.posts = action.payload.response?.data?.posts;
       state.isLoading = false;
     },
   },

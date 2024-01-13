@@ -10,6 +10,7 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import LockIcon from "@mui/icons-material/Lock";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import SendIcon from "@mui/icons-material/Send";
@@ -25,6 +26,7 @@ import {
   ACTION_DELETE_POST,
   ACTION_GET_ALL_POSTS,
   ACTION_GET_POST,
+  ACTION_LIKE_POST,
   ACTION_UPDATE_POST,
 } from "../../reducers/slice/postSlice";
 import { MyContext } from "../../hook/context/postState";
@@ -92,6 +94,10 @@ export default function ModalPost() {
         postId: post._id,
       })
     );
+  };
+
+  const handleLike = () => {
+    dispatch(ACTION_LIKE_POST(post._id));
   };
 
   const handleCommentButtonClick = () => {
@@ -351,13 +357,19 @@ export default function ModalPost() {
                 className={`${styles.interact} mt-2 py-1 d-flex justify-content-center align-items-center`}
               >
                 <div
+                  onClick={() => handleLike()}
                   className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
                 >
-                  <FavoriteBorderOutlinedIcon
-                    className={`${styles.icon} me-2`}
-                  />
-
-                  <div className={`${styles.nameInteract}`}>Likes</div>
+                  {post?.likes?.includes(user._id) ? (
+                    <FavoriteIcon className={`${styles.icon} me-2`} />
+                  ) : (
+                    <FavoriteBorderOutlinedIcon
+                      className={`${styles.icon} me-2`}
+                    />
+                  )}
+                  <div className={`${styles.nameInteract}`}>
+                    {post.likes?.length} Likes
+                  </div>
                 </div>
                 <div
                   onClick={handleCommentButtonClick}

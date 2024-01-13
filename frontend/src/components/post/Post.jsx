@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import LockIcon from "@mui/icons-material/Lock";
@@ -9,13 +10,14 @@ import styles from "./post.module.scss";
 import DropdownMenu from "../dropdownMenu/DropdownMenu";
 import ModalPost from "../modalPost/ModalPost";
 import { MyContext } from "../../hook/context/postState";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ACTION_LIKE_POST } from "../../reducers/slice/postSlice";
 
 export default function Post({ post }) {
   const [isDropdownMenu, setIsDropdownMenu] = useState(false);
   const { setIsDetailPost, handleGetPost } = useContext(MyContext);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.persistedReducer.auth.user);
 
   const handleLike = () => {
     dispatch(ACTION_LIKE_POST(post._id));
@@ -75,9 +77,17 @@ export default function Post({ post }) {
             onClick={() => handleLike()}
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
-            <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} />
+            {/* <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} /> */}
 
-            <div className={`${styles.nameInteract}`}>Likes</div>
+            {post?.likes?.includes(user._id) ? (
+              <FavoriteIcon className={`${styles.icon} me-2`} />
+            ) : (
+              <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} />
+            )}
+
+            <div className={`${styles.nameInteract}`}>
+              {post?.likes.length} Likes
+            </div>
           </div>
           <div
             onClick={() => {
