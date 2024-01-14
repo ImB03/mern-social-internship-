@@ -28,7 +28,6 @@ export const getOnePost = (postId) => API.get(`/post/getonepost/${postId}`);
 //   API.get(`/search/findbysearch?searchQuery=${searchQuery || "none"}`);
 // export const fetchPostsByPagination = (page) =>
 //   API.get(`/pagination?page=${page}`);
-export const getOneUser = (userId) => API.get(`/post/getoneuser/${userId}`);
 
 export const createPost = (dataPost) => API.post("/post/createpost", dataPost);
 export const updatePost = (postId, dataPost) =>
@@ -40,3 +39,5 @@ export const commentPost = (dataComment, postId) =>
 
 export const signup = (dataUser) => API.post("/auth/signup", dataUser);
 export const signin = (dataUser) => API.post("/auth/signin", dataUser);
+
+export const getOneUser = (userId) => API.get(`/user/getoneuser/${userId}`);

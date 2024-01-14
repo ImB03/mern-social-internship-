@@ -16,6 +16,7 @@ import { useLocation } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
+
   const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
     useContext(MyContext);
 

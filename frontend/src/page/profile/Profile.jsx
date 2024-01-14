@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import styles from "./profile.module.scss";
 import Menu from "../../components/menu/Menu";
@@ -12,16 +12,39 @@ import InfoUser from "../../components/infoUser/InfoUser";
 import CardInfo from "../../components/cardInfo/CardInfo";
 import StoreImg from "../../components/storeImg/StoreImg";
 import CardFriendList from "../../components/cardFriendList/CardFriendList";
+import { useDispatch, useSelector } from "react-redux";
+import ModalPost from "../../components/modalPost/ModalPost";
+import { MyContext } from "../../hook/context/postState";
 
 export default function Profile() {
+  const user = useSelector((state) => state.persistedReducer.auth.user);
+
+  const dispatch = useDispatch();
+
+  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
+    useContext(MyContext);
+
+  if (isCreatePost || isUpdatePost || isDeletePost || isDetailPost) {
+    document.body.classList.add(styles.cancelScroll);
+  } else {
+    document.body.classList.remove(styles.cancelScroll);
+  }
+
+  useEffect(() => {
+    dispatch(ACTION_GET_ALL_POSTS());
+  }, [isCreatePost, dispatch, isUpdatePost, isDeletePost]);
+
   return (
     <div className={`${styles.profile}`}>
+      {(isUpdatePost || isCreatePost || isDeletePost || isDetailPost) && (
+        <ModalPost />
+      )}
       <div className="d-flex justify-content-between align-items-start">
         <div className={`${styles.leftSide} col-2`}>
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6 mb-5`}>
-          <InfoUser />
+          <InfoUser user={user} />
           <CreatePost />
           <Posts />
         </div>

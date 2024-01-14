@@ -12,7 +12,6 @@ export default function CreatePost() {
   const { setIsCreatePost } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
 
-
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
       <div className="container-fluid p-0">
