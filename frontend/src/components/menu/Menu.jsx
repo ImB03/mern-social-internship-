@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 
 import styles from "./menu.module.scss";
@@ -16,9 +16,11 @@ import Fund from "../../assets/13.png";
 import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../hook/context/postState";
 
 export default function Menu() {
   const user = useSelector((state) => state.persistedReducer.auth.user);
+  const { handleGetUser } = useContext(MyContext);
 
   const Menu = [
     { img: Friends, name: "Friends" },
@@ -40,6 +42,7 @@ export default function Menu() {
     <div className={`${styles.menu}`}>
       <div className="container-fluid p-0">
         <Link
+          onClick={handleGetUser(user._id)}
           to={`/profile/${user._id}`}
           className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
         >

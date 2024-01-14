@@ -23,8 +23,10 @@ import reportWebVitals from "./reportWebVitals";
 import authSlice from "./reducers/slice/authSlice";
 import modeSlice from "./reducers/slice/modeSlice";
 import postSlice from "./reducers/slice/postSlice";
+import userSlice from "./reducers/slice/userSlice";
 import AuthSaga from "./reducers/saga/authSaga";
 import PostSaga from "./reducers/saga/postSaga";
+import UserSaga from "./reducers/saga/userSaga";
 import PostState from "./hook/context/postState";
 
 const saga = createSagaMiddleware();
@@ -48,6 +50,7 @@ const store = configureStore({
     persistedReducer,
     mode: modeSlice,
     post: postSlice,
+    user: userSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -70,6 +73,7 @@ const persistor = persistStore(store);
 
 saga.run(AuthSaga);
 saga.run(PostSaga);
+saga.run(UserSaga);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -43,7 +43,7 @@ export default function CardInfo() {
             <div className={`${styles.info}`}>bao@gmail.com</div>
           </div>
         </div>
-        <Stories />
+        {/* <Stories /> */}
       </div>
     </div>
   );
