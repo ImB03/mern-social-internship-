@@ -17,9 +17,9 @@ router.post("/createpost", verifyToken, createPost);
 router.get("/getallposts", getAllPosts);
 router.get("/getonepost/:postId", verifyToken, getOnePost);
 router.patch("/updatepost/:postId", verifyToken, updatePost);
-router.patch("/commentpost", verifyToken, commentPost);
+router.patch("/commentpost/:postId", verifyToken, commentPost);
 router.delete("/deletepost/:postId", verifyToken, deletePost);
 // router.get("/getuserpost/:userId", verifyToken, getPostOfUser);
-router.patch("/likepost", verifyToken, likePost);
+router.patch("/likepost/:postId", verifyToken, likePost);
 
 export default router;

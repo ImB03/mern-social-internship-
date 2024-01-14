@@ -72,7 +72,7 @@ export const updatePost = async (req, res, next) => {
 };
 
 export const commentPost = async (req, res, next) => {
-  const postId = req.body.postId;
+  const postId = req.params.postId;
   const dataComment = req.body.dataComment;
 
   try {
@@ -129,7 +129,7 @@ export const deletePost = async (req, res, next) => {
 /* UPDATE */
 export const likePost = async (req, res, next) => {
   try {
-    const { postId } = req.body;
+    const postId = req.params.postId;
     const userId = req.user.userId;
 
     const post = await Post.findById(postId);
