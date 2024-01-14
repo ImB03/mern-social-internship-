@@ -1,6 +1,6 @@
 .infoUser {
   .img {
-    width: 112%;
+    width: 100%;
     height: 300px;
     object-fit: cover;
     border-bottom-right-radius: 20px;
@@ -40,39 +40,44 @@
         }
       }
       .interact {
-        .wrapperBtn {
-          .btnFriend {
-            background-color: cornflowerblue;
-            border: none;
-            border-radius: 5px;
-            padding: 6px;
-            color: white;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            height: 35px;
-          }
-          .btnMessenger {
-            background-color: cornflowerblue;
-            border: none;
-            border-radius: 5px;
-            padding: 6px;
-            color: white;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            height: 35px;
-          }
-          .btnMore {
-            border: none;
-            border-radius: 5px;
-            padding: 5px;
-            height: 35px;
-            width: 35px;
-          }
+        .icon {
+          font-size: 16px;
+          font-weight: bold;
         }
 
-        .wrapperBtn:hover {
+        .btnFriend,
+        .btnMessenger,
+        .btnAddNews,
+        .btnEditProfile {
+          background-color: cornflowerblue;
+          font-weight: bold;
+          border: none;
+          border-radius: 5px;
+          padding: 6px;
+          color: white;
+          font-size: 12px;
+          letter-spacing: 0.5px;
+          height: 35px;
+        }
+        .btnMore {
+          border: none;
+          border-radius: 5px;
+          padding: 5px;
+          height: 35px;
+          width: 35px;
+        }
+
+        .btnMore:hover {
           cursor: pointer;
-          opacity: 0.8;
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .btnFriend:hover,
+        .btnMessenger:hover,
+        .btnAddNews:hover,
+        .btnEditProfile:hover {
+          cursor: pointer;
+          background-color: rgb(67, 130, 248);
         }
       }
       .quantity {

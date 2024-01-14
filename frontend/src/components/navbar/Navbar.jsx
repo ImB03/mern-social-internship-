@@ -9,8 +9,8 @@ export default function Navbar() {
   const [isDropdownNavMenu, setIsDropdownNavMenu] = useState(false);
 
   return (
-    <div className={`${styles.navbar} border d-flex align-items-center`}>
-      <div className="container-fluid d-flex justify-content-between align-items-center">
+    <div className={`${styles.navbar} px-3 border d-flex align-items-center`}>
+      <div className="container-fluid p-0 d-flex justify-content-between align-items-center">
         <div className="col d-flex justify-content-start align-items-center">
           <Link
             to="/"

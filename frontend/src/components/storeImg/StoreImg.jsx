@@ -5,7 +5,7 @@ import styles from "./storeImg.module.scss";
 export default function StoreImg() {
   return (
     <div className={`${styles.storeImg} mt-3 p-3`}>
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <div className="d-flex justify-content-between">
           <b>Image</b>
           <div>See all</div>

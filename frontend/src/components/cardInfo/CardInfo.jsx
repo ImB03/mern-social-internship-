@@ -7,7 +7,7 @@ import Stories from "../stories/Stories";
 export default function CardInfo() {
   return (
     <div className={`${styles.cardInfo} p-3`}>
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <b className={`${styles.title}`}>Introduce</b>
         <div className={`${styles.wrapper} mt-3`}>
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>

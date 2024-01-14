@@ -38,13 +38,13 @@ export default function Menu() {
 
   return (
     <div className={`${styles.menu}`}>
-      <div className="container-fluid pe-0">
+      <div className="container-fluid p-0">
         <Link
           to="/profile"
           className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
         >
           <img
-            className={`${styles.avatarUser} me-2`}
+            className={`${styles.avatarUser} me-3`}
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wTSQmZNeyfJ1GNYRHZjCpYLN6ul8o5R0kg&usqp=CAU"
             alt=""
           />
@@ -54,7 +54,7 @@ export default function Menu() {
           <div
             className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
           >
-            <img className={`${styles.img} me-2`} src={item.img} alt="" />
+            <img className={`${styles.img} me-3`} src={item.img} alt="" />
             <div className={`${styles.name}`}>{item.name}</div>
           </div>
         ))}

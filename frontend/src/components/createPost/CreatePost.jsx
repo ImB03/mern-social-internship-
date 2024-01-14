@@ -12,12 +12,13 @@ export default function CreatePost() {
   const { setIsCreatePost } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
 
+
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
       <div className="container-fluid p-0">
         <div className="d-flex align-items-center">
           <img
-            className={`${styles.img} me-4`}
+            className={`${styles.img} me-3`}
             src="https://jademcallistercom.files.wordpress.com/2016/05/instagram-icon.png"
             alt=""
           />

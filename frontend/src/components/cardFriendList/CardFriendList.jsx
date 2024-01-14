@@ -5,7 +5,7 @@ import styles from "./cardFriendList.module.scss";
 export default function CardFriendList() {
   return (
     <div className={`${styles.cardFriendList} mt-3 p-3`}>
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <div className="d-flex justify-content-between">
           <b>Friends</b>
           <div>See all</div>

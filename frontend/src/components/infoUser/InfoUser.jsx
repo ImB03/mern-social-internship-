@@ -80,6 +80,10 @@
 
 import React from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import AddIcon from "@mui/icons-material/Add";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 
 import styles from "./infoUser.module.scss";
 import Menu from "../menu/Menu";
@@ -101,7 +105,7 @@ export default function InfoUser() {
       <div
         className={`${styles.wrapper} p-3 mt-3 col-12 d-flex flex-column align-items-center`}
       >
-        <div className="container-fluid d-flex justify-content-center position-relative">
+        <div className="container-fluid p-0 d-flex justify-content-center position-relative">
           <div
             className={`${styles.wrapperImg} d-flex align-items-center justify-content-center position-absolute`}
           >
@@ -131,22 +135,30 @@ export default function InfoUser() {
                 </div>
               </div>
               <div className={`${styles.rightSide} d-flex`}>
-                <div className={`${styles.wrapperBtn} me-2`}>
-                  <button className={`${styles.btnFriend}`}>
-                    <i class="me-1 fa-solid fa-user-check"></i>
-                    friend
-                  </button>
-                </div>
-                <div className={`${styles.wrapperBtn} me-2`}>
-                  <button className={`${styles.btnMessenger}`}>
-                    <i class="me-1 fa-solid fa-comment"></i>messenger
-                  </button>
-                </div>
-                <div className={`${styles.wrapperBtn}`}>
-                  <button className={`${styles.btnMore}`}>
-                    <MoreHorizIcon />
-                  </button>
-                </div>
+                <button className={`${styles.btnFriend} me-2 d-flex justify-content-center align-items-center`}>
+                  <HowToRegIcon className={`${styles.icon} me-1`} />
+                  Friend
+                </button>
+                <button className={`${styles.btnMessenger} me-2 d-flex justify-content-center align-items-center`}>
+                  <ChatOutlinedIcon className={`${styles.icon} me-1`} />Messenger
+                </button>
+                {/* <button
+                  className={`${styles.btnAddNews} me-2 d-flex justify-content-center align-items-center`}
+                >
+                  <AddIcon className={`${styles.icon} me-1`} />
+                  Add news
+                </button>
+                <button
+                  className={`${styles.btnEditProfile} me-2 d-flex justify-content-center align-items-center`}
+                >
+                  <ModeEditOutlineIcon className={`${styles.icon} me-1`} />
+                  Edit profile
+                </button> */}
+                <button
+                  className={`${styles.btnMore} d-flex justify-content-center align-items-center`}
+                >
+                  <MoreHorizIcon className={`${styles.icon}`} />
+                </button>
               </div>
             </div>
             <h3 className={`${styles.userName} d-flex justify-content-center`}>
