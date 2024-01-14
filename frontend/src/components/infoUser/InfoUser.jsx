@@ -135,6 +135,8 @@ export default function InfoUser() {
                 </div>
               </div>
               <div className={`${styles.rightSide} d-flex`}>
+                {/* {?
+                <>
                 <button className={`${styles.btnFriend} me-2 d-flex justify-content-center align-items-center`}>
                   <HowToRegIcon className={`${styles.icon} me-1`} />
                   Friend
@@ -142,7 +144,10 @@ export default function InfoUser() {
                 <button className={`${styles.btnMessenger} me-2 d-flex justify-content-center align-items-center`}>
                   <ChatOutlinedIcon className={`${styles.icon} me-1`} />Messenger
                 </button>
-                {/* <button
+                </>
+                :
+                <>
+                <button
                   className={`${styles.btnAddNews} me-2 d-flex justify-content-center align-items-center`}
                 >
                   <AddIcon className={`${styles.icon} me-1`} />
@@ -153,7 +158,10 @@ export default function InfoUser() {
                 >
                   <ModeEditOutlineIcon className={`${styles.icon} me-1`} />
                   Edit profile
-                </button> */}
+                </button>
+                </>
+                } */}
+                
                 <button
                   className={`${styles.btnMore} d-flex justify-content-center align-items-center`}
                 >

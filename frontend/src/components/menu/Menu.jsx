@@ -40,7 +40,7 @@ export default function Menu() {
     <div className={`${styles.menu}`}>
       <div className="container-fluid p-0">
         <Link
-          to="/profile"
+          to={`/profile/${user._id}`}
           className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
         >
           <img

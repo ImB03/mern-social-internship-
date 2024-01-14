@@ -23,7 +23,7 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route element={user ? <MainLayout /> : <Navigate to="/auth" />}>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:userId" element={<Profile />} />
         </Route>
       </Routes>
     </Router>

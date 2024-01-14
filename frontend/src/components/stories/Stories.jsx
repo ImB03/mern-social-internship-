@@ -17,7 +17,7 @@ export default function Stories() {
 
   return (
     <div className={`${styles.stories} mt-3`}>
-      <div className="contianer-fluid">
+      <div className="container-fluid p-0">
         <div className="row gx-2">
           {location.pathname === "/" && (
             <div
