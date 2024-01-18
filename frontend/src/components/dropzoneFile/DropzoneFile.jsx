@@ -15,7 +15,7 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
 
   return (
     <div className={`${styles.dropzone}`}>
-      {inputFiles? (
+      {inputFiles ? (
         <div className={`${styles.displayFiles} position-relative`}>
           <img src={inputFiles} className={`${styles.fileImg}`} alt="" />
           <div
@@ -30,7 +30,7 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
       ) : (
         <div
           {...getRootProps()}
-          className={`${styles.dropzoneFiles} d-flex justify-content-center align-items-center`}
+          className={`${styles.dropzoneFiles} p-3 d-flex justify-content-center align-items-center`}
         >
           <input {...getInputProps()} />
           {isDragActive ? (

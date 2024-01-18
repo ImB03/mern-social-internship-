@@ -24,37 +24,10 @@ import DropzoneFile from "../dropzoneFile/DropzoneFile";
 import { MyContext } from "../../hook/context/postState";
 
 export default function ModalUser() {
-  const { setIsCreatePost, setIsUpdatePost, isUpdatePost, setIsUpdateUser } =
-    useContext(MyContext);
+  const { setIsUpdateUser } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
-  const post = useSelector((state) => state.post.post);
-
-  const [inputFiles, setInputFiles] = useState("");
-  const [inputDescription, setInputDescription] = useState("");
-  const [dataPost, setDataPost] = useState({
-    description: "",
-    picturePath: "",
-  });
 
   const handleSubmit = () => {};
-
-  useEffect(() => {
-    setDataPost({
-      ...dataPost,
-      description: inputDescription,
-      picturePath: inputFiles,
-    });
-  }, [inputDescription, inputFiles]);
-
-  useEffect(() => {
-    setInputDescription(post.description);
-    setInputFiles(post.picturePath);
-  }, [post]);
-
-  useEffect(() => {
-    setInputDescription("");
-    setInputFiles("");
-  }, [setIsCreatePost, setIsUpdatePost]);
 
   return (
     <div
@@ -81,15 +54,39 @@ export default function ModalUser() {
               <ClearIcon />
             </div>
           </div>
-          <div className={`${styles.avatarUser}`}>
+          <div className={`${styles.avatarUser} mt-3`}>
             <div className={`${styles.namePart}`}>Avatar</div>
-            <div className="d-flex justify-content-center">2</div>
+            <div
+              className={`${styles.inputFile} mt-3 d-flex justify-content-center`}
+            >
+              <div
+                className={`${styles.borderInputFile} border p-3 d-flex justify-content-center align-items-center`}
+              >
+                <div
+                  className={`${styles.wrapperInputFile} d-flex justify-content-center align-items-center`}
+                >
+                  <DropzoneFile />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className={`${styles.coverAvatar}`}>
+          <div className={`${styles.coverAvatar} mt-3`}>
             <div className={`${styles.namePart}`}>Cover avatar</div>
-            <div className="d-flex justify-content-center">2</div>
+            <div
+              className={`${styles.inputFile} mt-3 d-flex justify-content-center`}
+            >
+              <div
+                className={`${styles.borderInputFile} col-9 border p-3 d-flex justify-content-center align-items-center`}
+              >
+                <div
+                  className={`${styles.wrapperInputFile} col-12 d-flex justify-content-center align-items-center`}
+                >
+                  <DropzoneFile />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className={`${styles.editIntroduction}`}>
+          <div className={`${styles.editIntroduction} mt-3`}>
             <div className={`${styles.namePart}`}>Edit introduction</div>
             <div className="d-flex justify-content-center">2</div>
           </div>

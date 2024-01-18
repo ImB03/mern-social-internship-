@@ -51,7 +51,6 @@ export default function ModalPost() {
   const inputCommentRef = useRef(null);
 
   const dispatch = useDispatch();
-  const [isDropdownCommentMenu, setIsDropdownCommentMenu] = useState(false);
   const [inputFiles, setInputFiles] = useState("");
   const [inputDescription, setInputDescription] = useState("");
   const [inputComment, setInputComment] = useState("");
@@ -114,8 +113,10 @@ export default function ModalPost() {
   }, [inputDescription, inputFiles]);
 
   useEffect(() => {
-    setInputDescription(post.description);
-    setInputFiles(post.picturePath);
+    if (setIsUpdatePost) {
+      setInputDescription(post.description);
+      setInputFiles(post.picturePath);
+    }
   }, [post]);
 
   useEffect(() => {

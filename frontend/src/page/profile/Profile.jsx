@@ -30,19 +30,6 @@ export default function Profile() {
     handleGetAllPostsUser,
   } = useContext(MyContext);
 
-  if (
-    isCreatePost ||
-    isUpdatePost ||
-    isDeletePost ||
-    isDetailPost ||
-    isUpdateUser
-  ) {
-    document.body.classList.add(styles.cancelScroll);
-  } else {
-    document.body.classList.remove(styles.cancelScroll);
-  }
-  console.log(user._id);
-
   useEffect(() => {
     handleGetAllPostsUser(user._id);
   }, [isCreatePost, isUpdatePost, isDeletePost]);

@@ -25,11 +25,6 @@ export default function Home() {
     handleGetAllPosts,
   } = useContext(MyContext);
 
-  if (isCreatePost || isUpdatePost || isDeletePost || isDetailPost) {
-    document.body.classList.add(styles.cancelScroll);
-  } else {
-    document.body.classList.remove(styles.cancelScroll);
-  }
 
   useEffect(() => {
     handleGetAllPosts();
