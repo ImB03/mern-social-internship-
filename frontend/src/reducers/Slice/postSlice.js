@@ -25,6 +25,14 @@ const postSlice = createSlice({
       state.posts = action.payload.response?.data;
       state.isLoading = false;
     },
+    ACTION_GET_ALL_POSTS_USER: (state) => {
+      state.isLoading = true;
+      // state.posts = [];
+    },
+    GET_ALL_POSTS_USER: (state, action) => {
+      state.posts = action.payload.response?.data;
+      state.isLoading = false;
+    },
     ACTION_GET_POST: (state) => {
       state.isLoading = true;
       state.post = {};
@@ -77,6 +85,8 @@ export const {
   CREATE_POST,
   ACTION_GET_ALL_POSTS,
   GET_ALL_POSTS,
+  ACTION_GET_ALL_POSTS_USER,
+  GET_ALL_POSTS_USER,
   ACTION_GET_POST,
   GET_POST,
   ACTION_UPDATE_POST,

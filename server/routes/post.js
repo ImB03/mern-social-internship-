@@ -4,6 +4,7 @@ import {
   createPost,
   getOnePost,
   getAllPosts,
+  getAllPostsUser,
   updatePost,
   deletePost,
   commentPost,
@@ -15,6 +16,7 @@ const router = express.Router();
 
 router.post("/createpost", verifyToken, createPost);
 router.get("/getallposts", getAllPosts);
+router.get("/getallpostsuser/:userId", getAllPostsUser);
 router.get("/getonepost/:postId", verifyToken, getOnePost);
 router.patch("/updatepost/:postId", verifyToken, updatePost);
 router.patch("/commentpost/:postId", verifyToken, commentPost);

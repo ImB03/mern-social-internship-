@@ -78,7 +78,7 @@
 //   );
 // }
 
-import React from "react";
+import React, { useContext } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import AddIcon from "@mui/icons-material/Add";
@@ -93,8 +93,11 @@ import Posts from "../posts/Posts";
 import FriendList from "../friendList/FriendList";
 import Ad from "../ad/Ad";
 import MakeFriend from "../makeFriend/MakeFriend";
+import { MyContext } from "../../hook/context/postState";
 
 export default function InfoUser({ user }) {
+  const { setIsUpdateUser } = useContext(MyContext);
+
   return (
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
       <img
@@ -161,7 +164,21 @@ export default function InfoUser({ user }) {
                 </button>
                 </>
                 } */}
-
+                <>
+                  <button
+                    className={`${styles.btnAddNews} me-2 d-flex justify-content-center align-items-center`}
+                  >
+                    <AddIcon className={`${styles.icon} me-1`} />
+                    Add news
+                  </button>
+                  <button
+                    onClick={() => setIsUpdateUser(true)}
+                    className={`${styles.btnEditProfile} me-2 d-flex justify-content-center align-items-center`}
+                  >
+                    <ModeEditOutlineIcon className={`${styles.icon} me-1`} />
+                    Edit profile
+                  </button>
+                </>
                 <button
                   className={`${styles.btnMore} d-flex justify-content-center align-items-center`}
                 >
@@ -189,7 +206,9 @@ export default function InfoUser({ user }) {
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}
                 >
                   <i className={`${styles.icon} me-2 fa-solid fa-link`}></i>
-                  <div className={`${styles.link}`}>webkit.com</div>
+                  <div className={`${styles.link}`}>
+                    https://github.com/ImB03
+                  </div>
                 </div>
                 <div
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}

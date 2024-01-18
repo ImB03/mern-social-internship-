@@ -17,8 +17,13 @@ import { useLocation } from "react-router-dom";
 export default function Home() {
   const dispatch = useDispatch();
 
-  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
-    useContext(MyContext);
+  const {
+    isCreatePost,
+    isUpdatePost,
+    isDeletePost,
+    isDetailPost,
+    handleGetAllPosts,
+  } = useContext(MyContext);
 
   if (isCreatePost || isUpdatePost || isDeletePost || isDetailPost) {
     document.body.classList.add(styles.cancelScroll);
@@ -27,8 +32,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    dispatch(ACTION_GET_ALL_POSTS());
-  }, [isCreatePost, dispatch, isUpdatePost, isDeletePost]);
+    handleGetAllPosts();
+  }, [isCreatePost, isUpdatePost, isDeletePost]);
 
   return (
     <div className={`${styles.home}`}>

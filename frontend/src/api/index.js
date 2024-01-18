@@ -20,7 +20,7 @@ API.interceptors.request.use(
   }
 );
 
-export const getAllPosts = () => API.get("/post/getallposts");
+export const getAllPosts = () => API.get(`/post/getallposts`);
 export const getOnePost = (postId) => API.get(`/post/getonepost/${postId}`);
 // export const stripePayment = (dataPayment) => API.post("/payment", dataPayment);
 // export const fetchOnePost = (postId) => API.get(`/posts/${postId}`);
@@ -41,3 +41,5 @@ export const signup = (dataUser) => API.post("/auth/signup", dataUser);
 export const signin = (dataUser) => API.post("/auth/signin", dataUser);
 
 export const getOneUser = (userId) => API.get(`/user/getoneuser/${userId}`);
+export const getAllPostsUser = (userId) =>
+  API.get(`/post/getallpostsuser/${userId}`);

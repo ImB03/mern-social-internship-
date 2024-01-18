@@ -3,6 +3,7 @@ import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOu
 import { useLocation } from "react-router-dom";
 
 import styles from "./stories.module.scss";
+import { useSelector } from "react-redux";
 
 export default function Stories() {
   const location = useLocation();

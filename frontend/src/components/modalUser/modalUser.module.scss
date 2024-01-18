@@ -1,0 +1,88 @@
+.modalUser {
+  background-color: rgba(230, 230, 230, 0.7);
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+
+  .overlay {
+    background-color: transparent;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .wrapperModal {
+    z-index: 1001;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    background-color: white;
+
+    .head {
+      border-bottom: 0.5px solid #dbdbdb;
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .closeModal {
+        right: 0;
+        border: none;
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        color: #757575;
+        background-color: #e0e0e0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .closeModal:hover {
+        background-color: #c6c6c6;
+      }
+    }
+
+    .avatarUser {
+      .namePart {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .coverAvatar {
+      .namePart {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .editIntroduction {
+      .namePart {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .submitBtn {
+      background-color: #749eebcc;
+      border: none;
+      color: #383838;
+      transition: all 0.1s ease;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .submitBtn:hover {
+      background-color: #6694ebe4;
+    }
+
+    .submitBtn:active {
+      background-color: #4883f0e4;
+    }
+  }
+}
+
+.overflowY {
+  overflow-y: scroll;
+  height: 520px;
+}

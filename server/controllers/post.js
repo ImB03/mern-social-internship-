@@ -28,6 +28,21 @@ export const createPost = async (req, res, next) => {
 export const getAllPosts = async (req, res, next) => {
   try {
     const posts = await Post.find().sort({ _id: -1 });
+
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Get posts unsuccessfully" });
+    next(err);
+  }
+};
+
+export const getAllPostsUser = async (req, res, next) => {
+  const userId = req.params.userId;
+
+  try {
+    const posts = await Post.find({ creator: userId }).sort({ _id: -1 });
+
     res.status(200).json(posts);
   } catch (err) {
     console.error(err);

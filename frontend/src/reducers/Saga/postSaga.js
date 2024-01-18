@@ -15,11 +15,14 @@ import {
   ACTION_COMMENT_POST,
   LIKE_POST,
   ACTION_LIKE_POST,
+  GET_ALL_POSTS_USER,
+  ACTION_GET_ALL_POSTS_USER,
 } from "../slice/postSlice";
 import {
   createPost,
   getOnePost,
   getAllPosts,
+  getAllPostsUser,
   updatePost,
   deletePost,
   commentPost,
@@ -53,6 +56,16 @@ function* GetAllPosts() {
     yield put(GET_ALL_POSTS({ response }));
   } catch (error) {
     yield put(GET_ALL_POSTS({ response: error.response }));
+    console.log(error);
+  }
+}
+
+function* GetAllPostsUser(action) {
+  try {
+    const response = yield call(() => getAllPostsUser(action.payload));
+    yield put(GET_ALL_POSTS_USER({ response }));
+  } catch (error) {
+    yield put(GET_ALL_POSTS_USER({ response: error.response }));
     console.log(error);
   }
 }
@@ -148,6 +161,7 @@ function* LikePost(action) {
 function* PostSaga() {
   yield takeEvery(ACTION_CREATE_POST, CreatePost);
   yield takeEvery(ACTION_GET_ALL_POSTS, GetAllPosts);
+  yield takeEvery(ACTION_GET_ALL_POSTS_USER, GetAllPostsUser);
   yield takeEvery(ACTION_GET_POST, GetOnePost);
   yield takeEvery(ACTION_UPDATE_POST, UpdatePost);
   yield takeEvery(ACTION_DELETE_POST, DeletePost);

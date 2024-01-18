@@ -13,7 +13,7 @@ export default function CardInfo() {
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
             <i className={`${styles.icon} me-3 fa-solid fa-graduation-cap`}></i>
             <div className={`${styles.info}`}>
-              Học Công nghệ hữu cơ hóa dầu tại{" "}
+              Học Công nghệ hữu cơ hóa dầu tại
               <b>
                 Đại học Bách khoa Hà Nội - Hanoi University of Science and
                 Technology

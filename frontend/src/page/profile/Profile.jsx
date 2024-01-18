@@ -15,29 +15,44 @@ import CardFriendList from "../../components/cardFriendList/CardFriendList";
 import { useDispatch, useSelector } from "react-redux";
 import ModalPost from "../../components/modalPost/ModalPost";
 import { MyContext } from "../../hook/context/postState";
+import ModalUser from "../../components/modalUser/ModalUser";
 
 export default function Profile() {
   const user = useSelector((state) => state.persistedReducer.auth.user);
-
   const dispatch = useDispatch();
 
-  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
-    useContext(MyContext);
+  const {
+    isCreatePost,
+    isUpdatePost,
+    isDeletePost,
+    isDetailPost,
+    isUpdateUser,
+    handleGetAllPostsUser,
+  } = useContext(MyContext);
 
-  if (isCreatePost || isUpdatePost || isDeletePost || isDetailPost) {
+  if (
+    isCreatePost ||
+    isUpdatePost ||
+    isDeletePost ||
+    isDetailPost ||
+    isUpdateUser
+  ) {
     document.body.classList.add(styles.cancelScroll);
   } else {
     document.body.classList.remove(styles.cancelScroll);
   }
+  console.log(user._id);
 
   useEffect(() => {
-    dispatch(ACTION_GET_ALL_POSTS());
-  }, [isCreatePost, dispatch, isUpdatePost, isDeletePost]);
+    handleGetAllPostsUser(user._id);
+  }, [isCreatePost, isUpdatePost, isDeletePost]);
 
   return (
     <div className={`${styles.profile}`}>
-      {(isUpdatePost || isCreatePost || isDeletePost || isDetailPost) && (
+      {isUpdatePost || isCreatePost || isDeletePost || isDetailPost ? (
         <ModalPost />
+      ) : (
+        isUpdateUser && <ModalUser />
       )}
       <div className="d-flex justify-content-between align-items-start">
         <div className={`${styles.leftSide} col-2`}>

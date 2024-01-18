@@ -1,5 +1,9 @@
 import React, { createContext, useState } from "react";
-import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
+import {
+  ACTION_GET_ALL_POSTS,
+  ACTION_GET_ALL_POSTS_USER,
+  ACTION_GET_POST,
+} from "../../reducers/slice/postSlice";
 import { useDispatch } from "react-redux";
 import { ACTION_GET_USER } from "../../reducers/slice/userSlice";
 
@@ -10,6 +14,7 @@ export default function PostState({ children }) {
   const [isUpdatePost, setIsUpdatePost] = useState(false);
   const [isDeletePost, setIsDeletePost] = useState(false);
   const [isDetailPost, setIsDetailPost] = useState(false);
+  const [isUpdateUser, setIsUpdateUser] = useState(false);
   const dispatch = useDispatch();
 
   const handleGetPost = (postId) => {
@@ -17,6 +22,14 @@ export default function PostState({ children }) {
   };
   const handleGetUser = (userId) => {
     dispatch(ACTION_GET_USER(userId));
+  };
+
+  const handleGetAllPosts = () => {
+    dispatch(ACTION_GET_ALL_POSTS());
+  };
+
+  const handleGetAllPostsUser = (userId) => {
+    dispatch(ACTION_GET_ALL_POSTS_USER(userId));
   };
 
   return (
@@ -30,8 +43,12 @@ export default function PostState({ children }) {
         setIsDeletePost,
         isDetailPost,
         setIsDetailPost,
+        isUpdateUser,
+        setIsUpdateUser,
         handleGetPost,
         handleGetUser,
+        handleGetAllPosts,
+        handleGetAllPostsUser,
       }}
     >
       {children}
