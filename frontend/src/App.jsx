@@ -14,6 +14,7 @@ import MainLayout from "./layout/MainLayout";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { MyContext } from "./hook/context/postState";
+import ModalUser from "./components/modalUser/ModalUser";
 
 function App() {
   const user = useSelector((state) => state.persistedReducer.auth.user);

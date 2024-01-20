@@ -17,6 +17,7 @@ import SendIcon from "@mui/icons-material/Send";
 import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
@@ -27,10 +28,15 @@ export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
 
+  const [displayInput, setDisplayInput] = useState(false);
+
+  console.log(displayInput);
+
   const handleSubmit = () => {};
 
   return (
     <div
+      onClick={() => setDisplayInput(false)}
       className={`${styles.modalUser} position-fixed d-flex justify-content-center align-items-center`}
     >
       <div
@@ -54,41 +60,63 @@ export default function ModalUser() {
               <ClearIcon />
             </div>
           </div>
-          <div className={`${styles.avatarUser} mt-3`}>
-            <div className={`${styles.namePart}`}>Avatar</div>
-            <div
-              className={`${styles.inputFile} mt-3 d-flex justify-content-center`}
-            >
+          <div className={`${styles.overflowY}`}>
+            <div className={`${styles.avatarUser} mt-3`}>
+              <div className={`${styles.namePart}`}>Avatar</div>
               <div
-                className={`${styles.borderInputFile} border p-3 d-flex justify-content-center align-items-center`}
+                className={`${styles.inputAvatar} mt-3 d-flex justify-content-center`}
               >
                 <div
-                  className={`${styles.wrapperInputFile} d-flex justify-content-center align-items-center`}
+                  className={`${styles.borderInputFile} border p-2 d-flex justify-content-center align-items-center`}
                 >
-                  <DropzoneFile />
+                  <div
+                    className={`${styles.wrapperInputFile} d-flex justify-content-center align-items-center`}
+                  >
+                    <DropzoneFile />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={`${styles.coverAvatar} mt-3`}>
-            <div className={`${styles.namePart}`}>Cover avatar</div>
-            <div
-              className={`${styles.inputFile} mt-3 d-flex justify-content-center`}
-            >
+            <div className={`${styles.coverAvatar} mt-3`}>
+              <div className={`${styles.namePart}`}>Cover avatar</div>
               <div
-                className={`${styles.borderInputFile} col-9 border p-3 d-flex justify-content-center align-items-center`}
+                className={`${styles.inputAvatar} mt-3 d-flex justify-content-center`}
               >
                 <div
-                  className={`${styles.wrapperInputFile} col-12 d-flex justify-content-center align-items-center`}
+                  className={`${styles.borderInputFile} col-9 border p-2 d-flex justify-content-center align-items-center`}
                 >
-                  <DropzoneFile />
+                  <div
+                    className={`${styles.wrapperInputFile} col-12 d-flex justify-content-center align-items-center`}
+                  >
+                    <DropzoneFile />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={`${styles.editIntroduction} mt-3`}>
-            <div className={`${styles.namePart}`}>Edit introduction</div>
-            <div className="d-flex justify-content-center">2</div>
+            <div className={`${styles.editIntroduction} mt-3`}>
+              <div className={`${styles.namePart}`}>Edit introduction</div>
+              <div className={`${styles.inputInfo} mt-3`}>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setDisplayInput(true);
+                  }}
+                  className={`${styles.itemInput} border p-2`}
+                >
+                  <div className={`${styles.label} d-flex align-items-center`}>
+                    <HomeOutlinedIcon className={`${styles.icon} me-2`} /> Current
+                    Province/City at
+                  </div>
+                  {displayInput && (
+                    <input className={`${styles.input}`} type="text" name="" />
+                  )}
+                </div>
+                {/* <div>Workplace</div>
+                <div>School</div>
+                <div>Home town</div>
+                <div>Nickname</div> */}
+              </div>
+            </div>
           </div>
           <button
             onClick={() => handleSubmit()}

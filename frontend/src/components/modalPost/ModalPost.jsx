@@ -243,7 +243,7 @@ export default function ModalPost() {
               placeholder={`${user.userName}, what in your mind?`}
               value={inputDescription}
             />
-            <div className={`${styles.inputFile} mt-3 p-3`}>
+            <div className={`${styles.inputFile} mt-3 p-2`}>
               <DropzoneFile
                 setInputFiles={setInputFiles}
                 inputFiles={inputFiles}
