@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ClearIcon from "@mui/icons-material/Clear";
 import PhotoLibraryOutlinedIcon from "@mui/icons-material/PhotoLibraryOutlined";
@@ -23,20 +23,62 @@ import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
 import { MyContext } from "../../hook/context/postState";
+import InputUpdateUser from "../inputUpdateUser/InputUpdateUser";
 
 export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
 
-  const [displayInput, setDisplayInput] = useState(false);
+  const [displayInputProvinceCity, setDisplayInputProvinceCity] =
+    useState(false);
+  const [displayInputWorkplace, setDisplayInputWorkplace] = useState(false);
+  const [displayInputSchool, setDisplayInputSchool] = useState(false);
+  const [displayInputHomeTown, setDisplayInputHomeTown] = useState(false);
+  const [displayInputNickname, setDisplayInputNickname] = useState(false);
 
-  console.log(displayInput);
+  const [dataInputProvinceCity, setDataInputProvinceCity] = useState("");
+  const [dataInputWorkplace, setDataInputWorkplace] = useState("");
+  const [dataInputSchool, setDatayInputSchool] = useState("");
+  const [dataInputHomeTown, setDatayInputHomeTown] = useState("");
+  const [dataInputNickname, setDataInputNickname] = useState("");
+
+  console.log(displayInputWorkplace);
+
+  const inputRef = useRef(null);
+
+  const handleFocusInput = () => {
+    if (
+      (displayInputProvinceCity || displayInputWorkplace) &&
+      inputRef.current
+    ) {
+      inputRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    if (
+      (displayInputProvinceCity || displayInputWorkplace) &&
+      inputRef.current
+    ) {
+      inputRef.current.focus();
+    }
+  }, [displayInputProvinceCity, displayInputWorkplace]);
 
   const handleSubmit = () => {};
 
   return (
     <div
-      onClick={() => setDisplayInput(false)}
+      onClick={() => {
+        if (dataInputProvinceCity === "") {
+          setDisplayInputProvinceCity(false);
+        }
+        if (dataInputWorkplace === "") {
+          setDisplayInputWorkplace(false);
+        }
+        setDisplayInputSchool(false);
+        setDisplayInputHomeTown(false);
+        setDisplayInputNickname(false);
+      }}
       className={`${styles.modalUser} position-fixed d-flex justify-content-center align-items-center`}
     >
       <div
@@ -99,16 +141,73 @@ export default function ModalUser() {
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
-                    setDisplayInput(true);
+                    handleFocusInput();
+                    setDisplayInputProvinceCity(true);
                   }}
-                  className={`${styles.itemInput} border p-2`}
+                  className={`${styles.itemInput} ${
+                    displayInputProvinceCity && "border-bottom"
+                  } ps-3 mb-3 d-flex flex-column justify-content-center`}
                 >
-                  <div className={`${styles.label} d-flex align-items-center`}>
-                    <HomeOutlinedIcon className={`${styles.icon} me-2`} /> Current
-                    Province/City at
+                  <div
+                    className={`${styles.label} ${
+                      !displayInputProvinceCity && "fs-6"
+                    } ${
+                      displayInputProvinceCity && "mt-2"
+                    } d-flex align-items-center`}
+                  >
+                    <HomeOutlinedIcon
+                      className={`${styles.icon} ${
+                        !displayInputProvinceCity && "fs-4"
+                      } me-1`}
+                    />
+                    Current Province/City at
                   </div>
-                  {displayInput && (
-                    <input className={`${styles.input}`} type="text" name="" />
+                  {displayInputProvinceCity && (
+                    <input
+                      ref={inputRef}
+                      onChange={(e) => {
+                        setDataInputProvinceCity(e.target.value);
+                      }}
+                      className={`${styles.input} mb-2`}
+                      type="text"
+                      name=""
+                    />
+                  )}
+                </div>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFocusInput();
+                    setDisplayInputWorkplace(true);
+                  }}
+                  className={`${styles.itemInput} ${
+                    displayInputWorkplace && "border-bottom"
+                  } ps-3 mb-3 d-flex flex-column justify-content-center`}
+                >
+                  <div
+                    className={`${styles.label} ${
+                      !displayInputWorkplace && "fs-6"
+                    } ${
+                      displayInputWorkplace && "mt-2"
+                    } d-flex align-items-center`}
+                  >
+                    <HomeOutlinedIcon
+                      className={`${styles.icon} ${
+                        !displayInputWorkplace && "fs-4"
+                      } me-1`}
+                    />
+                    Workplace
+                  </div>
+                  {displayInputWorkplace && (
+                    <input
+                      ref={inputRef}
+                      onChange={(e) => {
+                        setDataInputWorkplace(e.target.value);
+                      }}
+                      className={`${styles.input} mb-2`}
+                      type="text"
+                      name=""
+                    />
                   )}
                 </div>
                 {/* <div>Workplace</div>
