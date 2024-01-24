@@ -18,6 +18,9 @@ import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
+import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
+import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 
 import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
@@ -38,31 +41,67 @@ export default function ModalUser() {
 
   const [dataInputProvinceCity, setDataInputProvinceCity] = useState("");
   const [dataInputWorkplace, setDataInputWorkplace] = useState("");
-  const [dataInputSchool, setDatayInputSchool] = useState("");
-  const [dataInputHomeTown, setDatayInputHomeTown] = useState("");
+  const [dataInputSchool, setDataInputSchool] = useState("");
+  const [dataInputHomeTown, setDataInputHomeTown] = useState("");
   const [dataInputNickname, setDataInputNickname] = useState("");
 
-  console.log(displayInputWorkplace);
+  const inputRefProvinceCity = useRef(null);
+  const inputRefWorkplace = useRef(null);
+  const inputRefSchool = useRef(null);
+  const inputRefHomeTown = useRef(null);
+  const inputRefNickname = useRef(null);
 
-  const inputRef = useRef(null);
-
-  const handleFocusInput = () => {
-    if (
-      (displayInputProvinceCity || displayInputWorkplace) &&
-      inputRef.current
-    ) {
-      inputRef.current.focus();
+  const handleFocusInputProvinceCity = () => {
+    if (displayInputProvinceCity && inputRefProvinceCity.current) {
+      inputRefProvinceCity.current.focus();
+    }
+  };
+  const handleFocusInputWorkplace = () => {
+    if (displayInputWorkplace && inputRefWorkplace.current) {
+      inputRefWorkplace.current.focus();
+    }
+  };
+  const handleFocusInputSchool = () => {
+    if (displayInputSchool && inputRefSchool.current) {
+      inputRefSchool.current.focus();
+    }
+  };
+  const handleFocusInputHomeTown = () => {
+    if (displayInputHomeTown && inputRefHomeTown.current) {
+      inputRefHomeTown.current.focus();
+    }
+  };
+  const handleFocusInputNickname = () => {
+    if (displayInputNickname && inputRefNickname.current) {
+      inputRefNickname.current.focus();
     }
   };
 
   useEffect(() => {
-    if (
-      (displayInputProvinceCity || displayInputWorkplace) &&
-      inputRef.current
-    ) {
-      inputRef.current.focus();
+    if (displayInputProvinceCity && inputRefProvinceCity.current) {
+      inputRefProvinceCity.current.focus();
     }
-  }, [displayInputProvinceCity, displayInputWorkplace]);
+  }, [displayInputProvinceCity]);
+  useEffect(() => {
+    if (displayInputWorkplace && inputRefWorkplace.current) {
+      inputRefWorkplace.current.focus();
+    }
+  }, [displayInputWorkplace]);
+  useEffect(() => {
+    if (displayInputSchool && inputRefSchool.current) {
+      inputRefSchool.current.focus();
+    }
+  }, [displayInputSchool]);
+  useEffect(() => {
+    if (displayInputHomeTown && inputRefHomeTown.current) {
+      inputRefHomeTown.current.focus();
+    }
+  }, [displayInputHomeTown]);
+  useEffect(() => {
+    if (displayInputNickname && inputRefNickname.current) {
+      inputRefNickname.current.focus();
+    }
+  }, [displayInputNickname]);
 
   const handleSubmit = () => {};
 
@@ -75,9 +114,15 @@ export default function ModalUser() {
         if (dataInputWorkplace === "") {
           setDisplayInputWorkplace(false);
         }
-        setDisplayInputSchool(false);
-        setDisplayInputHomeTown(false);
-        setDisplayInputNickname(false);
+        if (dataInputSchool === "") {
+          setDisplayInputSchool(false);
+        }
+        if (dataInputHomeTown === "") {
+          setDisplayInputHomeTown(false);
+        }
+        if (dataInputNickname === "") {
+          setDisplayInputNickname(false);
+        }
       }}
       className={`${styles.modalUser} position-fixed d-flex justify-content-center align-items-center`}
     >
@@ -141,12 +186,24 @@ export default function ModalUser() {
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleFocusInput();
+                    handleFocusInputProvinceCity();
                     setDisplayInputProvinceCity(true);
+                    if (dataInputWorkplace === "") {
+                      setDisplayInputWorkplace(false);
+                    }
+                    if (dataInputSchool === "") {
+                      setDisplayInputSchool(false);
+                    }
+                    if (dataInputHomeTown === "") {
+                      setDisplayInputHomeTown(false);
+                    }
+                    if (dataInputNickname === "") {
+                      setDisplayInputNickname(false);
+                    }
                   }}
                   className={`${styles.itemInput} ${
                     displayInputProvinceCity && "border-bottom"
-                  } ps-3 mb-3 d-flex flex-column justify-content-center`}
+                  } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
                     className={`${styles.label} ${
@@ -164,7 +221,7 @@ export default function ModalUser() {
                   </div>
                   {displayInputProvinceCity && (
                     <input
-                      ref={inputRef}
+                      ref={inputRefProvinceCity}
                       onChange={(e) => {
                         setDataInputProvinceCity(e.target.value);
                       }}
@@ -177,12 +234,24 @@ export default function ModalUser() {
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleFocusInput();
+                    handleFocusInputWorkplace();
                     setDisplayInputWorkplace(true);
+                    if (dataInputProvinceCity === "") {
+                      setDisplayInputProvinceCity(false);
+                    }
+                    if (dataInputSchool === "") {
+                      setDisplayInputSchool(false);
+                    }
+                    if (dataInputHomeTown === "") {
+                      setDisplayInputHomeTown(false);
+                    }
+                    if (dataInputNickname === "") {
+                      setDisplayInputNickname(false);
+                    }
                   }}
                   className={`${styles.itemInput} ${
                     displayInputWorkplace && "border-bottom"
-                  } ps-3 mb-3 d-flex flex-column justify-content-center`}
+                  } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
                     className={`${styles.label} ${
@@ -191,7 +260,7 @@ export default function ModalUser() {
                       displayInputWorkplace && "mt-2"
                     } d-flex align-items-center`}
                   >
-                    <HomeOutlinedIcon
+                    <BusinessCenterOutlinedIcon
                       className={`${styles.icon} ${
                         !displayInputWorkplace && "fs-4"
                       } me-1`}
@@ -200,7 +269,7 @@ export default function ModalUser() {
                   </div>
                   {displayInputWorkplace && (
                     <input
-                      ref={inputRef}
+                      ref={inputRefWorkplace}
                       onChange={(e) => {
                         setDataInputWorkplace(e.target.value);
                       }}
@@ -210,10 +279,150 @@ export default function ModalUser() {
                     />
                   )}
                 </div>
-                {/* <div>Workplace</div>
-                <div>School</div>
-                <div>Home town</div>
-                <div>Nickname</div> */}
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFocusInputSchool();
+                    setDisplayInputSchool(true);
+                    if (dataInputProvinceCity === "") {
+                      setDisplayInputProvinceCity(false);
+                    }
+                    if (dataInputWorkplace === "") {
+                      setDisplayInputWorkplace(false);
+                    }
+                    if (dataInputHomeTown === "") {
+                      setDisplayInputHomeTown(false);
+                    }
+                    if (dataInputNickname === "") {
+                      setDisplayInputNickname(false);
+                    }
+                  }}
+                  className={`${styles.itemInput} ${
+                    displayInputSchool && "border-bottom"
+                  } px-3 mb-2 d-flex flex-column justify-content-center`}
+                >
+                  <div
+                    className={`${styles.label} ${
+                      !displayInputSchool && "fs-6"
+                    } ${
+                      displayInputSchool && "mt-2"
+                    } d-flex align-items-center`}
+                  >
+                    <SchoolOutlinedIcon
+                      className={`${styles.icon} ${
+                        !displayInputSchool && "fs-4"
+                      } me-1`}
+                    />
+                    School
+                  </div>
+                  {displayInputSchool && (
+                    <input
+                      ref={inputRefSchool}
+                      onChange={(e) => {
+                        setDataInputSchool(e.target.value);
+                      }}
+                      className={`${styles.input} mb-2`}
+                      type="text"
+                      name=""
+                    />
+                  )}
+                </div>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFocusInputHomeTown();
+                    setDisplayInputHomeTown(true);
+                    if (dataInputProvinceCity === "") {
+                      setDisplayInputProvinceCity(false);
+                    }
+                    if (dataInputWorkplace === "") {
+                      setDisplayInputWorkplace(false);
+                    }
+                    if (dataInputSchool === "") {
+                      setDisplayInputSchool(false);
+                    }
+                    if (dataInputNickname === "") {
+                      setDisplayInputNickname(false);
+                    }
+                  }}
+                  className={`${styles.itemInput} ${
+                    displayInputHomeTown && "border-bottom"
+                  } px-3 mb-2 d-flex flex-column justify-content-center`}
+                >
+                  <div
+                    className={`${styles.label} ${
+                      !displayInputHomeTown && "fs-6"
+                    } ${
+                      displayInputHomeTown && "mt-2"
+                    } d-flex align-items-center`}
+                  >
+                    <LocationOnOutlinedIcon
+                      className={`${styles.icon} ${
+                        !displayInputHomeTown && "fs-4"
+                      } me-1`}
+                    />
+                    Home town
+                  </div>
+                  {displayInputHomeTown && (
+                    <input
+                      ref={inputRefHomeTown}
+                      onChange={(e) => {
+                        setDataInputHomeTown(e.target.value);
+                      }}
+                      className={`${styles.input} mb-2`}
+                      type="text"
+                      name=""
+                    />
+                  )}
+                </div>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFocusInputNickname();
+                    setDisplayInputNickname(true);
+                    if (dataInputProvinceCity === "") {
+                      setDisplayInputProvinceCity(false);
+                    }
+                    if (dataInputWorkplace === "") {
+                      setDisplayInputWorkplace(false);
+                    }
+                    if (dataInputSchool === "") {
+                      setDisplayInputSchool(false);
+                    }
+                    if (dataInputHomeTown === "") {
+                      setDisplayInputHomeTown(false);
+                    }
+                  }}
+                  className={`${styles.itemInput} ${
+                    displayInputNickname && "border-bottom"
+                  } px-3 mb-2 d-flex flex-column justify-content-center`}
+                >
+                  <div
+                    className={`${styles.label} ${
+                      !displayInputNickname && "fs-6"
+                    } ${
+                      displayInputNickname && "mt-2"
+                    } d-flex align-items-center`}
+                  >
+                    <BadgeOutlinedIcon
+                      className={`${styles.icon} ${
+                        !displayInputNickname && "fs-4"
+                      } me-1`}
+                    />
+                    Nickname
+                  </div>
+                  {displayInputNickname && (
+                    <input
+                      ref={inputRefNickname}
+                      onChange={(e) => {
+                        setDataInputNickname(e.target.value);
+                      }}
+                      className={`${styles.input} mb-2`}
+                      type="text"
+                      name=""
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>
