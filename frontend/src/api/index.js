@@ -43,3 +43,4 @@ export const signin = (dataUser) => API.post("/auth/signin", dataUser);
 export const getOneUser = (userId) => API.get(`/user/getoneuser/${userId}`);
 export const getAllPostsUser = (userId) =>
   API.get(`/post/getallpostsuser/${userId}`);
+export const updateUser = (dataUser) => API.patch(`/user/updateuser`, dataUser);

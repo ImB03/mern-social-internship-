@@ -3,29 +3,38 @@ import { useDropzone } from "react-dropzone";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 
-import styles from "./dropzoneFile.module.scss";
+import styles from "./dropzoneAvatarUser.module.scss";
 import { MyContext } from "../../hook/context/postState";
 
-export default function DropzoneFile({ inputFiles, setInputFiles }) {
+export default function DropzoneAvatarUser({
+  dataInputAvatarUser,
+  setDataInputAvatarUser,
+}) {
   const onDrop = useCallback(
     (acceptedFiles) => {
-      setInputFiles(acceptedFiles.map((file) => URL.createObjectURL(file))[0]);
+      setDataInputAvatarUser(
+        acceptedFiles.map((file) => URL.createObjectURL(file))[0]
+      );
     },
-    [setInputFiles]
+    [setDataInputAvatarUser]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  console.log(inputFiles);
+  console.log(dataInputAvatarUser);
 
   return (
     <div className={`${styles.dropzone}`}>
-      {inputFiles ? (
-        <div className={`${styles.displayFiles} position-relative`}>
-          <img src={inputFiles} className={`${styles.fileImg}`} alt="" />
+      {dataInputAvatarUser ? (
+        <div className={`${styles.displayFiles}`}>
+          <img
+            src={dataInputAvatarUser}
+            className={`${styles.fileImg}`}
+            alt=""
+          />
           <div
             onClick={() => {
-              setInputFiles("");
+              setDataInputAvatarUser("");
             }}
             className={`${styles.closeFile} position-absolute d-flex justify-content-center align-items-center`}
           >

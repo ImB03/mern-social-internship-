@@ -26,9 +26,13 @@ import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
 import { MyContext } from "../../hook/context/postState";
+import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
+import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
+import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
 
 export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.persistedReducer.auth.user);
 
   const [displayInputProvinceCity, setDisplayInputProvinceCity] =
@@ -43,6 +47,8 @@ export default function ModalUser() {
   const [dataInputSchool, setDataInputSchool] = useState("");
   const [dataInputHomeTown, setDataInputHomeTown] = useState("");
   const [dataInputNickname, setDataInputNickname] = useState("");
+  const [dataInputAvatarUser, setDataInputAvatarUser] = useState("");
+  const [dataInputCoverAvatar, setDataInputCoverAvatar] = useState("");
 
   const [dataUser, setDataUser] = useState({
     avatarUser: "",
@@ -117,6 +123,8 @@ export default function ModalUser() {
   useEffect(() => {
     setDataUser({
       ...dataUser,
+      avatarUser: dataInputAvatarUser,
+      coverAvatar: dataInputCoverAvatar,
       provinceCity: dataInputProvinceCity,
       workplace: dataInputWorkplace,
       school: dataInputSchool,
@@ -129,9 +137,15 @@ export default function ModalUser() {
     dataInputSchool,
     dataInputHomeTown,
     dataInputNickname,
+    dataInputAvatarUser,
+    dataInputCoverAvatar,
   ]);
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    dispatch(
+      ACTION_UPDATE_USER({ dataUser, setIsUpdateUser})
+    );
+  };
 
   return (
     <div
@@ -182,12 +196,15 @@ export default function ModalUser() {
                 className={`${styles.inputAvatar} mt-3 d-flex justify-content-center`}
               >
                 <div
-                  className={`${styles.borderInputFile} border p-2 d-flex justify-content-center align-items-center`}
+                  className={`${styles.borderInputFile} position-relative border p-2 d-flex justify-content-center align-items-center`}
                 >
                   <div
                     className={`${styles.wrapperInputFile} d-flex justify-content-center align-items-center`}
                   >
-                    <DropzoneFile />
+                    <DropzoneAvatarUser
+                      dataInputAvatarUser={dataInputAvatarUser}
+                      setDataInputAvatarUser={setDataInputAvatarUser}
+                    />
                   </div>
                 </div>
               </div>
@@ -203,7 +220,10 @@ export default function ModalUser() {
                   <div
                     className={`${styles.wrapperInputFile} col-12 d-flex justify-content-center align-items-center`}
                   >
-                    <DropzoneFile />
+                    <DropzoneCoverAvatar
+                      dataInputCoverAvatar={dataInputCoverAvatar}
+                      setDataInputCoverAvatar={setDataInputCoverAvatar}
+                    />
                   </div>
                 </div>
               </div>

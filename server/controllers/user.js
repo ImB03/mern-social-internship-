@@ -37,6 +37,25 @@ export const getOneUser = async (req, res) => {
 // };
 
 // /* UPDATE */
+export const updateUser = async (req, res, next) => {
+  const dataUser = req.body;
+  const userId = req.user.userId;
+
+  console.log(dataUser);
+  console.log(userId);
+
+  try {
+    await User.findByIdAndUpdate(userId, dataUser, {
+      new: true,
+    });
+
+    res.status(200).json({ message: "Update user successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Update user unsuccessfully" });
+    next(err);
+  }
+};
 // export const addRemoveFriend = async (req, res) => {
 //   try {
 //     const { userId, friendId } = req.params;

@@ -11,6 +11,13 @@ const UserSchema = mongoose.Schema(
     occupation: String,
     viewedProfile: Number,
     impressions: Number,
+    avatarUser: { type: String, default: "" },
+    coverAvatar: { type: String, default: "" },
+    provinceCity: { type: String, default: "" },
+    workplace: { type: String, default: "" },
+    school: { type: String, default: "" },
+    homeTown: { type: String, default: "" },
+    nickname: { type: String, default: "" },
   },
   { timestamps: true }
 );

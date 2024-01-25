@@ -1,7 +1,5 @@
 import express from "express";
-import {
-  getOneUser,
-} from "../controllers/user.js";
+import { getOneUser, updateUser } from "../controllers/user.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
@@ -11,5 +9,5 @@ router.get("/getoneuser/:userId", verifyToken, getOneUser);
 // router.get("/getfriend/:friendId", verifyToken, getUserFriend);
 
 /* UPDATE */
-// router.patch("/updatefriend/:userId/:friendId", verifyToken, addRemoveFriend);
+router.patch("/updateuser", verifyToken, updateUser);
 export default router;
