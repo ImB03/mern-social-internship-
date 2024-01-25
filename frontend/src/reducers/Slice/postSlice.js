@@ -27,9 +27,9 @@ const postSlice = createSlice({
     },
     ACTION_GET_ALL_POSTS_USER: (state) => {
       state.isLoading = true;
-      // state.posts = [];
     },
     GET_ALL_POSTS_USER: (state, action) => {
+      state.posts = [];
       state.posts = action.payload.response?.data;
       state.isLoading = false;
     },

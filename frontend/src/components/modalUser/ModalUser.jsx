@@ -26,7 +26,6 @@ import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
 import { MyContext } from "../../hook/context/postState";
-import InputUpdateUser from "../inputUpdateUser/InputUpdateUser";
 
 export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
@@ -44,6 +43,18 @@ export default function ModalUser() {
   const [dataInputSchool, setDataInputSchool] = useState("");
   const [dataInputHomeTown, setDataInputHomeTown] = useState("");
   const [dataInputNickname, setDataInputNickname] = useState("");
+
+  const [dataUser, setDataUser] = useState({
+    avatarUser: "",
+    coverAvatar: "",
+    provinceCity: "",
+    workplace: "",
+    school: "",
+    homeTown: "",
+    nickname: "",
+  });
+
+  console.log(dataUser);
 
   const inputRefProvinceCity = useRef(null);
   const inputRefWorkplace = useRef(null);
@@ -102,6 +113,23 @@ export default function ModalUser() {
       inputRefNickname.current.focus();
     }
   }, [displayInputNickname]);
+
+  useEffect(() => {
+    setDataUser({
+      ...dataUser,
+      provinceCity: dataInputProvinceCity,
+      workplace: dataInputWorkplace,
+      school: dataInputSchool,
+      homeTown: dataInputHomeTown,
+      nickname: dataInputNickname,
+    });
+  }, [
+    dataInputProvinceCity,
+    dataInputWorkplace,
+    dataInputSchool,
+    dataInputHomeTown,
+    dataInputNickname,
+  ]);
 
   const handleSubmit = () => {};
 
@@ -203,6 +231,8 @@ export default function ModalUser() {
                   }}
                   className={`${styles.itemInput} ${
                     displayInputProvinceCity && "border-bottom"
+                  } ${
+                    !displayInputProvinceCity && "rounded-3"
                   } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
@@ -214,8 +244,8 @@ export default function ModalUser() {
                   >
                     <HomeOutlinedIcon
                       className={`${styles.icon} ${
-                        !displayInputProvinceCity && "fs-4"
-                      } me-1`}
+                        !displayInputProvinceCity && "fs-4 me-2"
+                      } ${displayInputProvinceCity && "me-1"}`}
                     />
                     Current Province/City at
                   </div>
@@ -251,6 +281,8 @@ export default function ModalUser() {
                   }}
                   className={`${styles.itemInput} ${
                     displayInputWorkplace && "border-bottom"
+                  } ${
+                    !displayInputWorkplace && "rounded-3"
                   } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
@@ -262,8 +294,8 @@ export default function ModalUser() {
                   >
                     <BusinessCenterOutlinedIcon
                       className={`${styles.icon} ${
-                        !displayInputWorkplace && "fs-4"
-                      } me-1`}
+                        !displayInputWorkplace && "fs-4 me-2"
+                      } ${displayInputWorkplace && "me-1"}`}
                     />
                     Workplace
                   </div>
@@ -299,6 +331,8 @@ export default function ModalUser() {
                   }}
                   className={`${styles.itemInput} ${
                     displayInputSchool && "border-bottom"
+                  } ${
+                    !displayInputSchool && "rounded-3"
                   } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
@@ -310,8 +344,8 @@ export default function ModalUser() {
                   >
                     <SchoolOutlinedIcon
                       className={`${styles.icon} ${
-                        !displayInputSchool && "fs-4"
-                      } me-1`}
+                        !displayInputSchool && "fs-4 me-2"
+                      } ${displayInputSchool && "me-1"}`}
                     />
                     School
                   </div>
@@ -347,6 +381,8 @@ export default function ModalUser() {
                   }}
                   className={`${styles.itemInput} ${
                     displayInputHomeTown && "border-bottom"
+                  } ${
+                    !displayInputHomeTown && "rounded-3"
                   } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
@@ -358,8 +394,8 @@ export default function ModalUser() {
                   >
                     <LocationOnOutlinedIcon
                       className={`${styles.icon} ${
-                        !displayInputHomeTown && "fs-4"
-                      } me-1`}
+                        !displayInputHomeTown && "fs-4 me-2"
+                      } ${displayInputHomeTown && "me-1"}`}
                     />
                     Home town
                   </div>
@@ -395,6 +431,8 @@ export default function ModalUser() {
                   }}
                   className={`${styles.itemInput} ${
                     displayInputNickname && "border-bottom"
+                  } ${
+                    !displayInputNickname && "rounded-3"
                   } px-3 mb-2 d-flex flex-column justify-content-center`}
                 >
                   <div
@@ -406,8 +444,8 @@ export default function ModalUser() {
                   >
                     <BadgeOutlinedIcon
                       className={`${styles.icon} ${
-                        !displayInputNickname && "fs-4"
-                      } me-1`}
+                        !displayInputNickname && "fs-4 me-2"
+                      } ${displayInputNickname && "me-1"}`}
                     />
                     Nickname
                   </div>
