@@ -6,8 +6,6 @@ import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-  const isLoading = useSelector((state) => state.persistedReducer.auth.isLoading);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
@@ -19,7 +17,7 @@ export default function Auth() {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
       dispatch(ACTION_SIGNUP({ dataUser, setIsSignup }));
