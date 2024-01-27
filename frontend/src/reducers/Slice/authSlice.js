@@ -14,7 +14,7 @@ const authSlice = createSlice({
 
     SIGNUP: (state, action) => {
       alert(action.payload.response?.data.message);
-      if (action.payload.response.status === 200) {
+      if (action.payload.response?.status === 200) {
         action.payload.setIsSignup((prev) => !prev);
       }
       state.isLoading = false;
@@ -26,15 +26,15 @@ const authSlice = createSlice({
     SIGNIN: (state, action) => {
       alert(action.payload.response?.data.message);
       if (action.payload.response?.status === 200) {
-        state.token = action.payload.response.data.user.token;
+        state.token = action.payload.response?.data.user?.token;
 
-        state.user = action.payload.response.data.user;
+        state.user = action.payload.response?.data.user;
+        localStorage.setItem(
+          "token",
+          JSON.stringify(action.payload.response?.data.user?.token)
+        );
         action.payload.navigate("/");
       }
-      localStorage.setItem(
-        "token",
-        JSON.stringify(action.payload.response.data.user.token)
-      );
       state.isLoading = false;
     },
     LOGNOUT: (state, action) => {
