@@ -6,7 +6,9 @@
   overflow: scroll;
   z-index: 999;
 }
-
+.rightSide {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
 // .leftSide,
 // .rightSide:hover {
 //   overflow-y: initial;
@@ -27,4 +29,3 @@
   margin-left: -62px;
   margin-right: -62px;
 }
-

@@ -38,7 +38,7 @@ export default function Menu() {
   ];
 
   return (
-    <div className={`${styles.menu}`}>
+    <div className={`${styles.menu} mt-3`}>
       <div className="container-fluid p-0">
         <Link
           to={`/profile/${user._id}`}

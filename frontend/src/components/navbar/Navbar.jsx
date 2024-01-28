@@ -18,10 +18,14 @@ export default function Navbar() {
           >
             Socialmedia
           </Link>
-          <div className={`${styles.search} border d-flex align-items-center `}>
-            <button className={`${styles.searchBtn}`} onClick={() => {}}>
+          <div className={`${styles.search} border d-flex align-items-center`}>
+            <Link
+              to="/search"
+              className={`${styles.searchBtn} d-flex justify-content-center align-items-center`}
+              onClick={() => {}}
+            >
               <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
-            </button>
+            </Link>
             <input
               className={`${styles.searchInput}`}
               type="search"

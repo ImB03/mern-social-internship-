@@ -24,11 +24,10 @@
       width: 400px;
     }
     .searchBtn {
-      border: none;
-      color: rgb(107, 106, 106);
-      height: 35px;
-      width: 35px;
-      border-radius: 5px;
+      color: rgb(107, 106, 106) !important;
+      height: 35px !important;
+      width: 35px !important;
+      background-color: #dcdcdc;
     }
   }
 

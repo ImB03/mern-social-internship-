@@ -1,5 +1,5 @@
 .menu {
-  background-color: #f6f3f3;
+  background-color: transparent;
 
   .itemMenu {
     transition: all 0.1s ease;
@@ -25,10 +25,15 @@
     .name {
       font-size: 14px;
       font-weight: bold;
+      letter-spacing: 0.5px;
     }
   }
 
   .itemMenu:hover {
+    background-color: #e7e7e7;
+  }
+
+  .itemMenu:active {
     background-color: #e0e0e0;
   }
 }
