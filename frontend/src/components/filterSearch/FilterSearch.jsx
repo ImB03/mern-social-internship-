@@ -42,10 +42,7 @@ export default function FilterSearch() {
   return (
     <div className={`${styles.filterSearch}`}>
       <div className="container-fluid p-3">
-        <div className={`${styles.title} border-bottom pb-2 mb-2`}>
-          Search Results
-        </div>
-        <div className={`${styles.filterName} mb-2`}>Filter</div>
+        <div className={`${styles.title} border-bottom pb-2 mb-2`}>Filter</div>
         {FilterItem.map((item) => (
           <div
             className={`${styles.itemFilter} col p-2 d-flex align-items-center`}

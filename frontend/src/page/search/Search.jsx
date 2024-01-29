@@ -32,7 +32,7 @@ export default function Search() {
         <div className={`${styles.leftSide} col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6 mb-5`}>1</div>
+        <div className={`${styles.middleSide} col-6 mb-5`}></div>
         <div className={`${styles.rightSide} col-3`}>
           <FilterSearch />
         </div>

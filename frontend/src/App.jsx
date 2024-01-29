@@ -25,6 +25,7 @@ function App() {
     isDeletePost,
     isDetailPost,
     isUpdateUser,
+    isSearch,
   } = useContext(MyContext);
 
   if (
@@ -32,7 +33,8 @@ function App() {
     isUpdatePost ||
     isDeletePost ||
     isDetailPost ||
-    isUpdateUser
+    isUpdateUser ||
+    isSearch
   ) {
     document.body.classList.add("cancelScroll");
   } else {

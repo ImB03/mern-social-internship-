@@ -6,7 +6,9 @@ import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-  const isLoading = useSelector((state) => state.persistedReducer.auth.isLoading);
+  const isLoading = useSelector(
+    (state) => state.persistedReducer.auth.isLoading
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ export default function Auth() {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
       dispatch(ACTION_SIGNUP({ dataUser, setIsSignup }));
@@ -28,21 +30,22 @@ export default function Auth() {
     }
   };
 
-  // const handleKeyPress = (e) => {
-  //   if (3) {
-  //     // Kiểm tra xem keyCode có tồn tại không
-  //     const keyCode = e.keyCode || e.which;
+  const handleKeyPress = (e) => {
+    // Kiểm tra xem biến sự kiện (e) có tồn tại không
+    if (e) {
+      // Kiểm tra xem keyCode có tồn tại không
+      const keyCode = e.keyCode || e.which;
 
-  //     // Tiếp tục xử lý chỉ khi keyCode tồn tại
-  //     if (keyCode === 13) {
-  //       // Ngăn chặn hành động mặc định của phím Enter
-  //       e.preventDefault();
+      // Tiếp tục xử lý chỉ khi keyCode tồn tại
+      if (keyCode === 13) {
+        // Ngăn chặn hành động mặc định của phím Enter
+        e.preventDefault();
 
-  //       // Gọi hàm xử lý submit
-  //       handleSubmit();
-  //     }
-  //   }
-  // };
+        // Gọi hàm xử lý submit
+        handleSubmit(e);
+      }
+    }
+  };
 
   return (
     <div
@@ -96,6 +99,7 @@ export default function Auth() {
                   placeholder="Your name"
                   name="userName"
                   // value={dataUser.userName}
+                  onKeyDown={handleKeyPress}
                 />
               )}
               <input
@@ -105,6 +109,7 @@ export default function Auth() {
                 placeholder="Your email"
                 name="email"
                 // value={dataUser.useremail}
+                onKeyDown={handleKeyPress}
               />
               <input
                 onChange={getDataUser}
@@ -112,13 +117,14 @@ export default function Auth() {
                 type="password"
                 placeholder="Your password"
                 name="password"
+                onKeyDown={handleKeyPress}
+
                 // value={dataUser.userpassword}
               />
               <button
                 // className={`${styles.btn} ${isLoading && styles.disabled}`}
                 className={`${styles.btn}`}
                 onClick={handleSubmit}
-                // onKeyDown={() => handleKeyPress()}
               >
                 {isSignup ? "Register" : "Login"}
               </button>
