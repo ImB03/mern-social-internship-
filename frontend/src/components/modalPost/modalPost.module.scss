@@ -206,6 +206,9 @@
         .wrapperIcon:hover {
           background-color: #ededed;
         }
+        .wrapperIcon:active {
+          background-color: #e0e0e0;
+        }
       }
     }
     .submitBtn {
@@ -304,5 +307,3 @@
   overflow-y: scroll;
   height: 520px;
 }
-
-

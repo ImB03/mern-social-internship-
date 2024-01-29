@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { MyContext } from "./hook/context/postState";
 import ModalUser from "./components/modalUser/ModalUser";
+import Search from "./page/search/Search";
 
 function App() {
   const user = useSelector((state) => state.persistedReducer.auth.user);
@@ -24,6 +25,7 @@ function App() {
     isDeletePost,
     isDetailPost,
     isUpdateUser,
+    isSearch,
   } = useContext(MyContext);
 
   if (
@@ -31,7 +33,8 @@ function App() {
     isUpdatePost ||
     isDeletePost ||
     isDetailPost ||
-    isUpdateUser
+    isUpdateUser ||
+    isSearch
   ) {
     document.body.classList.add("cancelScroll");
   } else {
@@ -45,6 +48,7 @@ function App() {
         <Route element={user ? <MainLayout /> : <Navigate to="/auth" />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userId" element={<Profile />} />
+          <Route path="/search" element={<Search />} />
         </Route>
       </Routes>
     </Router>

@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./navbar.module.scss";
 import DropdownNavMenu from "../dropdownNavMenu/DropdownNavMenu";
+import { MyContext } from "../../hook/context/postState";
+import ModalUser from "../modalUser/ModalUser";
+import ModalSearch from "../modalSearch/ModalSearch";
 
 export default function Navbar() {
+  const { isSearch, setIsSearch } = useContext(MyContext);
+
+  console.log(isSearch);
   const [isDropdownNavMenu, setIsDropdownNavMenu] = useState(false);
 
   return (
     <div className={`${styles.navbar} px-3 border d-flex align-items-center`}>
+      {isSearch && <ModalSearch />}
       <div className="container-fluid p-0 d-flex justify-content-between align-items-center">
         <div className="col d-flex justify-content-start align-items-center">
           <Link
@@ -18,10 +25,14 @@ export default function Navbar() {
           >
             Socialmedia
           </Link>
-          <div className={`${styles.search} border d-flex align-items-center `}>
-            <button className={`${styles.searchBtn}`} onClick={() => {}}>
+          <div className={`${styles.search} border d-flex align-items-center`}>
+            <Link
+              to="/search"
+              className={`${styles.searchBtn} d-flex justify-content-center align-items-center`}
+              onClick={() => {}}
+            >
               <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
-            </button>
+            </Link>
             <input
               className={`${styles.searchInput}`}
               type="search"
@@ -32,6 +43,12 @@ export default function Navbar() {
         </div>
 
         <div className="col d-flex justify-content-end align-items-center">
+          <div
+            onClick={() => setIsSearch(true)}
+            className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
+          >
+            <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
+          </div>
           <div
             className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
           >

@@ -15,6 +15,7 @@ export default function PostState({ children }) {
   const [isDeletePost, setIsDeletePost] = useState(false);
   const [isDetailPost, setIsDetailPost] = useState(false);
   const [isUpdateUser, setIsUpdateUser] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
   const dispatch = useDispatch();
 
   const handleGetPost = (postId) => {
@@ -49,6 +50,8 @@ export default function PostState({ children }) {
         handleGetUser,
         handleGetAllPosts,
         handleGetAllPostsUser,
+        isSearch,
+        setIsSearch,
       }}
     >
       {children}
