@@ -16,14 +16,11 @@ export const signup = async (req, res, next) => {
       // occupation,
     } = req.body;
 
-<<<<<<< HEAD
-    console.log(userName, email, password);
-=======
+
     const user = await User.findOne({ email: email });
     if (user) {
       return res.status(400).json({ message: "User exist!" });
     }
->>>>>>> 46a61c469eb841b363a2133e82ff6b091aea1db5
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
@@ -56,7 +53,7 @@ export const signin = async (req, res, next) => {
     if (!user) {
       return res.status(400).json({ message: "User does not exist!" });
     }
- 
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials!" });

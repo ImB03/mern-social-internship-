@@ -6,13 +6,10 @@ import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-<<<<<<< HEAD
-=======
   const isLoading = useSelector(
     (state) => state.persistedReducer.auth.isLoading
   );
 
->>>>>>> 46a61c469eb841b363a2133e82ff6b091aea1db5
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);

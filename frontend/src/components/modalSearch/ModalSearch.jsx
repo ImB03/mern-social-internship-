@@ -32,10 +32,19 @@ import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
 
 export default function ModalSearch() {
   const { isSearch, setIsSearch } = useContext(MyContext);
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSubmit = () => {};
+  console.log(searchTerm);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      // dispatch()
+    }, 1000); 
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm]);
 
   return (
     <div
@@ -51,7 +60,7 @@ export default function ModalSearch() {
           <ClearIcon className={`${styles.icon}`} />
         </div>
       </div>
-      <div className={`${styles.wrapperModal} col-6 position-absolute`}>
+      <div className={`${styles.wrapperModal} col-5 position-absolute`}>
         <div className="container-fluid p-3">
           <div className={`${styles.search} border-bottom d-flex`}>
             <button
@@ -63,11 +72,10 @@ export default function ModalSearch() {
             <input
               className={`${styles.searchInput} ps-2`}
               type="search"
-              name=""
-              id=""
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className={`${styles.suggest}`}>
+          <div className={`${styles.suggest} mt-2`}>
             <div>1</div>
             <div>1</div>
             <div>1</div>
