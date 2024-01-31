@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import User from "../models/User.js";
+import User from "../models/user.js";
 
 // SIGNUP
 export const signup = async (req, res, next) => {
@@ -15,7 +15,6 @@ export const signup = async (req, res, next) => {
       // location,
       // occupation,
     } = req.body;
-
 
     const user = await User.findOne({ email: email });
     if (user) {

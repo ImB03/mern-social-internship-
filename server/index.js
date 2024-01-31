@@ -14,6 +14,7 @@ import bodyParser from "body-parser";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 import postRoutes from "./routes/post.js";
+import searchRoutes from "./routes/search.js";
 import { createPost } from "./controllers/post.js";
 import { signup } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/verifyToken.js";
@@ -67,6 +68,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
+app.use("/api/search", searchRoutes);
 
 /* MONGOOSE SETUP */
 mongoose

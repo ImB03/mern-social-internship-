@@ -49,4 +49,4 @@ export const updateUser = (dataUser) => API.patch(`/user/updateuser`, dataUser);
 
 //SEARCH
 export const searchTerm = (searchTerm) =>
-  API.post("/search/searchterm", { searchTerm });
+  API.post(`/search/searchterm?q=${searchTerm}`);
