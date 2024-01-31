@@ -29,19 +29,20 @@ import { MyContext } from "../../hook/context/postState";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
+import { useNavigate } from "react-router-dom";
+import { ACTION_SEARCH_TERM } from "../../reducers/slice/searchSlice";
 
 export default function ModalSearch() {
   const { isSearch, setIsSearch } = useContext(MyContext);
   const [searchTerm, setSearchTerm] = useState("");
 
-  console.log(searchTerm);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
-      // dispatch()
-    }, 1000); 
+      dispatch(ACTION_SEARCH_TERM(searchTerm));
+    }, 1000);
 
     return () => clearTimeout(delayDebounce);
   }, [searchTerm]);

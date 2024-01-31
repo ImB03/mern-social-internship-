@@ -60,7 +60,6 @@ export default function ModalUser() {
     nickname: "",
   });
 
-  console.log(dataUser);
 
   const inputRefProvinceCity = useRef(null);
   const inputRefWorkplace = useRef(null);

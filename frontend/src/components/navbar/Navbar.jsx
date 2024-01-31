@@ -11,7 +11,6 @@ import ModalSearch from "../modalSearch/ModalSearch";
 export default function Navbar() {
   const { isSearch, setIsSearch } = useContext(MyContext);
 
-  console.log(isSearch);
   const [isDropdownNavMenu, setIsDropdownNavMenu] = useState(false);
 
   return (

@@ -16,7 +16,6 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  console.log(inputFiles);
 
   return (
     <div className={`${styles.dropzone}`}>

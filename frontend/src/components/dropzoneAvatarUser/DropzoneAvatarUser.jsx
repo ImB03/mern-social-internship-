@@ -21,8 +21,6 @@ export default function DropzoneAvatarUser({
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  console.log(dataInputAvatarUser);
-
   return (
     <div className={`${styles.dropzone}`}>
       {dataInputAvatarUser ? (
