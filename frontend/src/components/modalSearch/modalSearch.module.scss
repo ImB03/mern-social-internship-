@@ -49,6 +49,7 @@
         border-top-left-radius: 5px;
       }
       .searchBtn {
+        border-radius: 5px;
         color: rgb(107, 106, 106);
         border: none;
         height: 35px !important;
@@ -63,6 +64,36 @@
 
       .searchBtn:active {
         background-color: #e0e0e0;
+      }
+    }
+
+    .suggest {
+      .itemSuggest {
+        transition: all 0.1s ease;
+        border-radius: 5px;
+        cursor: pointer;
+
+        .wrapperIcon {
+          border-radius: 100%;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          background-color: #f0f0f0;
+
+          .icon {
+            color: rgb(107, 106, 106);
+          }
+        }
+
+        .searchTerm {
+          font-size: 16px;
+          font-weight: bold;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      .itemSuggest:hover {
+        background-color: #f0f0f0;
       }
     }
   }

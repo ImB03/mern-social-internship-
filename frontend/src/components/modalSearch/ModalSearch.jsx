@@ -35,17 +35,30 @@ import { ACTION_SEARCH_TERM } from "../../reducers/slice/searchSlice";
 export default function ModalSearch() {
   const { isSearch, setIsSearch } = useContext(MyContext);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const inputRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleFocusInput = (e) => {
+    if (isSearch && inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
   useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      dispatch(ACTION_SEARCH_TERM(searchTerm));
-    }, 1000);
+    if (isSearch && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isSearch]);
 
-    return () => clearTimeout(delayDebounce);
-  }, [searchTerm]);
+  useEffect(() => {
+    if (searchTerm !== "") {
+      const delayDebounce = setTimeout(() => {
+        dispatch(ACTION_SEARCH_TERM(searchTerm));
+      }, 1000);
+
+      return () => clearTimeout(delayDebounce);
+    }
+  }, [searchTerm, dispatch]);
 
   return (
     <div
@@ -61,35 +74,46 @@ export default function ModalSearch() {
           <ClearIcon className={`${styles.icon}`} />
         </div>
       </div>
-      <div className={`${styles.wrapperModal} col-5 position-absolute`}>
+      <div
+        onClick={handleFocusInput}
+        className={`${styles.wrapperModal} col-5 position-absolute`}
+      >
         <div className="container-fluid p-3">
-          <div className={`${styles.search} border-bottom d-flex`}>
+          <div className={`${styles.search} pb-1 border-bottom d-flex`}>
             <button
               className={`${styles.searchBtn} d-flex justify-content-center align-items-center`}
-              onClick={() => {}}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
               <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
             </button>
             <input
+              ref={inputRef}
               className={`${styles.searchInput} ps-2`}
               type="search"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className={`${styles.suggest} mt-2`}>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-            <div>1</div>
-          </div>
+          {searchTerm && (
+            <div className={`${styles.suggest} mt-2`}>
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
+              >
+                <div
+                  className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}
+                >
+                  <i
+                    className={`${styles.icon} fa-solid fa-magnifying-glass`}
+                  ></i>
+                </div>
+                <div className={`${styles.searchTerm}`}>{searchTerm}</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
