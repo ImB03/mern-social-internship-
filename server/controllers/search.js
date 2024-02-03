@@ -7,11 +7,11 @@ export const searchTerm = async (req, res, next) => {
   try {
     const title = new RegExp(searchTerm, "i");
 
-    const users = await User.find({
+    const user = await User.find({
       $or: [{ userName: title }],
-    });
+    }).limit(5);
 
-    res.status(200).json(users);
+    res.status(200).json(user);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: err.message });

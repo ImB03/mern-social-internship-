@@ -29,15 +29,19 @@ import { MyContext } from "../../hook/context/postState";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ACTION_SEARCH_TERM } from "../../reducers/slice/searchSlice";
 
 export default function ModalSearch() {
   const { isSearch, setIsSearch } = useContext(MyContext);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const users = useSelector((state) => state.search.users);
 
   const handleFocusInput = (e) => {
     if (isSearch && inputRef.current) {
@@ -52,8 +56,10 @@ export default function ModalSearch() {
 
   useEffect(() => {
     if (searchTerm !== "") {
+      setIsLoading(true);
       const delayDebounce = setTimeout(() => {
         dispatch(ACTION_SEARCH_TERM(searchTerm));
+        setIsLoading(false);
       }, 1000);
 
       return () => clearTimeout(delayDebounce);
@@ -97,21 +103,43 @@ export default function ModalSearch() {
           </div>
           {searchTerm && (
             <div className={`${styles.suggest} mt-2`}>
-              <div
+              {!isLoading &&
+                users.map((user) => (
+                  <Link
+                    to={`/profile/${user._id}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsSearch(false);
+                    }}
+                    className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
+                  >
+                    <img
+                      className={`${styles.avatarUser} me-3`}
+                      src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
+                      alt=""
+                    />
+                    <div className={`${styles.searchTerm}`}>
+                      {user.userName}
+                    </div>
+                  </Link>
+                ))}
+              <Link
+                to={`/search/searchall?q=${searchTerm}`}
                 onClick={(e) => {
                   e.stopPropagation();
+                  setIsSearch(false);
                 }}
                 className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
               >
                 <div
-                  className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}
+                  className={`${styles.wrapperIcon} me-3 d-flex align-items-center justify-content-center`}
                 >
                   <i
                     className={`${styles.icon} fa-solid fa-magnifying-glass`}
                   ></i>
                 </div>
                 <div className={`${styles.searchTerm}`}>{searchTerm}</div>
-              </div>
+              </Link>
             </div>
           )}
         </div>

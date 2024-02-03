@@ -26,7 +26,7 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
         <div className={`${styles.wrapper}`}>
           <div className={`${styles.wrapperItem} p-1 mx-2 mb-3`}>
             <Link
-              to="/profile"
+              to={`/profile/${user._id}`}
               onClick={() => {
                 setIsDropdownNavMenu(false);
               }}

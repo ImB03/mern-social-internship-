@@ -36,7 +36,7 @@
   .wrapperModal {
     z-index: 1001;
     border-radius: 10px;
-    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #ffffff;
     margin-top: 20vh;
 
@@ -50,16 +50,17 @@
       }
       .searchBtn {
         border-radius: 5px;
+
+        background-color: #e0e0e0;
         color: rgb(107, 106, 106);
         border: none;
         height: 35px !important;
-        width: 35px !important;
-        background-color: transparent;
+        width: 60px !important;
         transition: all 0.2s ease;
       }
 
       .searchBtn:hover {
-        background-color: #f0f0f0;
+        background-color: #d0d0d0;
       }
 
       .searchBtn:active {
@@ -76,8 +77,8 @@
         .wrapperIcon {
           border-radius: 100%;
           width: 40px;
+          min-width: 40px;
           height: 40px;
-          cursor: pointer;
           background-color: #f0f0f0;
 
           .icon {
@@ -85,10 +86,19 @@
           }
         }
 
+        .avatarUser {
+          border-radius: 100%;
+          width: 40px;
+          min-width: 40px;
+          height: 40px;
+        }
+
         .searchTerm {
           font-size: 16px;
           font-weight: bold;
           letter-spacing: 0.5px;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
 

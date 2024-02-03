@@ -48,7 +48,7 @@ function App() {
         <Route element={user ? <MainLayout /> : <Navigate to="/auth" />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userId" element={<Profile />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/search/:typeState" element={<Search />} />
         </Route>
       </Routes>
     </Router>

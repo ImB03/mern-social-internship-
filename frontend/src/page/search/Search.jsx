@@ -17,10 +17,15 @@ import CardFriendList from "../../components/cardFriendList/CardFriendList";
 import ModalPost from "../../components/modalPost/ModalPost";
 import ModalUser from "../../components/modalUser/ModalUser";
 import FilterSearch from "../../components/filterSearch/FilterSearch";
+import { useLocation, useParams } from "react-router-dom";
 
 export default function Search() {
   const user = useSelector((state) => state.persistedReducer.auth.user);
   const dispatch = useDispatch();
+  const params = useParams();
+  const location = useLocation();
+  // const queryParams = new URLSearchParams(location.search);
+  // const qValue = queryParams.get("q");
 
   const {} = useContext(MyContext);
 
@@ -32,7 +37,9 @@ export default function Search() {
         <div className={`${styles.leftSide} col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6 mb-5`}></div>
+        <div className={`${styles.middleSide} col-6 mb-5`}>
+          <Posts />
+        </div>
         <div className={`${styles.rightSide} col-3`}>
           <FilterSearch />
         </div>

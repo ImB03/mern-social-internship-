@@ -1,7 +1,7 @@
 .post {
   background-color: #fff;
   border-radius: 20px;
-  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   .option {
     border-radius: 100%;
@@ -13,8 +13,6 @@
       border-radius: 100%;
       .icon {
       }
-
-      
     }
 
     .wrapperIcon:hover {
