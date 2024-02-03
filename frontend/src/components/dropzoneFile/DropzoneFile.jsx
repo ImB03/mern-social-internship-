@@ -4,7 +4,7 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import styles from "./dropzoneFile.module.scss";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 
 export default function DropzoneFile({ inputFiles, setInputFiles }) {
   const onDrop = useCallback(
@@ -15,7 +15,6 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
 
   return (
     <div className={`${styles.dropzone}`}>

@@ -29,7 +29,7 @@ import {
   ACTION_LIKE_POST,
   ACTION_UPDATE_POST,
 } from "../../reducers/slice/postSlice";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import DropdownMenu from "../dropdownMenu/DropdownMenu";
 import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
 import ItemComment from "../itemComment/ItemComment";

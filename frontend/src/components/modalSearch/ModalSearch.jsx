@@ -25,7 +25,7 @@ import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import styles from "./modalSearch.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";

@@ -29,7 +29,7 @@ import AuthSaga from "./reducers/saga/authSaga";
 import PostSaga from "./reducers/saga/postSaga";
 import UserSaga from "./reducers/saga/userSaga";
 import SearchSaga from "./reducers/saga/searchSaga";
-import PostState from "./hook/context/postState";
+import PostState from "./hook/context/state";
 
 const saga = createSagaMiddleware();
 

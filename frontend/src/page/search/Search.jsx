@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 
 import styles from "./search.module.scss";
 import Menu from "../../components/menu/Menu";

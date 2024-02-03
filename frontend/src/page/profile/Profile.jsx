@@ -14,7 +14,7 @@ import StoreImg from "../../components/storeImg/StoreImg";
 import CardFriendList from "../../components/cardFriendList/CardFriendList";
 import { useDispatch, useSelector } from "react-redux";
 import ModalPost from "../../components/modalPost/ModalPost";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import ModalUser from "../../components/modalUser/ModalUser";
 
 export default function Profile() {

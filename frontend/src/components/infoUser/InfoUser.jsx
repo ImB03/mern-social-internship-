@@ -93,7 +93,7 @@ import Posts from "../posts/Posts";
 import FriendList from "../friendList/FriendList";
 import Ad from "../ad/Ad";
 import MakeFriend from "../makeFriend/MakeFriend";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 
 export default function InfoUser({ user }) {
   const { setIsUpdateUser } = useContext(MyContext);

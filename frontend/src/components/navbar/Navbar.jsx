@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import styles from "./navbar.module.scss";
 import DropdownNavMenu from "../dropdownNavMenu/DropdownNavMenu";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import ModalUser from "../modalUser/ModalUser";
 import ModalSearch from "../modalSearch/ModalSearch";
 

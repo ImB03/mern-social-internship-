@@ -16,7 +16,7 @@ import Fund from "../../assets/13.png";
 import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
 import { Link } from "react-router-dom";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 
 export default function Menu() {
   const user = useSelector((state) => state.persistedReducer.auth.user);

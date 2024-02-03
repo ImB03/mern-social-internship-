@@ -11,7 +11,7 @@ import MakeFriend from "../../components/makeFriend/MakeFriend";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_ALL_POSTS } from "../../reducers/slice/postSlice";
 import ModalPost from "../../components/modalPost/ModalPost";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import { useLocation } from "react-router-dom";
 
 export default function Home() {
@@ -24,7 +24,6 @@ export default function Home() {
     isDetailPost,
     handleGetAllPosts,
   } = useContext(MyContext);
-
 
   useEffect(() => {
     handleGetAllPosts();

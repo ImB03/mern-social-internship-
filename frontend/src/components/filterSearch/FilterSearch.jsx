@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import { Link } from "react-router-dom";
 
 import styles from "./filterSearch.module.scss";

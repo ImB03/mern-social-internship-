@@ -4,7 +4,7 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import styles from "./dropzoneCoverAvatar.module.scss";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 
 export default function DropzoneCoverAvatar({
   dataInputCoverAvatar,

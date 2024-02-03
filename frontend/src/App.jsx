@@ -13,7 +13,7 @@ import ExtraLayout from "./layout/ExtraLayout";
 import MainLayout from "./layout/MainLayout";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { MyContext } from "./hook/context/postState";
+import { MyContext } from "./hook/context/state";
 import ModalUser from "./components/modalUser/ModalUser";
 import Search from "./page/search/Search";
 

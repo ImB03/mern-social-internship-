@@ -9,7 +9,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import styles from "./post.module.scss";
 import DropdownMenu from "../dropdownMenu/DropdownMenu";
 import ModalPost from "../modalPost/ModalPost";
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_LIKE_POST } from "../../reducers/slice/postSlice";
 

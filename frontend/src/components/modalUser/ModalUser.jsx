@@ -25,7 +25,7 @@ import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
-import { MyContext } from "../../hook/context/postState";
+import { MyContext } from "../../hook/context/state";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
@@ -59,7 +59,6 @@ export default function ModalUser() {
     homeTown: "",
     nickname: "",
   });
-
 
   const inputRefProvinceCity = useRef(null);
   const inputRefWorkplace = useRef(null);
@@ -141,9 +140,7 @@ export default function ModalUser() {
   ]);
 
   const handleSubmit = () => {
-    dispatch(
-      ACTION_UPDATE_USER({ dataUser, setIsUpdateUser})
-    );
+    dispatch(ACTION_UPDATE_USER({ dataUser, setIsUpdateUser }));
   };
 
   return (
