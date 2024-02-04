@@ -1,8 +1,15 @@
 .filterSearch {
   background-color: #ffffff;
   height: 100%;
+
   .title {
     font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  .titleFilter {
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 0.5px;
   }

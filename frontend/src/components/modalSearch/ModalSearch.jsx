@@ -60,7 +60,7 @@ export default function ModalSearch() {
       const delayDebounce = setTimeout(() => {
         dispatch(ACTION_SEARCH_TERM(searchTerm));
         setIsLoading(false);
-      }, 1000);
+      }, 700);
 
       return () => clearTimeout(delayDebounce);
     }
@@ -104,7 +104,7 @@ export default function ModalSearch() {
           {searchTerm && (
             <div className={`${styles.suggest} mt-2`}>
               {!isLoading &&
-                users.map((user) => (
+                users?.map((user) => (
                   <Link
                     to={`/profile/${user._id}`}
                     onClick={(e) => {

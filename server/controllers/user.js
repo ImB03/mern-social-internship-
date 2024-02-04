@@ -2,7 +2,7 @@ import Post from "../models/post.js";
 import User from "../models/user.js";
 
 //GET USER
-export const getOneUser = async (req, res) => {
+export const getOneUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
     const user = await User.findById(userId);

@@ -18,21 +18,30 @@ import ModalPost from "../../components/modalPost/ModalPost";
 import ModalUser from "../../components/modalUser/ModalUser";
 import FilterSearch from "../../components/filterSearch/FilterSearch";
 import { useLocation, useParams } from "react-router-dom";
+import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 
 export default function Search() {
+  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
+    useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.auth.user);
   const dispatch = useDispatch();
-  const params = useParams();
   const location = useLocation();
-  // const queryParams = new URLSearchParams(location.search);
-  // const qValue = queryParams.get("q");
+  const queryParams = new URLSearchParams(location.search);
+  const qValue = queryParams.get("q");
 
   const {} = useContext(MyContext);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (qValue !== "") {
+      dispatch(ACTION_SEARCH(qValue));
+    }
+  }, [qValue, dispatch]);
 
   return (
     <div className={`${styles.search}`}>
+      {(isUpdatePost || isCreatePost || isDeletePost || isDetailPost) && (
+        <ModalPost />
+      )}
       <div className="d-flex justify-content-between align-items-start">
         <div className={`${styles.leftSide} col-2`}>
           <Menu />

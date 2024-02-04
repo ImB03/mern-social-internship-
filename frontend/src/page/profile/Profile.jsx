@@ -16,10 +16,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalPost from "../../components/modalPost/ModalPost";
 import { MyContext } from "../../hook/context/state";
 import ModalUser from "../../components/modalUser/ModalUser";
+import { useParams } from "react-router-dom";
 
 export default function Profile() {
-  const user = useSelector((state) => state.persistedReducer.auth.user);
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  const { userId } = useParams();
 
   const {
     isCreatePost,
@@ -27,12 +28,17 @@ export default function Profile() {
     isDeletePost,
     isDetailPost,
     isUpdateUser,
+    handleGetUser,
     handleGetAllPostsUser,
   } = useContext(MyContext);
 
   useEffect(() => {
-    handleGetAllPostsUser(user._id);
-  }, [isCreatePost, isUpdatePost, isDeletePost]);
+    handleGetAllPostsUser(userId);
+  }, [isCreatePost, isUpdatePost, isDeletePost, userId]);
+
+  useEffect(() => {
+    handleGetUser(userId);
+  }, [userId]);
 
   return (
     <div className={`${styles.profile}`}>
