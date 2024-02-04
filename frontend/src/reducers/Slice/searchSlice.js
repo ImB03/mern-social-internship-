@@ -26,7 +26,10 @@ const searchSlice = createSlice({
       state.posts = action.payload.response.data.posts;
       state.isLoading = false;
     },
-    REFRESH_SEARCH: (state, action) => {},
+    REFRESH_SEARCH: (state, action) => {
+      state.posts = action.payload.response.data.posts;
+      state.isLoading = false;
+    },
   },
 });
 

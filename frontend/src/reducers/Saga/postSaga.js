@@ -28,6 +28,7 @@ import {
   commentPost,
   likePost,
 } from "../../api";
+import { REFRESH_SEARCH } from "../slice/searchSlice";
 
 // CREATE POST
 function* CreatePost(action) {
@@ -145,6 +146,11 @@ function* LikePost(action) {
     const response = yield call(() => likePost(action.payload));
     yield put(
       LIKE_POST({
+        response,
+      })
+    );
+    yield put(
+      REFRESH_SEARCH({
         response,
       })
     );
