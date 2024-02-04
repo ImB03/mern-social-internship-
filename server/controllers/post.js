@@ -165,6 +165,8 @@ export const likePost = async (req, res, next) => {
       { new: true }
     );
 
+    updatedPost.comments.reverse();
+
     const posts = await Post.find().sort({ _id: -1 });
 
     res.status(200).json({ post: updatedPost, posts });

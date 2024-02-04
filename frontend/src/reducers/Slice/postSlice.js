@@ -77,6 +77,7 @@ const postSlice = createSlice({
       state.posts = action.payload.response?.data?.posts;
       state.isLoading = false;
     },
+    // REFRESH_POST: (state, action) => {},
   },
 });
 
