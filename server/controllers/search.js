@@ -6,10 +6,10 @@ export const searchTerm = async (req, res, next) => {
   const searchTerm = req.query.q;
 
   try {
-    const title = new RegExp(searchTerm, "i");
+    const term = new RegExp(searchTerm, "i");
 
     const users = await User.find({
-      $or: [{ userName: title }],
+      $or: [{ userName: term }],
     }).limit(5);
 
     res.status(200).json(users);
@@ -29,17 +29,14 @@ export const search = async (req, res, next) => {
   }
 
   try {
-    const title = new RegExp(search);
-
-    console.log("User query:", { userName: title });
-    console.log("Post query:", { creatorName: title, description: title });
+    const term = new RegExp(search, "i");
 
     const posts = await Post.find({
-      $or: [{ creatorName: title, description: title }],
+      $or: [{ creatorName: term }, { description: term }],
     }).sort({ _id: -1 });
 
     const users = await User.find({
-      $or: [{ userName: title }],
+      $or: [{ userName: term }],
     }).limit(6);
 
     res.status(200).json({ users, posts });

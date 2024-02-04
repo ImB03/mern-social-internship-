@@ -55,15 +55,15 @@ export default function ModalSearch() {
   }, [isSearch]);
 
   useEffect(() => {
-    if (searchTerm !== "") {
-      setIsLoading(true);
-      const delayDebounce = setTimeout(() => {
+    setIsLoading(true);
+    const delayDebounce = setTimeout(() => {
+      if (searchTerm !== "") {
         dispatch(ACTION_SEARCH_TERM(searchTerm));
-        setIsLoading(false);
-      }, 700);
+      }
+      setIsLoading(false);
+    }, 700);
 
-      return () => clearTimeout(delayDebounce);
-    }
+    return () => clearTimeout(delayDebounce);
   }, [searchTerm, dispatch]);
 
   return (
