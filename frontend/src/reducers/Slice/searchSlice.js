@@ -13,21 +13,21 @@ const searchSlice = createSlice({
       state.users = [];
     },
     SEARCH_TERM: (state, action) => {
-      state.users = action.payload.response.data;
+      state.users = action.payload.response?.data;
       state.isLoading = false;
     },
     ACTION_SEARCH: (state) => {
       state.isLoading = true;
-    },
-    SEARCH: (state, action) => {
       state.users = [];
       state.posts = [];
-      state.users = action.payload.response.data.users;
-      state.posts = action.payload.response.data.posts;
+    },
+    SEARCH: (state, action) => {
+      state.users = action.payload.response?.data?.users;
+      state.posts = action.payload.response?.data?.posts;
       state.isLoading = false;
     },
     REFRESH_SEARCH: (state, action) => {
-      state.posts = action.payload.response.data.posts;
+      state.posts = action.payload.response?.data?.posts;
       state.isLoading = false;
     },
   },

@@ -48,6 +48,24 @@ export default function ModalSearch() {
       inputRef.current.focus();
     }
   };
+
+  const handleKeyPress = (e) => {
+    // Kiểm tra xem biến sự kiện (e) có tồn tại không
+    if (e) {
+      // Kiểm tra xem keyCode có tồn tại không
+      const keyCode = e.keyCode || e.which;
+
+      // Tiếp tục xử lý chỉ khi keyCode tồn tại
+      if (keyCode === 13) {
+        // Ngăn chặn hành động mặc định của phím Enter
+        e.preventDefault();
+
+        navigate(`/search/searchall?q=${searchTerm}`);
+        setIsSearch(false);
+      }
+    }
+  };
+
   useEffect(() => {
     if (isSearch && inputRef.current) {
       inputRef.current.focus();
@@ -99,6 +117,7 @@ export default function ModalSearch() {
               className={`${styles.searchInput} ps-2`}
               type="search"
               onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyPress}
             />
           </div>
           {searchTerm && (
@@ -119,7 +138,7 @@ export default function ModalSearch() {
                       alt=""
                     />
                     <div className={`${styles.searchTerm}`}>
-                      {user.userName}
+                      {user?.userName}
                     </div>
                   </Link>
                 ))}

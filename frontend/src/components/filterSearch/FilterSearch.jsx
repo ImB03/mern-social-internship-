@@ -31,7 +31,7 @@ export default function FilterSearch() {
     },
     {
       icon: <PeopleAltOutlinedIcon className={`${styles.icon}`} />,
-      name: "Everyone",
+      name: "Everybody",
     },
     {
       icon: <ArticleOutlinedIcon className={`${styles.icon}`} />,

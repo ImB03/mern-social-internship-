@@ -15,6 +15,7 @@ import CardInfo from "../../components/cardInfo/CardInfo";
 import StoreImg from "../../components/storeImg/StoreImg";
 import CardFriendList from "../../components/cardFriendList/CardFriendList";
 import ModalPost from "../../components/modalPost/ModalPost";
+import CardUserList from "../../components/cardUserList/CardUserList";
 import ModalUser from "../../components/modalUser/ModalUser";
 import FilterSearch from "../../components/filterSearch/FilterSearch";
 import { useLocation, useParams } from "react-router-dom";
@@ -47,6 +48,7 @@ export default function Search() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6 mb-5`}>
+          <CardUserList />
           <Posts />
         </div>
         <div className={`${styles.rightSide} col-3`}>
