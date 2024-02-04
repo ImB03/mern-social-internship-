@@ -38,7 +38,7 @@ export default function Profile() {
 
   useEffect(() => {
     handleGetUser(userId);
-  }, [userId]);
+  }, [userId, isUpdateUser]);
 
   return (
     <div className={`${styles.profile}`}>

@@ -18,10 +18,10 @@ const searchSlice = createSlice({
     },
     ACTION_SEARCH: (state) => {
       state.isLoading = true;
-      state.users = [];
-      state.posts = [];
     },
     SEARCH: (state, action) => {
+      state.users = [];
+      state.posts = [];
       state.users = action.payload.response.data.users;
       state.posts = action.payload.response.data.posts;
       state.isLoading = false;

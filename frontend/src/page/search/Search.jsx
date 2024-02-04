@@ -35,7 +35,7 @@ export default function Search() {
     if (qValue !== "") {
       dispatch(ACTION_SEARCH(qValue));
     }
-  }, [qValue, dispatch]);
+  }, [qValue, dispatch, isCreatePost, isUpdatePost, isDeletePost]);
 
   return (
     <div className={`${styles.search}`}>
