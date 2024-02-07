@@ -79,8 +79,7 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
             </div>
             <div className={`${styles.name}`}>Comments</div>
           </div>
-          <Link
-            to="/auth"
+          <div
             onClick={() => {
               handleLognout();
               setIsDropdownNavMenu(false);
@@ -93,7 +92,7 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
               <LogoutOutlinedIcon className={`${styles.icon}`} />
             </div>
             <div className={`${styles.name}`}>Logout</div>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -91,7 +91,7 @@ export default function Auth() {
               </h1>
               {isSignup && (
                 <input
-                  onChange={getDataUser}
+                  onChange={getDataUser}      
                   className={`${styles.input} mb-4 mt-2`}
                   type="text"
                   placeholder="Your name"

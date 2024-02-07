@@ -11,6 +11,7 @@
 
   .userList {
     .item {
+      cursor: pointer;
       transition: all 0.1s ease;
       border-radius: 10px;
       .avatarUser {

@@ -36,13 +36,11 @@ export default function Search() {
     if (qValue !== "") {
       dispatch(ACTION_SEARCH(qValue));
     }
-  }, [qValue, dispatch, isCreatePost, isUpdatePost, isDeletePost]);
+  }, [qValue, dispatch, isUpdatePost, isDeletePost]);
 
   return (
     <div className={`${styles.search}`}>
-      {(isUpdatePost || isCreatePost || isDeletePost || isDetailPost) && (
-        <ModalPost />
-      )}
+      {(isUpdatePost || isDeletePost || isDetailPost) && <ModalPost />}
       <div className="d-flex justify-content-between align-items-start">
         <div className={`${styles.leftSide} col-2`}>
           <Menu />
