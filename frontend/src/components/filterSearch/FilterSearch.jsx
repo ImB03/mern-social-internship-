@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { MyContext } from "../../hook/context/state";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import styles from "./filterSearch.module.scss";
 import Friends from "../../assets/1.png";
@@ -23,19 +23,25 @@ import BackupTableOutlinedIcon from "@mui/icons-material/BackupTableOutlined";
 
 export default function FilterSearch() {
   const user = useSelector((state) => state.persistedReducer.auth.user);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const qValue = queryParams.get("q");
 
   const FilterItem = [
     {
       icon: <BackupTableOutlinedIcon className={`${styles.icon}`} />,
       name: "All",
+      to: `/search/searchall?q=${qValue}`,
     },
     {
       icon: <PeopleAltOutlinedIcon className={`${styles.icon}`} />,
       name: "Everybody",
+      to: `/search/searcheverybody?q=${qValue}`,
     },
     {
       icon: <ArticleOutlinedIcon className={`${styles.icon}`} />,
       name: "Post",
+      to: `/search/searchpost?q=${qValue}`,
     },
   ];
 
@@ -47,7 +53,8 @@ export default function FilterSearch() {
         </div>
         <div className={`${styles.titleFilter} pb-2`}>Filter</div>
         {FilterItem.map((item) => (
-          <div
+          <NavLink
+            to={item.to}
             className={`${styles.itemFilter} col p-2 d-flex align-items-center`}
           >
             <div
@@ -56,7 +63,7 @@ export default function FilterSearch() {
               {item.icon}
             </div>
             <div className={`${styles.name}`}>{item.name}</div>
-          </div>
+          </NavLink>
         ))}
       </div>
     </div>

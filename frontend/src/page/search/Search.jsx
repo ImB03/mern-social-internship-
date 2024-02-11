@@ -27,6 +27,7 @@ export default function Search() {
   const user = useSelector((state) => state.persistedReducer.auth.user);
   const dispatch = useDispatch();
   const location = useLocation();
+  const params = useParams();
   const queryParams = new URLSearchParams(location.search);
   const qValue = queryParams.get("q");
 
@@ -46,8 +47,10 @@ export default function Search() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6 mb-5`}>
-          <CardUserList />
-          <Posts />
+          {(params.typeState === `searchall` ||
+            params.typeState === `searcheverybody`) && <CardUserList />}
+          {(params.typeState === `searchall` ||
+            params.typeState === `searchpost`) && <Posts />}
         </div>
         <div className={`${styles.rightSide} col-3`}>
           <FilterSearch />

@@ -1,7 +1,36 @@
 .cardUserList {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  .itemUser {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 10px;
+    .avatarUser {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+    }
+    .userName {
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+    .btnAddFriend {
+      transition: all 0.1s ease;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      border-radius: 5px;
+      border: none;
+      background-color: #ebf5ff;
+      color: #0080ff;
+    }
+
+    .btnAddFriend:hover {
+      background-color: #d3e2ef;
+    }
+  }
 
   .title {
     font-weight: bold;
@@ -15,8 +44,8 @@
       transition: all 0.1s ease;
       border-radius: 10px;
       .avatarUser {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border-radius: 100%;
       }
       .userName {
@@ -65,4 +94,10 @@
   .btnSeeAll:active {
     background-color: #e0e0e0;
   }
+}
+
+.styleWrapper {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
