@@ -7,6 +7,7 @@ const UserSchema = mongoose.Schema(
     password: { type: String, required: true },
     userPicturePath: { type: String, default: "" },
     friends: { type: Array, default: [] },
+    friendRequest: { type: Array, default: [] },
     location: String,
     occupation: String,
     viewedProfile: Number,
