@@ -39,11 +39,8 @@ export default function CardUserList() {
               </div>
             ))}
           </div>
-          <Link
-            to={`/search/searcheverybody?q=${qValue}`}
-            className={`${styles.btnSeeAll} mt-3 col-12 py-2`}
-          >
-            See all
+          <Link to={`/search/searcheverybody?q=${qValue}`}>
+            <div className={`${styles.btnSeeAll} py-2`}>See all</div>
           </Link>
         </div>
       )}

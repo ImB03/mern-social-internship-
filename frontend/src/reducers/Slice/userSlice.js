@@ -27,10 +27,25 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     // REFRESH_USER: (state, action) => {},
+    ACTION_ADD_FRIEND: (state) => {
+      state.isLoading = true;
+    },
+    ADD_FRIEND: (state, action) => {
+      alert(action.payload.response?.data.message);
+      state.response = action.payload.response;
+      action.payload?.setIsUpdateUser(false);
+      state.isLoading = false;
+    },
   },
 });
 
-export const { ACTION_GET_USER, GET_USER, ACTION_UPDATE_USER, UPDATE_USER } =
-  userSlice.actions;
+export const {
+  ACTION_GET_USER,
+  GET_USER,
+  ACTION_UPDATE_USER,
+  UPDATE_USER,
+  ACTION_ADD_FRIEND,
+  ADD_FRIEND,
+} = userSlice.actions;
 
 export default userSlice.reducer;

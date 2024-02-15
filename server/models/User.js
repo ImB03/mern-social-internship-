@@ -8,6 +8,7 @@ const UserSchema = mongoose.Schema(
     userPicturePath: { type: String, default: "" },
     friends: { type: Array, default: [] },
     friendRequest: { type: Array, default: [] },
+    notification: { type: Array, default: [] },
     location: String,
     occupation: String,
     viewedProfile: Number,
