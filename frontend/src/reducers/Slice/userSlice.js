@@ -27,10 +27,10 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     // REFRESH_USER: (state, action) => {},
-    ACTION_ADD_FRIEND: (state) => {
+    ACTION_FRIEND_REQUEST: (state) => {
       state.isLoading = true;
     },
-    ADD_FRIEND: (state, action) => {
+    FRIEND_REQUEST: (state, action) => {
       alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       action.payload?.setIsUpdateUser(false);
@@ -44,8 +44,8 @@ export const {
   GET_USER,
   ACTION_UPDATE_USER,
   UPDATE_USER,
-  ACTION_ADD_FRIEND,
-  ADD_FRIEND,
+  ACTION_FRIEND_REQUEST,
+  FRIEND_REQUEST,
 } = userSlice.actions;
 
 export default userSlice.reducer;

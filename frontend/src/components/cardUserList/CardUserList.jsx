@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./cardUserList.module.scss";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { MyContext } from "../../hook/context/state";
 
 export default function CardUserList() {
+  const { handleFriendRequest } = useContext(MyContext);
+
   const users = useSelector((state) => state.search.users);
   const params = useParams();
   const location = useLocation();
@@ -33,7 +36,10 @@ export default function CardUserList() {
                   />
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>
-                <button className={`${styles.btnAddFriend} py-2 px-3`}>
+                <button
+                  onClick={handleFriendRequest(user._id)}
+                  className={`${styles.btnAddFriend} py-2 px-3`}
+                >
                   Add friends
                 </button>
               </div>
@@ -59,7 +65,10 @@ export default function CardUserList() {
                 />
                 <div className={`${styles.userName}`}>{user.userName}</div>
               </div>
-              <button className={`${styles.btnAddFriend} py-2 px-3`}>
+              <button
+                onClick={handleFriendRequest(user._id)}
+                className={`${styles.btnAddFriend} py-2 px-3`}
+              >
                 Add friends
               </button>
             </div>

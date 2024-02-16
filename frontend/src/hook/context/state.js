@@ -5,7 +5,10 @@ import {
   ACTION_GET_POST,
 } from "../../reducers/slice/postSlice";
 import { useDispatch } from "react-redux";
-import { ACTION_GET_USER } from "../../reducers/slice/userSlice";
+import {
+  ACTION_FRIEND_REQUEST,
+  ACTION_GET_USER,
+} from "../../reducers/slice/userSlice";
 
 const MyContext = createContext();
 
@@ -33,6 +36,10 @@ export default function PostState({ children }) {
     dispatch(ACTION_GET_ALL_POSTS_USER(userId));
   };
 
+  const handleFriendRequest = (userId) => {
+    dispatch(ACTION_FRIEND_REQUEST(userId));
+  };
+
   return (
     <MyContext.Provider
       value={{
@@ -50,6 +57,7 @@ export default function PostState({ children }) {
         handleGetUser,
         handleGetAllPosts,
         handleGetAllPostsUser,
+        handleFriendRequest,
         isSearch,
         setIsSearch,
       }}
