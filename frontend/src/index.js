@@ -25,6 +25,7 @@ import modeSlice from "./reducers/slice/modeSlice";
 import postSlice from "./reducers/slice/postSlice";
 import userSlice from "./reducers/slice/userSlice";
 import searchSlice from "./reducers/slice/searchSlice";
+import slice from "./reducers/slice/slice";
 import AuthSaga from "./reducers/saga/authSaga";
 import PostSaga from "./reducers/saga/postSaga";
 import UserSaga from "./reducers/saga/userSaga";
@@ -54,6 +55,7 @@ const store = configureStore({
     post: postSlice,
     user: userSlice,
     search: searchSlice,
+    slice: slice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -46,6 +46,8 @@ export const getOneUser = (userId) => API.get(`/user/getoneuser/${userId}`);
 export const getAllPostsUser = (userId) =>
   API.get(`/post/getallpostsuser/${userId}`);
 export const updateUser = (dataUser) => API.patch(`/user/updateuser`, dataUser);
+export const friendRequest = (userId) =>
+  API.patch(`/user/friendrequest/${userId}`);
 
 //SEARCH
 export const searchTerm = (searchTerm) =>

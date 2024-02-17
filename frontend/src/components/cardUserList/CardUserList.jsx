@@ -37,7 +37,7 @@ export default function CardUserList() {
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>
                 <button
-                  onClick={handleFriendRequest(user._id)}
+                  onClick={() => handleFriendRequest(user._id)}
                   className={`${styles.btnAddFriend} py-2 px-3`}
                 >
                   Add friends
@@ -66,7 +66,7 @@ export default function CardUserList() {
                 <div className={`${styles.userName}`}>{user.userName}</div>
               </div>
               <button
-                onClick={handleFriendRequest(user._id)}
+                onClick={() => handleFriendRequest(user._id)}
                 className={`${styles.btnAddFriend} py-2 px-3`}
               >
                 Add friends

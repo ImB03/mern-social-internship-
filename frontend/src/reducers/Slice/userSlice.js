@@ -32,8 +32,6 @@ const userSlice = createSlice({
     },
     FRIEND_REQUEST: (state, action) => {
       alert(action.payload.response?.data.message);
-      state.response = action.payload.response;
-      action.payload?.setIsUpdateUser(false);
       state.isLoading = false;
     },
   },
