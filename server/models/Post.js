@@ -2,15 +2,12 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
   {
-    creator: {
+    creatorId: {
       type: String,
       required: true,
     },
-    creatorName: String,
-    location: String,
     description: String,
     picturePath: String,
-    userPicturePath: String,
     likes: {
       type: Array,
       default: [],
