@@ -9,7 +9,9 @@ import { useLocation, useParams } from "react-router-dom";
 export default function Posts() {
   const params = useParams();
 
-  const posts = useSelector((state) => state.persistedReducer.post.posts);
+  const posts = useSelector((state) => state.persistedReducer.slice.posts);
+
+  console.log(posts);
   const postsSearch = useSelector(
     (state) => state.persistedReducer.search.posts
   );

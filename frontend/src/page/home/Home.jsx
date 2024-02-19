@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     handleGetAllPosts();
-  }, [isCreatePost, isUpdatePost, isDeletePost]);
+  }, [isUpdatePost, isDeletePost]);
 
   return (
     <div className={`${styles.home}`}>

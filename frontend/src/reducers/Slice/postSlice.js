@@ -12,12 +12,6 @@ const postSlice = createSlice({
     ACTION_CREATE_POST: (state) => {
       state.isLoading = true; //fake loading
     },
-    CREATE_POST: (state, action) => {
-      alert(action.payload.response?.data.message);
-      state.response = action.payload.response;
-      action.payload?.setIsCreatePost(false);
-      state.isLoading = false;
-    },
     ACTION_GET_ALL_POSTS: (state) => {
       state.isLoading = true;
     },
@@ -83,7 +77,6 @@ const postSlice = createSlice({
 
 export const {
   ACTION_CREATE_POST,
-  CREATE_POST,
   ACTION_GET_ALL_POSTS,
   GET_ALL_POSTS,
   ACTION_GET_ALL_POSTS_USER,

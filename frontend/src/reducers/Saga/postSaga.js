@@ -29,20 +29,21 @@ import {
   likePost,
 } from "../../api";
 import { REFRESH_SEARCH } from "../slice/searchSlice";
+import { SET_POSTS } from "../slice/slice";
 
 // CREATE POST
 function* CreatePost(action) {
   try {
     const response = yield call(() => createPost(action.payload.dataPost));
     yield put(
-      CREATE_POST({
+      SET_POSTS({
         response,
         setIsCreatePost: action.payload?.setIsCreatePost,
       })
     );
   } catch (error) {
     yield put(
-      CREATE_POST({
+      SET_POSTS({
         response: error.response,
       })
     );

@@ -20,7 +20,6 @@ import Search from "./page/search/Search";
 function App() {
   const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
-  console.log(user);
 
   const {
     isCreatePost,

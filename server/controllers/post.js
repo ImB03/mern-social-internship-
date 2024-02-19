@@ -16,7 +16,9 @@ export const createPost = async (req, res, next) => {
     });
     await newPost.save();
 
-    res.status(200).json({ message: "Create post successfully!" });
+    const posts = await Post.find().sort({ _id: -1 });
+
+    res.status(200).json(posts);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Create post unsuccessfully!" });

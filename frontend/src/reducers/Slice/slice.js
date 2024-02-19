@@ -39,6 +39,7 @@ const slice = createSlice({
     },
     SET_POSTS: (state, action) => {
       state.posts = action.payload.response?.data;
+      action.payload?.setIsCreatePost(false);
       state.isLoading = false;
     },
     SET_USERS: (state, action) => {
