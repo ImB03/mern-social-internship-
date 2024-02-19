@@ -10,10 +10,6 @@ export const signup = async (req, res, next) => {
       userName,
       email,
       password,
-      // picturePath,
-      // friends,
-      // location,
-      // occupation,
     } = req.body;
 
     const user = await User.findOne({ email: email });
@@ -28,12 +24,6 @@ export const signup = async (req, res, next) => {
       userName,
       email,
       password: passwordHash,
-      // picturePath,
-      // friends,
-      // location,
-      // occupation,
-      // viewedProfile: Math.floor(Math.random() * 10000),
-      // impressions: Math.floor(Math.random() * 10000),
     });
     await newUser.save();
     res.status(200).json({ message: "Signup successful!" });
@@ -61,8 +51,6 @@ export const signin = async (req, res, next) => {
     const token = jwt.sign(
       {
         userId: user._id,
-        userName: user.userName,
-        userPicturePath: user.userPicturePath,
       },
       process.env.JWT_SECRET_KEY,
       {

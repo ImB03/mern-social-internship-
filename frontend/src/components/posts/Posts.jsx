@@ -10,13 +10,9 @@ export default function Posts() {
 
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
-  console.log(posts);
   const postsSearch = useSelector(
     (state) => state.persistedReducer.search.posts
   );
-
-  console.log(params.typeState);
-  console.log(params.typeState);
 
   return (
     <div className={`${styles.posts} mt-3`}>

@@ -15,6 +15,8 @@ export default function Auth() {
   const [isSignup, setIsSignup] = useState(false);
   const [dataUser, setDataUser] = useState({});
 
+  console.log(dataUser);
+
   const getDataUser = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };
@@ -91,7 +93,7 @@ export default function Auth() {
               </h1>
               {isSignup && (
                 <input
-                  onChange={getDataUser}      
+                  onChange={getDataUser}
                   className={`${styles.input} mb-4 mt-2`}
                   type="text"
                   placeholder="Your name"

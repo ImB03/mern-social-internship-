@@ -7,12 +7,9 @@ export const createPost = async (req, res, next) => {
     const { description, picturePath } = req.body;
 
     const newPost = new Post({
-      creator: req.user.userId,
-      creatorName: req.user.userName,
+      creatorId: req.user.userId,
       description,
       picturePath,
-      // likes: {},
-      // comments: [],
     });
     await newPost.save();
 

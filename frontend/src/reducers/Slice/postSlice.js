@@ -9,12 +9,8 @@ const postSlice = createSlice({
     response: null,
   },
   reducers: {
-    ACTION_CREATE_POST: (state) => {
-      state.isLoading = true; //fake loading
-    },
-    ACTION_GET_ALL_POSTS: (state) => {
-      state.isLoading = true;
-    },
+    ACTION_CREATE_POST: (state) => {},
+    ACTION_GET_ALL_POSTS: (state) => {},
     ACTION_GET_POST: (state) => {
       state.isLoading = true;
       state.post = {};
