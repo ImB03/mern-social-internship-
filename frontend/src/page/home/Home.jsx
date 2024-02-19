@@ -12,20 +12,16 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalPost from "../../components/modalPost/ModalPost";
 import { MyContext } from "../../hook/context/state";
 import { useLocation } from "react-router-dom";
+import { ACTION_GET_ALL_POSTS } from "../../reducers/slice/postSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
 
-  const {
-    isCreatePost,
-    isUpdatePost,
-    isDeletePost,
-    isDetailPost,
-    handleGetAllPosts,
-  } = useContext(MyContext);
+  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
+    useContext(MyContext);
 
   useEffect(() => {
-    handleGetAllPosts();
+    dispatch(ACTION_GET_ALL_POSTS());
   }, [isUpdatePost, isDeletePost]);
 
   return (

@@ -94,8 +94,10 @@ import FriendList from "../friendList/FriendList";
 import Ad from "../ad/Ad";
 import MakeFriend from "../makeFriend/MakeFriend";
 import { MyContext } from "../../hook/context/state";
+import { useSelector } from "react-redux";
 
-export default function InfoUser({ user }) {
+export default function InfoUser() {
+  const user = useSelector((state) => state.persistedReducer.user.user);
   const { setIsUpdateUser } = useContext(MyContext);
 
   return (

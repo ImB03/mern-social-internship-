@@ -19,7 +19,6 @@ import ModalUser from "../../components/modalUser/ModalUser";
 import { useParams } from "react-router-dom";
 
 export default function Profile() {
-  const user = useSelector((state) => state.persistedReducer.user.user);
   const { userId } = useParams();
 
   const {
@@ -29,12 +28,7 @@ export default function Profile() {
     isDetailPost,
     isUpdateUser,
     handleGetUser,
-    handleGetAllPostsUser,
   } = useContext(MyContext);
-
-  useEffect(() => {
-    handleGetAllPostsUser(userId);
-  }, [isCreatePost, isUpdatePost, isDeletePost, userId]);
 
   useEffect(() => {
     handleGetUser(userId);
@@ -52,7 +46,7 @@ export default function Profile() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6 mb-5`}>
-          <InfoUser user={user} />
+          <InfoUser />
           <CreatePost />
           <Posts />
         </div>
