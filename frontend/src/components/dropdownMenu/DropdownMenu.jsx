@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 
 export default function DropdownMenu({ setIsDropdownMenu, post }) {
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const { setIsUpdatePost, handleGetPost, setIsDeletePost } =
     useContext(MyContext);

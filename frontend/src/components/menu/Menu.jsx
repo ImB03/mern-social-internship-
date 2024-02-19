@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
 
 export default function Menu() {
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const Menu = [
     { img: Friends, name: "Friends" },

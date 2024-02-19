@@ -17,7 +17,7 @@ export default function Post({ post }) {
   const [isDropdownMenu, setIsDropdownMenu] = useState(false);
   const { setIsDetailPost, handleGetPost } = useContext(MyContext);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const handleLike = () => {
     dispatch(ACTION_LIKE_POST(post._id));

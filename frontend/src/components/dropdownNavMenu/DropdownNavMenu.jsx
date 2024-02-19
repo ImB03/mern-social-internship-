@@ -9,10 +9,10 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import styles from "./dropdownNavMenu.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { LOGNOUT } from "../../reducers/slice/authSlice";
+import { LOGNOUT } from "../../reducers/slice/slice";
 
 export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const dispatch = useDispatch();
 

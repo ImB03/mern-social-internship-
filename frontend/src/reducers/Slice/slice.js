@@ -54,6 +54,14 @@ const slice = createSlice({
   },
 });
 
-export const { SIGNUP, SIGNIN, LOGNOUT } = slice.actions;
+export const {
+  SIGNUP,
+  SIGNIN,
+  LOGNOUT,
+  SET_POSTS,
+  SET_USERS,
+  SET_POST,
+  SET_USER,
+} = slice.actions;
 
 export default slice.reducer;

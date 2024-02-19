@@ -45,7 +45,7 @@ export default function ModalPost() {
     isDetailPost,
     setIsDetailPost,
   } = useContext(MyContext);
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
   const post = useSelector((state) => state.persistedReducer.post.post);
 
   const inputCommentRef = useRef(null);

@@ -18,7 +18,10 @@ import ModalUser from "./components/modalUser/ModalUser";
 import Search from "./page/search/Search";
 
 function App() {
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+
+  console.log(user);
+
   const {
     isCreatePost,
     isUpdatePost,

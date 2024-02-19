@@ -1,11 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
-import {
-  ACTION_SIGNUP,
-  ACTION_SIGNIN,
-  SIGNUP,
-  SIGNIN,
-} from "../slice/authSlice";
+import { ACTION_SIGNUP, ACTION_SIGNIN } from "../slice/authSlice";
+import { SIGNIN, SIGNUP } from "../slice/slice";
 import { signup, signin } from "../../api";
 
 // SIGN UP

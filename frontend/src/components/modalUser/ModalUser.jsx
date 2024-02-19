@@ -33,7 +33,7 @@ import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
 export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.persistedReducer.auth.user);
+  const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const [displayInputProvinceCity, setDisplayInputProvinceCity] =
     useState(false);
