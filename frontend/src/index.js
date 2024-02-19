@@ -21,7 +21,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import authSlice from "./reducers/slice/authSlice";
-import modeSlice from "./reducers/slice/modeSlice";
 import postSlice from "./reducers/slice/postSlice";
 import userSlice from "./reducers/slice/userSlice";
 import searchSlice from "./reducers/slice/searchSlice";
@@ -42,6 +41,10 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authSlice,
+  post: postSlice,
+  user: userSlice,
+  search: searchSlice,
+  slice: slice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -51,11 +54,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: {
     persistedReducer,
-    mode: modeSlice,
-    post: postSlice,
-    user: userSlice,
-    search: searchSlice,
-    slice: slice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

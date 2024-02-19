@@ -10,37 +10,50 @@ const slice = createSlice({
     isLoading: false,
   },
   reducers: {
-    ACTION_SEARCH_TERM: (state) => {
-      state.isLoading = true;
-      state.users = [];
+    SIGNUP: (state, action) => {
+      alert(action.payload.response?.data.message);
+      if (action.payload.response?.status === 200) {
+        action.payload.setIsSignup((prev) => !prev);
+      }
+      state.isLoading = false;
     },
-    SEARCH_TERM: (state, action) => {
+    SIGNIN: (state, action) => {
+      alert(action.payload.response?.data.message);
+      if (action.payload.response?.status === 200) {
+        state.token = action.payload.response?.data.user?.token;
+
+        state.userNow = action.payload.response?.data.user;
+        localStorage.setItem(
+          "token",
+          JSON.stringify(action.payload.response?.data.user?.token)
+        );
+        action.payload.navigate("/");
+      }
+      state.isLoading = false;
+    },
+    LOGNOUT: (state, action) => {
+      state.isLoading = true;
+      localStorage.removeItem("token");
+      state.userNow = null;
+      state.isLoading = false;
+    },
+    SET_POSTS: (state, action) => {
+      state.posts = action.payload.response?.data;
+      state.isLoading = false;
+    },
+    SET_USERS: (state, action) => {
       state.users = action.payload.response?.data;
       state.isLoading = false;
     },
-    ACTION_SEARCH: (state) => {
-      state.isLoading = true;
-      state.users = [];
-      state.posts = [];
-    },
-    SEARCH: (state, action) => {
-      state.users = action.payload.response?.data?.users;
-      state.posts = action.payload.response?.data?.posts;
+    SET_POST: (state, action) => {
       state.isLoading = false;
     },
-    REFRESH_SEARCH: (state, action) => {
-      state.posts = action.payload.response?.data?.posts;
+    SET_USER: (state, action) => {
       state.isLoading = false;
     },
   },
 });
 
-export const {
-  ACTION_SEARCH_TERM,
-  SEARCH_TERM,
-  ACTION_SEARCH,
-  SEARCH,
-  REFRESH_SEARCH,
-} = slice.actions;
+export const { SIGNUP, SIGNIN, LOGNOUT } = slice.actions;
 
 export default slice.reducer;

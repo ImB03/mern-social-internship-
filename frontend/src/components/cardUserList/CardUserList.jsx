@@ -8,7 +8,7 @@ import { MyContext } from "../../hook/context/state";
 export default function CardUserList() {
   const { handleFriendRequest } = useContext(MyContext);
 
-  const users = useSelector((state) => state.search.users);
+  const users = useSelector((state) => state.persistedReducer.search.users);
   const params = useParams();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);

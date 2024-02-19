@@ -41,7 +41,7 @@ export default function ModalSearch() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const users = useSelector((state) => state.search.users);
+  const users = useSelector((state) => state.persistedReducer.search.users);
 
   const handleFocusInput = (e) => {
     if (isSearch && inputRef.current) {

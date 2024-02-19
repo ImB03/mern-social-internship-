@@ -19,7 +19,7 @@ import ModalUser from "../../components/modalUser/ModalUser";
 import { useParams } from "react-router-dom";
 
 export default function Profile() {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.persistedReducer.user.user);
   const { userId } = useParams();
 
   const {

@@ -17,7 +17,7 @@ import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 
 export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
   const user = useSelector((state) => state.persistedReducer.auth.user);
-  const post = useSelector((state) => state.post.post);
+  const post = useSelector((state) => state.persistedReducer.post.post);
 
   const { setIsUpdatePost, handleGetPost, setIsDeletePost } =
     useContext(MyContext);
