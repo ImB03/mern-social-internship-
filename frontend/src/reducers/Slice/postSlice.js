@@ -15,7 +15,6 @@ const postSlice = createSlice({
     ACTION_GET_ALL_POSTS: (state) => {
       state.isLoading = true;
     },
-
     ACTION_GET_POST: (state) => {
       state.isLoading = true;
       state.post = {};
