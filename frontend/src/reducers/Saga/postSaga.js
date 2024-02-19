@@ -38,7 +38,6 @@ function* CreatePost(action) {
     yield put(
       SET_POSTS({
         response,
-        setIsCreatePost: action.payload?.setIsCreatePost,
       })
     );
   } catch (error) {
@@ -52,12 +51,14 @@ function* CreatePost(action) {
 }
 
 // GET POST
-function* GetAllPosts() {
+function* GetAllPosts(action) {
   try {
     const response = yield call(() => getAllPosts());
-    yield put(GET_ALL_POSTS({ response }));
+    yield put(
+      SET_POSTS({ response, setIsCreatePost: action.payload?.setIsCreatePost })
+    );
   } catch (error) {
-    yield put(GET_ALL_POSTS({ response: error.response }));
+    yield put(SET_POSTS({ response: error.response }));
     console.log(error);
   }
 }

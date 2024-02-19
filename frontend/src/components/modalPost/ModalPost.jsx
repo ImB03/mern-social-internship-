@@ -24,8 +24,6 @@ import {
   ACTION_COMMENT_POST,
   ACTION_CREATE_POST,
   ACTION_DELETE_POST,
-  ACTION_GET_ALL_POSTS,
-  ACTION_GET_POST,
   ACTION_LIKE_POST,
   ACTION_UPDATE_POST,
 } from "../../reducers/slice/postSlice";
@@ -64,9 +62,9 @@ export default function ModalPost() {
       dispatch(
         ACTION_CREATE_POST({
           dataPost,
-          setIsCreatePost,
         })
       );
+      setIsCreatePost(false);
     } else if (isUpdatePost) {
       dispatch(
         ACTION_UPDATE_POST({

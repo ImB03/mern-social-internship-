@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const slice = createSlice({
   name: "host",
   initialState: {
+    response: null,
     userNow: null,
     token: null,
     users: [],
@@ -12,6 +13,7 @@ const slice = createSlice({
   reducers: {
     SIGNUP: (state, action) => {
       alert(action.payload.response?.data.message);
+      state.response = action.payload.response;
       if (action.payload.response?.status === 200) {
         action.payload.setIsSignup((prev) => !prev);
       }
@@ -19,6 +21,7 @@ const slice = createSlice({
     },
     SIGNIN: (state, action) => {
       alert(action.payload.response?.data.message);
+      state.response = action.payload.response;
       if (action.payload.response?.status === 200) {
         state.token = action.payload.response?.data.user?.token;
 
@@ -39,7 +42,6 @@ const slice = createSlice({
     },
     SET_POSTS: (state, action) => {
       state.posts = action.payload.response?.data;
-      action.payload?.setIsCreatePost(false);
       state.isLoading = false;
     },
     SET_USERS: (state, action) => {
