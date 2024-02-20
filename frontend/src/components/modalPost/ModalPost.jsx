@@ -45,24 +45,19 @@ export default function ModalPost() {
     postId,
   } = useContext(MyContext);
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
-  // const post = useSelector((state) => state.persistedReducer.post.post);
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
-
-  const processedPost = posts.filter((post) => post._id === postId);
 
   const inputCommentRef = useRef(null);
 
   const dispatch = useDispatch();
   const [inputFiles, setInputFiles] = useState("");
+  const [processedPost, setProcessedPost] = useState({});
   const [inputDescription, setInputDescription] = useState("");
   const [inputComment, setInputComment] = useState("");
   const [dataPost, setDataPost] = useState({
     description: "",
     picturePath: "",
   });
-
-  console.log(dataPost);
-  console.log(processedPost);
 
   const handleSubmit = () => {
     if (isCreatePost) {
@@ -110,6 +105,10 @@ export default function ModalPost() {
   };
 
   useEffect(() => {
+    setProcessedPost(posts.filter((post) => post._id === postId)[0]);
+  }, [postId, posts]);
+
+  useEffect(() => {
     setDataPost({
       ...dataPost,
       description: inputDescription,
@@ -124,10 +123,10 @@ export default function ModalPost() {
     }
   }, [processedPost]);
 
-  useEffect(() => {
-    setInputDescription("");
-    setInputFiles("");
-  }, [setIsCreatePost, setIsUpdatePost]);
+  // useEffect(() => {
+  //   setInputDescription("");
+  //   setInputFiles("");
+  // }, [setIsCreatePost, setIsUpdatePost]);
 
   useEffect(() => {
     if (isDetailPost) {
