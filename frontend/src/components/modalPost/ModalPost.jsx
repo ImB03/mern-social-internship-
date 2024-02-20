@@ -49,7 +49,6 @@ export default function ModalPost() {
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
   const processedPost = posts.filter((post) => post._id === postId);
-  console.log(processedPost);
 
   const inputCommentRef = useRef(null);
 
@@ -61,6 +60,9 @@ export default function ModalPost() {
     description: "",
     picturePath: "",
   });
+
+  console.log(dataPost);
+  console.log(processedPost);
 
   const handleSubmit = () => {
     if (isCreatePost) {
@@ -120,7 +122,7 @@ export default function ModalPost() {
       setInputDescription(processedPost.description);
       setInputFiles(processedPost.picturePath);
     }
-  }, []);
+  }, [isUpdatePost, processedPost.description, processedPost.picturePath]);
 
   useEffect(() => {
     setInputDescription("");

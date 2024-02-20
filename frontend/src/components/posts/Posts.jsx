@@ -15,10 +15,6 @@ export default function Posts() {
   // const queryParams = new URLSearchParams(location.search);
   // const qValue = queryParams.get("q");
 
-  console.log(params);
-  console.log(location);
-  console.log(pageName);
-
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
   // const postsSearch = useSelector(
