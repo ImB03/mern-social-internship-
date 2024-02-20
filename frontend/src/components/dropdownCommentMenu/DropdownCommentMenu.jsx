@@ -13,7 +13,6 @@ import styles from "./dropdownCommentMenu.module.scss";
 import ModalPost from "../modalPost/ModalPost";
 import { MyContext } from "../../hook/context/state";
 import { useDispatch, useSelector } from "react-redux";
-import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 
 export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
   const user = useSelector((state) => state.persistedReducer.slice.userNow);

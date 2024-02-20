@@ -36,22 +36,6 @@ export const getAllPosts = async (req, res, next) => {
   }
 };
 
-export const getOnePost = async (req, res, next) => {
-  const postId = req.params.postId;
-
-  try {
-    const post = await Post.findById(postId);
-
-    post.comments.reverse();
-
-    res.status(200).json(post);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Get post unsuccessfully" });
-    next(err);
-  }
-};
-
 //UPDATE POST
 
 export const updatePost = async (req, res, next) => {

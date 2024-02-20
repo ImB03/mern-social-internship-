@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { ACTION_GET_POST } from "../../reducers/slice/postSlice";
 import { useDispatch } from "react-redux";
 import {
   ACTION_FRIEND_REQUEST,
@@ -17,9 +16,6 @@ export default function PostState({ children }) {
   const [isSearch, setIsSearch] = useState(false);
   const dispatch = useDispatch();
 
-  const handleGetPost = (postId) => {
-    dispatch(ACTION_GET_POST(postId));
-  };
   const handleGetUser = (userId) => {
     dispatch(ACTION_GET_USER(userId));
   };
@@ -41,9 +37,7 @@ export default function PostState({ children }) {
         setIsDetailPost,
         isUpdateUser,
         setIsUpdateUser,
-        handleGetPost,
         handleGetUser,
-
         handleFriendRequest,
         isSearch,
         setIsSearch,

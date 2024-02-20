@@ -26,7 +26,6 @@ export const signin = (dataUser) => API.post("/auth/signin", dataUser);
 
 //POST
 export const getAllPosts = () => API.get(`/post/getallposts`);
-export const getOnePost = (postId) => API.get(`/post/getonepost/${postId}`);
 // export const stripePayment = (dataPayment) => API.post("/payment", dataPayment);
 // export const fetchOnePost = (postId) => API.get(`/posts/${postId}`);
 // export const fetchPostsBySearch = (searchQuery) =>

@@ -11,10 +11,7 @@ const postSlice = createSlice({
   reducers: {
     ACTION_CREATE_POST: (state) => {},
     ACTION_GET_ALL_POSTS: (state) => {},
-    ACTION_GET_POST: (state) => {
-      state.isLoading = true;
-      state.post = {};
-    },
+
     GET_POST: (state, action) => {
       state.post = action.payload.response?.data;
       state.isLoading = false;
@@ -63,7 +60,6 @@ export const {
   ACTION_CREATE_POST,
   ACTION_GET_ALL_POSTS,
   GET_ALL_POSTS,
-  ACTION_GET_POST,
   GET_POST,
   ACTION_UPDATE_POST,
   UPDATE_POST,

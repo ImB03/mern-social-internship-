@@ -5,7 +5,6 @@ import {
   CREATE_POST,
   ACTION_GET_ALL_POSTS,
   GET_ALL_POSTS,
-  ACTION_GET_POST,
   GET_POST,
   UPDATE_POST,
   ACTION_UPDATE_POST,
@@ -20,7 +19,6 @@ import {
 } from "../slice/postSlice";
 import {
   createPost,
-  getOnePost,
   getAllPosts,
   updatePost,
   deletePost,
@@ -58,16 +56,6 @@ function* GetAllPosts(action) {
     );
   } catch (error) {
     yield put(SET_POSTS({ response: error.response }));
-    console.log(error);
-  }
-}
-
-function* GetOnePost(action) {
-  try {
-    const response = yield call(() => getOnePost(action.payload));
-    yield put(GET_POST({ response }));
-  } catch (error) {
-    yield put(GET_POST({ response: error.response }));
     console.log(error);
   }
 }
@@ -158,7 +146,6 @@ function* LikePost(action) {
 function* PostSaga() {
   yield takeEvery(ACTION_CREATE_POST, CreatePost);
   yield takeEvery(ACTION_GET_ALL_POSTS, GetAllPosts);
-  yield takeEvery(ACTION_GET_POST, GetOnePost);
   yield takeEvery(ACTION_UPDATE_POST, UpdatePost);
   yield takeEvery(ACTION_DELETE_POST, DeletePost);
   yield takeEvery(ACTION_COMMENT_POST, CommentPost);
