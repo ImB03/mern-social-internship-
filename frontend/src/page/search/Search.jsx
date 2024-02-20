@@ -24,7 +24,6 @@ import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 export default function Search() {
   const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
     useContext(MyContext);
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
   const dispatch = useDispatch();
   const location = useLocation();
   const params = useParams();

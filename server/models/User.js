@@ -8,7 +8,7 @@ const UserSchema = mongoose.Schema(
     friends: { type: Array, default: [] },
     friendRequest: { type: Array, default: [] },
     notification: { type: Array, default: [] },
-    avatarUser: { type: String, default: "" },
+    userAvatar: { type: String, default: "" },
     coverAvatar: { type: String, default: "" },
     provinceCity: { type: String, default: "" },
     workplace: { type: String, default: "" },

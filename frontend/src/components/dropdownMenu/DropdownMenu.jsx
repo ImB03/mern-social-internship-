@@ -15,10 +15,9 @@ import { MyContext } from "../../hook/context/state";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function DropdownMenu({ setIsDropdownMenu, post }) {
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
-  const { setIsUpdatePost, setPostId, setIsDeletePost } =
-    useContext(MyContext);
+  const { setIsUpdatePost, setPostId, setIsDeletePost } = useContext(MyContext);
   const dispatch = useDispatch();
 
   return (
@@ -38,7 +37,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
             </div>
             <div className={`${styles.name}`}>Save post</div>
           </div>
-          {post.creator === user._id ? (
+          {post.creatorId === userNow._id ? (
             <div
               onClick={() => {
                 setIsDropdownMenu(false);
@@ -71,7 +70,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               </div>
             </div>
           )}
-          {post.creator === user._id && (
+          {post.creatorId === userNow._id && (
             <div
               onClick={() => {
                 setPostId(post._id);
@@ -88,7 +87,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               <div className={`${styles.name}`}>Update post</div>
             </div>
           )}
-          {post.creator !== user._id && (
+          {post.creatorId !== userNow._id && (
             <>
               <div
                 onClick={() => {
@@ -150,7 +149,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               </div>
             </>
           )}
-          {post.creator === user._id && (
+          {post.creatorId === userNow._id && (
             <div
               onClick={() => {
                 setPostId(post._id);

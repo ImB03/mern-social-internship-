@@ -33,7 +33,6 @@ import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
 export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const [displayInputProvinceCity, setDisplayInputProvinceCity] =
     useState(false);
@@ -51,7 +50,7 @@ export default function ModalUser() {
   const [dataInputCoverAvatar, setDataInputCoverAvatar] = useState("");
 
   const [dataUser, setDataUser] = useState({
-    avatarUser: "",
+    userAvatar: "",
     coverAvatar: "",
     provinceCity: "",
     workplace: "",
@@ -121,7 +120,7 @@ export default function ModalUser() {
   useEffect(() => {
     setDataUser({
       ...dataUser,
-      avatarUser: dataInputAvatarUser,
+      userAvatar: dataInputAvatarUser,
       coverAvatar: dataInputCoverAvatar,
       provinceCity: dataInputProvinceCity,
       workplace: dataInputWorkplace,

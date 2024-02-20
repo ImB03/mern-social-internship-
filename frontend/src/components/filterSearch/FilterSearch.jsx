@@ -22,7 +22,6 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import BackupTableOutlinedIcon from "@mui/icons-material/BackupTableOutlined";
 
 export default function FilterSearch() {
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const qValue = queryParams.get("q");

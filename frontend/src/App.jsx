@@ -18,7 +18,7 @@ import ModalUser from "./components/modalUser/ModalUser";
 import Search from "./page/search/Search";
 
 function App() {
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
 
   const {
@@ -47,7 +47,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/auth" element={<Auth />} />
-        <Route element={user ? <MainLayout /> : <Navigate to="/auth" />}>
+        <Route element={userNow ? <MainLayout /> : <Navigate to="/auth" />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/search/:typeState" element={<Search />} />

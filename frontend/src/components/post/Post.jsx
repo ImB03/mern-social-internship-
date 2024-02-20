@@ -17,7 +17,7 @@ export default function Post({ post }) {
   const [isDropdownMenu, setIsDropdownMenu] = useState(false);
   const { setIsDetailPost, setPostId } = useContext(MyContext);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const handleLike = () => {
     dispatch(ACTION_LIKE_POST(post._id));
@@ -79,7 +79,7 @@ export default function Post({ post }) {
           >
             {/* <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} /> */}
 
-            {post?.likes?.includes(user._id) ? (
+            {post?.likes?.includes(userNow._id) ? (
               <FavoriteIcon className={`${styles.icon} me-2`} />
             ) : (
               <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} />

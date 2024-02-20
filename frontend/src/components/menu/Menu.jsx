@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
 
 export default function Menu() {
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const Menu = [
     { img: Friends, name: "Friends" },
@@ -41,7 +41,7 @@ export default function Menu() {
     <div className={`${styles.menu} mt-3`}>
       <div className="container-fluid p-0">
         <Link
-          to={`/profile/${user._id}`}
+          to={`/profile/${userNow._id}`}
           className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
         >
           <img
@@ -49,7 +49,7 @@ export default function Menu() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wTSQmZNeyfJ1GNYRHZjCpYLN6ul8o5R0kg&usqp=CAU"
             alt=""
           />
-          <div className={`${styles.userName}`}>{user.userName}</div>
+          <div className={`${styles.userName}`}>{userNow.userName}</div>
         </Link>
         {Menu.map((item) => (
           <div

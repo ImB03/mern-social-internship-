@@ -44,7 +44,7 @@ export default function ModalPost() {
     setIsDetailPost,
     postId,
   } = useContext(MyContext);
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
   // const post = useSelector((state) => state.persistedReducer.post.post);
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
@@ -118,11 +118,11 @@ export default function ModalPost() {
   }, [inputDescription, inputFiles]);
 
   useEffect(() => {
-    if (isUpdatePost === true) {
+    if (isUpdatePost) {
       setInputDescription(processedPost.description);
       setInputFiles(processedPost.picturePath);
     }
-  }, [isUpdatePost, processedPost.description, processedPost.picturePath]);
+  }, [processedPost]);
 
   useEffect(() => {
     setInputDescription("");
@@ -223,7 +223,7 @@ export default function ModalPost() {
                 alt=""
               />
               <div>
-                <div className={`${styles.userName}`}>{user.userName}</div>
+                <div className={`${styles.userName}`}>{userNow.userName}</div>
                 <div
                   className={`${styles.statePost} justify-content-between d-flex align-items-center`}
                 >
@@ -245,7 +245,7 @@ export default function ModalPost() {
               rows="2"
               cols="50"
               className={`${styles.inputText}`}
-              placeholder={`${user.userName}, what in your mind?`}
+              placeholder={`${userNow.userName}, what in your mind?`}
               value={inputDescription}
             />
             <div className={`${styles.inputFile} mt-3 p-2`}>
@@ -368,7 +368,7 @@ export default function ModalPost() {
                   onClick={() => handleLike()}
                   className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
                 >
-                  {processedPost?.likes?.includes(user._id) ? (
+                  {processedPost?.likes?.includes(userNow._id) ? (
                     <FavoriteIcon className={`${styles.icon} me-2`} />
                   ) : (
                     <FavoriteBorderOutlinedIcon

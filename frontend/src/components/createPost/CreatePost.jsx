@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 export default function CreatePost() {
   const { setIsCreatePost } = useContext(MyContext);
-  const user = useSelector((state) => state.persistedReducer.slice.userNow);
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
   return (
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
@@ -27,7 +27,7 @@ export default function CreatePost() {
             }}
             className={`${styles.createPostBtn} px-3 d-flex align-items-center`}
           >
-            What's on your mind, {user.userName} ?
+            What's on your mind, {userNow.userName} ?
           </div>
         </div>
         <hr className={`${styles.hr} my-3`} />
