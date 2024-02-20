@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function DropdownMenu({ setIsDropdownMenu, post }) {
   const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
-  const { setIsUpdatePost, handleGetPost, setIsDeletePost } =
+  const { setIsUpdatePost, setPostId, setIsDeletePost } =
     useContext(MyContext);
   const dispatch = useDispatch();
 
@@ -74,7 +74,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
           {post.creator === user._id && (
             <div
               onClick={() => {
-                handleGetPost(post._id);
+                setPostId(post._id);
                 setIsDropdownMenu(false);
                 setIsUpdatePost(true);
               }}
@@ -153,7 +153,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
           {post.creator === user._id && (
             <div
               onClick={() => {
-                handleGetPost(post._id);
+                setPostId(post._id);
                 setIsDropdownMenu(false);
                 setIsDeletePost(true);
               }}

@@ -46,6 +46,8 @@ export default function ModalPost() {
   const user = useSelector((state) => state.persistedReducer.slice.userNow);
   const post = useSelector((state) => state.persistedReducer.post.post);
 
+  
+
   const inputCommentRef = useRef(null);
 
   const dispatch = useDispatch();

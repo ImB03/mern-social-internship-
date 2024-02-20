@@ -18,7 +18,7 @@ export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
   const user = useSelector((state) => state.persistedReducer.slice.userNow);
   const post = useSelector((state) => state.persistedReducer.post.post);
 
-  const { setIsUpdatePost, handleGetPost, setIsDeletePost } =
+  const { setIsUpdatePost, setIsDeletePost } =
     useContext(MyContext);
   const dispatch = useDispatch();
 
@@ -75,7 +75,7 @@ export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
           {post.creator === user._id && (
             <div
               onClick={() => {
-                handleGetPost(post._id);
+                // handleGetPost(post._id);
                 setIsDropdownCommentMenu(false);
                 setIsUpdatePost(true);
               }}
@@ -154,7 +154,7 @@ export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
           {post.creator === user._id && (
             <div
               onClick={() => {
-                handleGetPost(post._id);
+                // handleGetPost(post._id);
                 setIsDropdownCommentMenu(false);
                 setIsDeletePost(true);
               }}

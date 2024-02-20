@@ -15,7 +15,7 @@ import { ACTION_LIKE_POST } from "../../reducers/slice/postSlice";
 
 export default function Post({ post }) {
   const [isDropdownMenu, setIsDropdownMenu] = useState(false);
-  const { setIsDetailPost, handleGetPost } = useContext(MyContext);
+  const { setIsDetailPost, setPostId } = useContext(MyContext);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.persistedReducer.slice.userNow);
 
@@ -91,7 +91,7 @@ export default function Post({ post }) {
           </div>
           <div
             onClick={() => {
-              handleGetPost(post._id);
+              setPostId(post._id);
               setIsDetailPost(true);
             }}
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
