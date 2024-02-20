@@ -42,11 +42,14 @@ export default function ModalPost() {
     setIsDeletePost,
     isDetailPost,
     setIsDetailPost,
+    postId,
   } = useContext(MyContext);
   const user = useSelector((state) => state.persistedReducer.slice.userNow);
-  const post = useSelector((state) => state.persistedReducer.post.post);
+  // const post = useSelector((state) => state.persistedReducer.post.post);
+  const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
-  
+  const processedPost = posts.filter((post) => post._id === postId);
+  console.log(processedPost);
 
   const inputCommentRef = useRef(null);
 
@@ -70,7 +73,7 @@ export default function ModalPost() {
     } else if (isUpdatePost) {
       dispatch(
         ACTION_UPDATE_POST({
-          postId: post._id,
+          postId: postId,
           dataPost,
           setIsUpdatePost,
         })
@@ -78,7 +81,7 @@ export default function ModalPost() {
     } else if (isDeletePost) {
       dispatch(
         ACTION_DELETE_POST({
-          postId: post._id,
+          postId: postId,
           setIsDeletePost,
         })
       );
@@ -90,13 +93,13 @@ export default function ModalPost() {
       ACTION_COMMENT_POST({
         dataComment: inputComment,
         setInputComment,
-        postId: post._id,
+        postId: postId,
       })
     );
   };
 
   const handleLike = () => {
-    dispatch(ACTION_LIKE_POST(post._id));
+    dispatch(ACTION_LIKE_POST(postId));
   };
 
   const handleCommentButtonClick = () => {
@@ -113,11 +116,11 @@ export default function ModalPost() {
   }, [inputDescription, inputFiles]);
 
   useEffect(() => {
-    if (setIsUpdatePost) {
-      setInputDescription(post.description);
-      setInputFiles(post.picturePath);
+    if (isUpdatePost === true) {
+      setInputDescription(processedPost.description);
+      setInputFiles(processedPost.picturePath);
     }
-  }, [post]);
+  }, []);
 
   useEffect(() => {
     setInputDescription("");
@@ -308,7 +311,7 @@ export default function ModalPost() {
               className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
             >
               <div className={`${styles.title}`}>
-                Article by {post.creatorName}
+                Article by {processedPost.creatorName}
               </div>
               <div
                 onClick={() => {
@@ -332,7 +335,9 @@ export default function ModalPost() {
                   alt=""
                 />
                 <div>
-                  <div className={`${styles.userName}`}>{post.creatorName}</div>
+                  <div className={`${styles.userName}`}>
+                    {processedPost.creatorName}
+                  </div>
                   <div
                     className={`${styles.statePost} d-flex align-items-center`}
                   >
@@ -343,7 +348,7 @@ export default function ModalPost() {
                 </div>
               </div>
               <div className={`${styles.descriptionPost}`}>
-                {post.description}
+                {processedPost.description}
               </div>
               <div className={`${styles.picturePost} mt-3`}>
                 <img
@@ -361,7 +366,7 @@ export default function ModalPost() {
                   onClick={() => handleLike()}
                   className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
                 >
-                  {post?.likes?.includes(user._id) ? (
+                  {processedPost?.likes?.includes(user._id) ? (
                     <FavoriteIcon className={`${styles.icon} me-2`} />
                   ) : (
                     <FavoriteBorderOutlinedIcon
@@ -369,7 +374,7 @@ export default function ModalPost() {
                     />
                   )}
                   <div className={`${styles.nameInteract}`}>
-                    {post.likes?.length} Likes
+                    {processedPost.likes?.length} Likes
                   </div>
                 </div>
                 <div
@@ -390,7 +395,7 @@ export default function ModalPost() {
               </div>
 
               <div className={`${styles.commentPart}`}>
-                {post?.comments?.map((comment) => (
+                {processedPost?.comments?.map((comment) => (
                   <ItemComment comment={comment} />
                 ))}
               </div>
