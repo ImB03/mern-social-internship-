@@ -76,12 +76,10 @@ function* UpdatePost(action) {
 function* DeletePost(action) {
   try {
     const response = yield call(() => deletePost(action.payload.postId));
-    yield put(
-      DELETE_POST({ response, setIsDeletePost: action.payload.setIsDeletePost })
-    );
+    yield put(SET_POSTS({ response }));
   } catch (error) {
     yield put(
-      DELETE_POST({
+      SET_POSTS({
         response: error.response,
       })
     );

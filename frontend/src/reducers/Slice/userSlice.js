@@ -26,7 +26,6 @@ const userSlice = createSlice({
       action.payload?.setIsUpdateUser(false);
       state.isLoading = false;
     },
-    // REFRESH_USER: (state, action) => {},
     ACTION_FRIEND_REQUEST: (state) => {
       state.isLoading = true;
     },

@@ -11,19 +11,9 @@ const postSlice = createSlice({
   reducers: {
     ACTION_CREATE_POST: (state) => {},
     ACTION_GET_ALL_POSTS: (state) => {},
-    ACTION_UPDATE_POST: (state) => {
-      state.isLoading = true;
-    },
+    ACTION_UPDATE_POST: (state) => {},
+    ACTION_DELETE_POST: (state) => {},
 
-    ACTION_DELETE_POST: (state) => {
-      state.isLoading = true;
-    },
-    DELETE_POST: (state, action) => {
-      alert(action.payload.response?.data.message);
-      state.response = action.payload.response;
-      action.payload?.setIsDeletePost(false);
-      state.isLoading = false;
-    },
     ACTION_COMMENT_POST: (state) => {
       state.isLoading = true;
     },
@@ -51,7 +41,6 @@ export const {
   GET_ALL_POSTS,
   ACTION_UPDATE_POST,
   ACTION_DELETE_POST,
-  DELETE_POST,
   ACTION_COMMENT_POST,
   COMMENT_POST,
   ACTION_LIKE_POST,

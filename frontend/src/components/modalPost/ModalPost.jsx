@@ -79,9 +79,9 @@ export default function ModalPost() {
       dispatch(
         ACTION_DELETE_POST({
           postId: postId,
-          setIsDeletePost,
         })
       );
+      setIsDeletePost(false);
     }
   };
 

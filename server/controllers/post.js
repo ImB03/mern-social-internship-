@@ -92,7 +92,9 @@ export const deletePost = async (req, res, next) => {
   try {
     await Post.findByIdAndRemove(postId);
 
-    res.status(200).json({ message: "Delete post successfully" });
+    const posts = await Post.find().sort({ _id: -1 });
+
+    res.status(200).json(posts);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Delete post unsuccessfully" });
