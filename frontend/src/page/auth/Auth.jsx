@@ -6,9 +6,10 @@ import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
-  const isLoading = useSelector(
-    (state) => state.persistedReducer.auth.isLoading
+  const response = useSelector(
+    (state) => state.persistedReducer.slice.response
   );
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function Auth() {
   const [dataUser, setDataUser] = useState({});
 
   console.log(dataUser);
+  console.log(response);
 
   const getDataUser = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
@@ -24,9 +26,13 @@ export default function Auth() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      dispatch(ACTION_SIGNUP({ dataUser, setIsSignup }));
+      dispatch(ACTION_SIGNUP({ dataUser }));
+      if (response?.status === 200) {
+      }
     } else {
-      dispatch(ACTION_SIGNIN({ dataUser, navigate }));
+      dispatch(ACTION_SIGNIN({ dataUser }));
+      if (response?.status === 200) {
+      }
     }
   };
 
@@ -46,6 +52,16 @@ export default function Auth() {
       }
     }
   };
+
+  useEffect(() => {
+    if (response && response.status === 200) {
+      if (isSignup) {
+        setIsSignup(false);
+      } else if (userNow) {
+        navigate("/");
+      }
+    }
+  }, [response, navigate, userNow]);
 
   return (
     <div
@@ -98,7 +114,7 @@ export default function Auth() {
                   type="text"
                   placeholder="Your name"
                   name="userName"
-                  // value={dataUser.userName}
+                  value={dataUser.userName || ""}
                   onKeyDown={handleKeyPress}
                 />
               )}
@@ -108,7 +124,7 @@ export default function Auth() {
                 type="email"
                 placeholder="Your email"
                 name="email"
-                // value={dataUser.useremail}
+                value={dataUser.email || ""}
                 onKeyDown={handleKeyPress}
               />
               <input
@@ -118,8 +134,7 @@ export default function Auth() {
                 placeholder="Your password"
                 name="password"
                 onKeyDown={handleKeyPress}
-
-                // value={dataUser.userpassword}
+                value={dataUser.password || ""}
               />
               <button
                 // className={`${styles.btn} ${isLoading && styles.disabled}`}
