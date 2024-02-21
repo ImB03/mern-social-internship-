@@ -59,6 +59,7 @@ export default function ModalPost() {
     picturePath: "",
   });
 
+  
   const handleSubmit = () => {
     if (isCreatePost) {
       dispatch(
