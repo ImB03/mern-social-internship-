@@ -136,9 +136,7 @@ export const likePost = async (req, res, next) => {
 
     updatedPost.comments.reverse();
 
-    const posts = await Post.find().sort({ _id: -1 });
-
-    res.status(200).json({ post: updatedPost, posts });
+    res.status(200).json(updatedPost);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Like post unsuccessfully" });

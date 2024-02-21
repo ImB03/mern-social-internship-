@@ -106,19 +106,10 @@ function* CommentPost(action) {
 function* LikePost(action) {
   try {
     const response = yield call(() => likePost(action.payload));
-    yield put(
-      LIKE_POST({
-        response,
-      })
-    );
-    yield put(
-      REFRESH_SEARCH({
-        response,
-      })
-    );
+    yield put(SET_POST({ response, postId: action.payload }));
   } catch (error) {
     yield put(
-      LIKE_POST({
+      SET_POST({
         response: error.response,
       })
     );

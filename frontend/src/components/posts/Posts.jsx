@@ -16,6 +16,7 @@ export default function Posts() {
   // const qValue = queryParams.get("q");
 
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
+  console.log(posts);
 
   // const postsSearch = useSelector(
   //   (state) => state.persistedReducer.search.posts

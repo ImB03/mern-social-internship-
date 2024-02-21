@@ -20,12 +20,7 @@ const postSlice = createSlice({
     ACTION_LIKE_POST: (state) => {
       state.isLoading = true;
     },
-    LIKE_POST: (state, action) => {
-      state.response = action.payload.response;
-      state.post = action.payload.response?.data?.post;
-      state.posts = action.payload.response?.data?.posts;
-      state.isLoading = false;
-    },
+
   },
 });
 
@@ -37,7 +32,7 @@ export const {
   ACTION_DELETE_POST,
   ACTION_COMMENT_POST,
   ACTION_LIKE_POST,
-  LIKE_POST,
+
 } = postSlice.actions;
 
 export default postSlice.reducer;

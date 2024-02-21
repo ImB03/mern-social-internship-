@@ -70,7 +70,7 @@ export default function ModalPost() {
     } else if (isUpdatePost) {
       dispatch(
         ACTION_UPDATE_POST({
-          postId: postId,
+          postId,
           dataPost,
         })
       );
@@ -78,7 +78,7 @@ export default function ModalPost() {
     } else if (isDeletePost) {
       dispatch(
         ACTION_DELETE_POST({
-          postId: postId,
+          postId,
         })
       );
       setIsDeletePost(false);
@@ -89,7 +89,7 @@ export default function ModalPost() {
     dispatch(
       ACTION_COMMENT_POST({
         dataComment: inputComment,
-        postId: postId,
+        postId,
       })
     );
     setInputComment("");
