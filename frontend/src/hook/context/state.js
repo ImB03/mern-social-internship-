@@ -17,10 +17,6 @@ export default function PostState({ children }) {
   const [postId, setPostId] = useState("");
   const dispatch = useDispatch();
 
-  const handleGetUser = (userId) => {
-    dispatch(ACTION_GET_USER(userId));
-  };
-
   const handleFriendRequest = (userId) => {
     dispatch(ACTION_FRIEND_REQUEST(userId));
   };
@@ -38,7 +34,7 @@ export default function PostState({ children }) {
         setIsDetailPost,
         isUpdateUser,
         setIsUpdateUser,
-        handleGetUser,
+
         handleFriendRequest,
         isSearch,
         setIsSearch,

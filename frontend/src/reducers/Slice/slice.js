@@ -12,25 +12,18 @@ const slice = createSlice({
   },
   reducers: {
     SIGNUP: (state, action) => {
-      // alert(action.payload.response?.data.message);
       state.response = action.payload.response;
-      // if (action.payload.response?.status === 200) {
-      //   action.payload.setIsSignup((prev) => !prev);
-      // }
       state.isLoading = false;
     },
     SIGNIN: (state, action) => {
-      // alert(action.payload.response?.data.message);
       state.response = action.payload.response;
       if (action.payload.response?.status === 200) {
         state.token = action.payload.response?.data.user?.token;
-
         state.userNow = action.payload.response?.data.user;
         localStorage.setItem(
           "token",
           JSON.stringify(action.payload.response?.data.user?.token)
         );
-        // action.payload.navigate("/");
       }
       state.isLoading = false;
     },

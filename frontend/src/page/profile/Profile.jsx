@@ -28,12 +28,8 @@ export default function Profile() {
     isDeletePost,
     isDetailPost,
     isUpdateUser,
-    handleGetUser,
   } = useContext(MyContext);
 
-  useEffect(() => {
-    handleGetUser(userId);
-  }, [userId, isUpdateUser]);
 
   return (
     <div className={`${styles.profile}`}>
