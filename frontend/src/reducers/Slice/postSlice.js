@@ -16,12 +16,7 @@ const postSlice = createSlice({
     ACTION_COMMENT_POST: (state) => {
       state.isLoading = true;
     },
-    COMMENT_POST: (state, action) => {
-      state.response = action.payload.response;
-      state.post = action.payload.response?.data;
-      action.payload?.setInputComment("");
-      state.isLoading = false;
-    },
+
     ACTION_LIKE_POST: (state) => {
       state.isLoading = true;
     },
@@ -41,7 +36,6 @@ export const {
   ACTION_UPDATE_POST,
   ACTION_DELETE_POST,
   ACTION_COMMENT_POST,
-  COMMENT_POST,
   ACTION_LIKE_POST,
   LIKE_POST,
 } = postSlice.actions;

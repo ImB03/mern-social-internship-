@@ -89,10 +89,10 @@ export default function ModalPost() {
     dispatch(
       ACTION_COMMENT_POST({
         dataComment: inputComment,
-        setInputComment,
         postId: postId,
       })
     );
+    setInputComment("");
   };
 
   const handleLike = () => {

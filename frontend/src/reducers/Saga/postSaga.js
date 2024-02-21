@@ -5,8 +5,6 @@ import {
   ACTION_GET_ALL_POSTS,
   ACTION_UPDATE_POST,
   ACTION_DELETE_POST,
-  DELETE_POST,
-  COMMENT_POST,
   ACTION_COMMENT_POST,
   LIKE_POST,
   ACTION_LIKE_POST,
@@ -94,15 +92,10 @@ function* CommentPost(action) {
     const response = yield call(() =>
       commentPost(action.payload.dataComment, action.payload.postId)
     );
-    yield put(
-      COMMENT_POST({
-        response,
-        setInputComment: action.payload.setInputComment,
-      })
-    );
+    yield put(SET_POST({ response, postId: action.payload.postId }));
   } catch (error) {
     yield put(
-      COMMENT_POST({
+      SET_POST({
         response: error.response,
       })
     );
