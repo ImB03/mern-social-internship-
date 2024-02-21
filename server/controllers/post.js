@@ -7,7 +7,7 @@ export const createPost = async (req, res, next) => {
     const { description, picturePath } = req.body;
 
     const newPost = new Post({
-      creatorId: req.user.userId,
+      creatorId: req.user._id,
       description,
       picturePath,
     });
@@ -63,9 +63,7 @@ export const commentPost = async (req, res, next) => {
     const post = await Post.findById(postId);
 
     post.comments.push({
-      userId: req.user.userId,
-      userName: req.user.userName,
-      userPicturePath: req.user.userPicturePath,
+      userId: req.user._id,
       userComment: dataComment,
       commentAt: "",
     });
@@ -116,7 +114,7 @@ export const deletePost = async (req, res, next) => {
 export const likePost = async (req, res, next) => {
   try {
     const postId = req.params.postId;
-    const userId = req.user.userId;
+    const userId = req.user._id;
 
     const post = await Post.findById(postId);
 

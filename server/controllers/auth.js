@@ -6,11 +6,7 @@ import User from "../models/user.js";
 // SIGNUP
 export const signup = async (req, res, next) => {
   try {
-    const {
-      userName,
-      email,
-      password,
-    } = req.body;
+    const { userName, email, password } = req.body;
 
     const user = await User.findOne({ email: email });
     if (user) {
@@ -48,17 +44,11 @@ export const signin = async (req, res, next) => {
       return res.status(400).json({ message: "Invalid credentials!" });
     }
 
-    const token = jwt.sign(
-      {
-        userId: user._id,
-      },
-      process.env.JWT_SECRET_KEY,
-      {
-        expiresIn: "2h",
-      }
-    );
-
     delete user._doc.password;
+
+    const token = jwt.sign({ ...user._doc }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "2h",
+    });
 
     res.status(200).json({
       user: { ...user._doc, token },

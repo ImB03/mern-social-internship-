@@ -39,7 +39,7 @@ export const getOneUser = async (req, res, next) => {
 // /* UPDATE */
 export const updateUser = async (req, res, next) => {
   const dataUser = req.body;
-  const userId = req.user.userId;
+  const userId = req.user._id;
 
   try {
     await User.findByIdAndUpdate(userId, dataUser, {
@@ -56,7 +56,7 @@ export const updateUser = async (req, res, next) => {
 
 // /* FRIEND REQUEST */
 export const friendRequest = async (req, res, next) => {
-  const userId = req.user.userId;
+  const userId = req.user._id;
   const friendId = req.params.userId;
 
   console.log(userId);
