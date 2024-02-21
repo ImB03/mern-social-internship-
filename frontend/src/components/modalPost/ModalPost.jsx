@@ -105,7 +105,7 @@ export default function ModalPost() {
   };
 
   useEffect(() => {
-    setProcessedPost(posts.filter((post) => post._id === postId)[0]);
+    setProcessedPost(posts.find((post) => post._id === postId));
   }, [postId, posts]);
 
   useEffect(() => {
