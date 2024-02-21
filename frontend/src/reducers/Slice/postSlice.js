@@ -13,7 +13,6 @@ const postSlice = createSlice({
     ACTION_GET_ALL_POSTS: (state) => {},
     ACTION_UPDATE_POST: (state) => {},
     ACTION_DELETE_POST: (state) => {},
-
     ACTION_COMMENT_POST: (state) => {
       state.isLoading = true;
     },
