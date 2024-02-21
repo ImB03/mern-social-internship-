@@ -14,12 +14,7 @@ const postSlice = createSlice({
     ACTION_UPDATE_POST: (state) => {
       state.isLoading = true;
     },
-    UPDATE_POST: (state, action) => {
-      alert(action.payload.response?.data.message);
-      state.response = action.payload.response;
-      action.payload?.setIsUpdatePost(false);
-      state.isLoading = false;
-    },
+
     ACTION_DELETE_POST: (state) => {
       state.isLoading = true;
     },
@@ -55,7 +50,6 @@ export const {
   ACTION_GET_ALL_POSTS,
   GET_ALL_POSTS,
   ACTION_UPDATE_POST,
-  UPDATE_POST,
   ACTION_DELETE_POST,
   DELETE_POST,
   ACTION_COMMENT_POST,

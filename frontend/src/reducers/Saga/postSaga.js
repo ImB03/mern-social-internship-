@@ -2,11 +2,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 
 import {
   ACTION_CREATE_POST,
-  CREATE_POST,
   ACTION_GET_ALL_POSTS,
-  GET_ALL_POSTS,
-  GET_POST,
-  UPDATE_POST,
   ACTION_UPDATE_POST,
   ACTION_DELETE_POST,
   DELETE_POST,
@@ -14,8 +10,6 @@ import {
   ACTION_COMMENT_POST,
   LIKE_POST,
   ACTION_LIKE_POST,
-  GET_ALL_POSTS_USER,
-  ACTION_GET_ALL_POSTS_USER,
 } from "../slice/postSlice";
 import {
   createPost,
@@ -26,7 +20,7 @@ import {
   likePost,
 } from "../../api";
 import { REFRESH_SEARCH } from "../slice/searchSlice";
-import { SET_POSTS } from "../slice/slice";
+import { SET_POST, SET_POSTS } from "../slice/slice";
 
 // CREATE POST
 function* CreatePost(action) {
@@ -66,12 +60,10 @@ function* UpdatePost(action) {
     const response = yield call(() =>
       updatePost(action.payload.postId, action.payload.dataPost)
     );
-    yield put(
-      UPDATE_POST({ response, setIsUpdatePost: action.payload.setIsUpdatePost })
-    );
+    yield put(SET_POST({ response, postId: action.payload.postId }));
   } catch (error) {
     yield put(
-      UPDATE_POST({
+      SET_POST({
         response: error.response,
       })
     );

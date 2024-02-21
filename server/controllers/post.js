@@ -43,11 +43,11 @@ export const updatePost = async (req, res, next) => {
   const dataPost = req.body;
 
   try {
-    await Post.findByIdAndUpdate(postId, dataPost, {
+    const updatedPost = await Post.findByIdAndUpdate(postId, dataPost, {
       new: true,
     });
 
-    res.status(200).json({ message: "Update post successfully" });
+    res.status(200).json(updatedPost);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Update post unsuccessfully" });

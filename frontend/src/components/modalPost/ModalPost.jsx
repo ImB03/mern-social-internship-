@@ -59,7 +59,6 @@ export default function ModalPost() {
     picturePath: "",
   });
 
-  
   const handleSubmit = () => {
     if (isCreatePost) {
       dispatch(
@@ -73,9 +72,9 @@ export default function ModalPost() {
         ACTION_UPDATE_POST({
           postId: postId,
           dataPost,
-          setIsUpdatePost,
         })
       );
+      setIsUpdatePost(false);
     } else if (isDeletePost) {
       dispatch(
         ACTION_DELETE_POST({

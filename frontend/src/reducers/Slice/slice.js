@@ -49,6 +49,13 @@ const slice = createSlice({
       state.isLoading = false;
     },
     SET_POST: (state, action) => {
+      state.posts = state.posts.map((post) => {
+        if (post._id === action.payload.postId) {
+          return action.payload.response?.data;
+        } else {
+          return post;
+        }
+      });
       state.isLoading = false;
     },
     SET_USER: (state, action) => {
