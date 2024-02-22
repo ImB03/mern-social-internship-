@@ -100,7 +100,6 @@ export default function InfoUser() {
   const user = useSelector((state) => state.persistedReducer.slice.user);
   const { setIsUpdateUser } = useContext(MyContext);
 
-  console.log(user);
 
   return (
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>

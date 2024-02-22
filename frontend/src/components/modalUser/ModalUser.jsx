@@ -21,6 +21,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
+import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 
 import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
@@ -34,19 +35,34 @@ export default function ModalUser() {
   const { setIsUpdateUser } = useContext(MyContext);
   const dispatch = useDispatch();
 
-  const [displayInputProvinceCity, setDisplayInputProvinceCity] =
-    useState(false);
-  const [displayInputWorkplace, setDisplayInputWorkplace] = useState(false);
-  const [displayInputSchool, setDisplayInputSchool] = useState(false);
-  const [displayInputHomeTown, setDisplayInputHomeTown] = useState(false);
-  const [displayInputNickname, setDisplayInputNickname] = useState(false);
+  const user = useSelector((state) => state.persistedReducer.slice.user);
+
+  const [displayInputProvinceCity, setDisplayInputProvinceCity] = useState(
+    user.provinceCity === "" ? false : true
+  );
+  const [displayInputWorkplace, setDisplayInputWorkplace] = useState(
+    user.workplace === "" ? false : true
+  );
+  const [displayInputSchool, setDisplayInputSchool] = useState(
+    user.school === "" ? false : true
+  );
+  const [displayInputHomeTown, setDisplayInputHomeTown] = useState(
+    user.homeTown === "" ? false : true
+  );
+  const [displayInputUserName, setDisplayInputUserName] = useState(
+    user.userName === "" ? false : true
+  );
+  const [displayInputNickname, setDisplayInputNickname] = useState(
+    user.nickname === "" ? false : true
+  );
 
   const [dataInputProvinceCity, setDataInputProvinceCity] = useState("");
   const [dataInputWorkplace, setDataInputWorkplace] = useState("");
   const [dataInputSchool, setDataInputSchool] = useState("");
   const [dataInputHomeTown, setDataInputHomeTown] = useState("");
+  const [dataInputUserName, setDataInputUserName] = useState("");
   const [dataInputNickname, setDataInputNickname] = useState("");
-  const [dataInputAvatarUser, setDataInputAvatarUser] = useState("");
+  const [dataInputUserAvatar, setDataInputUserAvatar] = useState("");
   const [dataInputCoverAvatar, setDataInputCoverAvatar] = useState("");
 
   const [dataUser, setDataUser] = useState({
@@ -56,6 +72,7 @@ export default function ModalUser() {
     workplace: "",
     school: "",
     homeTown: "",
+    userName: "",
     nickname: "",
   });
 
@@ -63,6 +80,7 @@ export default function ModalUser() {
   const inputRefWorkplace = useRef(null);
   const inputRefSchool = useRef(null);
   const inputRefHomeTown = useRef(null);
+  const inputRefUserName = useRef(null);
   const inputRefNickname = useRef(null);
 
   const handleFocusInputProvinceCity = () => {
@@ -85,6 +103,11 @@ export default function ModalUser() {
       inputRefHomeTown.current.focus();
     }
   };
+  const handleFocusInputUserName = () => {
+    if (displayInputUserName && inputRefUserName.current) {
+      inputRefUserName.current.focus();
+    }
+  };
   const handleFocusInputNickname = () => {
     if (displayInputNickname && inputRefNickname.current) {
       inputRefNickname.current.focus();
@@ -92,40 +115,35 @@ export default function ModalUser() {
   };
 
   useEffect(() => {
-    if (displayInputProvinceCity && inputRefProvinceCity.current) {
-      inputRefProvinceCity.current.focus();
-    }
-  }, [displayInputProvinceCity]);
-  useEffect(() => {
-    if (displayInputWorkplace && inputRefWorkplace.current) {
-      inputRefWorkplace.current.focus();
-    }
-  }, [displayInputWorkplace]);
-  useEffect(() => {
-    if (displayInputSchool && inputRefSchool.current) {
-      inputRefSchool.current.focus();
-    }
-  }, [displayInputSchool]);
-  useEffect(() => {
-    if (displayInputHomeTown && inputRefHomeTown.current) {
-      inputRefHomeTown.current.focus();
-    }
-  }, [displayInputHomeTown]);
-  useEffect(() => {
-    if (displayInputNickname && inputRefNickname.current) {
-      inputRefNickname.current.focus();
-    }
-  }, [displayInputNickname]);
+    setDataInputProvinceCity(user.provinceCity);
+    setDataInputWorkplace(user.workplace);
+    setDataInputSchool(user.school);
+    setDataInputHomeTown(user.homeTown);
+    setDataInputUserName(user.userName);
+    setDataInputNickname(user.nickname);
+    setDataInputUserAvatar(user.userAvatar);
+    setDataInputCoverAvatar(user.coverAvatar);
+  }, [
+    user.provinceCity,
+    user.workplace,
+    user.school,
+    user.homeTown,
+    user.userName,
+    user.nickname,
+    user.userAvatar,
+    user.coverAvatar,
+  ]);
 
   useEffect(() => {
     setDataUser({
       ...dataUser,
-      userAvatar: dataInputAvatarUser,
+      userAvatar: dataInputUserAvatar,
       coverAvatar: dataInputCoverAvatar,
       provinceCity: dataInputProvinceCity,
       workplace: dataInputWorkplace,
       school: dataInputSchool,
       homeTown: dataInputHomeTown,
+      userName: dataInputUserName,
       nickname: dataInputNickname,
     });
   }, [
@@ -134,13 +152,37 @@ export default function ModalUser() {
     dataInputSchool,
     dataInputHomeTown,
     dataInputNickname,
-    dataInputAvatarUser,
+    dataInputUserName,
+    dataInputUserAvatar,
     dataInputCoverAvatar,
   ]);
+
+  useEffect(() => {
+    handleFocusInputProvinceCity();
+  }, [displayInputProvinceCity]);
+  useEffect(() => {
+    handleFocusInputWorkplace();
+  }, [displayInputWorkplace]);
+  useEffect(() => {
+    handleFocusInputSchool();
+  }, [displayInputSchool]);
+  useEffect(() => {
+    handleFocusInputHomeTown();
+  }, [displayInputHomeTown]);
+  useEffect(() => {
+    handleFocusInputUserName();
+  }, [displayInputUserName]);
+  useEffect(() => {
+    handleFocusInputNickname();
+  }, [displayInputNickname]);
 
   const handleSubmit = () => {
     dispatch(ACTION_UPDATE_USER({ dataUser, setIsUpdateUser }));
   };
+
+  console.log(user);
+  console.log(dataUser);
+  console.log(dataInputNickname);
 
   return (
     <div
@@ -159,6 +201,9 @@ export default function ModalUser() {
         }
         if (dataInputNickname === "") {
           setDisplayInputNickname(false);
+        }
+        if (dataInputUserName === "") {
+          setDisplayInputUserName(false);
         }
       }}
       className={`${styles.modalUser} position-fixed d-flex justify-content-center align-items-center`}
@@ -197,8 +242,8 @@ export default function ModalUser() {
                     className={`${styles.wrapperInputFile} d-flex justify-content-center align-items-center`}
                   >
                     <DropzoneAvatarUser
-                      dataInputAvatarUser={dataInputAvatarUser}
-                      setDataInputAvatarUser={setDataInputAvatarUser}
+                      dataInputUserAvatar={dataInputUserAvatar}
+                      setDataInputUserAvatar={setDataInputUserAvatar}
                     />
                   </div>
                 </div>
@@ -243,6 +288,9 @@ export default function ModalUser() {
                     if (dataInputNickname === "") {
                       setDisplayInputNickname(false);
                     }
+                    if (dataInputUserName === "") {
+                      setDisplayInputUserName(false);
+                    }
                   }}
                   className={`${styles.itemInput} ${
                     displayInputProvinceCity && "border-bottom"
@@ -270,6 +318,7 @@ export default function ModalUser() {
                       onChange={(e) => {
                         setDataInputProvinceCity(e.target.value);
                       }}
+                      value={dataInputProvinceCity}
                       className={`${styles.input} mb-2`}
                       type="text"
                       name=""
@@ -292,6 +341,9 @@ export default function ModalUser() {
                     }
                     if (dataInputNickname === "") {
                       setDisplayInputNickname(false);
+                    }
+                    if (dataInputUserName === "") {
+                      setDisplayInputUserName(false);
                     }
                   }}
                   className={`${styles.itemInput} ${
@@ -320,6 +372,7 @@ export default function ModalUser() {
                       onChange={(e) => {
                         setDataInputWorkplace(e.target.value);
                       }}
+                      value={dataInputWorkplace}
                       className={`${styles.input} mb-2`}
                       type="text"
                       name=""
@@ -342,6 +395,9 @@ export default function ModalUser() {
                     }
                     if (dataInputNickname === "") {
                       setDisplayInputNickname(false);
+                    }
+                    if (dataInputUserName === "") {
+                      setDisplayInputUserName(false);
                     }
                   }}
                   className={`${styles.itemInput} ${
@@ -370,6 +426,7 @@ export default function ModalUser() {
                       onChange={(e) => {
                         setDataInputSchool(e.target.value);
                       }}
+                      value={dataInputSchool}
                       className={`${styles.input} mb-2`}
                       type="text"
                       name=""
@@ -392,6 +449,9 @@ export default function ModalUser() {
                     }
                     if (dataInputNickname === "") {
                       setDisplayInputNickname(false);
+                    }
+                    if (dataInputUserName === "") {
+                      setDisplayInputUserName(false);
                     }
                   }}
                   className={`${styles.itemInput} ${
@@ -420,6 +480,61 @@ export default function ModalUser() {
                       onChange={(e) => {
                         setDataInputHomeTown(e.target.value);
                       }}
+                      value={dataInputHomeTown}
+                      className={`${styles.input} mb-2`}
+                      type="text"
+                      name=""
+                    />
+                  )}
+                </div>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFocusInputUserName();
+                    setDisplayInputUserName(true);
+                    if (dataInputProvinceCity === "") {
+                      setDisplayInputProvinceCity(false);
+                    }
+                    if (dataInputWorkplace === "") {
+                      setDisplayInputWorkplace(false);
+                    }
+                    if (dataInputSchool === "") {
+                      setDisplayInputSchool(false);
+                    }
+                    if (dataInputHomeTown === "") {
+                      setDisplayInputHomeTown(false);
+                    }
+                    if (dataInputNickname === "") {
+                      setDisplayInputNickname(false);
+                    }
+                  }}
+                  className={`${styles.itemInput} ${
+                    displayInputUserName && "border-bottom"
+                  } ${
+                    !displayInputUserName && "rounded-3"
+                  } px-3 mb-2 d-flex flex-column justify-content-center`}
+                >
+                  <div
+                    className={`${styles.label} ${
+                      !displayInputUserName && "fs-6"
+                    } ${
+                      displayInputUserName && "mt-2"
+                    } d-flex align-items-center`}
+                  >
+                    <DriveFileRenameOutlineOutlinedIcon
+                      className={`${styles.icon} ${
+                        !displayInputUserName && "fs-4 me-2"
+                      } ${displayInputUserName && "me-1"}`}
+                    />
+                    Your name
+                  </div>
+                  {displayInputUserName && (
+                    <input
+                      ref={inputRefUserName}
+                      onChange={(e) => {
+                        setDataInputUserName(e.target.value);
+                      }}
+                      value={dataInputUserName}
                       className={`${styles.input} mb-2`}
                       type="text"
                       name=""
@@ -442,6 +557,9 @@ export default function ModalUser() {
                     }
                     if (dataInputHomeTown === "") {
                       setDisplayInputHomeTown(false);
+                    }
+                    if (dataInputUserName === "") {
+                      setDisplayInputUserName(false);
                     }
                   }}
                   className={`${styles.itemInput} ${
@@ -470,6 +588,7 @@ export default function ModalUser() {
                       onChange={(e) => {
                         setDataInputNickname(e.target.value);
                       }}
+                      value={dataInputNickname}
                       className={`${styles.input} mb-2`}
                       type="text"
                       name=""

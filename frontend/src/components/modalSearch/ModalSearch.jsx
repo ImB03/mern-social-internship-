@@ -28,7 +28,6 @@ import DropzoneFile from "../dropzoneFile/DropzoneFile";
 import { MyContext } from "../../hook/context/state";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
-import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { ACTION_SEARCH_TERM } from "../../reducers/slice/searchSlice";
 

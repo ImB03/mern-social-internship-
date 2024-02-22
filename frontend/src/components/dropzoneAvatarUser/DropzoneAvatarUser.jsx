@@ -7,32 +7,32 @@ import styles from "./dropzoneAvatarUser.module.scss";
 import { MyContext } from "../../hook/context/state";
 
 export default function DropzoneAvatarUser({
-  dataInputAvatarUser,
-  setDataInputAvatarUser,
+  dataInputUserAvatar,
+  setDataInputUserAvatar,
 }) {
   const onDrop = useCallback(
     (acceptedFiles) => {
-      setDataInputAvatarUser(
+      setDataInputUserAvatar(
         acceptedFiles.map((file) => URL.createObjectURL(file))[0]
       );
     },
-    [setDataInputAvatarUser]
+    [setDataInputUserAvatar]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div className={`${styles.dropzone}`}>
-      {dataInputAvatarUser ? (
+      {dataInputUserAvatar ? (
         <div className={`${styles.displayFiles}`}>
           <img
-            src={dataInputAvatarUser}
+            src={dataInputUserAvatar}
             className={`${styles.fileImg}`}
             alt=""
           />
           <div
             onClick={() => {
-              setDataInputAvatarUser("");
+              setDataInputUserAvatar("");
             }}
             className={`${styles.closeFile} position-absolute d-flex justify-content-center align-items-center`}
           >
