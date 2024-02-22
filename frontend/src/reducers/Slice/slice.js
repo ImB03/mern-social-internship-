@@ -29,9 +29,11 @@ const slice = createSlice({
       state.isLoading = false;
     },
     LOGNOUT: (state, action) => {
-      state.isLoading = true;
       localStorage.removeItem("token");
       state.userNow = null;
+      state.users = [];
+      state.user = {};
+      state.posts = [];
       state.isLoading = false;
     },
     SET_POSTS: (state, action) => {
@@ -55,6 +57,10 @@ const slice = createSlice({
     SET_USER: (state, action) => {
       state.isLoading = false;
     },
+    GET_USER: (state, action) => {
+      state.user = action.payload.response?.data;
+      state.isLoading = false;
+    },
   },
 });
 
@@ -66,6 +72,7 @@ export const {
   SET_USERS,
   SET_POST,
   SET_USER,
+  GET_USER,
 } = slice.actions;
 
 export default slice.reducer;

@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   ACTION_FRIEND_REQUEST,
-  ACTION_GET_USER,
+
 } from "../../reducers/slice/userSlice";
 
 const MyContext = createContext();

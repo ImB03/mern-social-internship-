@@ -5,10 +5,10 @@ import {
   ACTION_GET_USER,
   ACTION_UPDATE_USER,
   FRIEND_REQUEST,
-  GET_USER,
   UPDATE_USER,
 } from "../slice/userSlice";
 import { getOneUser, updateUser, friendRequest } from "../../api";
+import { GET_USER } from "../slice/slice";
 
 //GET ONE USER
 function* GetOneUser(action) {

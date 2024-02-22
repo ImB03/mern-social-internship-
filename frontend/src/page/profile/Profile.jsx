@@ -17,10 +17,11 @@ import ModalPost from "../../components/modalPost/ModalPost";
 import { MyContext } from "../../hook/context/state";
 import ModalUser from "../../components/modalUser/ModalUser";
 import { useParams } from "react-router-dom";
+import { ACTION_GET_USER } from "../../reducers/slice/userSlice";
 
 export default function Profile() {
   const { userId } = useParams();
-  
+  const dispatch = useDispatch();
 
   const {
     isCreatePost,
@@ -30,6 +31,9 @@ export default function Profile() {
     isUpdateUser,
   } = useContext(MyContext);
 
+  useEffect(() => {
+    dispatch(ACTION_GET_USER(userId));
+  }, [userId, dispatch]);
 
   return (
     <div className={`${styles.profile}`}>
