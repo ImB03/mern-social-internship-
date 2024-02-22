@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
   {
-    creatorId: {
-      type: String,
-      required: true,
+    creator: {
+      type: Object,
+      default: {},
     },
     description: String,
     picturePath: String,

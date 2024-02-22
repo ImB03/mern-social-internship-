@@ -20,7 +20,7 @@ export default function Posts() {
   useEffect(() => {
     if (pageName === "profile" && params.userId) {
       const processedPosts = posts.filter(
-        (post) => post.creatorId === params.userId
+        (post) => post.creator.userId === params.userId
       );
       setProcessedPosts(processedPosts);
     } else {

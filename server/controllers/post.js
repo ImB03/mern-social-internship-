@@ -7,7 +7,11 @@ export const createPost = async (req, res, next) => {
     const { description, picturePath } = req.body;
 
     const newPost = new Post({
-      creatorId: req.user._id,
+      creator: {
+        userId: req.user._id,
+        userName: req.user.userName,
+        userAvatar: req.user.userAvatar,
+      },
       description,
       picturePath,
     });

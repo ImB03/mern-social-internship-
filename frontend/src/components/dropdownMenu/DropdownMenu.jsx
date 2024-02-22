@@ -37,7 +37,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
             </div>
             <div className={`${styles.name}`}>Save post</div>
           </div>
-          {post.creatorId === userNow._id ? (
+          {post.creator.userId === userNow._id ? (
             <div
               onClick={() => {
                 setIsDropdownMenu(false);
@@ -70,7 +70,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               </div>
             </div>
           )}
-          {post.creatorId === userNow._id && (
+          {post.creator.userId === userNow._id && (
             <div
               onClick={() => {
                 setPostId(post._id);
@@ -87,7 +87,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               <div className={`${styles.name}`}>Update post</div>
             </div>
           )}
-          {post.creatorId !== userNow._id && (
+          {post.creator.userId !== userNow._id && (
             <>
               <div
                 onClick={() => {
@@ -149,7 +149,7 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               </div>
             </>
           )}
-          {post.creatorId === userNow._id && (
+          {post.creator.userId === userNow._id && (
             <div
               onClick={() => {
                 setPostId(post._id);
