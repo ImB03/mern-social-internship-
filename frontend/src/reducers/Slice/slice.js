@@ -7,6 +7,7 @@ const slice = createSlice({
     userNow: null,
     token: null,
     users: [],
+    user: {},
     posts: [],
     isLoading: false,
   },

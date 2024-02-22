@@ -12,15 +12,10 @@ export default function Posts() {
   const location = useLocation();
   const pageName = location.pathname.split("/")[1];
   const [processedPosts, setProcessedPosts] = useState([]);
-  // const queryParams = new URLSearchParams(location.search);
-  // const qValue = queryParams.get("q");
+  const queryParams = new URLSearchParams(location.search);
+  const qValue = queryParams.get("q");
 
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
-  console.log(posts);
-
-  // const postsSearch = useSelector(
-  //   (state) => state.persistedReducer.search.posts
-  // );
 
   useEffect(() => {
     if (pageName === "profile" && params.userId) {
@@ -35,12 +30,6 @@ export default function Posts() {
 
   return (
     <div className={`${styles.posts} mt-3`}>
-      {/* {(params.typeState === `searchall` || params.typeState === `searchpost`
-        ? postsSearch
-        : posts
-      )?.map((post) => (
-        <Post key={post._id} post={post} />
-      ))} */}
       {processedPosts?.map((post) => (
         <Post key={post._id} post={post} />
       ))}
