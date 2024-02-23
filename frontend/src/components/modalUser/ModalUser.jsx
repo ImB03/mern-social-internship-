@@ -56,14 +56,30 @@ export default function ModalUser() {
     user.nickname === "" ? false : true
   );
 
-  const [dataInputProvinceCity, setDataInputProvinceCity] = useState("");
-  const [dataInputWorkplace, setDataInputWorkplace] = useState("");
-  const [dataInputSchool, setDataInputSchool] = useState("");
-  const [dataInputHomeTown, setDataInputHomeTown] = useState("");
-  const [dataInputUserName, setDataInputUserName] = useState("");
-  const [dataInputNickname, setDataInputNickname] = useState("");
-  const [dataInputUserAvatar, setDataInputUserAvatar] = useState("");
-  const [dataInputCoverAvatar, setDataInputCoverAvatar] = useState("");
+  const [dataInputProvinceCity, setDataInputProvinceCity] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.provinceCity)
+  );
+  const [dataInputWorkplace, setDataInputWorkplace] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.workplace)
+  );
+  const [dataInputSchool, setDataInputSchool] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.school)
+  );
+  const [dataInputHomeTown, setDataInputHomeTown] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.homeTown)
+  );
+  const [dataInputUserName, setDataInputUserName] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.userName)
+  );
+  const [dataInputNickname, setDataInputNickname] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.nickname)
+  );
+  const [dataInputUserAvatar, setDataInputUserAvatar] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.userAvatar)
+  );
+  const [dataInputCoverAvatar, setDataInputCoverAvatar] = useState(
+    useSelector((state) => state.persistedReducer.slice.user.coverAvatar)
+  );
 
   const [dataUser, setDataUser] = useState({
     userAvatar: "",
@@ -114,25 +130,25 @@ export default function ModalUser() {
     }
   };
 
-  useEffect(() => {
-    setDataInputProvinceCity(user.provinceCity);
-    setDataInputWorkplace(user.workplace);
-    setDataInputSchool(user.school);
-    setDataInputHomeTown(user.homeTown);
-    setDataInputUserName(user.userName);
-    setDataInputNickname(user.nickname);
-    setDataInputUserAvatar(user.userAvatar);
-    setDataInputCoverAvatar(user.coverAvatar);
-  }, [
-    user.provinceCity,
-    user.workplace,
-    user.school,
-    user.homeTown,
-    user.userName,
-    user.nickname,
-    user.userAvatar,
-    user.coverAvatar,
-  ]);
+  // useEffect(() => {
+  //   setDataInputProvinceCity(user.provinceCity);
+  //   setDataInputWorkplace(user.workplace);
+  //   setDataInputSchool(user.school);
+  //   setDataInputHomeTown(user.homeTown);
+  //   setDataInputUserName(user.userName);
+  //   setDataInputNickname(user.nickname);
+  //   setDataInputUserAvatar(user.userAvatar);
+  //   setDataInputCoverAvatar(user.coverAvatar);
+  // }, [
+  //   user.provinceCity,
+  //   user.workplace,
+  //   user.school,
+  //   user.homeTown,
+  //   user.userName,
+  //   user.nickname,
+  //   user.userAvatar,
+  //   user.coverAvatar,
+  // ]);
 
   useEffect(() => {
     setDataUser({
@@ -158,31 +174,39 @@ export default function ModalUser() {
   ]);
 
   useEffect(() => {
-    handleFocusInputProvinceCity();
+    if (dataInputProvinceCity === "" && displayInputProvinceCity) {
+      handleFocusInputProvinceCity();
+    }
   }, [displayInputProvinceCity]);
   useEffect(() => {
-    handleFocusInputWorkplace();
+    if (dataInputWorkplace === "" && displayInputWorkplace) {
+      handleFocusInputWorkplace();
+    }
   }, [displayInputWorkplace]);
   useEffect(() => {
-    handleFocusInputSchool();
+    if (dataInputSchool === "" && displayInputSchool) {
+      handleFocusInputSchool();
+    }
   }, [displayInputSchool]);
   useEffect(() => {
-    handleFocusInputHomeTown();
+    if (dataInputHomeTown === "" && displayInputHomeTown) {
+      handleFocusInputHomeTown();
+    }
   }, [displayInputHomeTown]);
   useEffect(() => {
-    handleFocusInputUserName();
+    if (dataInputUserName === "" && displayInputUserName) {
+      handleFocusInputUserName();
+    }
   }, [displayInputUserName]);
   useEffect(() => {
-    handleFocusInputNickname();
+    if (dataInputNickname === "" && displayInputNickname) {
+      handleFocusInputNickname();
+    }
   }, [displayInputNickname]);
 
   const handleSubmit = () => {
     dispatch(ACTION_UPDATE_USER({ dataUser, setIsUpdateUser }));
   };
-
-  console.log(user);
-  console.log(dataUser);
-  console.log(dataInputNickname);
 
   return (
     <div
