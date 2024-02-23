@@ -5,18 +5,17 @@ import {
   ACTION_GET_USER,
   ACTION_UPDATE_USER,
   FRIEND_REQUEST,
-  UPDATE_USER,
 } from "../slice/userSlice";
 import { getOneUser, updateUser, friendRequest } from "../../api";
-import { GET_USER } from "../slice/slice";
+import { SET_USER } from "../slice/slice";
 
 //GET ONE USER
 function* GetOneUser(action) {
   try {
     const response = yield call(() => getOneUser(action.payload));
-    yield put(GET_USER({ response }));
+    yield put(SET_USER({ response }));
   } catch (error) {
-    yield put(GET_USER({ response: error.response }));
+    yield put(SET_USER({ response: error.response }));
     console.log(error);
   }
 }
@@ -25,12 +24,10 @@ function* GetOneUser(action) {
 function* UpdateUser(action) {
   try {
     const response = yield call(() => updateUser(action.payload.dataUser));
-    yield put(
-      UPDATE_USER({ response, setIsUpdateUser: action.payload.setIsUpdateUser })
-    );
+    yield put(SET_USER({ response }));
   } catch (error) {
     yield put(
-      UPDATE_USER({
+      SET_USER({
         response: error.response,
       })
     );

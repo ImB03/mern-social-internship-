@@ -55,10 +55,14 @@ const slice = createSlice({
       state.isLoading = false;
     },
     SET_USER: (state, action) => {
-      state.isLoading = false;
-    },
-    GET_USER: (state, action) => {
-      state.user = action.payload.response?.data;
+      state.user = action.payload.response?.data?.user;
+      state.users = state.users.map((user) => {
+        if (user._id === action.payload.response?.data?.userId) {
+          return action.payload.response?.data?.user;
+        } else {
+          return user;
+        }
+      });
       state.isLoading = false;
     },
   },
@@ -72,7 +76,6 @@ export const {
   SET_USERS,
   SET_POST,
   SET_USER,
-  GET_USER,
 } = slice.actions;
 
 export default slice.reducer;

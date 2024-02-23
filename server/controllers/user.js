@@ -9,7 +9,7 @@ export const getOneUser = async (req, res, next) => {
 
     delete user._doc.password;
 
-    res.status(200).json(user);
+    res.status(200).json({ user });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Get user unsuccessfully" });
@@ -42,11 +42,11 @@ export const updateUser = async (req, res, next) => {
   const userId = req.user._id;
 
   try {
-    await User.findByIdAndUpdate(userId, dataUser, {
+    const user = await User.findByIdAndUpdate(userId, dataUser, {
       new: true,
     });
 
-    res.status(200).json({ message: "Update user successfully" });
+    res.status(200).json({ user, userId });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Update user unsuccessfully" });
