@@ -57,9 +57,7 @@ function* UpdatePost(action) {
     const response = yield call(() =>
       updatePost(action.payload.postId, action.payload.dataPost)
     );
-    yield put(
-      SET_POST({ response, post: response.data, postId: action.payload.postId })
-    );
+    yield put(SET_POST({ response, post: response.data }));
   } catch (error) {
     yield put(
       SET_POST({
@@ -93,9 +91,7 @@ function* CommentPost(action) {
     const response = yield call(() =>
       commentPost(action.payload.dataComment, action.payload.postId)
     );
-    yield put(
-      SET_POST({ response, post: response.data, postId: action.payload.postId })
-    );
+    yield put(SET_POST({ response, post: response.data }));
   } catch (error) {
     yield put(
       SET_POST({
@@ -109,9 +105,7 @@ function* CommentPost(action) {
 function* LikePost(action) {
   try {
     const response = yield call(() => likePost(action.payload));
-    yield put(
-      SET_POST({ response, post: response.data, postId: action.payload })
-    );
+    yield put(SET_POST({ response, post: response.data }));
   } catch (error) {
     yield put(
       SET_POST({

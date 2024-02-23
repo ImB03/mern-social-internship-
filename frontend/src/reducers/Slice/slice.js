@@ -46,7 +46,7 @@ const slice = createSlice({
     },
     SET_POST: (state, action) => {
       state.posts = state.posts.map((post) => {
-        if (post._id === action.payload.postId) {
+        if (post._id === action.payload.post._id) {
           return action.payload.post;
         } else {
           return post;
@@ -58,7 +58,7 @@ const slice = createSlice({
       state.user = action.payload.user;
 
       state.users = state.users.map((user) => {
-        if (user._id === action.payload.user.userId) {
+        if (user._id === action.payload.user._id) {
           return action.payload.user;
         } else {
           return user;

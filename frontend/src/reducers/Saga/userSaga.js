@@ -24,7 +24,7 @@ function* GetOneUser(action) {
 function* UpdateUser(action) {
   try {
     const response = yield call(() => updateUser(action.payload));
-    yield put(SET_USER({ response, user: response.data.updatedUser }));
+    yield put(SET_USER({ response, user: response.data }));
   } catch (error) {
     yield put(
       SET_USER({

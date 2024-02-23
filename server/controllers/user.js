@@ -9,7 +9,7 @@ export const getOneUser = async (req, res, next) => {
 
     delete user._doc.password;
 
-    res.status(200).json( user );
+    res.status(200).json(user);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Get user unsuccessfully" });
@@ -46,7 +46,7 @@ export const updateUser = async (req, res, next) => {
       new: true,
     });
 
-    res.status(200).json({ updatedUser, userId });
+    res.status(200).json(updatedUser);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Update user unsuccessfully" });
