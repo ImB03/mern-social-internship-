@@ -13,7 +13,7 @@ import { SET_USER } from "../slice/slice";
 function* GetOneUser(action) {
   try {
     const response = yield call(() => getOneUser(action.payload));
-    yield put(SET_USER({ response }));
+    yield put(SET_USER({ response, user: response.data }));
   } catch (error) {
     yield put(SET_USER({ response: error.response }));
     console.log(error);
@@ -24,7 +24,7 @@ function* GetOneUser(action) {
 function* UpdateUser(action) {
   try {
     const response = yield call(() => updateUser(action.payload));
-    yield put(SET_USER({ response }));
+    yield put(SET_USER({ response, user: response.data.updatedUser }));
   } catch (error) {
     yield put(
       SET_USER({

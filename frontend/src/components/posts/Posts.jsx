@@ -4,7 +4,6 @@ import Post from "../post/Post";
 import styles from "./posts.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
-import { SET_POSTS } from "../../reducers/slice/slice";
 
 export default function Posts() {
   const params = useParams();

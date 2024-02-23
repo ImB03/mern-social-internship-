@@ -37,7 +37,7 @@ const slice = createSlice({
       state.isLoading = false;
     },
     SET_POSTS: (state, action) => {
-      state.posts = action.payload.response?.data;
+      state.posts = action.payload.posts;
       state.isLoading = false;
     },
     SET_USERS: (state, action) => {
@@ -47,7 +47,7 @@ const slice = createSlice({
     SET_POST: (state, action) => {
       state.posts = state.posts.map((post) => {
         if (post._id === action.payload.postId) {
-          return action.payload.response?.data;
+          return action.payload.post;
         } else {
           return post;
         }
@@ -55,14 +55,15 @@ const slice = createSlice({
       state.isLoading = false;
     },
     SET_USER: (state, action) => {
-      state.user = action.payload.response?.data?.user;
-      // state.users = state.users.map((user) => {
-      //   if (user._id === action.payload.response?.data?.userId) {
-      //     return action.payload.response?.data?.user;
-      //   } else {
-      //     return user;
-      //   }
-      // });
+      state.user = action.payload.user;
+
+      state.users = state.users.map((user) => {
+        if (user._id === action.payload.user.userId) {
+          return action.payload.user;
+        } else {
+          return user;
+        }
+      });
       state.isLoading = false;
     },
   },

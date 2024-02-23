@@ -27,6 +27,7 @@ function* CreatePost(action) {
     yield put(
       SET_POSTS({
         response,
+        posts: response.data,
       })
     );
   } catch (error) {
@@ -43,9 +44,7 @@ function* CreatePost(action) {
 function* GetAllPosts(action) {
   try {
     const response = yield call(() => getAllPosts());
-    yield put(
-      SET_POSTS({ response, setIsCreatePost: action.payload?.setIsCreatePost })
-    );
+    yield put(SET_POSTS({ response, posts: response.data }));
   } catch (error) {
     yield put(SET_POSTS({ response: error.response }));
     console.log(error);
@@ -58,7 +57,9 @@ function* UpdatePost(action) {
     const response = yield call(() =>
       updatePost(action.payload.postId, action.payload.dataPost)
     );
-    yield put(SET_POST({ response, postId: action.payload.postId }));
+    yield put(
+      SET_POST({ response, post: response.data, postId: action.payload.postId })
+    );
   } catch (error) {
     yield put(
       SET_POST({
@@ -74,7 +75,7 @@ function* UpdatePost(action) {
 function* DeletePost(action) {
   try {
     const response = yield call(() => deletePost(action.payload));
-    yield put(SET_POSTS({ response }));
+    yield put(SET_POSTS({ response, posts: response.data }));
   } catch (error) {
     yield put(
       SET_POSTS({
@@ -92,7 +93,9 @@ function* CommentPost(action) {
     const response = yield call(() =>
       commentPost(action.payload.dataComment, action.payload.postId)
     );
-    yield put(SET_POST({ response, postId: action.payload.postId }));
+    yield put(
+      SET_POST({ response, post: response.data, postId: action.payload.postId })
+    );
   } catch (error) {
     yield put(
       SET_POST({
@@ -106,7 +109,9 @@ function* CommentPost(action) {
 function* LikePost(action) {
   try {
     const response = yield call(() => likePost(action.payload));
-    yield put(SET_POST({ response, postId: action.payload }));
+    yield put(
+      SET_POST({ response, post: response.data, postId: action.payload })
+    );
   } catch (error) {
     yield put(
       SET_POST({
