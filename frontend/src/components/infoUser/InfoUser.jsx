@@ -190,10 +190,10 @@ export default function InfoUser() {
               </div>
             </div>
             <h3 className={`${styles.userName} d-flex justify-content-center`}>
-              {user.userName}
+              {user?.userName}
             </h3>
             <p className={`${styles.nickName} d-flex justify-content-center`}>
-              @{user.userName}
+              @{user?.userName}
             </p>
             <div
               className={`${styles.contact} mt-2 d-flex justify-content-start`}
@@ -203,7 +203,7 @@ export default function InfoUser() {
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}
                 >
                   <i className={`${styles.icon} me-2 fa-solid fa-globe`}></i>
-                  <div className={`${styles.link}`}>{user.email}</div>
+                  <div className={`${styles.link}`}>{user?.email}</div>
                 </div>
                 <div
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}

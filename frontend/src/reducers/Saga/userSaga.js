@@ -7,7 +7,7 @@ import {
   FRIEND_REQUEST,
 } from "../slice/userSlice";
 import { getOneUser, updateUser, friendRequest } from "../../api";
-import { SET_USER } from "../slice/slice";
+import { SET_POSTS, SET_USER } from "../slice/slice";
 
 //GET ONE USER
 function* GetOneUser(action) {
@@ -24,7 +24,17 @@ function* GetOneUser(action) {
 function* UpdateUser(action) {
   try {
     const response = yield call(() => updateUser(action.payload));
-    yield put(SET_USER({ response, user: response.data }));
+    yield put(
+      SET_USER({
+        response,
+        user: response.data.updatedUser,
+      })
+    );
+    yield put(
+      SET_POSTS({
+        posts: response.data.posts,
+      })
+    );
   } catch (error) {
     yield put(
       SET_USER({
