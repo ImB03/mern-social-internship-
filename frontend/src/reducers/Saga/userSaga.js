@@ -23,7 +23,7 @@ function* GetOneUser(action) {
 //UPDATE USER
 function* UpdateUser(action) {
   try {
-    const response = yield call(() => updateUser(action.payload.dataUser));
+    const response = yield call(() => updateUser(action.payload));
     yield put(SET_USER({ response }));
   } catch (error) {
     yield put(

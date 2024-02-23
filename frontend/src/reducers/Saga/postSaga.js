@@ -23,7 +23,7 @@ import { SET_POST, SET_POSTS } from "../slice/slice";
 // CREATE POST
 function* CreatePost(action) {
   try {
-    const response = yield call(() => createPost(action.payload.dataPost));
+    const response = yield call(() => createPost(action.payload));
     yield put(
       SET_POSTS({
         response,
@@ -73,7 +73,7 @@ function* UpdatePost(action) {
 
 function* DeletePost(action) {
   try {
-    const response = yield call(() => deletePost(action.payload.postId));
+    const response = yield call(() => deletePost(action.payload));
     yield put(SET_POSTS({ response }));
   } catch (error) {
     yield put(

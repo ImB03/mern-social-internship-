@@ -205,7 +205,7 @@ export default function ModalUser() {
   }, [displayInputNickname]);
 
   const handleSubmit = () => {
-    dispatch(ACTION_UPDATE_USER({ dataUser }));
+    dispatch(ACTION_UPDATE_USER( dataUser ));
     setIsUpdateUser(false);
   };
 

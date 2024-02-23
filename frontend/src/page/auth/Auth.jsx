@@ -26,11 +26,11 @@ export default function Auth() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      dispatch(ACTION_SIGNUP({ dataUser }));
+      dispatch(ACTION_SIGNUP(dataUser));
       if (response?.status === 200) {
       }
     } else {
-      dispatch(ACTION_SIGNIN({ dataUser }));
+      dispatch(ACTION_SIGNIN(dataUser));
       if (response?.status === 200) {
       }
     }

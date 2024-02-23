@@ -7,7 +7,7 @@ import { signup, signin } from "../../api";
 // SIGN UP
 function* Signup(action) {
   try {
-    const response = yield call(() => signup(action.payload.dataUser));
+    const response = yield call(() => signup(action.payload));
     yield put(SIGNUP({ response }));
   } catch (error) {
     yield put(SIGNUP({ response: error.response }));
@@ -18,7 +18,7 @@ function* Signup(action) {
 // SIGN IN
 function* Signin(action) {
   try {
-    const response = yield call(() => signin(action.payload.dataUser));
+    const response = yield call(() => signin(action.payload));
     yield put(SIGNIN({ response }));
   } catch (error) {
     yield put(SIGNIN({ response: error.response }));

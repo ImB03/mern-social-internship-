@@ -56,13 +56,13 @@ const slice = createSlice({
     },
     SET_USER: (state, action) => {
       state.user = action.payload.response?.data?.user;
-      state.users = state.users.map((user) => {
-        if (user._id === action.payload.response?.data?.userId) {
-          return action.payload.response?.data?.user;
-        } else {
-          return user;
-        }
-      });
+      // state.users = state.users.map((user) => {
+      //   if (user._id === action.payload.response?.data?.userId) {
+      //     return action.payload.response?.data?.user;
+      //   } else {
+      //     return user;
+      //   }
+      // });
       state.isLoading = false;
     },
   },

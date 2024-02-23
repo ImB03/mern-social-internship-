@@ -62,9 +62,9 @@ export default function ModalPost() {
   const handleSubmit = () => {
     if (isCreatePost) {
       dispatch(
-        ACTION_CREATE_POST({
+        ACTION_CREATE_POST(
           dataPost,
-        })
+        )
       );
       setIsCreatePost(false);
     } else if (isUpdatePost) {
@@ -77,9 +77,9 @@ export default function ModalPost() {
       setIsUpdatePost(false);
     } else if (isDeletePost) {
       dispatch(
-        ACTION_DELETE_POST({
+        ACTION_DELETE_POST(
           postId,
-        })
+        )
       );
       setIsDeletePost(false);
     }
