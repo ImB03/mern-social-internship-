@@ -26,19 +26,10 @@ const searchSlice = createSlice({
       state.posts = action.payload.response?.data?.posts;
       state.isLoading = false;
     },
-    REFRESH_SEARCH: (state, action) => {
-      state.posts = action.payload.response?.data?.posts;
-      state.isLoading = false;
-    },
   },
 });
 
-export const {
-  ACTION_SEARCH_TERM,
-  SEARCH_TERM,
-  ACTION_SEARCH,
-  SEARCH,
-  REFRESH_SEARCH,
-} = searchSlice.actions;
+export const { ACTION_SEARCH_TERM, SEARCH_TERM, ACTION_SEARCH, SEARCH } =
+  searchSlice.actions;
 
 export default searchSlice.reducer;

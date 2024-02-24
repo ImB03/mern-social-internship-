@@ -17,7 +17,6 @@ import {
   commentPost,
   likePost,
 } from "../../api";
-import { REFRESH_SEARCH } from "../slice/searchSlice";
 import { SET_POST, SET_POSTS } from "../slice/slice";
 
 // CREATE POST

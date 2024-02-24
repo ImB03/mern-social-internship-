@@ -56,17 +56,10 @@ const slice = createSlice({
     },
     SET_USER: (state, action) => {
       state.user = action.payload.user;
-      if (state.userNow._id === action.payload.user._id){
-      state.userNow = action.payload.user;
+      if (state.userNow._id === action.payload.user._id) {
+        state.userNow = action.payload.user;
       }
-        // state.users = state.users.map((user) => {
-        //   if (user._id === action.payload.user._id) {
-        //     return action.payload.user;
-        //   } else {
-        //     return user;
-        //   }
-        // });
-        state.isLoading = false;
+      state.isLoading = false;
     },
   },
 });
