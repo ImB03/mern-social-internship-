@@ -32,6 +32,14 @@
     }
   }
 
+  .itemUser:hover {
+    background-color: #f0f0f0;
+  }
+
+  .itemUser:active {
+    background-color: #e0e0e0;
+  }
+
   .title {
     font-weight: bold;
     font-size: 18px;
