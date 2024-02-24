@@ -15,20 +15,22 @@ export default function Posts() {
 
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
+  console.log(pageName);
+
   useEffect(() => {
     if (pageName === "profile" && params.userId) {
       const processedPosts = posts.filter(
         (post) => post.creator.userId === params.userId
       );
       setProcessedPosts(processedPosts);
-    } else if (pageName === "search" && qValue) {
+    } else if (pageName === "search" && qValue && qValue !== "") {
       const processedPosts = posts.filter(
         (post) =>
           post.creator.userName.includes(qValue) ||
           post.description.includes(qValue)
       );
       setProcessedPosts(processedPosts);
-    } else {
+    } else if (pageName === "") {
       setProcessedPosts(posts);
     }
   }, [pageName, params.userId, posts, qValue]);
