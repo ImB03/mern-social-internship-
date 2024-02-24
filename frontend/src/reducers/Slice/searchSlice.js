@@ -21,15 +21,10 @@ const searchSlice = createSlice({
       state.users = [];
       state.posts = [];
     },
-    SEARCH: (state, action) => {
-      state.users = action.payload.response?.data?.users;
-      state.posts = action.payload.response?.data?.posts;
-      state.isLoading = false;
-    },
   },
 });
 
-export const { ACTION_SEARCH_TERM, SEARCH_TERM, ACTION_SEARCH, SEARCH } =
+export const { ACTION_SEARCH_TERM, SEARCH_TERM, ACTION_SEARCH } =
   searchSlice.actions;
 
 export default searchSlice.reducer;

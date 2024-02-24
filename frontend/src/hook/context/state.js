@@ -11,9 +11,6 @@ export default function PostState({ children }) {
   const [isUpdateUser, setIsUpdateUser] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [postId, setPostId] = useState("");
-  const dispatch = useDispatch();
-
-
 
   return (
     <MyContext.Provider

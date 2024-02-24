@@ -31,15 +31,13 @@ export const search = async (req, res, next) => {
   try {
     const term = new RegExp(search, "i");
 
-    const posts = await Post.find({
-      $or: [{ creatorName: term }, { description: term }],
-    }).sort({ _id: -1 });
-
     const users = await User.find({
       $or: [{ userName: term }],
-    }).limit(6);
+    });
 
-    res.status(200).json({ users, posts });
+    console.log(users);
+
+    res.status(200).json(users);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: err.message });

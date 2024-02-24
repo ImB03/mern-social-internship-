@@ -3,10 +3,10 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import {
   ACTION_SEARCH,
   ACTION_SEARCH_TERM,
-  SEARCH,
   SEARCH_TERM,
 } from "../slice/searchSlice";
 import { searchTerm, search } from "../../api";
+import { SET_USERS } from "../slice/slice";
 
 // SEARCH TERM
 function* SearchTerm(action) {
@@ -23,9 +23,9 @@ function* SearchTerm(action) {
 function* Search(action) {
   try {
     const response = yield call(() => search(action.payload));
-    yield put(SEARCH({ response }));
+    yield put(SET_USERS({ response, users: response.data }));
   } catch (error) {
-    yield put(SEARCH({ response: error.response }));
+    yield put(SET_USERS({ response: error.response }));
     console.log(error);
   }
 }

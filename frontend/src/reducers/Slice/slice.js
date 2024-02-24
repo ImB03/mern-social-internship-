@@ -41,7 +41,7 @@ const slice = createSlice({
       state.isLoading = false;
     },
     SET_USERS: (state, action) => {
-      state.users = action.payload.response?.data;
+      state.users = action.payload.users;
       state.isLoading = false;
     },
     SET_POST: (state, action) => {

@@ -29,9 +29,16 @@ import { MyContext } from "../../hook/context/state";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { Link, useNavigate } from "react-router-dom";
-import { ACTION_SEARCH_TERM } from "../../reducers/slice/searchSlice";
+import {
+  ACTION_SEARCH,
+  ACTION_SEARCH_TERM,
+} from "../../reducers/slice/searchSlice";
 
 export default function ModalSearch() {
+  const users = useSelector((state) => state.persistedReducer.slice.users);
+
+  const processdUsers = users.slice(0, 5);
+
   const { isSearch, setIsSearch } = useContext(MyContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -39,8 +46,6 @@ export default function ModalSearch() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const users = useSelector((state) => state.persistedReducer.search.users);
 
   const handleFocusInput = (e) => {
     if (isSearch && inputRef.current) {
@@ -75,7 +80,7 @@ export default function ModalSearch() {
     setIsLoading(true);
     const delayDebounce = setTimeout(() => {
       if (searchTerm !== "") {
-        dispatch(ACTION_SEARCH_TERM(searchTerm));
+        dispatch(ACTION_SEARCH(searchTerm));
       }
       setIsLoading(false);
     }, 700);
@@ -122,7 +127,7 @@ export default function ModalSearch() {
           {searchTerm && (
             <div className={`${styles.suggest} mt-2`}>
               {!isLoading &&
-                users?.map((user) => (
+                processdUsers?.map((user) => (
                   <Link
                     to={`/profile/${user._id}`}
                     onClick={(e) => {
