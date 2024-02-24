@@ -26,12 +26,6 @@ export const signin = (dataUser) => API.post("/auth/signin", dataUser);
 
 //POST
 export const getAllPosts = () => API.get(`/post/getallposts`);
-// export const stripePayment = (dataPayment) => API.post("/payment", dataPayment);
-// export const fetchOnePost = (postId) => API.get(`/posts/${postId}`);
-// export const fetchPostsBySearch = (searchQuery) =>
-//   API.get(`/search/findbysearch?searchQuery=${searchQuery || "none"}`);
-// export const fetchPostsByPagination = (page) =>
-//   API.get(`/pagination?page=${page}`);
 export const createPost = (dataPost) => API.post("/post/createpost", dataPost);
 export const updatePost = (postId, dataPost) =>
   API.patch(`/post/updatepost/${postId}`, dataPost);
@@ -43,8 +37,8 @@ export const commentPost = (dataComment, postId) =>
 //USER
 export const getOneUser = (userId) => API.get(`/user/getoneuser/${userId}`);
 export const updateUser = (dataUser) => API.patch(`/user/updateuser`, dataUser);
-export const friendRequest = (userId) =>
-  API.patch(`/user/friendrequest/${userId}`);
+// export const friendRequest = (userId) =>
+//   API.patch(`/user/friendrequest/${userId}`);
 
 //SEARCH
 export const searchTerm = (searchTerm) =>

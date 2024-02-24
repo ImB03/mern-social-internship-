@@ -6,7 +6,7 @@ import {
   ACTION_UPDATE_USER,
   FRIEND_REQUEST,
 } from "../slice/userSlice";
-import { getOneUser, updateUser, friendRequest } from "../../api";
+import { getOneUser, updateUser } from "../../api";
 import { SET_POSTS, SET_USER } from "../slice/slice";
 
 //GET ONE USER
@@ -46,20 +46,20 @@ function* UpdateUser(action) {
 }
 
 //FRIEND REQUEST
-function* FriendRequest(action) {
-  try {
-    const response = yield call(() => friendRequest(action.payload));
-    yield put(FRIEND_REQUEST({ response }));
-  } catch (error) {
-    yield put(FRIEND_REQUEST({ response: error.response }));
-    console.log(error);
-  }
-}
+// function* FriendRequest(action) {
+//   try {
+//     const response = yield call(() => friendRequest(action.payload));
+//     yield put(FRIEND_REQUEST({ response }));
+//   } catch (error) {
+//     yield put(FRIEND_REQUEST({ response: error.response }));
+//     console.log(error);
+//   }
+// }
 
 function* UserSaga() {
   yield takeEvery(ACTION_GET_USER, GetOneUser);
   yield takeEvery(ACTION_UPDATE_USER, UpdateUser);
-  yield takeEvery(ACTION_FRIEND_REQUEST, FriendRequest);
+  // yield takeEvery(ACTION_FRIEND_REQUEST, FriendRequest);
 }
 
 export default UserSaga;

@@ -15,21 +15,21 @@ const userSlice = createSlice({
     ACTION_UPDATE_USER: (state) => {
       state.isLoading = true;
     },
-    ACTION_FRIEND_REQUEST: (state) => {
-      state.isLoading = true;
-    },
-    FRIEND_REQUEST: (state, action) => {
-      alert(action.payload.response?.data.message);
-      state.isLoading = false;
-    },
+    // ACTION_FRIEND_REQUEST: (state) => {
+    //   state.isLoading = true;
+    // },
+    // FRIEND_REQUEST: (state, action) => {
+    //   alert(action.payload.response?.data.message);
+    //   state.isLoading = false;
+    // },
   },
 });
 
 export const {
   ACTION_GET_USER,
   ACTION_UPDATE_USER,
-  ACTION_FRIEND_REQUEST,
-  FRIEND_REQUEST,
+  // ACTION_FRIEND_REQUEST,
+  // FRIEND_REQUEST,
 } = userSlice.actions;
 
 export default userSlice.reducer;

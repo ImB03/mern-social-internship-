@@ -6,7 +6,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
 
 export default function CardUserList() {
-  const { handleFriendRequest } = useContext(MyContext);
+ 
 
   const users = useSelector((state) => state.persistedReducer.search.users);
   const params = useParams();
@@ -37,7 +37,7 @@ export default function CardUserList() {
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>
                 <button
-                  onClick={() => handleFriendRequest(user._id)}
+                  // onClick={() => ACTION_FRIEND_REQUEST(user._id)}
                   className={`${styles.btnAddFriend} py-2 px-3`}
                 >
                   Add friends
@@ -66,7 +66,7 @@ export default function CardUserList() {
                 <div className={`${styles.userName}`}>{user.userName}</div>
               </div>
               <button
-                onClick={() => handleFriendRequest(user._id)}
+                // onClick={() => ACTION_FRIEND_REQUEST(user._id)}
                 className={`${styles.btnAddFriend} py-2 px-3`}
               >
                 Add friends
