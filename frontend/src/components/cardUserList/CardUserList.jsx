@@ -8,7 +8,7 @@ import { MyContext } from "../../hook/context/state";
 export default function CardUserList() {
  
 
-  const users = useSelector((state) => state.persistedReducer.search.users);
+  const users = useSelector((state) => state.persistedReducer.slice.users);
   const params = useParams();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -24,7 +24,7 @@ export default function CardUserList() {
         <div className={`container-fluid p-3`}>
           <div className={`${styles.title} mb-3`}>Everybody</div>
           <div className={`${styles.userList}`}>
-            {users?.map((user) => (
+            {users.slice(0, 5)?.map((user) => (
               <div
                 className={`${styles.item} p-3 d-flex align-items-center justify-content-between`}
               >

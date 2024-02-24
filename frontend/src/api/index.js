@@ -41,6 +41,4 @@ export const updateUser = (dataUser) => API.patch(`/user/updateuser`, dataUser);
 //   API.patch(`/user/friendrequest/${userId}`);
 
 //SEARCH
-export const searchTerm = (searchTerm) =>
-  API.post(`/search/searchterm?q=${searchTerm}`);
 export const search = (search) => API.post(`/search?q=${search}`);

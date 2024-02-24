@@ -22,15 +22,12 @@ import { useLocation, useParams } from "react-router-dom";
 import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 
 export default function Search() {
-  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
-    useContext(MyContext);
+  const { isUpdatePost, isDeletePost, isDetailPost } = useContext(MyContext);
   const dispatch = useDispatch();
   const location = useLocation();
   const params = useParams();
   const queryParams = new URLSearchParams(location.search);
   const qValue = queryParams.get("q");
-
-  const {} = useContext(MyContext);
 
   useEffect(() => {
     if (qValue !== "") {

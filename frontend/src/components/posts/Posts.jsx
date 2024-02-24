@@ -7,7 +7,6 @@ import { useLocation, useParams } from "react-router-dom";
 
 export default function Posts() {
   const params = useParams();
-  const dispatch = useDispatch();
   const location = useLocation();
   const pageName = location.pathname.split("/")[1];
   const [processedPosts, setProcessedPosts] = useState([]);
@@ -22,10 +21,17 @@ export default function Posts() {
         (post) => post.creator.userId === params.userId
       );
       setProcessedPosts(processedPosts);
+    } else if (pageName === "search" && qValue) {
+      const processedPosts = posts.filter(
+        (post) =>
+          post.creator.userName.includes(qValue) ||
+          post.description.includes(qValue)
+      );
+      setProcessedPosts(processedPosts);
     } else {
       setProcessedPosts(posts);
     }
-  }, [pageName, params.userId, posts]);
+  }, [pageName, params.userId, posts, qValue]);
 
   return (
     <div className={`${styles.posts} mt-3`}>

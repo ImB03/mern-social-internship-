@@ -29,10 +29,7 @@ import { MyContext } from "../../hook/context/state";
 import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  ACTION_SEARCH,
-  ACTION_SEARCH_TERM,
-} from "../../reducers/slice/searchSlice";
+import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 
 export default function ModalSearch() {
   const users = useSelector((state) => state.persistedReducer.slice.users);

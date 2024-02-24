@@ -41,6 +41,7 @@ const slice = createSlice({
       state.isLoading = false;
     },
     SET_USERS: (state, action) => {
+      state.users = [];
       state.users = action.payload.users;
       state.isLoading = false;
     },
