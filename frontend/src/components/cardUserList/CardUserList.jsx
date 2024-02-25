@@ -43,7 +43,10 @@ export default function CardUserList() {
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>
                 <button
-                  // onClick={() => ACTION_FRIEND_REQUEST(user._id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    //  ACTION_FRIEND_REQUEST(user._id)
+                  }}
                   className={`${styles.btnAddFriend} py-2 px-3`}
                 >
                   Add friends
@@ -74,7 +77,10 @@ export default function CardUserList() {
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>
                 <button
-                  // onClick={() => ACTION_FRIEND_REQUEST(user._id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    //  ACTION_FRIEND_REQUEST(user._id)
+                  }}
                   className={`${styles.btnAddFriend} py-2 px-3`}
                 >
                   Add friends

@@ -34,11 +34,9 @@ import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 export default function ModalSearch() {
   const users = useSelector((state) => state.persistedReducer.slice.users);
 
-  const processdUsers = users.slice(0, 5);
-
   const { isSearch, setIsSearch } = useContext(MyContext);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [processedUsers, setProcessedUsers] = useState([]);
 
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -74,12 +72,15 @@ export default function ModalSearch() {
   }, [isSearch]);
 
   useEffect(() => {
-    setIsLoading(true);
+    setProcessedUsers(users);
+  }, [users]);
+
+  useEffect(() => {
+    setProcessedUsers([]);
     const delayDebounce = setTimeout(() => {
       if (searchTerm !== "") {
         dispatch(ACTION_SEARCH(searchTerm));
       }
-      setIsLoading(false);
     }, 700);
 
     return () => clearTimeout(delayDebounce);
@@ -123,8 +124,8 @@ export default function ModalSearch() {
           </div>
           {searchTerm && (
             <div className={`${styles.suggest} mt-2`}>
-              {!isLoading &&
-                processdUsers?.map((user) => (
+              {processedUsers.length !== 0 &&
+                processedUsers.slice(0, 5)?.map((user) => (
                   <Link
                     to={`/profile/${user._id}`}
                     onClick={(e) => {

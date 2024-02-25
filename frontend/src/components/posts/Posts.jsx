@@ -32,6 +32,8 @@ export default function Posts() {
       setProcessedPosts(processedPosts);
     } else if (pageName === "") {
       setProcessedPosts(posts);
+    } else {
+      setProcessedPosts([]);
     }
   }, [pageName, params.userId, posts, qValue]);
 
