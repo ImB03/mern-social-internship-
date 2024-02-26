@@ -31,12 +31,22 @@ export const updateUser = async (req, res, next) => {
       { "creator.userId": userId },
       {
         $set: {
-          "creator.userName": dataUser.userName, // Cập nhật trường userName của creator
-          "creator.userAvatar": dataUser.userAvatar, // Cập nhật trường userAvatar của creator
+          "creator.userName": dataUser.userName,
+          "creator.userAvatar": dataUser.userAvatar,
         },
       }
     );
 
+    await Post.updateMany(
+      { "comments.userId": userId },
+      {
+        $set: {
+          "comments.$[elem].userName": dataUser.userName,
+          "comments.$[elem].userAvatar": dataUser.userAvatar,
+        },
+      },
+      { arrayFilters: [{ "elem.userId": userId }] }
+    );
 
     const posts = await Post.find().sort({ _id: -1 });
 
