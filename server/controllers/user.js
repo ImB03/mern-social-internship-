@@ -37,6 +37,7 @@ export const updateUser = async (req, res, next) => {
       }
     );
 
+
     const posts = await Post.find().sort({ _id: -1 });
 
     res.status(200).json({ updatedUser, posts });
@@ -74,4 +75,3 @@ export const updateUser = async (req, res, next) => {
 //     next(err);
 //   }
 // };
-

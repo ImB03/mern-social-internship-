@@ -69,6 +69,8 @@ export const commentPost = async (req, res, next) => {
     post.comments.push({
       userId: req.user._id,
       userComment: dataComment,
+      userName: req.user.userName,
+      userAvatar: req.user.userAvatar,
       commentAt: "",
     });
 
