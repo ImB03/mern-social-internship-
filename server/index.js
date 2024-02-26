@@ -80,7 +80,7 @@ mongoose
     app.listen(process.env.PORT, () => {
       console.log(`Backend is running on http://localhost:${process.env.PORT}`);
     });
-
+//set data tự thiết lặp để có sẳn trong data mongo
     // User.insertMany(users);
     // Post.insertMany(posts);
     console.log("Connect to Mongoose is SUCCESSFUL!!!!");
