@@ -2,12 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    users: [],
-
-    isLoading: false,
-    response: null,
-  },
+  initialState: {},
   reducers: {
     ACTION_GET_USER: (state) => {
       state.isLoading = true;

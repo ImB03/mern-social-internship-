@@ -3,10 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const postSlice = createSlice({
   name: "post",
   initialState: {
-    posts: [],
-    post: {},
-    isLoading: false,
-    response: null,
   },
   reducers: {
     ACTION_CREATE_POST: (state) => {},

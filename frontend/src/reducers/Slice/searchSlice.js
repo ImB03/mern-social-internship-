@@ -3,9 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchSlice = createSlice({
   name: "search",
   initialState: {
-    users: [],
-    posts: [],
-    isLoading: false,
+
   },
   reducers: {
     ACTION_SEARCH: (state) => {
