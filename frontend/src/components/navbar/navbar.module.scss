@@ -12,25 +12,6 @@
     font-weight: bold;
   }
 
-  .search {
-    border-radius: 5px;
-
-    .searchInput {
-      border: none;
-      outline: none;
-      height: 35px;
-      border-radius: 5px;
-      padding-left: 10px;
-      width: 400px;
-    }
-    .searchBtn {
-      color: rgb(107, 106, 106) !important;
-      height: 35px !important;
-      width: 35px !important;
-      background-color: #dcdcdc;
-    }
-  }
-
   .iconWrapper {
     cursor: pointer;
     width: 40px;

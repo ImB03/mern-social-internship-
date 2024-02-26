@@ -26,8 +26,6 @@ import styles from "./modalSearch.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
 import { MyContext } from "../../hook/context/state";
-import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
-import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { Link, useNavigate } from "react-router-dom";
 import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 
