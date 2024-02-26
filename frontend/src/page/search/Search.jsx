@@ -42,7 +42,7 @@ export default function Search() {
         <div className={`${styles.leftSide} col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6 mb-5`}>
+        <div className={`${styles.middleSide} col-6`}>
           {(params.typeState === `searchall` ||
             params.typeState === `searcheverybody`) && <CardUserList />}
           {(params.typeState === `searchall` ||

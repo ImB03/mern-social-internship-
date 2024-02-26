@@ -6,6 +6,11 @@
   overflow: scroll;
 }
 
+.middleSide {
+  height: calc(100vh - 70px);
+  overflow: scroll;
+}
+
 // .leftSide,
 // .rightSide:hover {
 //   overflow-y: initial;

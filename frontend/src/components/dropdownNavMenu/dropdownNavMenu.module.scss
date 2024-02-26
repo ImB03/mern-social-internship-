@@ -28,6 +28,8 @@
       transition: all 0.2s ease;
       border-radius: 5px;
       width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       .wrapperIcon {
         .icon {

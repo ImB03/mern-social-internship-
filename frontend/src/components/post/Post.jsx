@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -18,6 +18,20 @@ export default function Post({ post }) {
   const { setIsDetailPost, setPostId } = useContext(MyContext);
   const dispatch = useDispatch();
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
+  
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsDropdownMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
 
   const handleLike = () => {
     dispatch(ACTION_LIKE_POST(post._id));
@@ -40,7 +54,7 @@ export default function Post({ post }) {
               </div>
             </div>
           </div>
-          <div className={`${styles.option} position-relative`}>
+          <div className={`${styles.option} position-relative`} ref={menuRef}>
             <div
               onClick={() => {
                 setIsDropdownMenu(!isDropdownMenu);
@@ -51,18 +65,7 @@ export default function Post({ post }) {
             </div>
 
             {isDropdownMenu && (
-              <>
-                <div
-                  onClick={() => {
-                    setIsDropdownMenu(false);
-                  }}
-                  className={`${styles.overlay} position-fixed`}
-                ></div>
-                <DropdownMenu
-                  post={post}
-                  setIsDropdownMenu={setIsDropdownMenu}
-                />
-              </>
+              <DropdownMenu post={post} setIsDropdownMenu={setIsDropdownMenu} />
             )}
           </div>
         </div>
@@ -77,14 +80,11 @@ export default function Post({ post }) {
             onClick={() => handleLike()}
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
-            {/* <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} /> */}
-
             {post?.likes?.includes(userNow._id) ? (
               <FavoriteIcon className={`${styles.icon} me-2`} />
             ) : (
               <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} />
             )}
-
             <div className={`${styles.nameInteract}`}>
               {post?.likes.length} Likes
             </div>
@@ -97,14 +97,12 @@ export default function Post({ post }) {
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
             <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
-
             <div className={`${styles.nameInteract}`}>Comments</div>
           </div>
           <div
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
             <ShareOutlinedIcon className={`${styles.icon} me-2`} />
-
             <div className={`${styles.nameInteract}`}>Share</div>
           </div>
         </div>

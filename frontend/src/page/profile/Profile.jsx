@@ -46,7 +46,7 @@ export default function Profile() {
         <div className={`${styles.leftSide} col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6 mb-5`}>
+        <div className={`${styles.middleSide} col-6`}>
           <InfoUser />
           <CreatePost />
           <Posts />
