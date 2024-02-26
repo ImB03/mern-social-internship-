@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { useSelector } from "react-redux";
 
 import styles from "./itemComment.module.scss";
 import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
 
 export default function ItemComment({ comment }) {
   const [isDropdownCommentMenu, setIsDropdownCommentMenu] = useState(false);
+
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsDropdownCommentMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
 
   return (
     <div className={`${styles.itemComment} mt-3 d-flex`} key={comment.userId}>
@@ -22,7 +35,7 @@ export default function ItemComment({ comment }) {
             <div className={`${styles.userName}`}>{comment.userName}</div>
             <div className={`${styles.userComment}`}>{comment.userComment}</div>
           </div>
-          <div className={`${styles.option} position-relative`}>
+          <div className={`${styles.option} position-relative`} ref={menuRef}>
             <div
               onClick={() => {
                 setIsDropdownCommentMenu(!isDropdownCommentMenu);
@@ -33,17 +46,9 @@ export default function ItemComment({ comment }) {
             </div>
 
             {isDropdownCommentMenu && (
-              <>
-                <div
-                  onClick={() => {
-                    setIsDropdownCommentMenu(false);
-                  }}
-                  className={`${styles.overlay} position-fixed`}
-                ></div>
-                <DropdownCommentMenu
-                  setIsDropdownCommentMenu={setIsDropdownCommentMenu}
-                />
-              </>
+              <DropdownCommentMenu
+                setIsDropdownCommentMenu={setIsDropdownCommentMenu}
+              />
             )}
           </div>
         </div>
