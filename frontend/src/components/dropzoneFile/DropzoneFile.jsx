@@ -9,6 +9,7 @@ import { MyContext } from "../../hook/context/state";
 export default function DropzoneFile({ inputFiles, setInputFiles }) {
   const onDrop = useCallback(
     (acceptedFiles) => {
+      console.log(acceptedFiles);
       setInputFiles(acceptedFiles.map((file) => URL.createObjectURL(file))[0]);
     },
     [setInputFiles]

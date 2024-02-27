@@ -123,10 +123,6 @@ export default function ModalPost() {
     }
   }, [processedPost]);
 
-  // useEffect(() => {
-  //   setInputDescription("");
-  //   setInputFiles("");
-  // }, [setIsCreatePost, setIsUpdatePost]);
 
   useEffect(() => {
     if (isDetailPost) {
