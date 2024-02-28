@@ -12,6 +12,8 @@ API.interceptors.request.use(
       )}`;
     }
 
+    console.log(req);
+
     return req;
   },
 
