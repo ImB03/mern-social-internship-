@@ -18,7 +18,7 @@ export default function Post({ post }) {
   const { setIsDetailPost, setPostId } = useContext(MyContext);
   const dispatch = useDispatch();
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
-  
+
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -71,7 +71,11 @@ export default function Post({ post }) {
         </div>
         <div className={`${styles.title} mt-3`}>{post.description}</div>
         {post.picturePath !== "" && (
-          <img className={`${styles.img} mt-3`} src={post.picturePath} alt="" />
+          <img
+            className={`${styles.img} mt-3`}
+            src=""
+            alt=""
+          />
         )}
         <div
           className={`${styles.interact} mt-2 pt-1 d-flex justify-content-center align-items-center`}

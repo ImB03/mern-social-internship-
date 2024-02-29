@@ -3,31 +3,29 @@ import User from "../models/user.js";
 
 /* CREATE */
 export const createPost = async (req, res, next) => {
-  const { description } = req.body;
-  console.log(description);
-  console.log(req.file.path);
-  // try {
-  //   const { description, picturePath } = req.body;
+  console.log(req.file);
+  try {
+    const { description } = req.body;
 
-  //   const newPost = new Post({
-  //     creator: {
-  //       userId: req.user._id,
-  //       userName: req.user.userName,
-  //       userAvatar: req.user.userAvatar,
-  //     },
-  //     description,
-  //     picturePath,
-  //   });
-  //   await newPost.save();
+    const newPost = new Post({
+      creator: {
+        userId: req.user._id,
+        userName: req.user.userName,
+        userAvatar: req.user.userAvatar,
+      },
+      description,
+      picturePath: req?.file?.path,
+    });
+    await newPost.save();
 
-  //   const posts = await Post.find().sort({ _id: -1 });
+    const posts = await Post.find().sort({ _id: -1 });
 
-  //   res.status(200).json(posts);
-  // } catch (err) {
-  //   console.error(err);
-  //   res.status(500).json({ message: "Create post unsuccessfully!" });
-  //   next(err);
-  // }
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Create post unsuccessfully!" });
+    next(err);
+  }
 };
 
 /* GET POST */
