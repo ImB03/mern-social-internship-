@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import decode from "jwt-decode";
 
 import Auth from "./page/auth/Auth";
 import Home from "./page/home/Home";
@@ -16,6 +17,7 @@ import { useEffect } from "react";
 import { MyContext } from "./hook/context/state";
 import ModalUser from "./components/modalUser/ModalUser";
 import Search from "./page/search/Search";
+import { LOGNOUT } from "./reducers/slice/slice";
 
 function App() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
@@ -41,6 +43,15 @@ function App() {
   } else {
     document.body.classList.remove("cancelScroll");
   }
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) LOGNOUT();
+    }
+  }, []);
 
   return (
     <Router>

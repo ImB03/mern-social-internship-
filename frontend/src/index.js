@@ -40,10 +40,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  auth: authSlice,
-  post: postSlice,
-  user: userSlice,
-  search: searchSlice,
   slice: slice,
 });
 
@@ -54,6 +50,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: {
     persistedReducer,
+    auth: authSlice,
+    post: postSlice,
+    user: userSlice,
+    search: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -61,6 +61,7 @@ export default function ModalPost() {
 
   const handleSubmit = () => {
     const formData = new FormData();
+    formData.append("description", dataPost.description);
     formData.append("picturePath", dataPost.picturePath);
 
     if (isCreatePost) {
