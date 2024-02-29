@@ -15,8 +15,6 @@ export default function Posts() {
 
   const posts = useSelector((state) => state.persistedReducer.slice.posts);
 
-  console.log(pageName);
-
   useEffect(() => {
     if (pageName === "profile" && params.userId) {
       const processedPosts = posts.filter(

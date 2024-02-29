@@ -10,8 +10,7 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
   const onDrop = useCallback(
     (acceptedFiles) => {
       console.log(acceptedFiles);
-      console.log(acceptedFiles.map((file) => URL.createObjectURL(file))[0]);
-      setInputFiles(acceptedFiles.map((file) => URL.createObjectURL(file))[0]);
+      setInputFiles(acceptedFiles[0]);
     },
     [setInputFiles]
   );
@@ -22,7 +21,11 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
     <div className={`${styles.dropzone}`}>
       {inputFiles ? (
         <div className={`${styles.displayFiles} position-relative`}>
-          <img src={inputFiles} className={`${styles.fileImg}`} alt="" />
+          <img
+            src={URL.createObjectURL(inputFiles)}
+            className={`${styles.fileImg}`}
+            alt=""
+          />
           <div
             onClick={() => {
               setInputFiles("");

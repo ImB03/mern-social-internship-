@@ -7,7 +7,7 @@ const postSchema = mongoose.Schema(
       default: {},
     },
     description: String,
-    picturePath: String,
+    picturePath: Object,
     likes: {
       type: Array,
       default: [],

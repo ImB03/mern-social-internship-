@@ -56,16 +56,15 @@ export default function ModalPost() {
   const [inputComment, setInputComment] = useState("");
   const [dataPost, setDataPost] = useState({
     description: "",
-    picturePath: "",
+    picturePath: {},
   });
 
   const handleSubmit = () => {
+    const formData = new FormData();
+    formData.append("picturePath", dataPost.picturePath);
+
     if (isCreatePost) {
-      dispatch(
-        ACTION_CREATE_POST(
-          dataPost,
-        )
-      );
+      dispatch(ACTION_CREATE_POST(formData));
       setIsCreatePost(false);
     } else if (isUpdatePost) {
       dispatch(
@@ -76,11 +75,7 @@ export default function ModalPost() {
       );
       setIsUpdatePost(false);
     } else if (isDeletePost) {
-      dispatch(
-        ACTION_DELETE_POST(
-          postId,
-        )
-      );
+      dispatch(ACTION_DELETE_POST(postId));
       setIsDeletePost(false);
     }
   };
@@ -122,7 +117,6 @@ export default function ModalPost() {
       setInputFiles(processedPost.picturePath);
     }
   }, [processedPost]);
-
 
   useEffect(() => {
     if (isDetailPost) {

@@ -1,7 +1,6 @@
 import express from "express";
 
 import {
-  createPost,
   getAllPosts,
   updatePost,
   deletePost,
@@ -12,7 +11,6 @@ import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
-router.post("/createpost", verifyToken, createPost);
 router.get("/getallposts", getAllPosts);
 router.patch("/updatepost/:postId", verifyToken, updatePost);
 router.patch("/commentpost/:postId", verifyToken, commentPost);
