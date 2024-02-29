@@ -12,7 +12,7 @@ import Home from "./page/home/Home";
 import Profile from "./page/profile/Profile";
 import ExtraLayout from "./layout/ExtraLayout";
 import MainLayout from "./layout/MainLayout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { MyContext } from "./hook/context/state";
 import ModalUser from "./components/modalUser/ModalUser";
@@ -21,6 +21,7 @@ import { LOGNOUT } from "./reducers/slice/slice";
 
 function App() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
+  const dispatch = useDispatch();
 
   const {
     isCreatePost,
@@ -49,7 +50,7 @@ function App() {
 
     if (token) {
       const decodedToken = decode(token);
-      if (decodedToken.exp * 1000 < new Date().getTime()) LOGNOUT();
+      if (decodedToken.exp * 1000 < new Date().getTime()) dispatch(LOGNOUT());
     }
   }, []);
 
