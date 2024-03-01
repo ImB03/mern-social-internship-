@@ -73,7 +73,7 @@ export default function Post({ post }) {
         {post.picturePath !== "" && (
           <img
             className={`${styles.img} mt-3`}
-            src=""
+            src={`http://localhost:19000/assets/${post.picturePath}`}
             alt=""
           />
         )}
