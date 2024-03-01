@@ -54,7 +54,7 @@ function* GetAllPosts(action) {
 function* UpdatePost(action) {
   try {
     const response = yield call(() =>
-      updatePost(action.payload.postId, action.payload.dataPost)
+      updatePost(action.payload.postId, action.payload.formData)
     );
     yield put(SET_POST({ response, post: response.data }));
   } catch (error) {

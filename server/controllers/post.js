@@ -3,10 +3,9 @@ import User from "../models/user.js";
 
 /* CREATE */
 export const createPost = async (req, res, next) => {
-  console.log(req.file);
-  try {
-    const { description } = req.body;
+  const { description } = req.body;
 
+  try {
     const newPost = new Post({
       creator: {
         userId: req.user._id,
@@ -45,12 +44,16 @@ export const getAllPosts = async (req, res, next) => {
 
 export const updatePost = async (req, res, next) => {
   const postId = req.params.postId;
-  const dataPost = req.body;
+  const { description } = req.body;
 
   try {
-    const updatedPost = await Post.findByIdAndUpdate(postId, dataPost, {
-      new: true,
-    });
+    const updatedPost = await Post.findByIdAndUpdate(
+      postId,
+      { description, picturePath: req.file.filename },
+      {
+        new: true,
+      }
+    );
 
     res.status(200).json(updatedPost);
   } catch (err) {

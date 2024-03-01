@@ -71,7 +71,7 @@ export default function ModalPost() {
       dispatch(
         ACTION_UPDATE_POST({
           postId,
-          dataPost,
+          formData,
         })
       );
       setIsUpdatePost(false);
