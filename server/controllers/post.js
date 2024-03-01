@@ -14,7 +14,7 @@ export const createPost = async (req, res, next) => {
         userAvatar: req.user.userAvatar,
       },
       description,
-      picturePath: req?.file?.path,
+      picturePath: req?.file?.filename,
     });
     await newPost.save();
 
