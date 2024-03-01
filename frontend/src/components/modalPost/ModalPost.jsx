@@ -117,7 +117,7 @@ export default function ModalPost() {
       setInputDescription(processedPost.description);
       setInputFiles(processedPost.picturePath);
     }
-  }, [processedPost]);
+  }, [processedPost, isUpdatePost]);
 
   useEffect(() => {
     if (isDetailPost) {

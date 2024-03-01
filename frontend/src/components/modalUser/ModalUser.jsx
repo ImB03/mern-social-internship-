@@ -27,7 +27,7 @@ import styles from "./modalUser.module.scss";
 import DropzoneFile from "../dropzoneFile/DropzoneFile";
 
 import { MyContext } from "../../hook/context/state";
-import DropzoneAvatarUser from "../dropzoneAvatarUser/DropzoneAvatarUser";
+import DropzoneUserAvatar from "../dropzoneUserAvatar/DropzoneUserAvatar";
 import DropzoneCoverAvatar from "../dropzoneCoverAvatar/DropzoneCoverAvatar";
 import { ACTION_UPDATE_USER } from "../../reducers/slice/userSlice";
 
@@ -266,7 +266,7 @@ export default function ModalUser() {
                   <div
                     className={`${styles.wrapperInputFile} d-flex justify-content-center align-items-center`}
                   >
-                    <DropzoneAvatarUser
+                    <DropzoneUserAvatar
                       dataInputUserAvatar={dataInputUserAvatar}
                       setDataInputUserAvatar={setDataInputUserAvatar}
                     />

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -7,10 +7,13 @@ import styles from "./dropzoneFile.module.scss";
 import { MyContext } from "../../hook/context/state";
 
 export default function DropzoneFile({ inputFiles, setInputFiles }) {
+  const [file, setfile] = useState("");
+
   const onDrop = useCallback(
     (acceptedFiles) => {
       console.log(acceptedFiles);
       setInputFiles(acceptedFiles[0]);
+      setfile(acceptedFiles[0]);
     },
     [setInputFiles]
   );
@@ -19,16 +22,21 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
 
   return (
     <div className={`${styles.dropzone}`}>
-      {inputFiles ? (
+      {inputFiles || file ? (
         <div className={`${styles.displayFiles} position-relative`}>
           <img
-            src={URL.createObjectURL(inputFiles)}
+            src={
+              file !== ""
+                ? URL.createObjectURL(inputFiles)
+                : `http://localhost:19000/assets/${inputFiles}`
+            }
             className={`${styles.fileImg}`}
             alt=""
           />
           <div
             onClick={() => {
               setInputFiles("");
+              setfile("");
             }}
             className={`${styles.closeFile} position-absolute d-flex justify-content-center align-items-center`}
           >

@@ -3,10 +3,10 @@ import { useDropzone } from "react-dropzone";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 
-import styles from "./dropzoneAvatarUser.module.scss";
+import styles from "./dropzoneUserAvatar.module.scss";
 import { MyContext } from "../../hook/context/state";
 
-export default function DropzoneAvatarUser({
+export default function DropzoneUserAvatar({
   dataInputUserAvatar,
   setDataInputUserAvatar,
 }) {
