@@ -73,17 +73,17 @@ export const updateUser = async (req, res, next) => {
   console.log(req?.files);
 
   try {
-    let updateDataUser = { ...dataUser };
+    let updatedDataUser = { ...dataUser };
 
     if (req?.files && req?.files?.userAvatar) {
-      updateDataUser.userAvatar = req?.files?.userAvatar[0]?.filename;
+      updatedDataUser.userAvatar = req?.files?.userAvatar[0]?.filename;
     }
 
     if (req?.files && req?.files?.coverAvatar) {
-      updateDataUser.coverAvatar = req?.files?.coverAvatar[0]?.filename;
+      updatedDataUser.coverAvatar = req?.files?.coverAvatar[0]?.filename;
     }
 
-    const updatedUser = await User.findByIdAndUpdate(userId, updateDataUser, {
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedDataUser, {
       new: true,
     });
 
@@ -91,8 +91,8 @@ export const updateUser = async (req, res, next) => {
       { "creator.userId": userId },
       {
         $set: {
-          "creator.userName": updateDataUser.userName,
-          "creator.userAvatar": updateDataUser?.userAvatar,
+          "creator.userName": updatedDataUser.userName,
+          "creator.userAvatar": updatedDataUser?.userAvatar,
         },
       }
     );
@@ -101,8 +101,8 @@ export const updateUser = async (req, res, next) => {
       { "comments.userId": userId },
       {
         $set: {
-          "comments.$[elem].userName": updateDataUser.userName,
-          "comments.$[elem].userAvatar": updateDataUser?.userAvatar,
+          "comments.$[elem].userName": updatedDataUser.userName,
+          "comments.$[elem].userAvatar": updatedDataUser?.userAvatar,
         },
       },
       { arrayFilters: [{ "elem.userId": userId }] }

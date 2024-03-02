@@ -3,18 +3,23 @@ import User from "../models/user.js";
 
 /* CREATE */
 export const createPost = async (req, res, next) => {
-  const { description } = req.body;
+  const dataPost = req.body;
 
   try {
-    const newPost = new Post({
+    const updatedDataPost = {
       creator: {
         userId: req.user._id,
         userName: req.user.userName,
         userAvatar: req.user.userAvatar,
       },
-      description,
-      picturePath: req?.file?.filename,
-    });
+      ...dataPost,
+    };
+
+    if (req?.file && req?.file?.filename) {
+      updatedDataPost.picturePath = req?.file?.filename;
+    }
+
+    const newPost = new Post(updatedDataPost);
     await newPost.save();
 
     const posts = await Post.find().sort({ _id: -1 });
@@ -44,16 +49,20 @@ export const getAllPosts = async (req, res, next) => {
 
 export const updatePost = async (req, res, next) => {
   const postId = req.params.postId;
-  const { description } = req.body;
+  const dataPost = req.body;
 
   try {
-    const updatedPost = await Post.findByIdAndUpdate(
-      postId,
-      { description, picturePath: req?.file?.filename },
-      {
-        new: true,
-      }
-    );
+    const updatedDataPost = {
+      ...dataPost,
+    };
+
+    if (req?.file && req?.file?.filename) {
+      updatedDataPost.picturePath = req?.file?.filename;
+    }
+
+    const updatedPost = await Post.findByIdAndUpdate(postId, updatedDataPost, {
+      new: true,
+    });
 
     res.status(200).json(updatedPost);
   } catch (err) {
