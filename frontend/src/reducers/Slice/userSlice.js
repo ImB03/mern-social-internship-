@@ -4,12 +4,8 @@ const userSlice = createSlice({
   name: "user",
   initialState: {},
   reducers: {
-    ACTION_GET_USER: (state) => {
-      state.isLoading = true;
-    },
-    ACTION_UPDATE_USER: (state) => {
-      state.isLoading = true;
-    },
+    ACTION_GET_USER: (state) => {},
+    ACTION_UPDATE_USER: (state) => {},
     // ACTION_FRIEND_REQUEST: (state) => {
     //   state.isLoading = true;
     // },

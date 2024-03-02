@@ -16,16 +16,18 @@ export default function CreatePost() {
     <div className={`${styles.createPost} mt-3 px-3 py-3`}>
       <div className="container-fluid p-0">
         <div className="d-flex align-items-center">
-          <img
-            className={`${styles.img} me-3`}
-            src="https://jademcallistercom.files.wordpress.com/2016/05/instagram-icon.png"
-            alt=""
-          />
+          <div className="">
+            <img
+              className={`${styles.userAvatar}`}
+              src={`http://localhost:19000/assets/${userNow.userAvatar}`}
+              alt=""
+            />
+          </div>
           <div
             onClick={() => {
               setIsCreatePost(true);
             }}
-            className={`${styles.createPostBtn} px-3 d-flex align-items-center`}
+            className={`${styles.createPostBtn} col ms-3 px-3 d-flex align-items-center`}
           >
             What's on your mind, {userNow.userName} ?
           </div>

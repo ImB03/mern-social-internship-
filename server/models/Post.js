@@ -6,8 +6,8 @@ const postSchema = mongoose.Schema(
       type: Object,
       default: {},
     },
-    description: String,
-    picturePath: String,
+    description: { type: String, default: "" },
+    picturePath: { type: String, default: "" },
     likes: {
       type: Array,
       default: [],

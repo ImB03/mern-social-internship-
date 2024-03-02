@@ -45,8 +45,8 @@ export default function Menu() {
           className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
         >
           <img
-            className={`${styles.avatarUser} me-3`}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wTSQmZNeyfJ1GNYRHZjCpYLN6ul8o5R0kg&usqp=CAU"
+            className={`${styles.userAvatar} me-3`}
+            src={`http://localhost:19000/assets/${userNow.userAvatar}`}
             alt=""
           />
           <div className={`${styles.userName}`}>{userNow.userName}</div>

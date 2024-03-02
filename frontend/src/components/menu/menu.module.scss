@@ -7,10 +7,11 @@
     border-bottom-right-radius: 5px;
     cursor: pointer;
 
-    .avatarUser {
+    .userAvatar {
       width: 35px;
       height: 35px;
       border-radius: 100%;
+      object-fit: cover;
     }
 
     .userName {

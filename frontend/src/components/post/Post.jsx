@@ -43,8 +43,8 @@ export default function Post({ post }) {
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex justify-content-between align-items-center">
             <img
-              className={`${styles.userImg} me-3`}
-              src="https://jademcallistercom.files.wordpress.com/2016/05/instagram-icon.png"
+              className={`${styles.userAvatar} me-3`}
+              src={`http://localhost:19000/assets/${post.creator.userAvatar}`}
               alt=""
             />
             <div>
