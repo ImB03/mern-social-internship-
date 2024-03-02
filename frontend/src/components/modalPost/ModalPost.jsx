@@ -66,16 +66,20 @@ export default function ModalPost() {
     formData.append("description", dataPost.description);
     formData.append("picturePath", dataPost.picturePath);
 
-    if (isCreatePost && dataPost.description !== "") {
-      dispatch(ACTION_CREATE_POST(formData));
+    if (isCreatePost) {
+      if (dataPost.description !== "" || dataPost.picturePath !== "") {
+        dispatch(ACTION_CREATE_POST(formData));
+      }
       setIsCreatePost(false);
-    } else if (isUpdatePost && dataPost.description !== "") {
-      dispatch(
-        ACTION_UPDATE_POST({
-          postId,
-          formData,
-        })
-      );
+    } else if (isUpdatePost) {
+      if (dataPost.description !== "" || dataPost.picturePath !== "") {
+        dispatch(
+          ACTION_UPDATE_POST({
+            postId,
+            formData,
+          })
+        );
+      }
       setIsUpdatePost(false);
     } else if (isDeletePost) {
       dispatch(ACTION_DELETE_POST(postId));
@@ -297,7 +301,11 @@ export default function ModalPost() {
             </div>
             <button
               onClick={() => handleSubmit()}
-              className={`${styles.submitBtn} col-12 mt-3 p-2`}
+              className={`${styles.submitBtn} ${
+                dataPost.description === "" && dataPost.picturePath === ""
+                  ? styles.disabledSubmitBtn
+                  : null
+              } col-12 mt-3 p-2`}
             >
               {isUpdatePost ? "Save" : "Post"}
             </button>

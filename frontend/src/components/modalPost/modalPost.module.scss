@@ -221,14 +221,21 @@
       font-size: 14px;
       font-weight: bold;
       letter-spacing: 0.5px;
+
+      .submitBtn:not(.disabledSubmitBtn) {
+        .submitBtn:hover {
+          background-color: #6694ebe4;
+        }
+
+        .submitBtn:active {
+          background-color: #4883f0e4;
+        }
+      }
     }
 
-    .submitBtn:hover {
-      background-color: #6694ebe4;
-    }
-
-    .submitBtn:active {
-      background-color: #4883f0e4;
+    .disabledSubmitBtn {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
 
     .wrapperBtn {
