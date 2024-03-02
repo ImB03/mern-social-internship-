@@ -103,7 +103,7 @@ export default function InfoUser() {
   return (
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
       <img
-        className={`${styles.img}`}
+        className={`${styles.coverAvatar}`}
         src="https://images.pexels.com/photos/13440765/pexels-photo-13440765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt=""
       />
@@ -115,8 +115,8 @@ export default function InfoUser() {
             className={`${styles.wrapperImg} d-flex align-items-center justify-content-center position-absolute`}
           >
             <img
-              className={`${styles.avatar}`}
-              src={`http://localhost:19000/assets/image.png`}
+              className={`${styles.userAvatar}`}
+              src={`http://localhost:19000/assets/${user.userAvatar}`}
               alt=""
             />
           </div>
