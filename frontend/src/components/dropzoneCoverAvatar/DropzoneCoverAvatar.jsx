@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -10,11 +10,12 @@ export default function DropzoneCoverAvatar({
   dataInputCoverAvatar,
   setDataInputCoverAvatar,
 }) {
+  const [file, setfile] = useState("");
+
   const onDrop = useCallback(
     (acceptedFiles) => {
-      setDataInputCoverAvatar(
-        acceptedFiles.map((file) => URL.createObjectURL(file))[0]
-      );
+      setDataInputCoverAvatar(acceptedFiles[0]);
+      setfile(acceptedFiles[0]);
     },
     [setDataInputCoverAvatar]
   );
@@ -26,13 +27,18 @@ export default function DropzoneCoverAvatar({
       {dataInputCoverAvatar ? (
         <div className={`${styles.displayFiles} position-relative`}>
           <img
-            src={dataInputCoverAvatar}
+            src={
+              file !== ""
+                ? URL.createObjectURL(dataInputCoverAvatar)
+                : `http://localhost:19000/assets/${dataInputCoverAvatar}`
+            }
             className={`${styles.fileImg}`}
             alt=""
           />
           <div
             onClick={() => {
               setDataInputCoverAvatar("");
+              setfile("");
             }}
             className={`${styles.closeFile} position-absolute d-flex justify-content-center align-items-center`}
           >

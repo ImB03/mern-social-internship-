@@ -11,7 +11,6 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      console.log(acceptedFiles);
       setInputFiles(acceptedFiles[0]);
       setfile(acceptedFiles[0]);
     },

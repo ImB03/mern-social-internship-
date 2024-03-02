@@ -82,8 +82,8 @@ export default function ModalUser() {
   );
 
   const [dataUser, setDataUser] = useState({
-    userAvatar: "",
-    coverAvatar: "",
+    userAvatar: {},
+    coverAvatar: {},
     provinceCity: "",
     workplace: "",
     school: "",
@@ -129,26 +129,6 @@ export default function ModalUser() {
       inputRefNickname.current.focus();
     }
   };
-
-  // useEffect(() => {
-  //   setDataInputProvinceCity(user.provinceCity);
-  //   setDataInputWorkplace(user.workplace);
-  //   setDataInputSchool(user.school);
-  //   setDataInputHomeTown(user.homeTown);
-  //   setDataInputUserName(user.userName);
-  //   setDataInputNickname(user.nickname);
-  //   setDataInputUserAvatar(user.userAvatar);
-  //   setDataInputCoverAvatar(user.coverAvatar);
-  // }, [
-  //   user.provinceCity,
-  //   user.workplace,
-  //   user.school,
-  //   user.homeTown,
-  //   user.userName,
-  //   user.nickname,
-  //   user.userAvatar,
-  //   user.coverAvatar,
-  // ]);
 
   useEffect(() => {
     setDataUser({
@@ -205,7 +185,17 @@ export default function ModalUser() {
   }, [displayInputNickname]);
 
   const handleSubmit = () => {
-    dispatch(ACTION_UPDATE_USER( dataUser ));
+    const formData = new FormData();
+    formData.append("userAvatar", dataUser.userAvatar);
+    formData.append("coverAvatar", dataUser.coverAvatar);
+    formData.append("provinceCity", dataUser.provinceCity);
+    formData.append("workplace", dataUser.workplace);
+    formData.append("school", dataUser.school);
+    formData.append("homeTown", dataUser.homeTown);
+    formData.append("userName", dataUser.userName);
+    formData.append("nickname", dataUser.nickname);
+
+    dispatch(ACTION_UPDATE_USER(formData));
     setIsUpdateUser(false);
   };
 

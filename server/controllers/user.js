@@ -21,18 +21,28 @@ export const getOneUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   const dataUser = req.body;
   const userId = req.user._id;
+  console.log(req.files);
+  console.log(dataUser);
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(userId, dataUser, {
-      new: true,
-    });
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        userAvatar: req.files.userAvatar[0].filename,
+        coverAvatar: req.files.coverAvatar[0].filename,
+        ...dataUser,
+      },
+      {
+        new: true,
+      }
+    );
 
     await Post.updateMany(
       { "creator.userId": userId },
       {
         $set: {
           "creator.userName": dataUser.userName,
-          "creator.userAvatar": dataUser.userAvatar,
+          "creator.userAvatar": dataUser.req.files.userAvatar[0].filename,
         },
       }
     );
@@ -42,7 +52,8 @@ export const updateUser = async (req, res, next) => {
       {
         $set: {
           "comments.$[elem].userName": dataUser.userName,
-          "comments.$[elem].userAvatar": dataUser.userAvatar,
+          "comments.$[elem].userAvatar":
+            dataUser.req.files.userAvatar[0].filename,
         },
       },
       { arrayFilters: [{ "elem.userId": userId }] }

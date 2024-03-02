@@ -18,6 +18,7 @@ import searchRoutes from "./routes/search.js";
 import { createPost, updatePost } from "./controllers/post.js";
 import { signup } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/verifyToken.js";
+import { updateUser } from "./controllers/user.js";
 
 // import User from "./models/User.js";
 // import Post from "./models/Post.js";
@@ -74,6 +75,16 @@ app.patch(
   verifyToken,
   upload.single("picturePath"),
   updatePost
+);
+
+app.patch(
+  "/api/user/updateuser",
+  verifyToken,
+  upload.fields([
+    { name: "userAvatar", maxCount: 1 },
+    { name: "coverAvatar", maxCount: 1 },
+  ]),
+  updateUser
 );
 
 /* ROUTES */
