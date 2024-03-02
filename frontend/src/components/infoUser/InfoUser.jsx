@@ -100,7 +100,6 @@ export default function InfoUser() {
   const user = useSelector((state) => state.persistedReducer.slice.user);
   const { setIsUpdateUser } = useContext(MyContext);
 
-
   return (
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
       <img
@@ -117,7 +116,7 @@ export default function InfoUser() {
           >
             <img
               className={`${styles.avatar}`}
-              src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+              src={`http://localhost:19000/assets/image.png`}
               alt=""
             />
           </div>
