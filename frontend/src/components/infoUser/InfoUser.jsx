@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import AddIcon from "@mui/icons-material/Add";
@@ -15,17 +15,33 @@ import Ad from "../ad/Ad";
 import MakeFriend from "../makeFriend/MakeFriend";
 import { MyContext } from "../../hook/context/state";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export default function InfoUser() {
   const user = useSelector((state) => state.persistedReducer.slice.user);
+  const { userId } = useParams();
+
+  const [processedUsers, setProcessedUsers] = useState({});
+
   const { setIsUpdateUser } = useContext(MyContext);
+
+  useEffect(() => {
+    setProcessedUsers({});
+    setProcessedUsers(user);
+  }, [user, userId]);
+
+  useEffect(() => {
+    setProcessedUsers({});
+  }, []);
 
   return (
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
       <img
         className={`${styles.coverAvatar}`}
         src={`http://localhost:19000/assets/${
-          user.coverAvatar !== "" ? user.coverAvatar : "defaultCoverAvatar.png"
+          processedUsers.coverAvatar !== ""
+            ? processedUsers.coverAvatar
+            : "defaultCoverAvatar.png"
         }`}
         alt=""
       />
@@ -39,8 +55,8 @@ export default function InfoUser() {
             <img
               className={`${styles.userAvatar}`}
               src={`http://localhost:19000/assets/${
-                user.userAvatar !== ""
-                  ? user.userAvatar
+                processedUsers.userAvatar !== ""
+                  ? processedUsers.userAvatar
                   : "defaultUserAvatar.png"
               }`}
               alt=""
@@ -115,10 +131,10 @@ export default function InfoUser() {
               </div>
             </div>
             <h3 className={`${styles.userName} d-flex justify-content-center`}>
-              {user?.userName}
+              {processedUsers?.userName}
             </h3>
             <p className={`${styles.nickName} d-flex justify-content-center`}>
-              @{user?.userName}
+              @{processedUsers?.userName}
             </p>
             <div
               className={`${styles.contact} mt-2 d-flex justify-content-start`}
@@ -128,7 +144,9 @@ export default function InfoUser() {
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}
                 >
                   <i className={`${styles.icon} me-2 fa-solid fa-globe`}></i>
-                  <div className={`${styles.link}`}>{user?.email}</div>
+                  <div className={`${styles.link}`}>
+                    {processedUsers?.email}
+                  </div>
                 </div>
                 <div
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}

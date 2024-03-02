@@ -22,6 +22,7 @@ import { ACTION_GET_USER } from "../../reducers/slice/userSlice";
 export default function Profile() {
   const { userId } = useParams();
   const dispatch = useDispatch();
+  const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const {
     isCreatePost,
@@ -48,7 +49,7 @@ export default function Profile() {
         </div>
         <div className={`${styles.middleSide} col-6`}>
           <InfoUser />
-          <CreatePost />
+          {userId === userNow._id && <CreatePost />}
           <Posts />
         </div>
         <div className={`${styles.rightSide} col-3`}>
