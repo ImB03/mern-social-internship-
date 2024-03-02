@@ -46,6 +46,13 @@ export default function ModalSearch() {
     }
   };
 
+  const handleSearch = () => {
+    if (searchTerm !== "") {
+      navigate(`/search/searchall?q=${searchTerm}`);
+      setIsSearch(false);
+    }
+  };
+
   const handleKeyPress = (e) => {
     // Kiểm tra xem biến sự kiện (e) có tồn tại không
     if (e) {
@@ -57,7 +64,9 @@ export default function ModalSearch() {
         // Ngăn chặn hành động mặc định của phím Enter
         e.preventDefault();
 
-        navigate(`/search/searchall?q=${searchTerm}`);
+        if (searchTerm !== "") {
+          navigate(`/search/searchall?q=${searchTerm}`);
+        }
         setIsSearch(false);
       }
     }
@@ -105,9 +114,12 @@ export default function ModalSearch() {
         <div className="container-fluid p-3">
           <div className={`${styles.search} pb-1 border-bottom d-flex`}>
             <button
-              className={`${styles.searchBtn} d-flex justify-content-center align-items-center`}
+              className={`${styles.searchBtn} ${
+                searchTerm === "" && styles.disabledSearchBtn
+              } d-flex justify-content-center align-items-center`}
               onClick={(e) => {
                 e.stopPropagation();
+                handleSearch();
               }}
             >
               <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
@@ -133,8 +145,12 @@ export default function ModalSearch() {
                     className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
                   >
                     <img
-                      className={`${styles.avatarUser} me-3`}
-                      src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
+                      className={`${styles.userAvatar} me-3`}
+                      src={`http://localhost:19000/assets/${
+                        user.userAvatar !== ""
+                          ? user.userAvatar
+                          : "defaultUserAvatar.png"
+                      }`}
                       alt=""
                     />
                     <div className={`${styles.searchTerm}`}>

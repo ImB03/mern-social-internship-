@@ -1,5 +1,5 @@
 .modalUser {
-  background-color: rgba(230, 230, 230, 0.7);
+  background-color: rgba(230, 230, 230, 0.6);
   height: 100vh;
   width: 100%;
   left: 0;
@@ -121,14 +121,19 @@
       font-size: 14px;
       font-weight: bold;
       letter-spacing: 0.5px;
+
+      &:not(.disabledSubmitBtn):hover {
+        background-color: #6694ebe4;
+      }
+
+      &:not(.disabledSubmitBtn):active {
+        background-color: #4883f0e4;
+      }
     }
 
-    .submitBtn:hover {
-      background-color: #6694ebe4;
-    }
-
-    .submitBtn:active {
-      background-color: #4883f0e4;
+    .disabledSubmitBtn {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 }

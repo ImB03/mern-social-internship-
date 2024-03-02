@@ -1,5 +1,5 @@
 .modalSearch {
-  background-color: rgba(230, 230, 230, 0.7);
+  background-color: rgba(230, 230, 230, 0.6);
   height: 100vh;
   width: 100%;
   left: 0;
@@ -12,6 +12,7 @@
     background-color: transparent;
     height: 100vh;
     width: 100%;
+    backdrop-filter: blur(2px);
 
     .closeIcon {
       right: 17px;
@@ -50,21 +51,25 @@
       }
       .searchBtn {
         border-radius: 5px;
-
-        background-color: #e0e0e0;
-        color: rgb(107, 106, 106);
+        background-color: #749eebcc;
+        color: white;
         border: none;
         height: 35px !important;
         width: 60px !important;
         transition: all 0.2s ease;
+
+        &:not(.disabledSearchBtn):hover {
+          background-color: #6694ebe4;
+        }
+
+        &:not(.disabledSearchBtn):active {
+          background-color: #4883f0e4;
+        }
       }
 
-      .searchBtn:hover {
-        background-color: #d0d0d0;
-      }
-
-      .searchBtn:active {
-        background-color: #e0e0e0;
+      .disabledSearchBtn {
+        cursor: inherit;
+        opacity: 0.5;
       }
     }
 
@@ -86,11 +91,13 @@
           }
         }
 
-        .avatarUser {
+        .userAvatar {
           border-radius: 100%;
           width: 40px;
           min-width: 40px;
           height: 40px;
+          object-fit: cover;
+          border: 1px solid #ccc;
         }
 
         .searchTerm {

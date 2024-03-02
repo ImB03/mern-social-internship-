@@ -6,10 +6,12 @@
     cursor: pointer;
     transition: all 0.1s ease;
     border-radius: 10px;
-    .avatarUser {
+    .userAvatar {
       width: 70px;
       height: 70px;
       border-radius: 100%;
+      object-fit: cover;
+      border: 1px solid #ccc;
     }
     .userName {
       font-weight: bold;
@@ -51,11 +53,14 @@
       cursor: pointer;
       transition: all 0.1s ease;
       border-radius: 10px;
-      .avatarUser {
+      .userAvatar {
         width: 70px;
         height: 70px;
         border-radius: 100%;
+        object-fit: cover;
+        border: 1px solid #ccc;
       }
+
       .userName {
         font-weight: bold;
         font-size: 18px;

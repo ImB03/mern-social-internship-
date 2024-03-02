@@ -36,8 +36,12 @@ export default function CardUserList() {
               >
                 <div className={`d-flex align-items-center`}>
                   <img
-                    className={`${styles.avatarUser} me-3`}
-                    src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
+                    className={`${styles.userAvatar} me-3`}
+                    src={`http://localhost:19000/assets/${
+                      user.userAvatar !== ""
+                        ? user.userAvatar
+                        : "defaultUserAvatar.png"
+                    }`}
                     alt=""
                   />
                   <div className={`${styles.userName}`}>{user.userName}</div>
@@ -70,8 +74,12 @@ export default function CardUserList() {
               >
                 <div className={`d-flex align-items-center`}>
                   <img
-                    className={`${styles.avatarUser} me-3`}
-                    src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
+                    className={`${styles.userAvatar} me-3`}
+                    src={`http://localhost:19000/assets/${
+                      user.userAvatar !== ""
+                        ? user.userAvatar
+                        : "defaultUserAvatar.png"
+                    }`}
                     alt=""
                   />
                   <div className={`${styles.userName}`}>{user.userName}</div>

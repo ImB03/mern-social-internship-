@@ -1,5 +1,5 @@
 .modalPost {
-  background-color: rgba(230, 230, 230, 0.7);
+  background-color: rgba(230, 230, 230, 0.6);
   height: 100vh;
   width: 100%;
   left: 0;
@@ -222,14 +222,12 @@
       font-weight: bold;
       letter-spacing: 0.5px;
 
-      .submitBtn:not(.disabledSubmitBtn) {
-        .submitBtn:hover {
-          background-color: #6694ebe4;
-        }
+      &:not(.disabledSubmitBtn):hover {
+        background-color: #6694ebe4;
+      }
 
-        .submitBtn:active {
-          background-color: #4883f0e4;
-        }
+      &:not(.disabledSubmitBtn):active {
+        background-color: #4883f0e4;
       }
     }
 
@@ -298,15 +296,28 @@
 
           .icon {
             font-size: 20px;
-            color: #808080;
+            color: #749eebcc;
+          }
+
+          &:not(.disabledCommentBtn):hover {
+            background-color: #e0e0e0;
+            .icon {
+              font-size: 20px;
+              color: #6694ebe4;
+            }
+          }
+          &:not(.disabledCommentBtn):active {
+            background-color: #d0d0d0;
+            .icon {
+              font-size: 20px;
+              color: #4883f0e4;
+            }
           }
         }
 
-        .wrapperIcon:hover {
-          background-color: #e0e0e0;
-        }
-        .wrapperIcon:active {
-          background-color: #d0d0d0;
+        .disabledCommentBtn {
+          cursor: not-allowed;
+          opacity: 0.5;
         }
       }
     }

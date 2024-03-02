@@ -69,8 +69,8 @@ export default function ModalPost() {
     if (isCreatePost) {
       if (dataPost.description !== "" || dataPost.picturePath !== "") {
         dispatch(ACTION_CREATE_POST(formData));
+        setIsCreatePost(false);
       }
-      setIsCreatePost(false);
     } else if (isUpdatePost) {
       if (dataPost.description !== "" || dataPost.picturePath !== "") {
         dispatch(
@@ -79,8 +79,8 @@ export default function ModalPost() {
             formData,
           })
         );
+        setIsUpdatePost(false);
       }
-      setIsUpdatePost(false);
     } else if (isDeletePost) {
       dispatch(ACTION_DELETE_POST(postId));
       setIsDeletePost(false);
@@ -437,7 +437,9 @@ export default function ModalPost() {
                     onClick={() => {
                       handleComment();
                     }}
-                    className={`${styles.wrapperIcon} d-flex justify-content-center align-items-center`}
+                    className={`${styles.wrapperIcon} ${
+                      inputComment === "" && styles.disabledCommentBtn
+                    }  d-flex justify-content-center align-items-center`}
                   >
                     <SendIcon className={`${styles.icon}`} />
                   </div>

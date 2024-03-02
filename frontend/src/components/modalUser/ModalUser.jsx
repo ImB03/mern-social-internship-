@@ -195,8 +195,10 @@ export default function ModalUser() {
     formData.append("userName", dataUser.userName);
     formData.append("nickname", dataUser.nickname);
 
-    dispatch(ACTION_UPDATE_USER(formData));
-    setIsUpdateUser(false);
+    if (dataUser.userName !== "") {
+      dispatch(ACTION_UPDATE_USER(formData));
+      setIsUpdateUser(false);
+    }
   };
 
   return (
@@ -615,7 +617,9 @@ export default function ModalUser() {
           </div>
           <button
             onClick={() => handleSubmit()}
-            className={`${styles.submitBtn} col-12 mt-3 p-2`}
+            className={`${styles.submitBtn} ${
+              dataUser.userName === "" && styles.disabledSubmitBtn
+            } col-12 mt-3 p-2`}
           >
             Edit introduction information
           </button>
