@@ -46,7 +46,11 @@ export default function Menu() {
         >
           <img
             className={`${styles.userAvatar} me-3`}
-            src={`http://localhost:19000/assets/${userNow.userAvatar}`}
+            src={`http://localhost:19000/assets/${
+              userNow.userAvatar !== ""
+                ? userNow.userAvatar
+                : "defaultUserAvatar.png"
+            }`}
             alt=""
           />
           <div className={`${styles.userName}`}>{userNow.userName}</div>

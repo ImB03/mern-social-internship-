@@ -20,7 +20,6 @@ export const signup = async (req, res, next) => {
       userName,
       email,
       password: passwordHash,
-      userAvatar: "image.png",
     });
     await newUser.save();
     res.status(200).json({ message: "Signup successful!" });

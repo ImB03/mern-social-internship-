@@ -82,8 +82,8 @@ export default function ModalUser() {
   );
 
   const [dataUser, setDataUser] = useState({
-    userAvatar: {},
-    coverAvatar: {},
+    userAvatar: "",
+    coverAvatar: "",
     provinceCity: "",
     workplace: "",
     school: "",

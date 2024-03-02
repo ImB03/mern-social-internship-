@@ -24,7 +24,9 @@ export default function InfoUser() {
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
       <img
         className={`${styles.coverAvatar}`}
-        src={`http://localhost:19000/assets/${user.coverAvatar}`}
+        src={`http://localhost:19000/assets/${
+          user.coverAvatar !== "" ? user.coverAvatar : "defaultCoverAvatar.png"
+        }`}
         alt=""
       />
       <div
@@ -36,7 +38,11 @@ export default function InfoUser() {
           >
             <img
               className={`${styles.userAvatar}`}
-              src={`http://localhost:19000/assets/${user.userAvatar}`}
+              src={`http://localhost:19000/assets/${
+                user.userAvatar !== ""
+                  ? user.userAvatar
+                  : "defaultUserAvatar.png"
+              }`}
               alt=""
             />
           </div>

@@ -44,11 +44,17 @@ export default function Post({ post }) {
           <div className="d-flex justify-content-between align-items-center">
             <img
               className={`${styles.userAvatar} me-3`}
-              src={`http://localhost:19000/assets/${post.creator.userAvatar}`}
+              src={`http://localhost:19000/assets/${
+                post.creator.userAvatar !== ""
+                  ? post.creator.userAvatar
+                  : "defaultUserAvatar.png"
+              }`}
               alt=""
             />
             <div>
-              <div className={`${styles.userName}`}>{post.creatorName}</div>
+              <div className={`${styles.userName}`}>
+                {post.creator.userName}
+              </div>
               <div className={`${styles.createTime}`}>
                 1 min ago <LockIcon className={`${styles.icon}`} />
               </div>

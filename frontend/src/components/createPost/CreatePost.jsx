@@ -19,7 +19,11 @@ export default function CreatePost() {
           <div className="">
             <img
               className={`${styles.userAvatar}`}
-              src={`http://localhost:19000/assets/${userNow.userAvatar}`}
+              src={`http://localhost:19000/assets/${
+                userNow.userAvatar !== ""
+                  ? userNow.userAvatar
+                  : "defaultUserAvatar.png"
+              }`}
               alt=""
             />
           </div>

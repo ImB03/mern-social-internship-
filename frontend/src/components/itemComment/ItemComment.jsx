@@ -24,8 +24,12 @@ export default function ItemComment({ comment }) {
   return (
     <div className={`${styles.itemComment} mt-3 d-flex`} key={comment.userId}>
       <img
-        className={`${styles.avatarUser} me-3`}
-        src="https://media.licdn.com/dms/image/D4E0BAQG-i2j7Q2WFIA/company-logo_200_200/0/1694593112031/img_logo?e=2147483647&v=beta&t=o1304VK0Zbh3CBA-8_LNYNZZCNrQjMIBS-nwKrAMzbY"
+        className={`${styles.userAvatar} me-3`}
+        src={`http://localhost:19000/assets/${
+          comment.userAvatar !== ""
+            ? comment.userAvatar
+            : "defaultUserAvatar.png"
+        }`}
         alt=""
       />
 
