@@ -49,7 +49,7 @@ export const updatePost = async (req, res, next) => {
   try {
     const updatedPost = await Post.findByIdAndUpdate(
       postId,
-      { description, picturePath: req.file.filename },
+      { description, picturePath: req?.file?.filename },
       {
         new: true,
       }

@@ -84,6 +84,8 @@ app.patch(
     { name: "userAvatar", maxCount: 1 },
     { name: "coverAvatar", maxCount: 1 },
   ]),
+  // upload.single("userAvatar"),
+  // upload.single("coverAvatar"),
   updateUser
 );
 
