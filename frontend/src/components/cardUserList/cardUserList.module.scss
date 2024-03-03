@@ -19,7 +19,7 @@
       font-size: 18px;
       letter-spacing: 0.5px;
     }
-    
+
     .btnAddFriend {
       transition: all 0.1s ease;
       font-weight: bold;
@@ -29,18 +29,17 @@
       border: none;
       background-color: #ebf5ff;
       color: #0080ff;
-    }
 
-    .btnAddFriend:hover {
-      background-color: #d3e2ef;
+      &:hover {
+        background-color: #d3e2ef;
+      }
+      &:active {
+        background-color: #c2dbf0;
+      }
     }
 
     &:hover {
       background-color: #f0f0f0;
-    }
-
-    &:active {
-      background-color: #e0e0e0;
     }
   }
 
@@ -77,18 +76,17 @@
         border: none;
         background-color: #ebf5ff;
         color: #0080ff;
-      }
 
-      .btnAddFriend:hover {
-        background-color: #d3e2ef;
+        &:hover {
+          background-color: #d3e2ef;
+        }
+        &:active {
+          background-color: #c2dbf0;
+        }
       }
 
       &:hover {
         background-color: #f0f0f0;
-      }
-
-      &:active {
-        background-color: #e0e0e0;
       }
     }
   }
