@@ -49,11 +49,11 @@ export default function ItemComment({ comment }) {
               <MoreHorizIcon className={`${styles.icon}`} />
             </div>
 
-            {isDropdownCommentMenu && (
+            {/* {isDropdownCommentMenu && (
               <DropdownCommentMenu
                 setIsDropdownCommentMenu={setIsDropdownCommentMenu}
               />
-            )}
+            )} */}
           </div>
         </div>
         <div className="px-2 col-12 d-flex">

@@ -128,8 +128,15 @@ export default function ModalSearch() {
               ref={inputRef}
               className={`${styles.searchInput} ps-2`}
               type="search"
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value.startsWith(" ")) {
+                  setSearchTerm("");
+                } else {
+                  setSearchTerm(e.target.value);
+                }
+              }}
               onKeyDown={handleKeyPress}
+              value={searchTerm}
             />
           </div>
           {searchTerm && (
