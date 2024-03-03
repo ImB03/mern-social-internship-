@@ -21,11 +21,15 @@ export default function Posts() {
         (post) => post.creator.userId === params.userId
       );
       setProcessedPosts(processedPosts);
-    } else if (pageName === "search" && qValue && qValue !== "") {
+    } else if (
+      pageName.toLowerCase() === "search" &&
+      qValue &&
+      qValue.trim() !== ""
+    ) {
       const processedPosts = posts.filter(
         (post) =>
-          post.creator.userName.includes(qValue) ||
-          post.description.includes(qValue)
+          post.creator.userName.toLowerCase().includes(qValue.toLowerCase()) ||
+          post.description.toLowerCase().includes(qValue.toLowerCase())
       );
       setProcessedPosts(processedPosts);
     } else if (pageName === "") {

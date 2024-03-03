@@ -91,12 +91,14 @@ export default function Post({ post }) {
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
             {post?.likes?.includes(userNow._id) ? (
-              <FavoriteIcon className={`${styles.icon} me-2`} />
+              <FavoriteIcon className={`${styles.iconHeart} me-2`} />
             ) : (
-              <FavoriteBorderOutlinedIcon className={`${styles.icon} me-2`} />
+              <FavoriteBorderOutlinedIcon
+                className={`${styles.iconOutlineHeart} me-2`}
+              />
             )}
             <div className={`${styles.nameInteract}`}>
-              {post?.likes.length} Likes
+              {post?.likes.length !== 0 && post?.likes.length} Likes
             </div>
           </div>
           <div
@@ -107,7 +109,9 @@ export default function Post({ post }) {
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
           >
             <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
-            <div className={`${styles.nameInteract}`}>Comments</div>
+            <div className={`${styles.nameInteract}`}>
+              {post?.comments.length !== 0 && post?.comments.length} Comments
+            </div>
           </div>
           <div
             className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}

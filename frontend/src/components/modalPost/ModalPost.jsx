@@ -379,14 +379,16 @@ export default function ModalPost() {
                   className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
                 >
                   {processedPost?.likes?.includes(userNow._id) ? (
-                    <FavoriteIcon className={`${styles.icon} me-2`} />
+                    <FavoriteIcon className={`${styles.iconHeart} me-2`} />
                   ) : (
                     <FavoriteBorderOutlinedIcon
-                      className={`${styles.icon} me-2`}
+                      className={`${styles.iconOutlineHeart} me-2`}
                     />
                   )}
                   <div className={`${styles.nameInteract}`}>
-                    {processedPost.likes?.length} Likes
+                    {processedPost.likes?.length !== 0 &&
+                      processedPost.likes?.length}{" "}
+                    Likes
                   </div>
                 </div>
                 <div

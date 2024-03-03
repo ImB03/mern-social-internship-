@@ -543,7 +543,7 @@ export default function ModalUser() {
                         !displayInputUserName && "fs-4 me-2"
                       } ${displayInputUserName && "me-1"}`}
                     />
-                    Your name
+                    Your name(require)
                   </div>
                   {displayInputUserName && (
                     <input
