@@ -15,7 +15,7 @@ import Messages from "../../assets/10.png";
 import Fund from "../../assets/13.png";
 import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
 
 export default function Menu() {
@@ -40,9 +40,14 @@ export default function Menu() {
   return (
     <div className={`${styles.menu} mt-3`}>
       <div className="container-fluid p-0">
-        <Link
+        <NavLink
           to={`/profile/${userNow._id}`}
-          className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
+          // className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
+          className={({ isActive }) =>
+            `${styles.itemMenu} ${
+              isActive && styles.isActive
+            } col p-3 d-flex align-items-center`
+          }
         >
           <img
             className={`${styles.userAvatar} me-3`}
@@ -54,7 +59,7 @@ export default function Menu() {
             alt=""
           />
           <div className={`${styles.userName}`}>{userNow.userName}</div>
-        </Link>
+        </NavLink>
         {Menu.map((item) => (
           <div
             className={`${styles.itemMenu} col p-3 d-flex align-items-center`}

@@ -54,7 +54,11 @@ export default function FilterSearch() {
         {FilterItem.map((item) => (
           <NavLink
             to={item.to}
-            className={`${styles.itemFilter} col p-2 d-flex align-items-center`}
+            className={({ isActive }) =>
+              `${styles.itemFilter} ${
+                isActive && styles.isActive
+              } col p-2 d-flex align-items-center`
+            }
           >
             <div
               className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}

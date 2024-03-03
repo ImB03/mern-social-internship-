@@ -15,7 +15,7 @@
   }
 
   .itemFilter {
-    transition: all 0.1s ease;
+    transition: all 0.2s ease;
     border-radius: 5px;
     cursor: pointer;
 
@@ -38,11 +38,15 @@
     }
   }
 
-  .itemFilter:hover {
+  .itemFilter:not(.isActive):hover {
     background-color: #f0f0f0;
   }
 
   .itemFilter:active {
     background-color: #e0e0e0;
   }
+}
+
+.isActive {
+  background-color: #e0e0e0;
 }
