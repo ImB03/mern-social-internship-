@@ -18,12 +18,21 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 export default function InfoUser() {
-  const user = useSelector((state) => state.persistedReducer.slice.user);
   const { userId } = useParams();
-
   const [processedUsers, setProcessedUsers] = useState({});
-
   const { setIsUpdateUser } = useContext(MyContext);
+  let likeQuantity = 0;
+
+  const user = useSelector((state) => state.persistedReducer.slice.user);
+  const posts = useSelector((state) => state.persistedReducer.slice.posts);
+
+  const processedPosts = posts.filter((post) => post.creator.userId === userId);
+
+  processedPosts.forEach((post) => {
+    if (post.likes?.length !== 0) {
+      likeQuantity = likeQuantity + post.likes?.length;
+    }
+  });
 
   useEffect(() => {
     setProcessedUsers({});
@@ -70,14 +79,14 @@ export default function InfoUser() {
                 <div
                   className={`${styles.quantity} d-flex justify-content-center`}
                 >
-                  <div className="me-3">
-                    <b>12k</b> friends
+                  <div className="me-2">
+                    <b>{user.friends?.length}</b> friends
                   </div>
-                  <div className="me-3">
-                    <b>12k</b> posts
+                  <div className="me-2">
+                    <b>{processedPosts.length}</b> posts
                   </div>
-                  <div className="me-3">
-                    <b>12k</b> likes
+                  <div className="me-2">
+                    <b>{likeQuantity}</b> likes
                   </div>
                 </div>
               </div>
@@ -109,12 +118,12 @@ export default function InfoUser() {
                 </>
                 } */}
                 <>
-                  <button
+                  {/* <button
                     className={`${styles.btnAddNews} me-2 d-flex justify-content-center align-items-center`}
                   >
                     <AddIcon className={`${styles.icon} me-1`} />
                     Add news
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => setIsUpdateUser(true)}
                     className={`${styles.btnEditProfile} me-2 d-flex justify-content-center align-items-center`}
@@ -134,7 +143,7 @@ export default function InfoUser() {
               {processedUsers?.userName}
             </h3>
             <p className={`${styles.nickName} d-flex justify-content-center`}>
-              @{processedUsers?.userName}
+              @{processedUsers?.nickname}
             </p>
             <div
               className={`${styles.contact} mt-2 d-flex justify-content-start`}
@@ -143,15 +152,17 @@ export default function InfoUser() {
                 <div
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}
                 >
-                  <i className={`${styles.icon} me-2 fa-solid fa-globe`}></i>
+                  <i className={`${styles.icon} me-2 fa-brands fa-github`}></i>
                   <div className={`${styles.link}`}>
-                    {processedUsers?.email}
+                    https://github.com/ImB03
                   </div>
                 </div>
                 <div
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}
                 >
-                  <i className={`${styles.icon} me-2 fa-solid fa-link`}></i>
+                  <i
+                    className={`${styles.icon} me-2 fa-brands fa-linkedin-in`}
+                  ></i>
                   <div className={`${styles.link}`}>
                     https://github.com/ImB03
                   </div>
@@ -160,7 +171,7 @@ export default function InfoUser() {
                   className={`${styles.itemInfo} py-2 me-4 d-flex align-items-center`}
                 >
                   <i className={`${styles.icon} me-2 fa-solid fa-envelope`}></i>
-                  <div className={`${styles.link}`}>bao@gmail.com</div>
+                  <div className={`${styles.link}`}>giabao7803@gmail.com</div>
                 </div>
               </div>
               <div className="col d-flex align-items-center justify-content-end">

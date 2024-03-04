@@ -3,8 +3,13 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 import styles from "./cardInfo.module.scss";
 import Stories from "../stories/Stories";
+import { useSelector } from "react-redux";
 
 export default function CardInfo() {
+  const user = useSelector((state) => state.persistedReducer.slice.user);
+
+  console.log(user);
+
   return (
     <div className={`${styles.cardInfo} p-3`}>
       <div className="container-fluid p-0">
@@ -13,34 +18,26 @@ export default function CardInfo() {
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
             <i className={`${styles.icon} me-3 fa-solid fa-graduation-cap`}></i>
             <div className={`${styles.info}`}>
-              Học Công nghệ hữu cơ hóa dầu tại
-              <b>
-                Đại học Bách khoa Hà Nội - Hanoi University of Science and
-                Technology
-              </b>
+              Studied at <b>{user.school}</b>
             </div>
           </div>
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
             <i className={`${styles.icon} me-3 fa-solid fa-location-dot`}></i>
             <div className={`${styles.info}`}>
-              Đến từ <b>Hà Tĩnh</b>
+              Coming from <b>{user.school}</b>
             </div>
           </div>
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
             <i className={`${styles.icon} me-3 fa-solid fa-house`}></i>
             <div className={`${styles.info}`}>
-              Sống tại <b>Hà Nội</b>
+              Living in <b>{user.provinceCity}</b>
             </div>
           </div>
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
             <i className={`${styles.icon} me-3 fa-solid fa-briefcase`}></i>
             <div className={`${styles.info}`}>
-              Làm việc tại <b>Hà Nội</b>
+              Working in <b>{user.workplace}</b>
             </div>
-          </div>
-          <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
-            <i className={`${styles.icon} me-3 fa-solid fa-envelope`}></i>
-            <div className={`${styles.info}`}>bao@gmail.com</div>
           </div>
         </div>
         {/* <Stories /> */}

@@ -75,7 +75,9 @@ export default function Post({ post }) {
             )}
           </div>
         </div>
-        <div className={`${styles.title} mt-3`}>{post.description}</div>
+        {post.description !== "" && (
+          <div className={`${styles.title} mt-3`}>{post.description}</div>
+        )}
         {post.picturePath !== "" && (
           <img
             className={`${styles.img} mt-3`}
