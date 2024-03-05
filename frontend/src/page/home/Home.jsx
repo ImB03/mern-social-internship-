@@ -34,7 +34,7 @@ export default function Home() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6`}>
-          {/* <Stories /> */}
+          <Stories />
           <CreatePost />
           <Posts />
         </div>
