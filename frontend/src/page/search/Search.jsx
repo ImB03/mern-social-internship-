@@ -47,6 +47,8 @@ export default function Search() {
             params.typeState === `searcheverybody`) && <CardUserList />}
           {(params.typeState === `searchall` ||
             params.typeState === `searchpost`) && <Posts />}
+
+          {/* <div className={`${styles.noResult}`}>No search results for 'zx'</div> */}
         </div>
         <div className={`${styles.rightSide} col-3`}>
           <FilterSearch />
