@@ -8,13 +8,11 @@ import { useSelector } from "react-redux";
 export default function CardInfo() {
   const user = useSelector((state) => state.persistedReducer.slice.user);
 
-  console.log(user);
-
   return (
     <div className={`${styles.cardInfo} p-3`}>
       <div className="container-fluid p-0">
         <b className={`${styles.title}`}>Introduce</b>
-        <div className={`${styles.wrapper} mt-3`}>
+        <div className={`${styles.wrapper} mt-2 mb-3`}>
           <div className={`${styles.itemInfo} py-2 d-flex align-items-center`}>
             <i className={`${styles.icon} me-3 fa-solid fa-graduation-cap`}></i>
             <div className={`${styles.info}`}>
@@ -40,7 +38,8 @@ export default function CardInfo() {
             </div>
           </div>
         </div>
-        {/* <Stories /> */}
+        <b className={`${styles.title}`}>Stories</b>
+        <Stories />
       </div>
     </div>
   );

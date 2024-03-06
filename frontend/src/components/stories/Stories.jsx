@@ -104,7 +104,7 @@
 // }
 
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import {
@@ -131,6 +131,9 @@ SwiperCore.use([Navigation]);
 export default function Stories() {
   const location = useLocation();
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
+  const pageName = location.pathname.split("/")[1];
+
+  console.log(pageName);
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -166,7 +169,7 @@ export default function Stories() {
           className={`position-relative`}
           ref={swiperRef}
           spaceBetween={8}
-          slidesPerView={5}
+          slidesPerView={pageName === "" ? 5 : 3}
           loop={false}
           navigation={{
             nextEl: ".custom-swiper-button-next",
@@ -178,42 +181,46 @@ export default function Stories() {
           // onSwiper={(swiper) => console.log(swiper)}
           // onSlideChange={() => console.log("slide change")}
         >
-          <SwiperSlide
-            className={`${styles.item} d-flex flex-column justify-content-between`}
-          >
-            <img
-              src={`http://localhost:19000/assets/${
-                userNow.userAvatar !== ""
-                  ? userNow.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              className={`${styles.userAvatar}`}
-              alt=""
-            />
-            <div
-              className={`${styles.createStory} border-top position-relative d-flex flex-column align-items-center justify-content-center`}
+          {pageName === "" && (
+            <SwiperSlide
+              className={`${styles.item} d-flex flex-column justify-content-between`}
             >
+              <img
+                src={`http://localhost:19000/assets/${
+                  userNow.userAvatar !== ""
+                    ? userNow.userAvatar
+                    : "defaultUserAvatar.png"
+                }`}
+                className={`${styles.userAvatar}`}
+                alt=""
+              />
               <div
-                className={`${styles.createBtn} position-absolute d-flex align-items-center justify-content-center`}
+                className={`${styles.createStory} border-top position-relative d-flex flex-column align-items-center justify-content-center`}
               >
-                <AddCircleRoundedIcon className={`${styles.icon}`} />
+                <div
+                  className={`${styles.createBtn} position-absolute d-flex align-items-center justify-content-center`}
+                >
+                  <AddCircleRoundedIcon className={`${styles.icon}`} />
+                </div>
+                <div className={`${styles.title}`}>Create news</div>
               </div>
-              <div className={`${styles.title}`}>Create news</div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          )}
           {storyData.map((data) => (
             <SwiperSlide className={`${styles.item} position-relative d-flex`}>
               <img src={data.img} className={`${styles.img}`} alt="" />
-              <div
-                className={`${styles.info} position-absolute d-flex flex-column justify-content-between p-2`}
-              >
-                <img
-                  className={`${styles.avatar}`}
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wTSQmZNeyfJ1GNYRHZjCpYLN6ul8o5R0kg&usqp=CAU "
-                  alt=""
-                />
-                <div className={`${styles.userName}`}>userName</div>
-              </div>
+              {pageName === "" && (
+                <div
+                  className={`${styles.info} position-absolute d-flex flex-column justify-content-between p-2`}
+                >
+                  <img
+                    className={`${styles.avatar}`}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8wTSQmZNeyfJ1GNYRHZjCpYLN6ul8o5R0kg&usqp=CAU "
+                    alt=""
+                  />
+                  <div className={`${styles.userName}`}>userName</div>
+                </div>
+              )}
             </SwiperSlide>
           ))}
           <div
