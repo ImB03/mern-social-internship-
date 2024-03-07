@@ -31,6 +31,7 @@ export const createPost = async (req, res, next) => {
   }
 };
 
+
 /* GET POST */
 export const getAllPosts = async (req, res, next) => {
   try {
