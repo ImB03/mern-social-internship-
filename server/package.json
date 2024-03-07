@@ -21,9 +21,11 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
   "scripts": {
-    "start": "nodemon --inspect index.js"
+    "start": "node --inspect index.js"
   },
   "keywords": [],
   "author": "",
