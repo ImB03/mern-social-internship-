@@ -1,5 +1,4 @@
 import User from "../models/user.js";
-import Post from "../models/post.js";
 
 //SEARCH
 export const search = async (req, res, next) => {
