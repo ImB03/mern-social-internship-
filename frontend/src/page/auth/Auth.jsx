@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./auth.module.scss";
-import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/AuthSlice";
+import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
 
 export default function Auth() {
   const response = useSelector(
