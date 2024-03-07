@@ -21,7 +21,7 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon --inspect index.js"
+    "start": "yarn start"
   },
   "keywords": [],
   "author": "",
