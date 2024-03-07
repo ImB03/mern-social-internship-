@@ -21,7 +21,7 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon --inspect index.js"
   },
   "keywords": [],
   "author": "",
