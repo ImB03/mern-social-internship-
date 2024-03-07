@@ -21,9 +21,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import postSlice from "./reducers/slice/postSlice";
-import userSlice from "./reducers/slice/userSlice";
-import searchSlice from "./reducers/slice/searchSlice";
+// import postSlice from "./reducers/slice/postSlice";
+// import userSlice from "./reducers/slice/userSlice";
+// import searchSlice from "./reducers/slice/searchSlice";
 import slice from "./reducers/slice/slice";
 import AuthSaga from "./reducers/saga/authSaga";
 import PostSaga from "./reducers/saga/postSaga";
@@ -52,9 +52,9 @@ const store = configureStore({
   reducer: {
     persistedReducer,
     // auth: authSlice,
-    post: postSlice,
-    user: userSlice,
-    search: searchSlice,
+    // post: postSlice,
+    // user: userSlice,
+    // search: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
