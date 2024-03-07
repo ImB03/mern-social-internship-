@@ -20,7 +20,7 @@ import logger from "redux-logger";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import authSlice from "./reducers/slice/authSlice";
+import authSlice from "./reducers/slice/AuthSlice";
 import postSlice from "./reducers/slice/postSlice";
 import userSlice from "./reducers/slice/userSlice";
 import searchSlice from "./reducers/slice/searchSlice";
