@@ -21,27 +21,27 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-// import postSlice from "./reducers/slice/postSlice";
-// import userSlice from "./reducers/slice/userSlice";
-// import searchSlice from "./reducers/slice/searchSlice";
-// import slice from "./reducers/slice/slice";
+import postSlice from "./reducers/slice/postSlice";
+import userSlice from "./reducers/slice/userSlice";
+import searchSlice from "./reducers/slice/searchSlice";
+import slice from "./reducers/slice/slice";
 import AuthSaga from "./reducers/saga/authSaga";
 import PostSaga from "./reducers/saga/postSaga";
 import UserSaga from "./reducers/saga/userSaga";
 import SearchSaga from "./reducers/saga/searchSaga";
 import PostState from "./hook/context/state";
-// import authSlice from "./reducers/slice/authSlice";
+import authSlice from "./reducers/slice/authSlice";
 
 const saga = createSagaMiddleware();
 
 const persistConfig = {
   key: "root",
-  // version: 1,
+  version: 1,
   storage,
 };
 
 const rootReducer = combineReducers({
-  // slice: slice,
+  slice: slice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -51,10 +51,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: {
     persistedReducer,
-    // auth: authSlice,
-    // post: postSlice,
-    // user: userSlice,
-    // search: searchSlice,
+    auth: authSlice,
+    post: postSlice,
+    user: userSlice,
+    search: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
