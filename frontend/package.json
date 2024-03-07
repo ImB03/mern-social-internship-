@@ -5,10 +5,6 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "exports": {
-    "import": "./dist/redux-toolkit.esm.mjs",
-    "require": "./dist/index.js"
-  },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
