@@ -30,7 +30,7 @@ import PostSaga from "./reducers/saga/postSaga";
 import UserSaga from "./reducers/saga/userSaga";
 import SearchSaga from "./reducers/saga/searchSaga";
 import PostState from "./hook/context/state";
-import authSlice from "./reducers/slice/authSlice";
+// import authSlice from "./reducers/slice/authSlice";
 
 const saga = createSagaMiddleware();
 
@@ -51,7 +51,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: {
     persistedReducer,
-    auth: authSlice,
+    // auth: authSlice,
     post: postSlice,
     user: userSlice,
     search: searchSlice,
