@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
 
-export default function CardUserList() {
+export default function CardUserList({ setGetUsers }) {
   const users = useSelector((state) => state.persistedReducer.slice.users);
   const [processedUsers, setProcessedUsers] = useState([]);
 
@@ -15,7 +15,10 @@ export default function CardUserList() {
   const qValue = queryParams.get("q");
 
   useEffect(() => {
-    setProcessedUsers(users);
+    if (qValue !== "") {
+      setProcessedUsers(users);
+      setGetUsers(users);
+    }
   }, [qValue]);
 
   return (

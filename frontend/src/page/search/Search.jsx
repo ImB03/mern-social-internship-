@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MyContext } from "../../hook/context/state";
 
@@ -23,11 +23,17 @@ import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 
 export default function Search() {
   const { isUpdatePost, isDeletePost, isDetailPost } = useContext(MyContext);
+  const [posts, setGetPosts] = useState([]);
+  const [users, setGetUsers] = useState([]);
+
   const dispatch = useDispatch();
   const location = useLocation();
   const params = useParams();
   const queryParams = new URLSearchParams(location.search);
   const qValue = queryParams.get("q");
+
+  console.log(posts);
+  console.log(users);
 
   useEffect(() => {
     if (qValue !== "") {
@@ -44,11 +50,19 @@ export default function Search() {
         </div>
         <div className={`${styles.middleSide} col-6`}>
           {(params.typeState === `searchall` ||
-            params.typeState === `searcheverybody`) && <CardUserList />}
+            params.typeState === `searcheverybody`) && (
+            <CardUserList setGetUsers={setGetUsers} />
+          )}
           {(params.typeState === `searchall` ||
-            params.typeState === `searchpost`) && <Posts />}
+            params.typeState === `searchpost`) && (
+            <Posts setGetPosts={setGetPosts} />
+          )}
 
-          {/* <div className={`${styles.noResult}`}>No search results for 'zx'</div> */}
+          {users.length === 0 && posts.length === 0 && (
+            <div className={`${styles.noResult}`}>
+              No search results for '{qValue}'
+            </div>
+          )}
         </div>
         <div className={`${styles.rightSide} col-3`}>
           <FilterSearch />

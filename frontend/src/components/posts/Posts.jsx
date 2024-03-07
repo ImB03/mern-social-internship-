@@ -5,7 +5,7 @@ import styles from "./posts.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 
-export default function Posts() {
+export default function Posts({ setGetPosts }) {
   const params = useParams();
   const location = useLocation();
   const pageName = location.pathname.split("/")[1];
@@ -21,17 +21,14 @@ export default function Posts() {
         (post) => post.creator.userId === params.userId
       );
       setProcessedPosts(processedPosts);
-    } else if (
-      pageName.toLowerCase() === "search" &&
-      qValue &&
-      qValue.trim() !== ""
-    ) {
+    } else if (pageName === "search" && qValue && qValue.trim() !== "") {
       const processedPosts = posts.filter(
         (post) =>
           post.creator.userName.toLowerCase().includes(qValue.toLowerCase()) ||
           post.description.toLowerCase().includes(qValue.toLowerCase())
       );
       setProcessedPosts(processedPosts);
+      setGetPosts(processedPosts);
     } else if (pageName === "") {
       setProcessedPosts(posts);
     } else {
