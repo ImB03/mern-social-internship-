@@ -24,7 +24,7 @@ import reportWebVitals from "./reportWebVitals";
 // import postSlice from "./reducers/slice/postSlice";
 // import userSlice from "./reducers/slice/userSlice";
 // import searchSlice from "./reducers/slice/searchSlice";
-import slice from "./reducers/slice/slice";
+// import slice from "./reducers/slice/slice";
 import AuthSaga from "./reducers/saga/authSaga";
 import PostSaga from "./reducers/saga/postSaga";
 import UserSaga from "./reducers/saga/userSaga";
@@ -41,7 +41,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  slice: slice,
+  // slice: slice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
