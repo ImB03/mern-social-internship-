@@ -49,17 +49,15 @@ export default function Search() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6`}>
-          {users?.length !== 0 &&
-            (params.typeState === `searchall` ||
-              params.typeState === `searcheverybody`) && (
-              <CardUserList setGetUsers={setGetUsers} />
-            )}
+          {(params.typeState === `searchall` ||
+            params.typeState === `searcheverybody`) && (
+            <CardUserList setGetUsers={setGetUsers} />
+          )}
 
-          {posts?.length !== 0 &&
-            (params.typeState === `searchall` ||
-              params.typeState === `searchpost`) && (
-              <Posts setGetPosts={setGetPosts} />
-            )}
+          {(params.typeState === `searchall` ||
+            params.typeState === `searchpost`) && (
+            <Posts setGetPosts={setGetPosts} />
+          )}
 
           {users?.length === 0 && posts?.length === 0 && (
             <div className={`${styles.noResult}`}>
