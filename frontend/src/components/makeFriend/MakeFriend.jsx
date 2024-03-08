@@ -6,10 +6,12 @@ import styles from "./makeFriend.module.scss";
 export default function MakeFriend() {
   const friendRequest = [
     {
+      id: 1,
       img: "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600",
       name: "Yaua",
     },
     {
+      id: 2,
       img: "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600",
       name: "Yaua",
     },
@@ -29,6 +31,7 @@ export default function MakeFriend() {
         <div className={`${styles.requests} mt-3`}>
           {friendRequest.map((item) => (
             <div
+              key={item.id}
               className={`${styles.itemRequest} p-2 d-flex align-items-center`}
             >
               <img className={`${styles.img} me-3`} src={item.img} alt="" />
@@ -39,8 +42,12 @@ export default function MakeFriend() {
                   <div className={`${styles.time}`}>2 days ago</div>
                 </div>
                 <div className="d-flex justify-content-between align-items-center">
-                  <button className={`${styles.acceptBtn} col me-1`}>Accept</button>
-                  <button className={`${styles.deleteBtn} col ms-1`}>Delete</button>
+                  <button className={`${styles.acceptBtn} col me-1`}>
+                    Accept
+                  </button>
+                  <button className={`${styles.deleteBtn} col ms-1`}>
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>

@@ -206,8 +206,11 @@ export default function Stories() {
               </div>
             </SwiperSlide>
           )}
-          {storyData.map((data) => (
-            <SwiperSlide className={`${styles.item} position-relative d-flex`}>
+          {storyData.map((data, index) => (
+            <SwiperSlide
+              key={index}
+              className={`${styles.item} position-relative d-flex`}
+            >
               <img src={data.img} className={`${styles.img}`} alt="" />
               {pageName === "" && (
                 <div

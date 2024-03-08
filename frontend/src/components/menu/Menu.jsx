@@ -22,19 +22,19 @@ export default function Menu() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
 
   const Menu = [
-    { img: Friends, name: "Friends" },
-    { img: Groups, name: "Groups" },
-    { img: Market, name: "Marketplace" },
-    { img: Watch, name: "Watch" },
-    { img: Memories, name: "Memories" },
-    { img: Events, name: "Events" },
-    { img: Gaming, name: "Gaming" },
-    { img: Gallery, name: "Gallery" },
-    { img: Videos, name: "Videos" },
-    { img: Messages, name: "Messages" },
-    { img: Fund, name: "Fundraiser" },
-    { img: Tutorials, name: "Tutorials" },
-    { img: Courses, name: "Courses" },
+    { id: 1, img: Friends, name: "Friends" },
+    { id: 2, img: Groups, name: "Groups" },
+    { id: 3, img: Market, name: "Marketplace" },
+    { id: 4, img: Watch, name: "Watch" },
+    { id: 5, img: Memories, name: "Memories" },
+    { id: 6, img: Events, name: "Events" },
+    { id: 7, img: Gaming, name: "Gaming" },
+    { id: 8, img: Gallery, name: "Gallery" },
+    { id: 9, img: Videos, name: "Videos" },
+    { id: 10, img: Messages, name: "Messages" },
+    { id: 11, img: Fund, name: "Fundraiser" },
+    { id: 12, img: Tutorials, name: "Tutorials" },
+    { id: 13, img: Courses, name: "Courses" },
   ];
 
   return (
@@ -62,6 +62,7 @@ export default function Menu() {
         </NavLink>
         {Menu.map((item) => (
           <div
+            key={item.id}
             className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
           >
             <img className={`${styles.img} me-3`} src={item.img} alt="" />

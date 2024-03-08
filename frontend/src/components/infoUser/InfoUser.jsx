@@ -175,9 +175,9 @@ export default function InfoUser() {
                 </div>
               </div>
               <div className="col d-flex align-items-center justify-content-end">
-                <i class="me-2 fa-brands fa-square-facebook"></i>
-                <i class="me-2 fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
+                <i className="me-2 fa-brands fa-square-facebook"></i>
+                <i className="me-2 fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-instagram"></i>
               </div>
             </div>
           </div>
