@@ -30,7 +30,7 @@ export default function DropzoneUserAvatar({
             src={
               file !== ""
                 ? URL.createObjectURL(dataInputUserAvatar)
-                : `http://localhost:19000/assets/${dataInputUserAvatar}`
+                : `https://mern-social-internship.onrender.com/assets/${dataInputUserAvatar}`
             }
             className={`${styles.fileImg}`}
             alt=""

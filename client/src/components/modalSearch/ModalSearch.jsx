@@ -153,7 +153,7 @@ export default function ModalSearch() {
                   >
                     <img
                       className={`${styles.userAvatar} me-3`}
-                      src={`http://localhost:19000/assets/${
+                      src={`https://mern-social-internship.onrender.com/assets/${
                         user.userAvatar !== ""
                           ? user.userAvatar
                           : "defaultUserAvatar.png"

@@ -47,7 +47,7 @@ export default function InfoUser() {
     <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
       <img
         className={`${styles.coverAvatar}`}
-        src={`http://localhost:19000/assets/${
+        src={`https://mern-social-internship.onrender.com/assets/${
           processedUsers.coverAvatar !== ""
             ? processedUsers.coverAvatar
             : "defaultCoverAvatar.png"
@@ -63,7 +63,7 @@ export default function InfoUser() {
           >
             <img
               className={`${styles.userAvatar}`}
-              src={`http://localhost:19000/assets/${
+              src={`https://mern-social-internship.onrender.com/assets/${
                 processedUsers.userAvatar !== ""
                   ? processedUsers.userAvatar
                   : "defaultUserAvatar.png"

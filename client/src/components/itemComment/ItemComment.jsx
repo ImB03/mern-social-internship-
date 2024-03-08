@@ -25,7 +25,7 @@ export default function ItemComment({ comment }) {
     <div className={`${styles.itemComment} mt-3 d-flex`} key={comment.userId}>
       <img
         className={`${styles.userAvatar} me-3`}
-        src={`http://localhost:19000/assets/${
+        src={`https://mern-social-internship.onrender.com/assets/${
           comment.userAvatar !== ""
             ? comment.userAvatar
             : "defaultUserAvatar.png"

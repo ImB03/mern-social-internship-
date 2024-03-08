@@ -40,7 +40,7 @@ export default function CardUserList({ setGetUsers }) {
                 <div className={`d-flex align-items-center`}>
                   <img
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
+                    src={`https://mern-social-internship.onrender.com/assets/${
                       user.userAvatar !== ""
                         ? user.userAvatar
                         : "defaultUserAvatar.png"
@@ -78,7 +78,7 @@ export default function CardUserList({ setGetUsers }) {
                 <div className={`d-flex align-items-center`}>
                   <img
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
+                    src={`https://mern-social-internship.onrender.com/assets/${
                       user.userAvatar !== ""
                         ? user.userAvatar
                         : "defaultUserAvatar.png"

@@ -44,7 +44,7 @@ export default function Post({ post }) {
           <div className="d-flex justify-content-between align-items-center">
             <img
               className={`${styles.userAvatar} me-3`}
-              src={`http://localhost:19000/assets/${
+              src={`https://mern-social-internship.onrender.com/assets/${
                 post.creator.userAvatar !== ""
                   ? post.creator.userAvatar
                   : "defaultUserAvatar.png"
@@ -81,7 +81,7 @@ export default function Post({ post }) {
         {post.picturePath !== "" && (
           <img
             className={`${styles.img} mt-3`}
-            src={`http://localhost:19000/assets/${post.picturePath}`}
+            src={`https://mern-social-internship.onrender.com/assets/${post.picturePath}`}
             alt=""
           />
         )}
