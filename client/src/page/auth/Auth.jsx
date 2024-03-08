@@ -55,7 +55,7 @@ export default function Auth() {
       if (isSignup) {
         setIsSignup(false);
       } else if (userNow) {
-        navigate("/");
+        navigate("/home");
       }
     }
   }, [response, navigate, userNow]);
