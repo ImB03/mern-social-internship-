@@ -40,7 +40,7 @@ export default function Navbar() {
       <div className="container-fluid p-0 d-flex justify-content-between align-items-center">
         <div className="col d-flex justify-content-start align-items-center">
           <Link
-            to="/"
+            to="/home"
             className={`${styles.logo} me-4 d-flex align-items-center`}
           >
             Socialmedia
