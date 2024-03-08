@@ -16,9 +16,6 @@ export default function Auth() {
   const [isSignup, setIsSignup] = useState(false);
   const [dataUser, setDataUser] = useState({});
 
-  console.log(dataUser);
-  console.log(response);
-
   const getDataUser = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };
