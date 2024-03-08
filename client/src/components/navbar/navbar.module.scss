@@ -1,0 +1,54 @@
+.navbar {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fff;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .iconWrapper {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #f5f5f5;
+    .icon {
+      font-size: 18px;
+    }
+  }
+
+  .iconWrapper:hover {
+    background-color: #eaeaea;
+  }
+  .iconWrapper:active {
+    background-color: #dcdcdc;
+  }
+
+  .avatarWrapper {
+    cursor: pointer;
+    .userAvatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+    }
+    .overlayUserAvatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+    }
+    .overlayUserAvatar:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .overlayUserAvatar:active {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

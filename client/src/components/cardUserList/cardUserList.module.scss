@@ -1,0 +1,118 @@
+.cardUserList {
+  .itemUser {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 10px;
+
+    .userAvatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+    }
+    .userName {
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .btnAddFriend {
+      transition: all 0.1s ease;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      border-radius: 5px;
+      border: none;
+      background-color: #cfe8ff;
+      color: #003871;
+
+      &:hover {
+        background-color: #b1daff;
+      }
+      &:active {
+        background-color: #bce1ff;
+      }
+    }
+
+    &:hover {
+      background-color: #f4f4f4;
+    }
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .userList {
+    .item {
+      cursor: pointer;
+      transition: all 0.1s ease;
+      border-radius: 10px;
+      .userAvatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        object-fit: cover;
+        border: 1px solid #ccc;
+      }
+
+      .userName {
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+      }
+      .btnAddFriend {
+        transition: all 0.1s ease;
+        font-weight: bold;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #cfe8ff;
+        color: #003871;
+
+        &:hover {
+          background-color: #b1daff;
+        }
+        &:active {
+          background-color: #bce1ff;
+        }
+      }
+
+      &:hover {
+        background-color: #f4f4f4;
+      }
+    }
+  }
+
+  .btnSeeAll {
+    text-align: center;
+    transition: all 0.1s ease;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+  }
+
+  .btnSeeAll:hover {
+    background-color: #eaeaea;
+  }
+
+  .btnSeeAll:active {
+    background-color: #e0e0e0;
+  }
+}
+
+.styleWrapper {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}

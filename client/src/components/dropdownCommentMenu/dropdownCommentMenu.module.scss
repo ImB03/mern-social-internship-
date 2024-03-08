@@ -1,0 +1,31 @@
+.dropdownMenu {
+  width: 240px;
+  background-color: rgb(247, 247, 247);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  top: 45px;
+  left: 50%;
+  transform: translate(-30%);
+  border-radius: 10px;
+  z-index: 1000;
+
+  .wrapper {
+    .item {
+      transition: all 0.2s ease;
+      border-radius: 5px;
+
+      .wrapperIcon {
+        .icon {
+        }
+      }
+      .name {
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+    }
+    .item:hover {
+      background-color: #ebebeb;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.post {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  .option {
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    .wrapperIcon {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      .icon {
+      }
+    }
+
+    .wrapperIcon:hover {
+      background-color: #eaeaea;
+    }
+    .wrapperIcon:active {
+      background-color: #dcdcdc;
+    }
+  }
+
+  // .wrapperIcon:hover {
+  //   background-color: #eaeaea;
+  // }
+  // .wrapperIcon:active {
+  //   background-color: #dcdcdc;
+  // }
+
+  .userAvatar {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+  }
+
+  .userName {
+    font-weight: 500;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .createTime {
+    font-size: 12px;
+
+    .icon {
+      font-size: 15px;
+    }
+  }
+
+  .title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  .img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .interact {
+    border-top: 1px solid #dbdbdb;
+
+    .wrapperIcon {
+      transition: all 0.1s ease;
+      border-radius: 5px;
+      cursor: pointer;
+      .iconHeart,
+      .iconOutlineHeart {
+        color: rgb(255, 18, 57);
+      }
+    }
+
+    .wrapperIcon:hover {
+      background-color: #eaeaea;
+    }
+    .wrapperIcon:active {
+      background-color: #dcdcdc;
+    }
+
+    .nameInteract {
+    }
+  }
+}
