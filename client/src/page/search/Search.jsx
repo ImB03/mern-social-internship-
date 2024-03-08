@@ -23,8 +23,8 @@ import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 
 export default function Search() {
   const { isUpdatePost, isDeletePost, isDetailPost } = useContext(MyContext);
-  const [posts, setGetPosts] = useState([]);
-  const [users, setGetUsers] = useState([]);
+  const [posts, setGetPosts] = useState(null);
+  const [users, setGetUsers] = useState(null);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -39,7 +39,7 @@ export default function Search() {
     if (qValue !== "") {
       dispatch(ACTION_SEARCH(qValue));
     }
-  }, [qValue, dispatch, isUpdatePost, isDeletePost]);
+  }, [qValue, dispatch]);
 
   return (
     <div className={`${styles.search}`}>
@@ -49,16 +49,19 @@ export default function Search() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-6`}>
-          {(params.typeState === `searchall` ||
-            params.typeState === `searcheverybody`) && (
-            <CardUserList setGetUsers={setGetUsers} />
-          )}
-          {(params.typeState === `searchall` ||
-            params.typeState === `searchpost`) && (
-            <Posts setGetPosts={setGetPosts} />
-          )}
+          {users?.length !== 0 &&
+            (params.typeState === `searchall` ||
+              params.typeState === `searcheverybody`) && (
+              <CardUserList setGetUsers={setGetUsers} />
+            )}
 
-          {users.length === 0 && posts.length === 0 && (
+          {posts?.length !== 0 &&
+            (params.typeState === `searchall` ||
+              params.typeState === `searchpost`) && (
+              <Posts setGetPosts={setGetPosts} />
+            )}
+
+          {users?.length === 0 && posts?.length === 0 && (
             <div className={`${styles.noResult}`}>
               No search results for '{qValue}'
             </div>

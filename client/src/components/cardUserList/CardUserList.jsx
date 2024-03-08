@@ -15,7 +15,13 @@ export default function CardUserList({ setGetUsers }) {
   const qValue = queryParams.get("q");
 
   useEffect(() => {
-    if (qValue !== "") {
+    setProcessedUsers([]);
+    setGetUsers([]);
+
+    if (qValue === "") {
+      setProcessedUsers([]);
+      setGetUsers([]);
+    } else {
       setProcessedUsers(users);
       setGetUsers(users);
     }
@@ -70,7 +76,7 @@ export default function CardUserList({ setGetUsers }) {
       {processedUsers.length !== 0 &&
         params.typeState === `searcheverybody` && (
           <div className="container-fluid p-0">
-            {processedUsers?.map((user) => (
+            {processedUsers.map((user) => (
               <Link
                 to={`/profile/${user._id}`}
                 className={`${styles.itemUser} mb-3 p-3 d-flex align-items-center justify-content-between`}

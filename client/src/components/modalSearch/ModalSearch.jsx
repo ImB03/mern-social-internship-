@@ -88,7 +88,7 @@ export default function ModalSearch() {
       if (searchTerm !== "") {
         dispatch(ACTION_SEARCH(searchTerm));
       }
-    }, 700);
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
   }, [searchTerm, dispatch]);
@@ -141,8 +141,8 @@ export default function ModalSearch() {
           </div>
           {searchTerm && (
             <div className={`${styles.suggest} mt-2`}>
-              {processedUsers.length !== 0 &&
-                processedUsers.slice(0, 5)?.map((user) => (
+              {processedUsers?.length !== 0 &&
+                processedUsers?.slice(0, 5)?.map((user) => (
                   <Link
                     to={`/profile/${user._id}`}
                     onClick={(e) => {
