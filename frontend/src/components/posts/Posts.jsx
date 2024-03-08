@@ -22,11 +22,20 @@ export default function Posts({ setGetPosts }) {
       );
       setProcessedPosts(processedPosts);
     } else if (pageName === "search" && qValue && qValue.trim() !== "") {
-      const processedPosts = posts.filter(
-        (post) =>
-          post.creator.userName.toLowerCase().includes(qValue.toLowerCase()) ||
-          post.description.toLowerCase().includes(qValue.toLowerCase())
-      );
+      // Phân tách qValue thành mảng các từ
+      const searchTerms = qValue.toLowerCase().split(" ");
+
+      const processedPosts = posts.filter((post) => {
+        // Kiểm tra xem từng từ trong mảng searchTerms có tồn tại trong userName hoặc description không
+        return searchTerms.every((term) => {
+          return (
+            post.creator.userName.toLowerCase().includes(term) ||
+            post.description.toLowerCase().includes(term)
+          );
+        });
+      });
+
+      // Cập nhật processedPosts và getPosts bằng processedPosts đã lọc
       setProcessedPosts(processedPosts);
       setGetPosts(processedPosts);
     } else if (pageName === "") {
