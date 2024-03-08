@@ -38,7 +38,7 @@ export default function Posts({ setGetPosts }) {
       // Cập nhật processedPosts và getPosts bằng processedPosts đã lọc
       setProcessedPosts(processedPosts);
       setGetPosts(processedPosts);
-    } else if (pageName === "") {
+    } else if (pageName === "home") {
       setProcessedPosts(posts);
     } else {
       setProcessedPosts([]);

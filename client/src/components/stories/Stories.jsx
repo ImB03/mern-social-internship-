@@ -64,7 +64,7 @@ export default function Stories() {
           className={`position-relative`}
           ref={swiperRef}
           spaceBetween={8}
-          slidesPerView={pageName === "" ? 5 : 3}
+          slidesPerView={pageName === "home" ? 5 : 3}
           loop={false}
           navigation={{
             nextEl: ".custom-swiper-button-next",
@@ -76,7 +76,7 @@ export default function Stories() {
           // onSwiper={(swiper) => console.log(swiper)}
           // onSlideChange={() => console.log("slide change")}
         >
-          {pageName === "" && (
+          {pageName === "home" && (
             <SwiperSlide
               className={`${styles.item} d-flex flex-column justify-content-between`}
             >
@@ -107,7 +107,7 @@ export default function Stories() {
               className={`${styles.item} position-relative d-flex`}
             >
               <img src={data.img} className={`${styles.img}`} alt="" />
-              {pageName === "" && (
+              {pageName === "home" && (
                 <div
                   className={`${styles.info} position-absolute d-flex flex-column justify-content-between p-2`}
                 >
