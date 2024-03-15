@@ -1,15 +1,19 @@
 import Post from "../models/Post.js";
+import User from "../models/User.js";
 
 /* CREATE */
 export const createPost = async (req, res, next) => {
   const dataPost = req.body;
+  const userId = req.user._id;
 
   try {
+    const user = await User.findById(userId);
+
     const updatedDataPost = {
       creator: {
-        userId: req.user._id,
-        userName: req.user.userName,
-        userAvatar: req.user.userAvatar,
+        userId: userId,
+        userName: user.userName,
+        userAvatar: user.userAvatar,
       },
       ...dataPost,
     };
@@ -30,7 +34,6 @@ export const createPost = async (req, res, next) => {
     next(err);
   }
 };
-
 
 /* GET POST */
 export const getAllPosts = async (req, res, next) => {
@@ -75,15 +78,17 @@ export const updatePost = async (req, res, next) => {
 export const commentPost = async (req, res, next) => {
   const postId = req.params.postId;
   const dataComment = req.body.dataComment;
+  const userId = req.user._id;
 
   try {
     const post = await Post.findById(postId);
+    const user = await User.findById(userId);
 
     post.comments.push({
-      userId: req.user._id,
+      userId: userId,
       userComment: dataComment,
-      userName: req.user.userName,
-      userAvatar: req.user.userAvatar,
+      userName: user.userName,
+      userAvatar: user.userAvatar,
       commentAt: "",
     });
 
@@ -131,15 +136,13 @@ export const deletePost = async (req, res, next) => {
 
 /* UPDATE */
 export const likePost = async (req, res, next) => {
-  try {
-    const postId = req.params.postId;
-    const userId = req.user._id;
+  const postId = req.params.postId;
+  const userId = req.user._id;
 
+  try {
     const post = await Post.findById(postId);
 
     const isLiked = post.likes.includes(userId);
-
-    console.log(isLiked);
 
     if (isLiked) {
       post.likes = post.likes.filter((itemUserId) => itemUserId !== userId);

@@ -17,60 +17,9 @@ export const getOneUser = async (req, res, next) => {
   }
 };
 
-// /* UPDATE */
-// export const updateUser = async (req, res, next) => {
-//   const dataUser = req.body;
-//   const userId = req.user._id;
-//   console.log(req.files);
-
-//   try {
-//     const updatedUser = await User.findByIdAndUpdate(
-//       userId,
-//       {
-//         userAvatar: req?.files?.userAvatar[0]?.filename,
-//         coverAvatar: req?.files?.coverAvatar[0]?.filename,
-//         ...dataUser,
-//       },
-//       {
-//         new: true,
-//       }
-//     );
-
-//     await Post.updateMany(
-//       { "creator.userId": userId },
-//       {
-//         $set: {
-//           "creator.userName": dataUser.userName,
-//           "creator.userAvatar": req?.files?.userAvatar[0]?.filename,
-//         },
-//       }
-//     );
-
-//     await Post.updateMany(
-//       { "comments.userId": userId },
-//       {
-//         $set: {
-//           "comments.$[elem].userName": dataUser.userName,
-//           "comments.$[elem].userAvatar": req?.files?.userAvatar[0]?.filename,
-//         },
-//       },
-//       { arrayFilters: [{ "elem.userId": userId }] }
-//     );
-
-//     const posts = await Post.find().sort({ _id: -1 });
-
-//     res.status(200).json({ updatedUser, posts });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: "Update user unsuccessfully" });
-//     next(err);
-//   }
-// };
-
 export const updateUser = async (req, res, next) => {
   const dataUser = req.body;
   const userId = req.user._id;
-  console.log(req?.files);
 
   try {
     let updatedDataUser = { ...dataUser };

@@ -32,7 +32,6 @@ export const signup = async (req, res, next) => {
 
 /* SIGNIN */
 export const signin = async (req, res, next) => {
-  
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
@@ -47,7 +46,7 @@ export const signin = async (req, res, next) => {
 
     delete user._doc.password;
 
-    const token = jwt.sign({ ...user._doc }, process.env.JWT_SECRET_KEY, {
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY, {
       expiresIn: "12h",
     });
 
