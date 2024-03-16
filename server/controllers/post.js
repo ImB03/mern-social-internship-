@@ -75,6 +75,7 @@ export const updatePost = async (req, res, next) => {
   }
 };
 
+
 export const commentPost = async (req, res, next) => {
   const postId = req.params.postId;
   const dataComment = req.body.dataComment;
