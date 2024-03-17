@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const MyContext = createContext();
@@ -11,6 +11,37 @@ export default function PostState({ children }) {
   const [isUpdateUser, setIsUpdateUser] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [postId, setPostId] = useState("");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [containerClass, setContainerClass] = useState("");
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // Chạy chỉ một lần khi component được mount
+
+  useEffect(() => {
+    // if (windowWidth < 768) {
+    //   setContainerClass("-sm");
+    // } else if (windowWidth >= 768 && windowWidth < 992) {
+    //   setContainerClass("-md");
+    // } else if (windowWidth >= 992 && windowWidth < 1200) {
+    //   setContainerClass("-lg");
+    // } else if (windowWidth >= 1200 && windowWidth < 1400) {
+    //   setContainerClass("-xl");
+    // } else if (windowWidth >= 1400) {
+    //   setContainerClass("-fluid");
+    // } else {
+      setContainerClass("");
+    // }
+  }, [windowWidth]);
 
   return (
     <MyContext.Provider
@@ -29,6 +60,9 @@ export default function PostState({ children }) {
         setIsSearch,
         postId,
         setPostId,
+        windowWidth,
+        windowHeight,
+        containerClass,
       }}
     >
       {children}

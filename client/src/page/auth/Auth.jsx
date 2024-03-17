@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./auth.module.scss";
 import { ACTION_SIGNIN, ACTION_SIGNUP } from "../../reducers/slice/authSlice";
+import { MyContext } from "../../hook/context/state";
 
 export default function Auth() {
   const response = useSelector(
     (state) => state.persistedReducer.slice.response
   );
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
+  const { containerClass, windowHeight } = useContext(MyContext);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -64,18 +66,22 @@ export default function Auth() {
     <div
       className={`${styles.auth} d-flex justify-content-center align-items-center`}
     >
-      <div className="container-fluid d-flex justify-content-center align-items-center">
+      <div
+        className={`container${containerClass} p-0 d-flex justify-content-center`}
+      >
         <div
-          className={`${styles.wrapper} ${
+          className={`${styles.wrapper} ${styles.overFlow} col-11 col-xxl-10 ${
             isSignup && "flex-row-reverse"
-          } d-flex  justify-content-center`}
+          } d-flex justify-content-center`}
         >
           <div
-            className={`${styles.wrapperSideLeft}  ${
+            className={`${styles.wrapperSideLeft} d-none ${
               isSignup ? styles.backgroundImgSignup : styles.backgroundImgSignin
-            } p-5 col d-flex justify-content-center align-items-center`}
+            } col d-md-flex justify-content-center align-items-center`}
           >
-            <div className={`${styles.sideLeft} col d-flex flex-column`}>
+            <div
+              className={`${styles.sideLeft} col-12 p-5 d-flex flex-column justify-content-center`}
+            >
               <h1 className={`${styles.fontSize} mb-4`}>
                 {isSignup ? "Social Media!" : "Hello World."}
               </h1>
@@ -98,9 +104,12 @@ export default function Auth() {
             </div>
           </div>
           <div
-            className={`${styles.wrapperSideRight} p-5 col-5 border d-flex justify-content-center align-items-center`}
+            className={`${styles.wrapperSideRight} col col-md-5 border d-flex justify-content-center align-items-center`}
           >
-            <div className={`${styles.sideRight} col d-flex flex-column`}>
+            <div
+              className={`${styles.sideRight} p-5 col-12 d-flex flex-column justify-content-center`}
+            >
+              <h1 className={`${styles.logo} d-md-none mb-5`}>SOCIALMEDIA.</h1>
               <h1 className={`${styles.title} mb-3`}>
                 {isSignup ? "Register" : "Login"}
               </h1>
