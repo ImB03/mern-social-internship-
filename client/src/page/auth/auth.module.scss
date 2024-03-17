@@ -9,32 +9,28 @@
 
   .wrapper {
     max-height: 70vh;
-    border-radius: 10px;
 
     .wrapperSideLeft {
       background-size: cover;
       height: 600px;
+      color: white;
 
-      .sideLeft {
-        color: white;
+      .fontSize {
+        font-size: 90px;
+        line-height: 100px;
+        font-weight: bold;
+      }
 
-        .fontSize {
-          font-size: 90px;
-          line-height: 100px;
-          font-weight: bold;
-        }
-
-        .registerBtn {
-          width: 200px;
-          min-width: 100px;
-          padding: 10px;
-          border: none;
-          background-color: white;
-          color: rebeccapurple;
-          font-weight: bold;
-          cursor: pointer;
-          border-radius: 5px;
-        }
+      .registerBtn {
+        width: 200px;
+        min-width: 100px;
+        padding: 10px;
+        border: none;
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
       }
     }
 
@@ -42,34 +38,32 @@
       background-color: white;
       height: 600px;
 
-      .sideRight {
-        .logo {
-          font-size: 40px;
-          font-weight: bold;
-          color: rebeccapurple;
-        }
-        .title {
-          color: #555;
-          font-weight: bold;
-          font-size: 30px;
-        }
+      .logo {
+        font-size: 40px;
+        font-weight: bold;
+        color: rebeccapurple;
+      }
+      .title {
+        color: #555;
+        font-weight: bold;
+        font-size: 30px;
+      }
 
-        .input {
-          border: none;
-          border-bottom: 1px solid lightgray;
-          padding: 20px 10px;
-          outline: none;
-        }
+      .input {
+        border: none;
+        border-bottom: 1px solid lightgray;
+        padding: 20px 10px;
+        outline: none;
+      }
 
-        .btn {
-          padding: 10px;
-          border: none;
-          background-color: #938eef;
-          color: white;
-          font-weight: bold;
-          cursor: pointer;
-          border-radius: 5px;
-        }
+      .btn {
+        padding: 10px;
+        border: none;
+        background-color: #938eef;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
       }
     }
   }
