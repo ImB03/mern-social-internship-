@@ -25,20 +25,22 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`${styles.home}`}>
+    <div className={`${styles.home} container-fluid px-3`}>
       {(isUpdatePost || isCreatePost || isDeletePost || isDetailPost) && (
         <ModalPost />
       )}
-      <div className="d-flex justify-content-between align-items-start">
-        <div className={`${styles.leftSide} col-2`}>
+      <div className="d-flex justify-content-center justify-content-lg-between align-items-start">
+        <div className={`${styles.leftSide} d-none d-xl-block col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6`}>
+        <div className={`${styles.middleSide} col-12 col-lg-8 col-xl-6`}>
           <Stories />
           <CreatePost />
           <Posts />
         </div>
-        <div className={`${styles.rightSide} col-3`}>
+        <div
+          className={`${styles.rightSide} ps-4 p-xl-0 d-none d-lg-block col-4 col-xl-3`}
+        >
           <Ad />
           <MakeFriend />
           <FriendList />

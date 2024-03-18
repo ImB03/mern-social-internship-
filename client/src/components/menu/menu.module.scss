@@ -8,7 +8,7 @@
     cursor: pointer;
 
     .userAvatar {
-      width: 35px;
+      min-width: 35px;
       height: 35px;
       border-radius: 100%;
       object-fit: cover;

@@ -11,7 +11,7 @@ export default function Auth() {
     (state) => state.persistedReducer.slice.response
   );
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
-  const { containerClass, windowWidth } = useContext(MyContext);
+  const { windowWidth } = useContext(MyContext);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ export default function Auth() {
       <div
         className={`${styles.wrapper} ${
           styles.overFlow
-        } container${containerClass} col col-xl-8 ${
+        } container col col-xl-8 ${
           isSignup && "flex-row-reverse"
         } d-flex justify-content-center`}
       >
@@ -101,7 +101,7 @@ export default function Auth() {
         <div
           className={`${styles.wrapperSideRight} p-5 col-md-5 d-flex flex-column justify-content-center`}
         >
-          <h1 className={`${styles.logo} d-md-none mb-5`}>SOCIALMEDIA.</h1>
+          <h1 className={`${styles.logo} d-md-none mb-3`}>SOCIALMEDIA.</h1>
           <h1 className={`${styles.title} mb-3`}>
             {isSignup ? "Register" : "Login"}
           </h1>
