@@ -1,5 +1,6 @@
 .menu {
   background-color: transparent;
+  height: 100%;
 
   .itemMenu {
     transition: all 0.1s ease;
@@ -16,7 +17,11 @@
 
     .userName {
       font-size: 16px;
+      width: 150px;
       font-weight: bold;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .img {

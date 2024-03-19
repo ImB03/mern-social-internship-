@@ -1,6 +1,6 @@
 .itemComment {
   .userAvatar {
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     border-radius: 100%;
     object-fit: cover;
@@ -12,8 +12,15 @@
     border-radius: 10px;
     .userName {
       font-weight: bold;
+      width: 150px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
     .userComment {
+      min-width: 150px;
+      max-width: 40vw;
+      word-wrap: break-word;
     }
   }
 

@@ -42,7 +42,7 @@ export default function Home() {
           className={`${styles.rightSide} ps-4 p-xl-0 d-none d-lg-block col-4 col-xl-3`}
         >
           <Ad />
-          <MakeFriend />
+          {/* <MakeFriend /> */}
           <FriendList />
         </div>
       </div>

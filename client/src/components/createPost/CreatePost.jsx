@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import styles from "./createPost.module.scss";
 import Image from "../../assets/img.png";
@@ -6,7 +8,6 @@ import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
 import ModalPost from "../modalPost/ModalPost";
 import { MyContext } from "../../hook/context/state";
-import { useSelector } from "react-redux";
 
 export default function CreatePost() {
   const { setIsCreatePost } = useContext(MyContext);
@@ -17,15 +18,17 @@ export default function CreatePost() {
       <div className="container-fluid p-0">
         <div className="d-flex align-items-center">
           <div className="">
-            <img
-              className={`${styles.userAvatar}`}
-              src={`https://mern-social-internship.onrender.com/assets/${
-                userNow.userAvatar !== ""
-                  ? userNow.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              alt=""
-            />
+            <Link to={`/profile/${userNow._id}`}>
+              <img
+                className={`${styles.userAvatar}`}
+                src={`https://mern-social-internship.onrender.com/assets/${
+                  userNow.userAvatar !== ""
+                    ? userNow.userAvatar
+                    : "defaultUserAvatar.png"
+                }`}
+                alt=""
+              />
+            </Link>
           </div>
           <div
             onClick={() => {

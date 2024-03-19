@@ -148,53 +148,54 @@ export default function ModalPost() {
       ></div>
 
       {isDeletePost && (
-        <div className={`${styles.wrapperModal} col-4 position-absolute`}>
-          <div className="container-fluid p-3">
+        <div
+          className={`${styles.wrapperModal} container p-3 col-10 col-xxl-5 position-absolute`}
+        >
+          <div
+            className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
+          >
+            <div className={`${styles.title}`}>Delete post?</div>
             <div
-              className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
+              onClick={() => {
+                setIsUpdatePost(false);
+                setIsCreatePost(false);
+                setIsDeletePost(false);
+              }}
+              className={`${styles.closeModal} position-absolute d-flex justify-content-center align-items-center`}
             >
-              <div className={`${styles.title}`}>Delete post?</div>
-              <div
-                onClick={() => {
-                  setIsUpdatePost(false);
-                  setIsCreatePost(false);
-                  setIsDeletePost(false);
-                }}
-                className={`${styles.closeModal} position-absolute d-flex justify-content-center align-items-center`}
-              >
-                <ClearIcon />
-              </div>
+              <ClearIcon />
             </div>
-            <div
-              className={`${styles.remindCaption} col-12 mt-3 d-flex justify-content-start`}
+          </div>
+          <div
+            className={`${styles.remindCaption} col-12 mt-3 d-flex justify-content-start`}
+          >
+            Are you sure you want to delete the post? There will be no recovery!
+          </div>
+          <div
+            className={`${styles.wrapperBtn} col-12 mt-3 d-flex justify-content-end`}
+          >
+            <button
+              onClick={() => setIsDeletePost(false)}
+              className={`${styles.cancelBtn} mt-3 me-2 p-2`}
             >
-              Are you sure you want to delete the post? There will be no
-              recovery!
-            </div>
-            <div
-              className={`${styles.wrapperBtn} col-12 mt-3 d-flex justify-content-end`}
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                handleSubmit();
+              }}
+              className={`${styles.deleteBtn} mt-3 p-2`}
             >
-              <button
-                onClick={() => setIsDeletePost(false)}
-                className={`${styles.cancelBtn} mt-3 me-2 p-2`}
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  handleSubmit();
-                }}
-                className={`${styles.deleteBtn} mt-3 p-2`}
-              >
-                Delete
-              </button>
-            </div>
+              Delete
+            </button>
           </div>
         </div>
       )}
       {(isCreatePost || isUpdatePost) && (
-        <div className={`${styles.wrapperModal} col-4 position-absolute`}>
-          <div className="container-fluid p-3">
+        <div
+          className={`${styles.wrapperModal} container p-3 col-12 col-sm-9 col-lg-6 col-xxl-4 position-absolute`}
+        >
+          <div className={`${styles.overFlow}`}>
             <div
               className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
             >
@@ -313,155 +314,154 @@ export default function ModalPost() {
         </div>
       )}
       {isDetailPost && (
-        <div className={`${styles.wrapperModal} col-6 position-absolute`}>
-          <div className="container-fluid p-3">
+        <div
+          className={`${styles.wrapperModal} container p-3 col-12 col-md-9 col-xxl-6 position-absolute`}
+        >
+          <div
+            className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
+          >
+            <div className={`${styles.title}`}>
+              Article by {processedPost?.creator?.userName}
+            </div>
             <div
-              className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
+              onClick={() => {
+                setIsUpdatePost(false);
+                setIsCreatePost(false);
+                setIsDeletePost(false);
+                setIsDetailPost(false);
+              }}
+              className={`${styles.closeModal} position-absolute d-flex justify-content-center align-items-center`}
             >
-              <div className={`${styles.title}`}>
-                Article by {processedPost?.creator?.userName}
-              </div>
-              <div
-                onClick={() => {
-                  setIsUpdatePost(false);
-                  setIsCreatePost(false);
-                  setIsDeletePost(false);
-                  setIsDetailPost(false);
-                }}
-                className={`${styles.closeModal} position-absolute d-flex justify-content-center align-items-center`}
-              >
-                <ClearIcon />
-              </div>
+              <ClearIcon />
             </div>
-            <div className={`${styles.overflowY}`}>
-              <div
-                className={`${styles.user} pt-3 pb-2 d-flex align-items-center`}
-              >
-                <img
-                  className={`${styles.userAvatar} me-2`}
-                  src={`https://mern-social-internship.onrender.com/assets/${
-                    processedPost?.creator?.userAvatar !== ""
-                      ? processedPost?.creator?.userAvatar
-                      : "defaultUserAvatar.png"
-                  }`}
-                  alt=""
-                />
-                <div>
-                  <div className={`${styles.userName}`}>
-                    {processedPost.creator?.userName}
-                  </div>
-                  <div
-                    className={`${styles.statePost} d-flex align-items-center`}
-                  >
-                    <div className={`${styles.timePost} me-1`}>1 min ago</div>
-
-                    <LockIcon className={`${styles.icon}`} />
-                  </div>
-                </div>
-              </div>
-              <div className={`${styles.descriptionPost}`}>
-                {processedPost.description}
-              </div>
-              <div className={`${styles.picturePost} mt-3`}>
-                {processedPost.picturePath !== "" && (
-                  <img
-                    className={`${styles.picturePath}`}
-                    src={`https://mern-social-internship.onrender.com/assets/${processedPost.picturePath}`}
-                    alt=""
-                  />
-                )}
-              </div>
-              <div
-                className={`${styles.interact} mt-2 py-1 d-flex justify-content-center align-items-center`}
-              >
-                <div
-                  onClick={() => handleLike()}
-                  className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
-                >
-                  {processedPost?.likes?.includes(userNow._id) ? (
-                    <FavoriteIcon className={`${styles.iconHeart} me-2`} />
-                  ) : (
-                    <FavoriteBorderOutlinedIcon
-                      className={`${styles.iconOutlineHeart} me-2`}
-                    />
-                  )}
-                  <div className={`${styles.nameInteract}`}>
-                    {processedPost.likes?.length !== 0 &&
-                      processedPost.likes?.length}{" "}
-                    Likes
-                  </div>
-                </div>
-                <div
-                  onClick={handleCommentButtonClick}
-                  className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
-                >
-                  <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
-
-                  <div className={`${styles.nameInteract}`}>Comments</div>
-                </div>
-                <div
-                  className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
-                >
-                  <ShareOutlinedIcon className={`${styles.icon} me-2`} />
-
-                  <div className={`${styles.nameInteract}`}>Share</div>
-                </div>
-              </div>
-
-              <div className={`${styles.commentPart}`}>
-                {processedPost?.comments?.map((comment) => (
-                  <ItemComment comment={comment} />
-                ))}
-              </div>
-            </div>
-
-            <div className={`${styles.foot} mt-2 d-flex`}>
+          </div>
+          <div className={`${styles.overflowY}`}>
+            <div
+              className={`${styles.user} pt-3 pb-2 d-flex align-items-center`}
+            >
               <img
-                className={`${styles.userAvatar} me-3`}
+                className={`${styles.userAvatar} me-2`}
                 src={`https://mern-social-internship.onrender.com/assets/${
-                  userNow.userAvatar !== ""
-                    ? userNow.userAvatar
+                  processedPost?.creator?.userAvatar !== ""
+                    ? processedPost?.creator?.userAvatar
                     : "defaultUserAvatar.png"
                 }`}
                 alt=""
               />
-              <div className={`${styles.wrapperComment} p-2 col`}>
-                <div className="d-flex justify-content-between align-item-center">
-                  <textarea
-                    onChange={(e) => setInputComment(e.target.value)}
-                    ref={inputCommentRef}
-                    className={`${styles.inputComment} col me-2`}
-                    rows={1}
-                    placeholder="Comment..."
-                    value={inputComment}
-                  />
-                  <div
-                    onClick={() => {
-                      handleComment();
-                    }}
-                    className={`${styles.wrapperIcon} ${
-                      inputComment === "" && styles.disabledCommentBtn
-                    }  d-flex justify-content-center align-items-center`}
-                  >
-                    <SendIcon className={`${styles.icon}`} />
-                  </div>
+              <div>
+                <div className={`${styles.userName}`}>
+                  {processedPost.creator?.userName}
                 </div>
-                <div className="d-flex">
-                  <div
-                    className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
-                  >
-                    <EmojiEmotionsOutlinedIcon className={`${styles.icon}`} />
-                  </div>
-                  <div
-                    className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
-                  >
-                    <CameraAltOutlinedIcon className={`${styles.icon}`} />
-                  </div>
-                  <div
-                    className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
-                  >
-                    <GifBoxOutlinedIcon className={`${styles.icon}`} />
-                  </div>
+                <div
+                  className={`${styles.statePost} d-flex align-items-center`}
+                >
+                  <div className={`${styles.timePost} me-1`}>1 min ago</div>
+
+                  <LockIcon className={`${styles.icon}`} />
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.descriptionPost}`}>
+              {processedPost.description}
+            </div>
+            <div className={`${styles.picturePost} mt-3`}>
+              {processedPost.picturePath !== "" && (
+                <img
+                  className={`${styles.picturePath}`}
+                  src={`https://mern-social-internship.onrender.com/assets/${processedPost.picturePath}`}
+                  alt=""
+                />
+              )}
+            </div>
+            <div
+              className={`${styles.interact} mt-2 py-1 d-flex justify-content-center align-items-center`}
+            >
+              <div
+                onClick={() => handleLike()}
+                className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
+              >
+                {processedPost?.likes?.includes(userNow._id) ? (
+                  <FavoriteIcon className={`${styles.iconHeart} me-2`} />
+                ) : (
+                  <FavoriteBorderOutlinedIcon
+                    className={`${styles.iconOutlineHeart} me-2`}
+                  />
+                )}
+                <div className={`${styles.nameInteract}`}>
+                  {processedPost.likes?.length !== 0 &&
+                    processedPost.likes?.length}{" "}
+                  Likes
+                </div>
+              </div>
+              <div
+                onClick={handleCommentButtonClick}
+                className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
+              >
+                <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
+
+                <div className={`${styles.nameInteract}`}>Comments</div>
+              </div>
+              <div
+                className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
+              >
+                <ShareOutlinedIcon className={`${styles.icon} me-2`} />
+
+                <div className={`${styles.nameInteract}`}>Share</div>
+              </div>
+            </div>
+
+            <div className={`${styles.commentPart}`}>
+              {processedPost?.comments?.map((comment) => (
+                <ItemComment comment={comment} />
+              ))}
+            </div>
+          </div>
+          <div className={`${styles.foot} col-12 mt-2 d-flex`}>
+            <img
+              className={`${styles.userAvatar} me-3`}
+              src={`https://mern-social-internship.onrender.com/assets/${
+                userNow.userAvatar !== ""
+                  ? userNow.userAvatar
+                  : "defaultUserAvatar.png"
+              }`}
+              alt=""
+            />
+            <div className={`${styles.wrapperComment} p-2 col`}>
+              <div className="d-flex justify-content-between align-item-center">
+                <textarea
+                  onChange={(e) => setInputComment(e.target.value)}
+                  ref={inputCommentRef}
+                  className={`${styles.inputComment} col me-2`}
+                  rows={1}
+                  placeholder="Comment..."
+                  value={inputComment}
+                />
+                <div
+                  onClick={() => {
+                    handleComment();
+                  }}
+                  className={`${styles.wrapperIcon} ${
+                    inputComment === "" && styles.disabledCommentBtn
+                  }  d-flex justify-content-center align-items-center`}
+                >
+                  <SendIcon className={`${styles.icon}`} />
+                </div>
+              </div>
+              <div className="d-flex">
+                <div
+                  className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
+                >
+                  <EmojiEmotionsOutlinedIcon className={`${styles.icon}`} />
+                </div>
+                <div
+                  className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
+                >
+                  <CameraAltOutlinedIcon className={`${styles.icon}`} />
+                </div>
+                <div
+                  className={`${styles.wrapperIcon} me-1 d-flex justify-content-center align-items-center`}
+                >
+                  <GifBoxOutlinedIcon className={`${styles.icon}`} />
                 </div>
               </div>
             </div>
