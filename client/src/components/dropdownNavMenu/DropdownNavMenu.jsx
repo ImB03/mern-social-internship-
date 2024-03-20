@@ -21,82 +21,82 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
   };
 
   return (
-    <div className={`${styles.dropdownNavMenu} position-absolute`}>
-      <div className="container-fluid p-2">
-        <div className={`${styles.wrapper}`}>
-          <div className={`${styles.wrapperItem} p-1 mx-2 mb-3`}>
-            <Link
-              to={`/profile/${userNow._id}`}
-              onClick={() => {
-                setIsDropdownNavMenu(false);
-              }}
-              className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
-            >
-              <img
-                className={`${styles.userAvatar} me-3`}
-                src={`https://mern-social-internship.onrender.com/assets/${
-                  userNow.userAvatar !== ""
-                    ? userNow.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
-                alt=""
-              />
-              <div className={`${styles.userName}`}>{userNow.userName}</div>
-            </Link>
-          </div>
-          <div
+    <div
+      className={`${styles.dropdownNavMenu} container p-2 position-absolute`}
+    >
+      <div className={`${styles.wrapper}`}>
+        <div className={`${styles.wrapperItem} p-1 mx-2 mb-3`}>
+          <Link
+            to={`/profile/${userNow._id}`}
             onClick={() => {
               setIsDropdownNavMenu(false);
             }}
             className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
           >
-            <div
-              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-            >
-              <SettingsOutlinedIcon className={`${styles.icon}`} />
-            </div>
-            <div className={`${styles.name}`}>Settings & privacy</div>
-          </div>
+            <img
+              className={`${styles.userAvatar} me-3`}
+              src={`https://mern-social-internship.onrender.com/assets/${
+                userNow.userAvatar !== ""
+                  ? userNow.userAvatar
+                  : "defaultUserAvatar.png"
+              }`}
+              alt=""
+            />
+            <div className={`${styles.userName}`}>{userNow.userName}</div>
+          </Link>
+        </div>
+        <div
+          onClick={() => {
+            setIsDropdownNavMenu(false);
+          }}
+          className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+        >
           <div
-            onClick={() => {
-              setIsDropdownNavMenu(false);
-            }}
-            className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+            className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
           >
-            <div
-              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-            >
-              <HelpOutlineOutlinedIcon className={`${styles.icon}`} />
-            </div>
-            <div className={`${styles.name}`}>Help & support</div>
+            <SettingsOutlinedIcon className={`${styles.icon}`} />
           </div>
+          <div className={`${styles.name}`}>Settings & privacy</div>
+        </div>
+        <div
+          onClick={() => {
+            setIsDropdownNavMenu(false);
+          }}
+          className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+        >
           <div
-            onClick={() => {
-              setIsDropdownNavMenu(false);
-            }}
-            className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+            className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
           >
-            <div
-              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-            >
-              <FeedbackOutlinedIcon className={`${styles.icon}`} />
-            </div>
-            <div className={`${styles.name}`}>Comments</div>
+            <HelpOutlineOutlinedIcon className={`${styles.icon}`} />
           </div>
+          <div className={`${styles.name}`}>Help & support</div>
+        </div>
+        <div
+          onClick={() => {
+            setIsDropdownNavMenu(false);
+          }}
+          className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+        >
           <div
-            onClick={() => {
-              handleLognout();
-              setIsDropdownNavMenu(false);
-            }}
-            className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+            className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
           >
-            <div
-              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-            >
-              <LogoutOutlinedIcon className={`${styles.icon}`} />
-            </div>
-            <div className={`${styles.name}`}>Logout</div>
+            <FeedbackOutlinedIcon className={`${styles.icon}`} />
           </div>
+          <div className={`${styles.name}`}>Comments</div>
+        </div>
+        <div
+          onClick={() => {
+            handleLognout();
+            setIsDropdownNavMenu(false);
+          }}
+          className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+        >
+          <div
+            className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
+          >
+            <LogoutOutlinedIcon className={`${styles.icon}`} />
+          </div>
+          <div className={`${styles.name}`}>Logout</div>
         </div>
       </div>
     </div>

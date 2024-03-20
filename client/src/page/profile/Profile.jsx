@@ -37,22 +37,24 @@ export default function Profile() {
   }, [userId, dispatch]);
 
   return (
-    <div className={`${styles.profile}`}>
+    <div className={`${styles.profile} container-fluid px-3`}>
       {isUpdatePost || isCreatePost || isDeletePost || isDetailPost ? (
         <ModalPost />
       ) : (
         isUpdateUser && <ModalUser />
       )}
-      <div className="d-flex justify-content-between align-items-start">
-        <div className={`${styles.leftSide} col-2`}>
+      <div className="d-flex justify-content-center justify-content-lg-between align-items-start">
+        <div className={`${styles.leftSide} d-none d-xl-block col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6`}>
+        <div className={`${styles.middleSide} col-12 col-lg-8 col-xl-6`}>
           <InfoUser />
           {userId === userNow._id && <CreatePost />}
           <Posts />
         </div>
-        <div className={`${styles.rightSide} col-3`}>
+        <div
+          className={`${styles.rightSide} ps-4 p-xl-0 d-none d-lg-block col-4 col-xl-3`}
+        >
           <CardInfo />
           <StoreImg />
           <CardFriendList />

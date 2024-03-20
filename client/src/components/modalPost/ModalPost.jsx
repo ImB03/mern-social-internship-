@@ -195,24 +195,24 @@ export default function ModalPost() {
         <div
           className={`${styles.wrapperModal} container p-3 col-12 col-sm-9 col-lg-6 col-xxl-4 position-absolute`}
         >
-          <div className={`${styles.overFlow}`}>
-            <div
-              className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
-            >
-              <div className={`${styles.title}`}>
-                {isUpdatePost ? "Update Post" : "Create Post"}
-              </div>
-              <div
-                onClick={() => {
-                  setIsUpdatePost(false);
-                  setIsCreatePost(false);
-                  setIsDeletePost(false);
-                }}
-                className={`${styles.closeModal} position-absolute d-flex justify-content-center align-items-center`}
-              >
-                <ClearIcon />
-              </div>
+          <div
+            className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}
+          >
+            <div className={`${styles.title}`}>
+              {isUpdatePost ? "Update Post" : "Create Post"}
             </div>
+            <div
+              onClick={() => {
+                setIsUpdatePost(false);
+                setIsCreatePost(false);
+                setIsDeletePost(false);
+              }}
+              className={`${styles.closeModal} position-absolute d-flex justify-content-center align-items-center`}
+            >
+              <ClearIcon />
+            </div>
+          </div>
+          <div className={`${styles.overFlow}`}>
             <div
               className={`${styles.user} pt-3 pb-2 d-flex align-items-center`}
             >
@@ -300,17 +300,17 @@ export default function ModalPost() {
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => handleSubmit()}
-              className={`${styles.submitBtn} ${
-                dataPost.description === "" && dataPost.picturePath === ""
-                  ? styles.disabledSubmitBtn
-                  : null
-              } col-12 mt-3 p-2`}
-            >
-              {isUpdatePost ? "Save" : "Post"}
-            </button>
           </div>
+          <button
+            onClick={() => handleSubmit()}
+            className={`${styles.submitBtn} ${
+              dataPost.description === "" && dataPost.picturePath === ""
+                ? styles.disabledSubmitBtn
+                : null
+            } col-12 mt-3 p-2`}
+          >
+            {isUpdatePost ? "Save" : "Post"}
+          </button>
         </div>
       )}
       {isDetailPost && (

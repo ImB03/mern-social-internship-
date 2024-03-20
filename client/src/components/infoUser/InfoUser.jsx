@@ -142,10 +142,12 @@ export default function InfoUser() {
             <h3 className={`${styles.userName} d-flex justify-content-center`}>
               {processedUsers?.userName}
             </h3>
-            <p className={`${styles.nickName} d-flex justify-content-center`}>
-              @{processedUsers?.nickname}
-            </p>
-            <div
+            {processedUsers?.nickname && (
+              <p className={`${styles.nickName} d-flex justify-content-center`}>
+                @{processedUsers?.nickname}
+              </p>
+            )}
+            {/* <div
               className={`${styles.contact} mt-2 d-flex justify-content-start`}
             >
               <div className="d-flex">
@@ -179,11 +181,12 @@ export default function InfoUser() {
                 <i className="me-2 fa-brands fa-linkedin"></i>
                 <i className="fa-brands fa-instagram"></i>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <hr className={`${styles.hr} col-12 mt-2`} />
         <div className={`${styles.navigate} d-flex col-12`}>
+          <div className={`${styles.itemNavigate} px-3 py-2`}>Introduce</div>
           <div className={`${styles.itemNavigate} px-3 py-2`}>Posts</div>
           <div className={`${styles.itemNavigate} px-3 py-2`}>Videos</div>
           <div className={`${styles.itemNavigate} px-3 py-2`}>Images</div>

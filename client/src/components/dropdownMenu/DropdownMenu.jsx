@@ -21,9 +21,22 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
   const dispatch = useDispatch();
 
   return (
-    <div className={`${styles.dropdownMenu} position-absolute`}>
-      <div className="container-fluid p-2">
-        <div className={`${styles.wrapper}`}>
+    <div className={`${styles.dropdownMenu} container p-2 position-absolute`}>
+      <div className={`${styles.wrapper}`}>
+        <div
+          onClick={() => {
+            setIsDropdownMenu(false);
+          }}
+          className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+        >
+          <div
+            className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
+          >
+            <BookmarkBorderOutlinedIcon className={`${styles.icon}`} />
+          </div>
+          <div className={`${styles.name}`}>Save post</div>
+        </div>
+        {post.creator.userId === userNow._id ? (
           <div
             onClick={() => {
               setIsDropdownMenu(false);
@@ -33,11 +46,48 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
             <div
               className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
             >
-              <BookmarkBorderOutlinedIcon className={`${styles.icon}`} />
+              <NotificationsOffOutlinedIcon className={`${styles.icon}`} />
             </div>
-            <div className={`${styles.name}`}>Save post</div>
+            <div className={`${styles.name}`}>
+              Turn off notifications for this post
+            </div>
           </div>
-          {post.creator.userId === userNow._id ? (
+        ) : (
+          <div
+            onClick={() => {
+              setIsDropdownMenu(false);
+            }}
+            className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+          >
+            <div
+              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
+            >
+              <NotificationsActiveOutlinedIcon className={`${styles.icon}`} />
+            </div>
+            <div className={`${styles.name}`}>
+              Turn on notifications for this post
+            </div>
+          </div>
+        )}
+        {post.creator.userId === userNow._id && (
+          <div
+            onClick={() => {
+              setPostId(post._id);
+              setIsDropdownMenu(false);
+              setIsUpdatePost(true);
+            }}
+            className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+          >
+            <div
+              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
+            >
+              <CreateOutlinedIcon className={`${styles.icon}`} />
+            </div>
+            <div className={`${styles.name}`}>Update post</div>
+          </div>
+        )}
+        {post.creator.userId !== userNow._id && (
+          <>
             <div
               onClick={() => {
                 setIsDropdownMenu(false);
@@ -47,13 +97,25 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               <div
                 className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
               >
-                <NotificationsOffOutlinedIcon className={`${styles.icon}`} />
+                <CancelPresentationOutlinedIcon className={`${styles.icon}`} />
+              </div>
+              <div className={`${styles.name}`}>Hidden posts</div>
+            </div>
+            <div
+              onClick={() => {
+                setIsDropdownMenu(false);
+              }}
+              className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+            >
+              <div
+                className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
+              >
+                <WebAssetOffOutlinedIcon className={`${styles.icon}`} />
               </div>
               <div className={`${styles.name}`}>
-                Turn off notifications for this post
+                Hidden all from {post.userName}
               </div>
             </div>
-          ) : (
             <div
               onClick={() => {
                 setIsDropdownMenu(false);
@@ -63,110 +125,44 @@ export default function DropdownMenu({ setIsDropdownMenu, post }) {
               <div
                 className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
               >
-                <NotificationsActiveOutlinedIcon className={`${styles.icon}`} />
+                <FeedbackOutlinedIcon className={`${styles.icon}`} />
+              </div>
+              <div className={`${styles.name}`}>Report article</div>
+            </div>
+            <div
+              onClick={() => {
+                setIsDropdownMenu(false);
+              }}
+              className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+            >
+              <div
+                className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
+              >
+                <NoAccountsOutlinedIcon className={`${styles.icon}`} />
               </div>
               <div className={`${styles.name}`}>
-                Turn on notifications for this post
+                Block {post.userName}'s personal page
               </div>
             </div>
-          )}
-          {post.creator.userId === userNow._id && (
+          </>
+        )}
+        {post.creator.userId === userNow._id && (
+          <div
+            onClick={() => {
+              setPostId(post._id);
+              setIsDropdownMenu(false);
+              setIsDeletePost(true);
+            }}
+            className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+          >
             <div
-              onClick={() => {
-                setPostId(post._id);
-                setIsDropdownMenu(false);
-                setIsUpdatePost(true);
-              }}
-              className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
+              className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
             >
-              <div
-                className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-              >
-                <CreateOutlinedIcon className={`${styles.icon}`} />
-              </div>
-              <div className={`${styles.name}`}>Update post</div>
+              <DeleteOutlineOutlinedIcon className={`${styles.icon}`} />
             </div>
-          )}
-          {post.creator.userId !== userNow._id && (
-            <>
-              <div
-                onClick={() => {
-                  setIsDropdownMenu(false);
-                }}
-                className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
-              >
-                <div
-                  className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-                >
-                  <CancelPresentationOutlinedIcon
-                    className={`${styles.icon}`}
-                  />
-                </div>
-                <div className={`${styles.name}`}>Hidden posts</div>
-              </div>
-              <div
-                onClick={() => {
-                  setIsDropdownMenu(false);
-                }}
-                className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
-              >
-                <div
-                  className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-                >
-                  <WebAssetOffOutlinedIcon className={`${styles.icon}`} />
-                </div>
-                <div className={`${styles.name}`}>
-                  Hidden all from {post.userName}
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setIsDropdownMenu(false);
-                }}
-                className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
-              >
-                <div
-                  className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-                >
-                  <FeedbackOutlinedIcon className={`${styles.icon}`} />
-                </div>
-                <div className={`${styles.name}`}>Report article</div>
-              </div>
-              <div
-                onClick={() => {
-                  setIsDropdownMenu(false);
-                }}
-                className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
-              >
-                <div
-                  className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-                >
-                  <NoAccountsOutlinedIcon className={`${styles.icon}`} />
-                </div>
-                <div className={`${styles.name}`}>
-                  Block {post.userName}'s personal page
-                </div>
-              </div>
-            </>
-          )}
-          {post.creator.userId === userNow._id && (
-            <div
-              onClick={() => {
-                setPostId(post._id);
-                setIsDropdownMenu(false);
-                setIsDeletePost(true);
-              }}
-              className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
-            >
-              <div
-                className={`${styles.wrapperIcon} me-3 d-flex justify-content-center align-items-center`}
-              >
-                <DeleteOutlineOutlinedIcon className={`${styles.icon}`} />
-              </div>
-              <div className={`${styles.name}`}>Delete post</div>
-            </div>
-          )}
-        </div>
+            <div className={`${styles.name}`}>Delete post</div>
+          </div>
+        )}
       </div>
     </div>
   );

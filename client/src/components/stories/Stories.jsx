@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
@@ -20,6 +20,7 @@ import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
 import styles from "./stories.module.scss";
 import { storyData } from "./storyData";
+import { MyContext } from "../../hook/context/state";
 
 SwiperCore.use([Navigation]);
 
@@ -27,8 +28,7 @@ export default function Stories() {
   const location = useLocation();
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
   const pageName = location.pathname.split("/")[1];
-
-  console.log(pageName);
+  const { windowHeight, windowWidth } = useContext(MyContext);
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -64,7 +64,13 @@ export default function Stories() {
           className={`position-relative`}
           ref={swiperRef}
           spaceBetween={8}
-          slidesPerView={pageName === "home" ? 5 : 3}
+          slidesPerView={
+            pageName === "home" && windowWidth < 768
+              ? 3
+              : pageName === "profile"
+              ? 3
+              : 5
+          }
           loop={false}
           navigation={{
             nextEl: ".custom-swiper-button-next",
