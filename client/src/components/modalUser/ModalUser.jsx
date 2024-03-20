@@ -231,7 +231,9 @@ export default function ModalUser() {
         }}
         className={`${styles.overlay} position-fixed`}
       ></div>
-      <div className={`${styles.wrapperModal} col-6 position-absolute`}>
+      <div
+        className={`${styles.wrapperModal} col-12 col-md-8 col-xxl-6 position-absolute`}
+      >
         <div className="container-fluid p-3">
           <div
             className={`${styles.head} pb-3 position-relative d-flex justify-content-center align-items-center`}

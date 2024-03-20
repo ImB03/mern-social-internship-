@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 import styles from "./itemComment.module.scss";
 import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
+import { Link } from "react-router-dom";
+import { MyContext } from "../../hook/context/state";
 
 export default function ItemComment({ comment }) {
+  const { setIsDetailPost } = useContext(MyContext);
   const [isDropdownCommentMenu, setIsDropdownCommentMenu] = useState(false);
 
   const menuRef = useRef(null);
@@ -23,20 +26,34 @@ export default function ItemComment({ comment }) {
 
   return (
     <div className={`${styles.itemComment} mt-3 d-flex`} key={comment.userId}>
-      <img
-        className={`${styles.userAvatar} me-3`}
-        src={`https://mern-social-internship.onrender.com/assets/${
-          comment.userAvatar !== ""
-            ? comment.userAvatar
-            : "defaultUserAvatar.png"
-        }`}
-        alt=""
-      />
+      <Link
+        onClick={() => {
+          setIsDetailPost(false);
+        }}
+        to={`/profile/${comment.userId}`}
+      >
+        <img
+          className={`${styles.userAvatar} me-3`}
+          src={`https://mern-social-internship.onrender.com/assets/${
+            comment.userAvatar !== ""
+              ? comment.userAvatar
+              : "defaultUserAvatar.png"
+          }`}
+          alt=""
+        />
+      </Link>
 
       <div className="col">
         <div className="col-12 d-flex align-items-center">
           <div className={`${styles.wrapperUserComment} me-1 p-2`}>
-            <div className={`${styles.userName}`}>{comment.userName}</div>
+            <Link
+              onClick={() => {
+                setIsDetailPost(false);
+              }}
+              to={`/profile/${comment.userId}`}
+            >
+              <div className={`${styles.userName}`}>{comment.userName}</div>
+            </Link>
             <div className={`${styles.userComment}`}>{comment.userComment}</div>
           </div>
           <div className={`${styles.option} position-relative`} ref={menuRef}>

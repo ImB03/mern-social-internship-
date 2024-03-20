@@ -44,7 +44,9 @@ export default function InfoUser() {
   }, []);
 
   return (
-    <div className={`${styles.infoUser} d-flex flex-column align-items-center`}>
+    <div
+      className={`${styles.infoUser} container-fluid p-0 d-flex flex-column align-items-center`}
+    >
       <img
         className={`${styles.coverAvatar}`}
         src={`https://mern-social-internship.onrender.com/assets/${
@@ -55,11 +57,13 @@ export default function InfoUser() {
         alt=""
       />
       <div
-        className={`${styles.wrapper} p-3 mt-3 col-12 d-flex flex-column align-items-center`}
+        className={`${styles.wrapper} position-relative container-fluid p-3 mt-3 d-flex flex-column align-items-md-start align-items-center`}
       >
-        <div className="container-fluid p-0 d-flex justify-content-center position-relative">
+        <div
+          className={`${styles.user} position-absolute d-flex flex-column flex-md-row align-items-center`}
+        >
           <div
-            className={`${styles.wrapperImg} d-flex align-items-center justify-content-center position-absolute`}
+            className={`${styles.wrapperImg} d-flex align-items-center justify-content-center`}
           >
             <img
               className={`${styles.userAvatar}`}
@@ -71,27 +75,21 @@ export default function InfoUser() {
               alt=""
             />
           </div>
-          <div className={`${styles.info} col-12 d-flex flex-column`}>
+          <div className="m-0 ms-md-3 ms-sm-2 mt-md-5 d-flex flex-column">
+            <h3 className={`${styles.userName}`}>{processedUsers?.userName}</h3>
+            {processedUsers?.nickname && (
+              <p className={`${styles.nickName} text-center text-md-start`}>
+                @{processedUsers?.nickname}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className={`${styles.info} col-12 d-flex flex-column`}>
+          <div className={`${styles.interact} d-none d-sm-flex col-12`}>
             <div
-              className={`${styles.interact} d-flex justify-content-between`}
+              className={`${styles.rightSide} d-flex col-12 justify-content-end`}
             >
-              <div className={`${styles.leftSide}`}>
-                <div
-                  className={`${styles.quantity} d-flex justify-content-center`}
-                >
-                  <div className="me-2">
-                    <b>{user.friends?.length}</b> friends
-                  </div>
-                  <div className="me-2">
-                    <b>{processedPosts.length}</b> posts
-                  </div>
-                  <div className="me-2">
-                    <b>{likeQuantity}</b> likes
-                  </div>
-                </div>
-              </div>
-              <div className={`${styles.rightSide} d-flex`}>
-                {/* {?
+              {/* {?
                 <>
                 <button className={`${styles.btnFriend} me-2 d-flex justify-content-center align-items-center`}>
                   <HowToRegIcon className={`${styles.icon} me-1`} />
@@ -117,37 +115,41 @@ export default function InfoUser() {
                 </button>
                 </>
                 } */}
-                <>
-                  {/* <button
+              <>
+                {/* <button
                     className={`${styles.btnAddNews} me-2 d-flex justify-content-center align-items-center`}
                   >
                     <AddIcon className={`${styles.icon} me-1`} />
                     Add news
                   </button> */}
-                  <button
-                    onClick={() => setIsUpdateUser(true)}
-                    className={`${styles.btnEditProfile} me-2 d-flex justify-content-center align-items-center`}
-                  >
-                    <ModeEditOutlineIcon className={`${styles.icon} me-1`} />
-                    Edit profile
-                  </button>
-                </>
                 <button
-                  className={`${styles.btnMore} d-flex justify-content-center align-items-center`}
+                  onClick={() => setIsUpdateUser(true)}
+                  className={`${styles.btnEditProfile} me-2 d-flex justify-content-center align-items-center`}
                 >
-                  <MoreHorizIcon className={`${styles.icon}`} />
+                  <ModeEditOutlineIcon className={`${styles.icon} me-1`} />
+                  Edit profile
                 </button>
-              </div>
+              </>
+              <button
+                className={`${styles.btnMore} d-flex justify-content-center align-items-center`}
+              >
+                <MoreHorizIcon className={`${styles.icon}`} />
+              </button>
             </div>
-            <h3 className={`${styles.userName} d-flex justify-content-center`}>
-              {processedUsers?.userName}
-            </h3>
-            {processedUsers?.nickname && (
-              <p className={`${styles.nickName} d-flex justify-content-center`}>
-                @{processedUsers?.nickname}
-              </p>
-            )}
-            {/* <div
+          </div>
+
+          <div className={`${styles.quantity} d-flex justify-content-start`}>
+            <div className="me-2">
+              <b>{user.friends?.length}</b> friends
+            </div>
+            <div className="me-2">
+              <b>{processedPosts.length}</b> posts
+            </div>
+            <div className="me-2">
+              <b>{likeQuantity}</b> likes
+            </div>
+          </div>
+          {/* <div
               className={`${styles.contact} mt-2 d-flex justify-content-start`}
             >
               <div className="d-flex">
@@ -182,7 +184,6 @@ export default function InfoUser() {
                 <i className="fa-brands fa-instagram"></i>
               </div>
             </div> */}
-          </div>
         </div>
         <hr className={`${styles.hr} col-12 mt-2`} />
         <div className={`${styles.navigate} d-flex col-12`}>

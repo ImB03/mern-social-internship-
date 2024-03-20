@@ -31,6 +31,7 @@ import { MyContext } from "../../hook/context/state";
 import DropdownMenu from "../dropdownMenu/DropdownMenu";
 import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
 import ItemComment from "../itemComment/ItemComment";
+import { Link } from "react-router-dom";
 
 export default function ModalPost() {
   const {
@@ -216,17 +217,33 @@ export default function ModalPost() {
             <div
               className={`${styles.user} pt-3 pb-2 d-flex align-items-center`}
             >
-              <img
-                className={`${styles.userAvatar} me-2`}
-                src={`https://mern-social-internship.onrender.com/assets/${
-                  userNow.userAvatar !== ""
-                    ? userNow.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
-                alt=""
-              />
+              <Link
+                onClick={() => {
+                  setIsUpdatePost(false);
+                  setIsCreatePost(false);
+                }}
+                to={`/profile/${userNow._id}`}
+              >
+                <img
+                  className={`${styles.userAvatar} me-2`}
+                  src={`https://mern-social-internship.onrender.com/assets/${
+                    userNow.userAvatar !== ""
+                      ? userNow.userAvatar
+                      : "defaultUserAvatar.png"
+                  }`}
+                  alt=""
+                />
+              </Link>
               <div>
-                <div className={`${styles.userName}`}>{userNow.userName}</div>
+                <Link
+                  onClick={() => {
+                    setIsUpdatePost(false);
+                    setIsCreatePost(false);
+                  }}
+                  to={`/profile/${userNow._id}`}
+                >
+                  <div className={`${styles.userName}`}>{userNow.userName}</div>
+                </Link>
                 <div
                   className={`${styles.statePost} justify-content-between d-flex align-items-center`}
                 >
@@ -339,19 +356,33 @@ export default function ModalPost() {
             <div
               className={`${styles.user} pt-3 pb-2 d-flex align-items-center`}
             >
-              <img
-                className={`${styles.userAvatar} me-2`}
-                src={`https://mern-social-internship.onrender.com/assets/${
-                  processedPost?.creator?.userAvatar !== ""
-                    ? processedPost?.creator?.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
-                alt=""
-              />
+              <Link
+                onClick={() => {
+                  setIsDetailPost(false);
+                }}
+                to={`/profile/${processedPost?.creator?.userId}`}
+              >
+                <img
+                  className={`${styles.userAvatar} me-2`}
+                  src={`https://mern-social-internship.onrender.com/assets/${
+                    processedPost?.creator?.userAvatar !== ""
+                      ? processedPost?.creator?.userAvatar
+                      : "defaultUserAvatar.png"
+                  }`}
+                  alt=""
+                />
+              </Link>
               <div>
-                <div className={`${styles.userName}`}>
-                  {processedPost.creator?.userName}
-                </div>
+                <Link
+                  onClick={() => {
+                    setIsDetailPost(false);
+                  }}
+                  to={`/profile/${processedPost?.creator?.userId}`}
+                >
+                  <div className={`${styles.userName}`}>
+                    {processedPost.creator?.userName}
+                  </div>
+                </Link>
                 <div
                   className={`${styles.statePost} d-flex align-items-center`}
                 >
@@ -417,15 +448,22 @@ export default function ModalPost() {
             </div>
           </div>
           <div className={`${styles.foot} col-12 mt-2 d-flex`}>
-            <img
-              className={`${styles.userAvatar} me-3`}
-              src={`https://mern-social-internship.onrender.com/assets/${
-                userNow.userAvatar !== ""
-                  ? userNow.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              alt=""
-            />
+            <Link
+              onClick={() => {
+                setIsDetailPost(false);
+              }}
+              to={`/profile/${userNow._id}`}
+            >
+              <img
+                className={`${styles.userAvatar} me-3`}
+                src={`https://mern-social-internship.onrender.com/assets/${
+                  userNow.userAvatar !== ""
+                    ? userNow.userAvatar
+                    : "defaultUserAvatar.png"
+                }`}
+                alt=""
+              />
+            </Link>
             <div className={`${styles.wrapperComment} p-2 col`}>
               <div className="d-flex justify-content-between align-item-center">
                 <textarea
