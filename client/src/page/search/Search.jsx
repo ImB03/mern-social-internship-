@@ -42,13 +42,13 @@ export default function Search() {
   }, [qValue, dispatch]);
 
   return (
-    <div className={`${styles.search}`}>
+    <div className={`${styles.search} container-fluid px-3`}>
       {(isUpdatePost || isDeletePost || isDetailPost) && <ModalPost />}
-      <div className="d-flex justify-content-between align-items-start">
-        <div className={`${styles.leftSide} col-2`}>
+      <div className="d-flex justify-content-center justify-content-lg-between align-items-start">
+        <div className={`${styles.leftSide} d-none d-xl-block col-2`}>
           <Menu />
         </div>
-        <div className={`${styles.middleSide} col-6`}>
+        <div className={`${styles.middleSide} col-12 col-md-8 col-xl-6`}>
           {(params.typeState === `searchall` ||
             params.typeState === `searcheverybody`) && (
             <CardUserList setGetUsers={setGetUsers} />
@@ -65,7 +65,9 @@ export default function Search() {
             </div>
           )}
         </div>
-        <div className={`${styles.rightSide} col-3`}>
+        <div
+          className={`${styles.rightSide} ps-3 p-xl-0 d-none d-md-block col-4 col-xl-3`}
+        >
           <FilterSearch />
         </div>
       </div>
