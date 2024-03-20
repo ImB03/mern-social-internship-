@@ -51,7 +51,7 @@ export default function Menu() {
         >
           <img
             className={`${styles.userAvatar} me-3`}
-            src={`https://mern-social-internship.onrender.com/assets/${
+            src={`http://localhost:19000/assets/${
               userNow.userAvatar !== ""
                 ? userNow.userAvatar
                 : "defaultUserAvatar.png"

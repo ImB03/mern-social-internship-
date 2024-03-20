@@ -87,7 +87,7 @@ export default function Stories() {
               className={`${styles.item} d-flex flex-column justify-content-between`}
             >
               <img
-                src={`https://mern-social-internship.onrender.com/assets/${
+                src={`http://localhost:19000/assets/${
                   userNow.userAvatar !== ""
                     ? userNow.userAvatar
                     : "defaultUserAvatar.png"

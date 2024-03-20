@@ -7,6 +7,22 @@
     border-bottom-left-radius: 10px;
   }
 
+  .btnEditProfile {
+    background-color: cornflowerblue;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    height: 35px;
+  }
+  .btnEditProfile:hover {
+    cursor: pointer;
+    background-color: rgb(67, 130, 248);
+  }
+
   @media (max-width: 768px) {
     .coverAvatar {
       height: 200px;
@@ -63,7 +79,7 @@
 
     @media (max-width: 576px) {
       .user {
-        top: -40px;
+        top: -25px;
 
         .wrapperImg {
           min-width: 130px;
@@ -125,7 +141,7 @@
         }
       }
       .quantity {
-        margin-top: 140px;
+        margin-top: 155px;
         font-size: 13px;
         color: rgb(125, 125, 125);
       }

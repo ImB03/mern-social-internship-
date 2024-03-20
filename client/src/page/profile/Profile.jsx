@@ -18,6 +18,7 @@ import { MyContext } from "../../hook/context/state";
 import ModalUser from "../../components/modalUser/ModalUser";
 import { useParams } from "react-router-dom";
 import { ACTION_GET_USER } from "../../reducers/slice/userSlice";
+import IntroduceUser from "../../components/introduceUser/IntroduceUser";
 
 export default function Profile() {
   const { userId } = useParams();
@@ -49,6 +50,9 @@ export default function Profile() {
         </div>
         <div className={`${styles.middleSide} col-12 col-lg-8 col-xl-6`}>
           <InfoUser />
+          <div className="d-block d-lg-none mt-3">
+            <IntroduceUser />
+          </div>
           {userId === userNow._id && <CreatePost />}
           <Posts />
         </div>

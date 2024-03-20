@@ -1,16 +1,16 @@
 import React from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-import styles from "./cardInfo.module.scss";
+import styles from "./introduceUser.module.scss";
 import Stories from "../stories/Stories";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-export default function CardInfo() {
+export default function IntroduceUser() {
   const user = useSelector((state) => state.persistedReducer.slice.user);
 
   return (
-    <div className={`${styles.cardInfo} container-fluid p-3`}>
+    <div className={`${styles.introduceUser} container-fluid p-3`}>
       {(user.school ||
         user.homeTown ||
         user.provinceCity ||

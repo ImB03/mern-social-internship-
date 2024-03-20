@@ -47,15 +47,24 @@ export default function InfoUser() {
     <div
       className={`${styles.infoUser} container-fluid p-0 d-flex flex-column align-items-center`}
     >
-      <img
-        className={`${styles.coverAvatar}`}
-        src={`https://mern-social-internship.onrender.com/assets/${
-          processedUsers.coverAvatar !== ""
-            ? processedUsers.coverAvatar
-            : "defaultCoverAvatar.png"
-        }`}
-        alt=""
-      />
+      <div className="col-12 position-relative">
+        <img
+          className={`${styles.coverAvatar}`}
+          src={`http://localhost:19000/assets/${
+            processedUsers.coverAvatar !== ""
+              ? processedUsers.coverAvatar
+              : "defaultCoverAvatar.png"
+          }`}
+          alt=""
+        />
+        <button
+          onClick={() => setIsUpdateUser(true)}
+          className={`${styles.btnEditProfile} m-3 position-absolute bottom-0 end-0 d-flex d-sm-none justify-content-center align-items-center`}
+        >
+          <ModeEditOutlineIcon className={`${styles.icon}`} />
+          Edit profile
+        </button>
+      </div>
       <div
         className={`${styles.wrapper} position-relative container-fluid p-3 mt-3 d-flex flex-column align-items-md-start align-items-center`}
       >
@@ -67,7 +76,7 @@ export default function InfoUser() {
           >
             <img
               className={`${styles.userAvatar}`}
-              src={`https://mern-social-internship.onrender.com/assets/${
+              src={`http://localhost:19000/assets/${
                 processedUsers.userAvatar !== ""
                   ? processedUsers.userAvatar
                   : "defaultUserAvatar.png"

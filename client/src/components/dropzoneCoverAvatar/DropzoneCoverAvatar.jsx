@@ -30,7 +30,7 @@ export default function DropzoneCoverAvatar({
             src={
               file !== ""
                 ? URL.createObjectURL(dataInputCoverAvatar)
-                : `https://mern-social-internship.onrender.com/assets/${dataInputCoverAvatar}`
+                : `http://localhost:19000/assets/${dataInputCoverAvatar}`
             }
             className={`${styles.fileImg}`}
             alt=""

@@ -109,82 +109,78 @@ export default function ModalSearch() {
       </div>
       <div
         onClick={handleFocusInput}
-        className={`${styles.wrapperModal} col-5 position-absolute`}
+        className={`${styles.wrapperModal} col-10 col-sm-8 col-xxl-6 container-fluid p-3 col-5 position-absolute`}
       >
-        <div className="container-fluid p-3">
-          <div className={`${styles.search} pb-1 border-bottom d-flex`}>
-            <button
-              className={`${styles.searchBtn} ${
-                searchTerm === "" && styles.disabledSearchBtn
-              } d-flex justify-content-center align-items-center`}
+        <div className={`${styles.search} pb-1 border-bottom d-flex`}>
+          <button
+            className={`${styles.searchBtn} ${
+              searchTerm === "" && styles.disabledSearchBtn
+            } d-flex justify-content-center align-items-center`}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleSearch();
+            }}
+          >
+            <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
+          </button>
+          <input
+            ref={inputRef}
+            className={`${styles.searchInput} ps-2`}
+            type="search"
+            onChange={(e) => {
+              if (e.target.value.startsWith(" ")) {
+                setSearchTerm("");
+              } else {
+                setSearchTerm(e.target.value);
+              }
+            }}
+            onKeyDown={handleKeyPress}
+            value={searchTerm}
+          />
+        </div>
+        {searchTerm && (
+          <div className={`${styles.suggest} mt-2`}>
+            {processedUsers?.length !== 0 &&
+              processedUsers?.slice(0, 5)?.map((user) => (
+                <Link
+                  to={`/profile/${user._id}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsSearch(false);
+                  }}
+                  className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
+                >
+                  <img
+                    className={`${styles.userAvatar} me-3`}
+                    src={`http://localhost:19000/assets/${
+                      user.userAvatar !== ""
+                        ? user.userAvatar
+                        : "defaultUserAvatar.png"
+                    }`}
+                    alt=""
+                  />
+                  <div className={`${styles.searchTerm}`}>{user?.userName}</div>
+                </Link>
+              ))}
+            <Link
+              to={`/search/searchall?q=${searchTerm}`}
               onClick={(e) => {
                 e.stopPropagation();
-                handleSearch();
+                setIsSearch(false);
               }}
+              className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
             >
-              <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
-            </button>
-            <input
-              ref={inputRef}
-              className={`${styles.searchInput} ps-2`}
-              type="search"
-              onChange={(e) => {
-                if (e.target.value.startsWith(" ")) {
-                  setSearchTerm("");
-                } else {
-                  setSearchTerm(e.target.value);
-                }
-              }}
-              onKeyDown={handleKeyPress}
-              value={searchTerm}
-            />
-          </div>
-          {searchTerm && (
-            <div className={`${styles.suggest} mt-2`}>
-              {processedUsers?.length !== 0 &&
-                processedUsers?.slice(0, 5)?.map((user) => (
-                  <Link
-                    to={`/profile/${user._id}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsSearch(false);
-                    }}
-                    className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
-                  >
-                    <img
-                      className={`${styles.userAvatar} me-3`}
-                      src={`https://mern-social-internship.onrender.com/assets/${
-                        user.userAvatar !== ""
-                          ? user.userAvatar
-                          : "defaultUserAvatar.png"
-                      }`}
-                      alt=""
-                    />
-                    <div className={`${styles.searchTerm}`}>
-                      {user?.userName}
-                    </div>
-                  </Link>
-                ))}
-              <Link
-                to={`/search/searchall?q=${searchTerm}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsSearch(false);
-                }}
-                className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
+              <div
+                className={`${styles.wrapperIcon} me-3 d-flex align-items-center justify-content-center`}
               >
-                <div
-                  className={`${styles.wrapperIcon} me-3 d-flex align-items-center justify-content-center`}
-                >
-                  <i
-                    className={`${styles.icon} fa-solid fa-magnifying-glass`}
-                  ></i>
-                </div>
-                <div className={`${styles.searchTerm}`}>{searchTerm}</div>
-              </Link>
-            </div>
-          )}
-        </div>
+                <i
+                  className={`${styles.icon} fa-solid fa-magnifying-glass`}
+                ></i>
+              </div>
+              <div className={`${styles.searchTerm}`}>{searchTerm}</div>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
