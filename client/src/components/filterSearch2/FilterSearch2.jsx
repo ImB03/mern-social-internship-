@@ -45,16 +45,19 @@ export default function FilterSearch2() {
 
   const FilterItem = [
     {
+      id: 1,
       icon: <BackupTableOutlinedIcon className={`${styles.icon}`} />,
       name: "All",
       to: `/search/searchall?q=${qValue}`,
     },
     {
+      id: 2,
       icon: <PeopleAltOutlinedIcon className={`${styles.icon}`} />,
       name: "Everybody",
       to: `/search/searcheverybody?q=${qValue}`,
     },
     {
+      id: 3,
       icon: <ArticleOutlinedIcon className={`${styles.icon}`} />,
       name: "Post",
       to: `/search/searchpost?q=${qValue}`,
@@ -88,6 +91,7 @@ export default function FilterSearch2() {
           <div className={`${styles.wrapperItem} p-2 position-absolute`}>
             {FilterItem.map((item) => (
               <NavLink
+                key={item.id}
                 to={item.to}
                 className={({ isActive }) =>
                   `${styles.itemFilter} ${

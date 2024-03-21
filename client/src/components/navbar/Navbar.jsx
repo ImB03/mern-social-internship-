@@ -7,6 +7,7 @@ import DropdownNavMenu from "../dropdownNavMenu/DropdownNavMenu";
 import { MyContext } from "../../hook/context/state";
 import ModalUser from "../modalUser/ModalUser";
 import ModalSearch from "../modalSearch/ModalSearch";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Navbar() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
@@ -41,16 +42,21 @@ export default function Navbar() {
         <div className="col d-flex justify-content-start align-items-center">
           <Link
             to="/home"
-            className={`${styles.logo} me-4 d-flex align-items-center`}
+            className={`${styles.logo} d-none me-3 d-sm-flex align-items-center`}
           >
-            Socialmedia
+            Socialmedia.
           </Link>
+          <div
+            onClick={() => {}}
+            className={`${styles.iconWrapper} d-flex d-xl-none justify-content-center align-items-center`}
+          >
+            <MenuIcon className={`${styles.icon}`} />
+          </div>
         </div>
-
         <div className="col d-flex justify-content-end align-items-center">
           <div
             onClick={() => setIsSearch(true)}
-            className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
+            className={`${styles.iconWrapper} d-flex justify-content-center align-items-center`}
           >
             <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
           </div>
