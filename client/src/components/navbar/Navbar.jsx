@@ -55,12 +55,12 @@ export default function Navbar() {
             <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
           </div>
           <div
-            className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
+            className={`${styles.iconWrapper} d-none ms-3 d-sm-flex justify-content-center align-items-center`}
           >
             <i className={`${styles.icon} fa-regular fa-bell`}></i>
           </div>
           <div
-            className={`${styles.iconWrapper} ms-3 d-flex justify-content-center align-items-center`}
+            className={`${styles.iconWrapper} d-none ms-3 d-sm-flex justify-content-center align-items-center`}
           >
             <i className={`${styles.icon} fa-regular fa-comments`}></i>
           </div>

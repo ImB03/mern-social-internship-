@@ -77,8 +77,8 @@ export default function FilterSearch2() {
         }}
         className={`${styles.titleFilter} p-2`}
       >
-        Filter <KeyboardArrowUpIcon />
-        <KeyboardArrowDownIcon />
+        Filter
+        {!isDropdownMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       </div>
       {isDropdownMenu && (
         <div className={`${styles.wrapperItem} p-2 position-absolute`}>

@@ -52,7 +52,7 @@ export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
             </div>
             <div className={`${styles.name}`}>Hidden posts</div>
           </div>
-        
+
           <div
             onClick={() => {
               setIsDropdownCommentMenu(false);
@@ -66,7 +66,7 @@ export default function DropdownCommentMenu({ setIsDropdownCommentMenu }) {
             </div>
             <div className={`${styles.name}`}>Report article</div>
           </div>
-   
+
           <div
             onClick={() => {
               // handleGetPost(post._id);
