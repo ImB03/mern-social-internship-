@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalPost from "../../components/modalPost/ModalPost";
 import { MyContext } from "../../hook/context/state";
 import ModalUser from "../../components/modalUser/ModalUser";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { ACTION_GET_USER } from "../../reducers/slice/userSlice";
 import IntroduceUser from "../../components/introduceUser/IntroduceUser";
 
@@ -24,6 +24,8 @@ export default function Profile() {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
+  const location = useLocation();
+  const pageName = location.pathname.split("/")[1];
 
   const {
     isCreatePost,
@@ -31,11 +33,26 @@ export default function Profile() {
     isDeletePost,
     isDetailPost,
     isUpdateUser,
+    setIsCreatePost,
+    setIsUpdatePost,
+    setIsDeletePost,
+    setIsDetailPost,
+    setIsUpdateUser,
+    setIsSearch,
   } = useContext(MyContext);
 
   useEffect(() => {
     dispatch(ACTION_GET_USER(userId));
   }, [userId, dispatch]);
+
+  useEffect(() => {
+    setIsCreatePost(false);
+    setIsUpdatePost(false);
+    setIsDeletePost(false);
+    setIsDetailPost(false);
+    setIsUpdateUser(false);
+    setIsSearch(false);
+  }, [pageName]);
 
   return (
     <div className={`${styles.profile} container-fluid px-3`}>

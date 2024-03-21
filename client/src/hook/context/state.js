@@ -1,5 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import decode from "jwt-decode";
+import { LOGNOUT } from "../../reducers/slice/slice";
 
 const MyContext = createContext();
 
@@ -14,11 +16,35 @@ export default function PostState({ children }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [containerClass, setContainerClass] = useState("");
+  const dispatch = useDispatch();
+
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
   };
+
+  if (
+    isCreatePost ||
+    isUpdatePost ||
+    isDeletePost ||
+    isDetailPost ||
+    isUpdateUser ||
+    isSearch
+  ) {
+    document.body.classList.add("cancelScroll");
+  } else {
+    document.body.classList.remove("cancelScroll");
+  }
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) dispatch(LOGNOUT());
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -39,9 +65,11 @@ export default function PostState({ children }) {
     // } else if (windowWidth >= 1400) {
     //   setContainerClass("-fluid");
     // } else {
-      setContainerClass("");
+    setContainerClass("");
     // }
   }, [windowWidth]);
+
+
 
   return (
     <MyContext.Provider

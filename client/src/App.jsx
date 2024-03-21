@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import decode from "jwt-decode";
 
@@ -18,41 +19,10 @@ import { MyContext } from "./hook/context/state";
 import ModalUser from "./components/modalUser/ModalUser";
 import Search from "./page/search/Search";
 import { LOGNOUT } from "./reducers/slice/slice";
+import ModalSearch from "./components/modalSearch/ModalSearch";
 
 function App() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
-  const dispatch = useDispatch();
-
-  const {
-    isCreatePost,
-    isUpdatePost,
-    isDeletePost,
-    isDetailPost,
-    isUpdateUser,
-    isSearch,
-  } = useContext(MyContext);
-
-  if (
-    isCreatePost ||
-    isUpdatePost ||
-    isDeletePost ||
-    isDetailPost ||
-    isUpdateUser ||
-    isSearch
-  ) {
-    document.body.classList.add("cancelScroll");
-  } else {
-    document.body.classList.remove("cancelScroll");
-  }
-
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("token"));
-
-    if (token) {
-      const decodedToken = decode(token);
-      if (decodedToken.exp * 1000 < new Date().getTime()) dispatch(LOGNOUT());
-    }
-  }, []);
 
   return (
     <Router>

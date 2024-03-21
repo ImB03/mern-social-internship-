@@ -23,24 +23,41 @@ import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
 import FilterSearch2 from "../../components/filterSearch2/FilterSearch2";
 
 export default function Search() {
-  const { isUpdatePost, isDeletePost, isDetailPost } = useContext(MyContext);
+  const {
+    isUpdatePost,
+    isDeletePost,
+    isDetailPost,
+    setIsCreatePost,
+    setIsUpdatePost,
+    setIsDeletePost,
+    setIsDetailPost,
+    setIsUpdateUser,
+    setIsSearch,
+  } = useContext(MyContext);
   const [posts, setGetPosts] = useState(null);
   const [users, setGetUsers] = useState(null);
 
   const dispatch = useDispatch();
   const location = useLocation();
+  const pageName = location.pathname.split("/")[1];
   const params = useParams();
   const queryParams = new URLSearchParams(location.search);
   const qValue = queryParams.get("q");
-
-  console.log(posts);
-  console.log(users);
 
   useEffect(() => {
     if (qValue !== "") {
       dispatch(ACTION_SEARCH(qValue));
     }
   }, [qValue, dispatch]);
+
+  useEffect(() => {
+    setIsCreatePost(false);
+    setIsUpdatePost(false);
+    setIsDeletePost(false);
+    setIsDetailPost(false);
+    setIsUpdateUser(false);
+    setIsSearch(false);
+  }, [pageName]);
 
   return (
     <div className={`${styles.search} container-fluid px-3`}>

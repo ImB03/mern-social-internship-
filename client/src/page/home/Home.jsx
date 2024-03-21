@@ -16,13 +16,34 @@ import { ACTION_GET_ALL_POSTS } from "../../reducers/slice/postSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const pageName = location.pathname.split("/")[1];
 
-  const { isCreatePost, isUpdatePost, isDeletePost, isDetailPost } =
-    useContext(MyContext);
+  const {
+    setIsCreatePost,
+    setIsUpdatePost,
+    setIsDeletePost,
+    setIsDetailPost,
+    setIsUpdateUser,
+    setIsSearch,
+    isCreatePost,
+    isUpdatePost,
+    isDeletePost,
+    isDetailPost,
+  } = useContext(MyContext);
 
   useEffect(() => {
     dispatch(ACTION_GET_ALL_POSTS());
   }, []);
+
+  useEffect(() => {
+    setIsCreatePost(false);
+    setIsUpdatePost(false);
+    setIsDeletePost(false);
+    setIsDetailPost(false);
+    setIsUpdateUser(false);
+    setIsSearch(false);
+  }, [pageName]);
 
   return (
     <div className={`${styles.home} container-fluid px-3`}>
