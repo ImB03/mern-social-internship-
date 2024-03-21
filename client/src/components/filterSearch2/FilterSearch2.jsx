@@ -73,7 +73,7 @@ export default function FilterSearch2() {
       <div className={`${styles.title} border-bottom pb-2 mb-2`}>
         Search Results
       </div>
-      <div className="" ref={menuRef}>
+      <div ref={menuRef}>
         <div
           onClick={() => {
             setIsDropdownMenu(!isDropdownMenu);
