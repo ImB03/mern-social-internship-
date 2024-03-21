@@ -1,0 +1,77 @@
+.filterSearch {
+  background-color: #fff;
+  height: 100%;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  .title {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  .titleFilter {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &:active {
+      background-color: #e0e0e0;
+    }
+  }
+
+  .wrapperItem {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+    top: 114px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    .itemFilter {
+      transition: all 0.2s ease;
+      border-radius: 5px;
+      cursor: pointer;
+
+      .wrapperIcon {
+        border-radius: 100%;
+        min-width: 35px;
+        height: 35px;
+        background-color: #ffffff;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        .icon {
+          font-size: 20px;
+        }
+      }
+
+      .name {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    .itemFilter:not(.isActive):hover {
+      background-color: #f0f0f0;
+    }
+
+    .itemFilter:active {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+.isActive {
+  background-color: #e0e0e0;
+}

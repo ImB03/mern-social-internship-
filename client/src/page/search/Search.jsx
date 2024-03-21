@@ -20,6 +20,7 @@ import ModalUser from "../../components/modalUser/ModalUser";
 import FilterSearch from "../../components/filterSearch/FilterSearch";
 import { useLocation, useParams } from "react-router-dom";
 import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
+import FilterSearch2 from "../../components/filterSearch2/FilterSearch2";
 
 export default function Search() {
   const { isUpdatePost, isDeletePost, isDetailPost } = useContext(MyContext);
@@ -49,7 +50,9 @@ export default function Search() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-12 col-md-8 col-xl-6`}>
-          <FilterSearch />
+          <div className="d-md-none">
+            <FilterSearch2 />
+          </div>
           {(params.typeState === `searchall` ||
             params.typeState === `searcheverybody`) && (
             <CardUserList setGetUsers={setGetUsers} />
