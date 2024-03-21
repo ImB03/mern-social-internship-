@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { MyContext } from "../../hook/context/state";
 import { Link, NavLink, useLocation } from "react-router-dom";
@@ -24,9 +24,24 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 export default function FilterSearch2() {
+  const [isDropdownMenu, setIsDropdownMenu] = useState(false);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const qValue = queryParams.get("q");
+
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsDropdownMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
 
   const FilterItem = [
     {
@@ -48,34 +63,44 @@ export default function FilterSearch2() {
 
   return (
     <div
-      className={`${styles.filterSearch} rounded-0 position-relative container-fluid p-2`}
+      ref={menuRef}
+      className={`${styles.filterSearch} ${
+        isDropdownMenu && "rounded-0"
+      } position-relative container-fluid p-2`}
     >
       <div className={`${styles.title} border-bottom pb-2 mb-2`}>
         Search Results
       </div>
-      <div className={`${styles.titleFilter} p-2`}>
+      <div
+        onClick={() => {
+          setIsDropdownMenu(!isDropdownMenu);
+        }}
+        className={`${styles.titleFilter} p-2`}
+      >
         Filter <KeyboardArrowUpIcon />
         <KeyboardArrowDownIcon />
       </div>
-      <div className={`${styles.wrapperItem} p-2 position-absolute`}>
-        {FilterItem.map((item) => (
-          <NavLink
-            to={item.to}
-            className={({ isActive }) =>
-              `${styles.itemFilter} ${
-                isActive && styles.isActive
-              } col p-2 d-flex align-items-center`
-            }
-          >
-            <div
-              className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}
+      {isDropdownMenu && (
+        <div className={`${styles.wrapperItem} p-2 position-absolute`}>
+          {FilterItem.map((item) => (
+            <NavLink
+              to={item.to}
+              className={({ isActive }) =>
+                `${styles.itemFilter} ${
+                  isActive && styles.isActive
+                } col p-2 d-flex align-items-center`
+              }
             >
-              {item.icon}
-            </div>
-            <div className={`${styles.name}`}>{item.name}</div>
-          </NavLink>
-        ))}
-      </div>
+              <div
+                className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}
+              >
+                {item.icon}
+              </div>
+              <div className={`${styles.name}`}>{item.name}</div>
+            </NavLink>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
