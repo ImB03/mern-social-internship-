@@ -49,6 +49,7 @@ export default function Search() {
           <Menu />
         </div>
         <div className={`${styles.middleSide} col-12 col-md-8 col-xl-6`}>
+          <FilterSearch />
           {(params.typeState === `searchall` ||
             params.typeState === `searcheverybody`) && (
             <CardUserList setGetUsers={setGetUsers} />
