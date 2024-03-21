@@ -63,7 +63,6 @@ export default function FilterSearch2() {
 
   return (
     <div
-      ref={menuRef}
       className={`${styles.filterSearch} ${
         isDropdownMenu && "rounded-0"
       } position-relative container-fluid p-2`}
@@ -71,36 +70,42 @@ export default function FilterSearch2() {
       <div className={`${styles.title} border-bottom pb-2 mb-2`}>
         Search Results
       </div>
-      <div
-        onClick={() => {
-          setIsDropdownMenu(!isDropdownMenu);
-        }}
-        className={`${styles.titleFilter} p-2`}
-      >
-        Filter
-        {!isDropdownMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-      </div>
-      {isDropdownMenu && (
-        <div className={`${styles.wrapperItem} p-2 position-absolute`}>
-          {FilterItem.map((item) => (
-            <NavLink
-              to={item.to}
-              className={({ isActive }) =>
-                `${styles.itemFilter} ${
-                  isActive && styles.isActive
-                } col p-2 d-flex align-items-center`
-              }
-            >
-              <div
-                className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}
-              >
-                {item.icon}
-              </div>
-              <div className={`${styles.name}`}>{item.name}</div>
-            </NavLink>
-          ))}
+      <div className="" ref={menuRef}>
+        <div
+          onClick={() => {
+            setIsDropdownMenu(!isDropdownMenu);
+          }}
+          className={`${styles.titleFilter} p-2`}
+        >
+          Filter
+          {!isDropdownMenu ? (
+            <KeyboardArrowUpIcon />
+          ) : (
+            <KeyboardArrowDownIcon />
+          )}
         </div>
-      )}
+        {isDropdownMenu && (
+          <div className={`${styles.wrapperItem} p-2 position-absolute`}>
+            {FilterItem.map((item) => (
+              <NavLink
+                to={item.to}
+                className={({ isActive }) =>
+                  `${styles.itemFilter} ${
+                    isActive && styles.isActive
+                  } col p-2 d-flex align-items-center`
+                }
+              >
+                <div
+                  className={`${styles.wrapperIcon} me-2 d-flex align-items-center justify-content-center`}
+                >
+                  {item.icon}
+                </div>
+                <div className={`${styles.name}`}>{item.name}</div>
+              </NavLink>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

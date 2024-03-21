@@ -1,11 +1,11 @@
 .dropdownMenu {
   width: 350px;
   background-color: rgb(247, 247, 247);
-  right: 15px;
+  right: 19px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  top: 50px;
+  top: 70px;
   border-radius: 10px;
-  z-index: 1000;
+  z-index: 10000;
 
   .wrapper {
     .item {
@@ -25,6 +25,24 @@
     }
     .item:hover {
       background-color: #ebebeb;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .dropdownMenu {
+    width: 250px;
+
+    .wrapper {
+      .item {
+        .wrapperIcon {
+          .icon {
+            font-size: 16px;
+          }
+        }
+        .name {
+          font-size: 14px;
+        }
+      }
     }
   }
 }

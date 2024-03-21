@@ -39,97 +39,96 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className={`${styles.post} p-3 mb-3`}>
-      <div className="container-fluid p-0">
+    <div
+      className={`${styles.post} position-relative container-fluid p-3 mb-3`}
+    >
+      <div className="d-flex justify-content-between align-items-center">
         <div className="d-flex justify-content-between align-items-center">
-          <div className="d-flex justify-content-between align-items-center">
+          <Link to={`/profile/${post.creator?.userId}`}>
+            <img
+              className={`${styles.userAvatar} me-3`}
+              src={`http://localhost:19000/assets/${
+                post.creator.userAvatar !== ""
+                  ? post.creator.userAvatar
+                  : "defaultUserAvatar.png"
+              }`}
+              alt=""
+            />
+          </Link>
+          <div>
             <Link to={`/profile/${post.creator?.userId}`}>
-              <img
-                className={`${styles.userAvatar} me-3`}
-                src={`http://localhost:19000/assets/${
-                  post.creator.userAvatar !== ""
-                    ? post.creator.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
-                alt=""
-              />
-            </Link>
-            <div>
-              <Link to={`/profile/${post.creator?.userId}`}>
-                <div className={`${styles.userName}`}>
-                  {post.creator.userName}
-                </div>
-              </Link>
-              <div className={`${styles.createTime}`}>
-                1 min ago <LockIcon className={`${styles.icon}`} />
+              <div className={`${styles.userName}`}>
+                {post.creator.userName}
               </div>
+            </Link>
+            <div className={`${styles.createTime}`}>
+              1 min ago <LockIcon className={`${styles.icon}`} />
             </div>
-          </div>
-          <div className={`${styles.option} position-relative`} ref={menuRef}>
-            <div
-              onClick={() => {
-                setIsDropdownMenu(!isDropdownMenu);
-              }}
-              className={`${styles.wrapperIcon} position-absolute d-flex justify-content-center align-items-center`}
-            >
-              <MoreHorizIcon className={`${styles.icon} position-absolute`} />
-            </div>
-
-            {isDropdownMenu && (
-              <DropdownMenu post={post} setIsDropdownMenu={setIsDropdownMenu} />
-            )}
           </div>
         </div>
-        {post.description !== "" && (
-          <div className={`${styles.title} mt-3`}>{post.description}</div>
-        )}
-        {post.picturePath !== "" && (
-          <img
+        <div ref={menuRef} className={`${styles.option}`}>
+          <div
             onClick={() => {
-              setPostId(post._id);
-              setIsDetailPost(true);
+              setIsDropdownMenu(!isDropdownMenu);
             }}
-            className={`${styles.img} mt-3`}
-            src={`http://localhost:19000/assets/${post.picturePath}`}
-            alt=""
-          />
-        )}
+            className={`${styles.wrapperIcon} d-flex justify-content-center align-items-center`}
+          >
+            <MoreHorizIcon className={`${styles.icon}`} />
+          </div>
+          {isDropdownMenu && (
+            <DropdownMenu post={post} setIsDropdownMenu={setIsDropdownMenu} />
+          )}
+        </div>
+      </div>
+      {post.description !== "" && (
+        <div className={`${styles.title} mt-3`}>{post.description}</div>
+      )}
+      {post.picturePath !== "" && (
+        <img
+          onClick={() => {
+            setPostId(post._id);
+            setIsDetailPost(true);
+          }}
+          className={`${styles.img} mt-3`}
+          src={`http://localhost:19000/assets/${post.picturePath}`}
+          alt=""
+        />
+      )}
+      <div
+        className={`${styles.interact} mt-2 pt-1 d-flex justify-content-center align-items-center`}
+      >
         <div
-          className={`${styles.interact} mt-2 pt-1 d-flex justify-content-center align-items-center`}
+          onClick={() => handleLike()}
+          className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
         >
-          <div
-            onClick={() => handleLike()}
-            className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
-          >
-            {post?.likes?.includes(userNow._id) ? (
-              <FavoriteIcon className={`${styles.iconHeart} me-2`} />
-            ) : (
-              <FavoriteBorderOutlinedIcon
-                className={`${styles.iconOutlineHeart} me-2`}
-              />
-            )}
-            <div className={`${styles.nameInteract}`}>
-              {post?.likes.length !== 0 && post?.likes.length} Likes
-            </div>
+          {post?.likes?.includes(userNow._id) ? (
+            <FavoriteIcon className={`${styles.iconHeart} me-2`} />
+          ) : (
+            <FavoriteBorderOutlinedIcon
+              className={`${styles.iconOutlineHeart} me-2`}
+            />
+          )}
+          <div className={`${styles.nameInteract}`}>
+            {post?.likes.length !== 0 && post?.likes.length} Likes
           </div>
-          <div
-            onClick={() => {
-              setPostId(post._id);
-              setIsDetailPost(true);
-            }}
-            className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
-          >
-            <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
-            <div className={`${styles.nameInteract}`}>
-              {post?.comments.length !== 0 && post?.comments.length} Comments
-            </div>
+        </div>
+        <div
+          onClick={() => {
+            setPostId(post._id);
+            setIsDetailPost(true);
+          }}
+          className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
+        >
+          <TextsmsOutlinedIcon className={`${styles.icon} me-2`} />
+          <div className={`${styles.nameInteract}`}>
+            {post?.comments.length !== 0 && post?.comments.length} Comments
           </div>
-          <div
-            className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
-          >
-            <ShareOutlinedIcon className={`${styles.icon} me-2`} />
-            <div className={`${styles.nameInteract}`}>Share</div>
-          </div>
+        </div>
+        <div
+          className={`${styles.wrapperIcon} py-2 col d-flex justify-content-center align-items-center`}
+        >
+          <ShareOutlinedIcon className={`${styles.icon} me-2`} />
+          <div className={`${styles.nameInteract}`}>Share</div>
         </div>
       </div>
     </div>
