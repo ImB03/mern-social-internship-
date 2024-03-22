@@ -33,6 +33,7 @@ export default function Search() {
     setIsDetailPost,
     setIsUpdateUser,
     setIsSearch,
+    setIsOpenMenu,
   } = useContext(MyContext);
   const [posts, setGetPosts] = useState(null);
   const [users, setGetUsers] = useState(null);
@@ -57,6 +58,7 @@ export default function Search() {
     setIsDetailPost(false);
     setIsUpdateUser(false);
     setIsSearch(false);
+    setIsOpenMenu(false);
   }, [pageName]);
 
   return (

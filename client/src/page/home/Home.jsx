@@ -30,6 +30,7 @@ export default function Home() {
     isUpdatePost,
     isDeletePost,
     isDetailPost,
+    setIsOpenMenu,
   } = useContext(MyContext);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Home() {
     setIsDetailPost(false);
     setIsUpdateUser(false);
     setIsSearch(false);
+    setIsOpenMenu(false);
   }, [pageName]);
 
   return (

@@ -39,6 +39,7 @@ export default function Profile() {
     setIsDetailPost,
     setIsUpdateUser,
     setIsSearch,
+    setIsOpenMenu,
   } = useContext(MyContext);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ export default function Profile() {
     setIsDetailPost(false);
     setIsUpdateUser(false);
     setIsSearch(false);
+    setIsOpenMenu(false);
   }, [pageName]);
 
   return (

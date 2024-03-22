@@ -38,38 +38,36 @@ export default function Menu() {
   ];
 
   return (
-    <div className={`${styles.menu} mt-3`}>
-      <div className="container-fluid p-0">
-        <NavLink
-          to={`/profile/${userNow._id}`}
-          // className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
-          className={({ isActive }) =>
-            `${styles.itemMenu} ${
-              isActive && styles.isActive
-            } col p-3 d-flex align-items-center`
-          }
+    <div className={`${styles.menu} container-fluid p-0 mt-3`}>
+      <NavLink
+        to={`/profile/${userNow._id}`}
+        // className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
+        className={({ isActive }) =>
+          `${styles.itemMenu} ${
+            isActive && styles.isActive
+          } col p-3 d-flex align-items-center`
+        }
+      >
+        <img
+          className={`${styles.userAvatar} me-3`}
+          src={`http://localhost:19000/assets/${
+            userNow.userAvatar !== ""
+              ? userNow.userAvatar
+              : "defaultUserAvatar.png"
+          }`}
+          alt=""
+        />
+        <div className={`${styles.userName}`}>{userNow.userName}</div>
+      </NavLink>
+      {Menu.map((item) => (
+        <div
+          key={item.id}
+          className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
         >
-          <img
-            className={`${styles.userAvatar} me-3`}
-            src={`http://localhost:19000/assets/${
-              userNow.userAvatar !== ""
-                ? userNow.userAvatar
-                : "defaultUserAvatar.png"
-            }`}
-            alt=""
-          />
-          <div className={`${styles.userName}`}>{userNow.userName}</div>
-        </NavLink>
-        {Menu.map((item) => (
-          <div
-            key={item.id}
-            className={`${styles.itemMenu} col p-3 d-flex align-items-center`}
-          >
-            <img className={`${styles.img} me-3`} src={item.img} alt="" />
-            <div className={`${styles.name}`}>{item.name}</div>
-          </div>
-        ))}
-      </div>
+          <img className={`${styles.img} me-3`} src={item.img} alt="" />
+          <div className={`${styles.name}`}>{item.name}</div>
+        </div>
+      ))}
     </div>
   );
 }

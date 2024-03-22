@@ -97,15 +97,20 @@ export default function ModalSearch() {
     <div
       className={`${styles.modalSearch} position-fixed d-flex justify-content-center align-items-start`}
     >
-      <div className={`${styles.overlay} position-fixed`}>
-        <div
+      <div
+        onClick={() => {
+          setIsSearch(false);
+        }}
+        className={`${styles.overlay} position-fixed`}
+      >
+        {/* <div
           onClick={() => {
             setIsSearch(false);
           }}
           className={`${styles.closeIcon} position-absolute d-flex justify-content-center align-items-center`}
         >
           <ClearIcon className={`${styles.icon}`} />
-        </div>
+        </div> */}
       </div>
       <div
         onClick={handleFocusInput}

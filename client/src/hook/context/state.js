@@ -12,12 +12,13 @@ export default function PostState({ children }) {
   const [isDetailPost, setIsDetailPost] = useState(false);
   const [isUpdateUser, setIsUpdateUser] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
   const [postId, setPostId] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [containerClass, setContainerClass] = useState("");
   const dispatch = useDispatch();
-
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -30,7 +31,8 @@ export default function PostState({ children }) {
     isDeletePost ||
     isDetailPost ||
     isUpdateUser ||
-    isSearch
+    isSearch ||
+    isOpenMenu
   ) {
     document.body.classList.add("cancelScroll");
   } else {
@@ -69,8 +71,6 @@ export default function PostState({ children }) {
     // }
   }, [windowWidth]);
 
-
-
   return (
     <MyContext.Provider
       value={{
@@ -91,6 +91,8 @@ export default function PostState({ children }) {
         windowWidth,
         windowHeight,
         containerClass,
+        isOpenMenu,
+        setIsOpenMenu,
       }}
     >
       {children}
