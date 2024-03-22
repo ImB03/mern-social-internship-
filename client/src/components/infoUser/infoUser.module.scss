@@ -46,6 +46,7 @@
 
         .userAvatar {
           min-width: 180px;
+          width: 180px;
           height: 180px;
           border-radius: 100%;
           object-fit: cover;
@@ -71,6 +72,7 @@
 
           .userAvatar {
             min-width: 150px;
+            width: 150px;
             height: 150px;
           }
         }
@@ -87,6 +89,7 @@
 
           .userAvatar {
             min-width: 120px;
+            width: 120px;
             height: 120px;
           }
         }
