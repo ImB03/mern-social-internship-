@@ -97,7 +97,7 @@ export default function Navbar() {
           >
             <img
               className={`${styles.userAvatar}`}
-              src={`http://localhost:19000/assets/${
+              src={`https://mern-social-internship.onrender.com/assets/${
                 userNow.userAvatar !== ""
                   ? userNow.userAvatar
                   : "defaultUserAvatar.png"

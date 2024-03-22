@@ -21,7 +21,7 @@ export default function CreatePost() {
             <Link to={`/profile/${userNow._id}`}>
               <img
                 className={`${styles.userAvatar}`}
-                src={`http://localhost:19000/assets/${
+                src={`https://mern-social-internship.onrender.com/assets/${
                   userNow.userAvatar !== ""
                     ? userNow.userAvatar
                     : "defaultUserAvatar.png"

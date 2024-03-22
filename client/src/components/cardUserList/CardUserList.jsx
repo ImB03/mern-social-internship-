@@ -30,8 +30,10 @@ export default function CardUserList({ setGetUsers }) {
   return (
     <div
       className={`${styles.cardUserList} ${
-        params.typeState === `searchall` && styles.styleWrapper
-      } ${params.typeState === `searchall` && "mt-3 py-3"} container-fluid ${
+        processedUsers.length === 0 && "d-none"
+      } ${params.typeState === `searchall` && styles.styleWrapper} ${
+        params.typeState === `searchall` && "mt-3 py-3"
+      } container-fluid ${
         params.typeState === `searcheverybody` && "p-0 mt-3"
       }`}
     >
@@ -48,7 +50,7 @@ export default function CardUserList({ setGetUsers }) {
                 <div className={`d-flex align-items-center`}>
                   <img
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
+                    src={`https://mern-social-internship.onrender.com/assets/${
                       user.userAvatar !== ""
                         ? user.userAvatar
                         : "defaultUserAvatar.png"
@@ -86,7 +88,7 @@ export default function CardUserList({ setGetUsers }) {
                 <div className={`d-flex align-items-center`}>
                   <img
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
+                    src={`https://mern-social-internship.onrender.com/assets/${
                       user.userAvatar !== ""
                         ? user.userAvatar
                         : "defaultUserAvatar.png"

@@ -46,7 +46,11 @@ export default function Posts({ setGetPosts }) {
   }, [pageName, params.userId, posts, qValue]);
 
   return (
-    <div className={`${styles.posts} mt-3`}>
+    <div
+      className={`${styles.posts} ${
+        processedPosts.length === 0 && "d-none"
+      } mt-3`}
+    >
       {processedPosts?.map((post) => (
         <Post key={post._id} post={post} />
       ))}

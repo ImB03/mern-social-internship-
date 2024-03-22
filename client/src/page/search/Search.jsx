@@ -82,8 +82,20 @@ export default function Search() {
             <Posts setGetPosts={setGetPosts} />
           )}
 
-          {users?.length === 0 && posts?.length === 0 && (
-            <div className={`${styles.noResult}`}>
+          {params.typeState === `searchall` &&
+            users?.length === 0 &&
+            posts?.length === 0 && (
+              <div className={`${styles.noResult} mt-3`}>
+                No search results for '{qValue}'
+              </div>
+            )}
+          {params.typeState === `searcheverybody` && users?.length === 0 && (
+            <div className={`${styles.noResult} mt-3`}>
+              No search results for '{qValue}'
+            </div>
+          )}
+          {params.typeState === `searchpost` && posts?.length === 0 && (
+            <div className={`${styles.noResult} mt-3`}>
               No search results for '{qValue}'
             </div>
           )}

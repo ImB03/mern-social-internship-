@@ -47,7 +47,7 @@ export default function Post({ post }) {
           <Link to={`/profile/${post.creator?.userId}`}>
             <img
               className={`${styles.userAvatar} me-3`}
-              src={`http://localhost:19000/assets/${
+              src={`https://mern-social-internship.onrender.com/assets/${
                 post.creator.userAvatar !== ""
                   ? post.creator.userAvatar
                   : "defaultUserAvatar.png"
@@ -90,7 +90,7 @@ export default function Post({ post }) {
             setIsDetailPost(true);
           }}
           className={`${styles.img} mt-3`}
-          src={`http://localhost:19000/assets/${post.picturePath}`}
+          src={`https://mern-social-internship.onrender.com/assets/${post.picturePath}`}
           alt=""
         />
       )}
