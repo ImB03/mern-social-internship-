@@ -105,7 +105,7 @@ export default function Auth() {
         >
           <h1 className={`${styles.logo} d-md-none mb-3`}>SOCIALMEDIA.</h1>
           <h1 className={`${styles.title} mb-3`}>
-            {isSignup ? "Register" : "Login"}
+            {isSignup ? "Login" : "Register"}
           </h1>
           {isSignup && (
             <input
@@ -151,7 +151,7 @@ export default function Auth() {
                     style={{ color: "blue", cursor: "pointer" }}
                     onClick={() => setIsSignup(!isSignup)}
                   >
-                    Sign Up
+                    Sign In
                   </u>
                 </span>
               )
@@ -162,7 +162,7 @@ export default function Auth() {
                     style={{ color: "blue", cursor: "pointer" }}
                     onClick={() => setIsSignup(!isSignup)}
                   >
-                    Sign In
+                    Sign Up
                   </u>
                 </span>
               )}
