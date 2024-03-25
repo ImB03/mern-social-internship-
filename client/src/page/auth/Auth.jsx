@@ -97,7 +97,7 @@ export default function Auth() {
             className={`${styles.registerBtn} mt-3`}
             onClick={() => setIsSignup(!isSignup)}
           >
-            {isSignup ? "Register" : "Login"}
+            {isSignup ? "Login" : "Register"}
           </button>
         </div>
         <div
