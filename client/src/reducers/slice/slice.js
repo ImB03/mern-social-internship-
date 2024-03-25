@@ -13,10 +13,12 @@ const slice = createSlice({
   },
   reducers: {
     SIGNUP: (state, action) => {
+      state.response = null;
       state.response = action.payload.response;
       state.isLoading = false;
     },
     SIGNIN: (state, action) => {
+      state.response = null;
       state.response = action.payload.response;
       if (action.payload.response?.status === 200) {
         state.token = action.payload.response?.data.user?.token;
