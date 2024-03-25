@@ -44,7 +44,7 @@ app.use(cookieParser());
 app.use(morgan("common"));
 
 // Middleware phân tích cơ thể
-app.use(express.urlencoded({ limit: "30mb", extended: true }));
+// app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 // Middleware CORS
 app.use(cors());
