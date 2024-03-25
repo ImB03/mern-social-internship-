@@ -105,7 +105,7 @@ export default function Auth() {
         >
           <h1 className={`${styles.logo} d-md-none mb-3`}>SOCIALMEDIA.</h1>
           <h1 className={`${styles.title} mb-3`}>
-            {isSignup ? "Login" : "Register"}
+            {isSignup ? "Register" : "Login"}
           </h1>
           {isSignup && (
             <input
