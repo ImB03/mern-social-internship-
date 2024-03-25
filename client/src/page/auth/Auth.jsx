@@ -26,14 +26,8 @@ export default function Auth() {
     e.preventDefault();
     if (isSignup) {
       dispatch(ACTION_SIGNUP(dataUser));
-      if (response?.status === 200) {
-        window.alert(response.data.message);
-      }
     } else {
       dispatch(ACTION_SIGNIN(dataUser));
-      if (response?.status === 200) {
-        window.alert(response.data.message);
-      }
     }
   };
 
