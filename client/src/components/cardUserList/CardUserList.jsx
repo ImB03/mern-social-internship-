@@ -4,6 +4,7 @@ import styles from "./cardUserList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 export default function CardUserList({ setGetUsers }) {
   const users = useSelector((state) => state.persistedReducer.slice.users);
@@ -48,14 +49,10 @@ export default function CardUserList({ setGetUsers }) {
                 className={`${styles.item} p-2 p-sm-3 d-flex align-items-center justify-content-between`}
               >
                 <div className={`d-flex align-items-center`}>
-                  <img
+                  <Image
+                    cloudName={process.env.REACT_APP_CLOUD_NAME}
+                    publicId={user.userAvatar}
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
-                      user.userAvatar !== ""
-                        ? user.userAvatar
-                        : "defaultUserAvatar.png"
-                    }`}
-                    alt=""
                   />
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>
@@ -86,14 +83,10 @@ export default function CardUserList({ setGetUsers }) {
                 className={`${styles.itemUser} container-fluid mb-3 p-3 d-flex align-items-center justify-content-between`}
               >
                 <div className={`d-flex align-items-center`}>
-                  <img
+                  <Image
+                    cloudName={process.env.REACT_APP_CLOUD_NAME}
+                    publicId={user.userAvatar}
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
-                      user.userAvatar !== ""
-                        ? user.userAvatar
-                        : "defaultUserAvatar.png"
-                    }`}
-                    alt=""
                   />
                   <div className={`${styles.userName}`}>{user.userName}</div>
                 </div>

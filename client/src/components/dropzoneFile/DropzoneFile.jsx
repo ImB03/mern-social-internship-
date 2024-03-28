@@ -5,6 +5,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 import styles from "./dropzoneFile.module.scss";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 export default function DropzoneFile({ inputFiles, setInputFiles }) {
   const [file, setfile] = useState("");
@@ -23,15 +24,19 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
     <div className={`${styles.dropzone}`}>
       {inputFiles || file ? (
         <div className={`${styles.displayFiles} position-relative`}>
-          <img
-            src={
-              file !== ""
-                ? URL.createObjectURL(inputFiles)
-                : `http://localhost:19000/assets/${inputFiles}`
-            }
-            className={`${styles.fileImg}`}
-            alt=""
-          />
+          {file === "" ? (
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={inputFiles}
+              className={`${styles.fileImg}`}
+            />
+          ) : (
+            <img
+              src={URL.createObjectURL(inputFiles)}
+              className={`${styles.fileImg}`}
+              alt=""
+            />
+          )}
           <div
             onClick={() => {
               setInputFiles("");

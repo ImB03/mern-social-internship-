@@ -5,6 +5,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 import styles from "./dropzoneCoverAvatar.module.scss";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 export default function DropzoneCoverAvatar({
   dataInputCoverAvatar,
@@ -26,15 +27,20 @@ export default function DropzoneCoverAvatar({
     <div className={`${styles.dropzone}`}>
       {dataInputCoverAvatar ? (
         <div className={`${styles.displayFiles} position-relative`}>
-          <img
-            src={
-              file !== ""
-                ? URL.createObjectURL(dataInputCoverAvatar)
-                : `http://localhost:19000/assets/${dataInputCoverAvatar}`
-            }
-            className={`${styles.fileImg}`}
-            alt=""
-          />
+          {file === "" ? (
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={dataInputCoverAvatar}
+              className={`${styles.fileImg}`}
+            />
+          ) : (
+            <img
+              src={URL.createObjectURL(dataInputCoverAvatar)}
+              className={`${styles.fileImg}`}
+              alt=""
+            />
+          )}
+
           <div
             onClick={() => {
               setDataInputCoverAvatar("");

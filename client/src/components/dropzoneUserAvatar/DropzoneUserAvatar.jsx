@@ -5,6 +5,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 import styles from "./dropzoneUserAvatar.module.scss";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 export default function DropzoneUserAvatar({
   dataInputUserAvatar,
@@ -26,15 +27,19 @@ export default function DropzoneUserAvatar({
     <div className={`${styles.dropzone}`}>
       {dataInputUserAvatar ? (
         <div className={`${styles.displayFiles}`}>
-          <img
-            src={
-              file !== ""
-                ? URL.createObjectURL(dataInputUserAvatar)
-                : `http://localhost:19000/assets/${dataInputUserAvatar}`
-            }
-            className={`${styles.fileImg}`}
-            alt=""
-          />
+          {file === "" ? (
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={dataInputUserAvatar}
+              className={`${styles.fileImg}`}
+            />
+          ) : (
+            <img
+              src={URL.createObjectURL(dataInputUserAvatar)}
+              className={`${styles.fileImg}`}
+              alt=""
+            />
+          )}
           <div
             onClick={() => {
               setDataInputUserAvatar("");
