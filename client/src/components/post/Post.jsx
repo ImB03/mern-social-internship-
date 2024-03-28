@@ -6,6 +6,7 @@ import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { Image } from "cloudinary-react";
 
 import styles from "./post.module.scss";
 import DropdownMenu from "../dropdownMenu/DropdownMenu";
@@ -45,14 +46,10 @@ export default function Post({ post }) {
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-flex justify-content-between align-items-center">
           <Link to={`/profile/${post.creator?.userId}`}>
-            <img
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={post.creator.userAvatar}
               className={`${styles.userAvatar} me-3`}
-              src={`http://localhost:19000/assets/${
-                post.creator.userAvatar !== ""
-                  ? post.creator.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              alt=""
             />
           </Link>
           <div>
@@ -84,14 +81,14 @@ export default function Post({ post }) {
         <div className={`${styles.title} mt-3`}>{post.description}</div>
       )}
       {post.picturePath !== "" && (
-        <img
+        <Image
+          cloudName={process.env.REACT_APP_CLOUD_NAME}
+          publicId={post.picturePath}
           onClick={() => {
             setPostId(post._id);
             setIsDetailPost(true);
           }}
           className={`${styles.img} mt-3`}
-          src={`http://localhost:19000/assets/${post.picturePath}`}
-          alt=""
         />
       )}
       <div

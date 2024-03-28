@@ -10,6 +10,8 @@ import bodyParser from "body-parser";
 import multer from "multer";
 import { fileURLToPath } from "url";
 import path from "path";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
@@ -52,16 +54,21 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'cloudinary-img', // Tên thư mục bạn muốn lưu trữ ảnh trên Cloudinary
+    allowed_formats: ['jpg', 'jpeg', 'png']
+  }
 });
 
 const upload = multer({ storage });
+
+export default cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 app.post(
   "/api/post/createpost",

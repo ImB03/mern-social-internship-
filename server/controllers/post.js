@@ -18,8 +18,8 @@ export const createPost = async (req, res, next) => {
       ...dataPost,
     };
 
-    if (req?.file && req?.file?.filename) {
-      updatedDataPost.picturePath = req?.file?.filename;
+    if (req?.file && req?.file?.path) {
+      updatedDataPost.picturePath = req?.file?.path;
     }
 
     const newPost = new Post(updatedDataPost);
@@ -59,8 +59,8 @@ export const updatePost = async (req, res, next) => {
       ...dataPost,
     };
 
-    if (req?.file && req?.file?.filename) {
-      updatedDataPost.picturePath = req?.file?.filename;
+    if (req?.file && req?.file?.path) {
+      updatedDataPost.picturePath = req?.file?.path;
     }
 
     const updatedPost = await Post.findByIdAndUpdate(postId, updatedDataPost, {

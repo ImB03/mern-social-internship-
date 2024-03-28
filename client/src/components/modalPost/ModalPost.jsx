@@ -32,6 +32,7 @@ import DropdownMenu from "../dropdownMenu/DropdownMenu";
 import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
 import ItemComment from "../itemComment/ItemComment";
 import { Link } from "react-router-dom";
+import { Image } from "cloudinary-react";
 
 export default function ModalPost() {
   const {
@@ -222,14 +223,10 @@ export default function ModalPost() {
                 }}
                 to={`/profile/${userNow._id}`}
               >
-                <img
+                <Image
+                  cloudName={process.env.REACT_APP_CLOUD_NAME}
+                  publicId={userNow.userAvatar}
                   className={`${styles.userAvatar} me-2`}
-                  src={`http://localhost:19000/assets/${
-                    userNow.userAvatar !== ""
-                      ? userNow.userAvatar
-                      : "defaultUserAvatar.png"
-                  }`}
-                  alt=""
                 />
               </Link>
               <div>
@@ -360,14 +357,10 @@ export default function ModalPost() {
                 }}
                 to={`/profile/${processedPost?.creator?.userId}`}
               >
-                <img
+                <Image
+                  cloudName={process.env.REACT_APP_CLOUD_NAME}
+                  publicId={processedPost?.creator?.userAvatar}
                   className={`${styles.userAvatar} me-2`}
-                  src={`http://localhost:19000/assets/${
-                    processedPost?.creator?.userAvatar !== ""
-                      ? processedPost?.creator?.userAvatar
-                      : "defaultUserAvatar.png"
-                  }`}
-                  alt=""
                 />
               </Link>
               <div>
@@ -395,10 +388,10 @@ export default function ModalPost() {
             </div>
             <div className={`${styles.picturePost} mt-3`}>
               {processedPost.picturePath !== "" && (
-                <img
+                <Image
+                  cloudName={process.env.REACT_APP_CLOUD_NAME}
+                  publicId={processedPost.picturePath}
                   className={`${styles.picturePath}`}
-                  src={`http://localhost:19000/assets/${processedPost.picturePath}`}
-                  alt=""
                 />
               )}
             </div>
@@ -452,14 +445,10 @@ export default function ModalPost() {
               }}
               to={`/profile/${userNow._id}`}
             >
-              <img
+              <Image
+                cloudName={process.env.REACT_APP_CLOUD_NAME}
+                publicId={userNow.userAvatar}
                 className={`${styles.userAvatar} me-3`}
-                src={`http://localhost:19000/assets/${
-                  userNow.userAvatar !== ""
-                    ? userNow.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
-                alt=""
               />
             </Link>
             <div className={`${styles.wrapperComment} p-2 col`}>

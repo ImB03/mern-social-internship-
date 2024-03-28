@@ -28,6 +28,7 @@ import DropzoneFile from "../dropzoneFile/DropzoneFile";
 import { MyContext } from "../../hook/context/state";
 import { Link, useNavigate } from "react-router-dom";
 import { ACTION_SEARCH } from "../../reducers/slice/searchSlice";
+import { Image } from "cloudinary-react";
 
 export default function ModalSearch() {
   const users = useSelector((state) => state.persistedReducer.slice.users);
@@ -155,14 +156,10 @@ export default function ModalSearch() {
                   }}
                   className={`${styles.itemSuggest} p-2 d-flex align-items-center`}
                 >
-                  <img
+                  <Image
+                    cloudName={process.env.REACT_APP_CLOUD_NAME}
+                    publicId={user.userAvatar}
                     className={`${styles.userAvatar} me-3`}
-                    src={`http://localhost:19000/assets/${
-                      user.userAvatar !== ""
-                        ? user.userAvatar
-                        : "defaultUserAvatar.png"
-                    }`}
-                    alt=""
                   />
                   <div className={`${styles.searchTerm}`}>{user?.userName}</div>
                 </Link>

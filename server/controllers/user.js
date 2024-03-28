@@ -25,11 +25,11 @@ export const updateUser = async (req, res, next) => {
     let updatedDataUser = { ...dataUser };
 
     if (req?.files && req?.files?.userAvatar) {
-      updatedDataUser.userAvatar = req?.files?.userAvatar[0]?.filename;
+      updatedDataUser.userAvatar = req?.files?.userAvatar[0]?.path;
     }
 
     if (req?.files && req?.files?.coverAvatar) {
-      updatedDataUser.coverAvatar = req?.files?.coverAvatar[0]?.filename;
+      updatedDataUser.coverAvatar = req?.files?.coverAvatar[0]?.path;
     }
 
     const updatedUser = await User.findByIdAndUpdate(userId, updatedDataUser, {

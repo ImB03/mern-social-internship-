@@ -16,6 +16,7 @@ import MakeFriend from "../makeFriend/MakeFriend";
 import { MyContext } from "../../hook/context/state";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Image } from "cloudinary-react";
 
 export default function InfoUser() {
   const { userId } = useParams();
@@ -48,14 +49,10 @@ export default function InfoUser() {
       className={`${styles.infoUser} container-fluid p-0 d-flex flex-column align-items-center`}
     >
       <div className="col-12 position-relative">
-        <img
+        <Image
+          cloudName={process.env.REACT_APP_CLOUD_NAME}
+          publicId={processedUsers.coverAvatar}
           className={`${styles.coverAvatar}`}
-          src={`http://localhost:19000/assets/${
-            processedUsers.coverAvatar !== ""
-              ? processedUsers.coverAvatar
-              : "defaultCoverAvatar.png"
-          }`}
-          alt=""
         />
         <button
           onClick={() => setIsUpdateUser(true)}
@@ -74,14 +71,10 @@ export default function InfoUser() {
           <div
             className={`${styles.wrapperImg} d-flex align-items-center justify-content-center`}
           >
-            <img
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={processedUsers.userAvatar}
               className={`${styles.userAvatar}`}
-              src={`http://localhost:19000/assets/${
-                processedUsers.userAvatar !== ""
-                  ? processedUsers.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              alt=""
             />
           </div>
           <div className="m-0 ms-md-3 ms-sm-2 mt-md-5 d-flex flex-column">

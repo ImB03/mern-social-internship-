@@ -5,6 +5,7 @@ import styles from "./itemComment.module.scss";
 import DropdownCommentMenu from "../dropdownCommentMenu/DropdownCommentMenu";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 export default function ItemComment({ comment }) {
   const { setIsDetailPost } = useContext(MyContext);
@@ -32,14 +33,10 @@ export default function ItemComment({ comment }) {
         }}
         to={`/profile/${comment.userId}`}
       >
-        <img
+        <Image
+          cloudName={process.env.REACT_APP_CLOUD_NAME}
+          publicId={comment.userAvatar}
           className={`${styles.userAvatar} me-3`}
-          src={`http://localhost:19000/assets/${
-            comment.userAvatar !== ""
-              ? comment.userAvatar
-              : "defaultUserAvatar.png"
-          }`}
-          alt=""
         />
       </Link>
 

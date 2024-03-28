@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Image } from "cloudinary-react";
 
 import styles from "./createPost.module.scss";
-import Image from "../../assets/img.png";
 import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
 import ModalPost from "../modalPost/ModalPost";
@@ -19,14 +19,10 @@ export default function CreatePost() {
         <div className="d-flex align-items-center">
           <div className="">
             <Link to={`/profile/${userNow._id}`}>
-              <img
+              <Image
+                cloudName={process.env.REACT_APP_CLOUD_NAME}
+                publicId={userNow.userAvatar}
                 className={`${styles.userAvatar}`}
-                src={`http://localhost:19000/assets/${
-                  userNow.userAvatar !== ""
-                    ? userNow.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
-                alt=""
               />
             </Link>
           </div>

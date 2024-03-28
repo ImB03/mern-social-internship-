@@ -21,6 +21,7 @@ import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import styles from "./stories.module.scss";
 import { storyData } from "./storyData";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 SwiperCore.use([Navigation]);
 
@@ -86,14 +87,10 @@ export default function Stories() {
             <SwiperSlide
               className={`${styles.item} d-flex flex-column justify-content-between`}
             >
-              <img
-                src={`http://localhost:19000/assets/${
-                  userNow.userAvatar !== ""
-                    ? userNow.userAvatar
-                    : "defaultUserAvatar.png"
-                }`}
+              <Image
+                cloudName={process.env.REACT_APP_CLOUD_NAME}
+                publicId={userNow.userAvatar}
                 className={`${styles.userAvatar}`}
-                alt=""
               />
               <div
                 className={`${styles.createStory} border-top position-relative d-flex flex-column align-items-center justify-content-center`}

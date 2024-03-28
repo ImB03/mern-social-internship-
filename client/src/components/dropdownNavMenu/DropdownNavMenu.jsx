@@ -5,6 +5,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import FeedbackOutlinedIcon from "@mui/icons-material/FeedbackOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { Image } from "cloudinary-react";
 
 import styles from "./dropdownNavMenu.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,14 +34,10 @@ export default function DropdownNavMenu({ setIsDropdownNavMenu }) {
             }}
             className={`${styles.item} p-2 d-flex justify-content-start align-items-center`}
           >
-            <img
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={userNow.userAvatar}
               className={`${styles.userAvatar} me-3`}
-              src={`http://localhost:19000/assets/${
-                userNow.userAvatar !== ""
-                  ? userNow.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              alt=""
             />
             <div className={`${styles.userName}`}>{userNow.userName}</div>
           </Link>

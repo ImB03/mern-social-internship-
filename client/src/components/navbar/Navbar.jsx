@@ -9,6 +9,7 @@ import ModalUser from "../modalUser/ModalUser";
 import ModalSearch from "../modalSearch/ModalSearch";
 import MenuIcon from "@mui/icons-material/Menu";
 import ModalMenu from "../modalMenu/ModalMenu";
+import { Image } from "cloudinary-react";
 
 export default function Navbar() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
@@ -95,14 +96,10 @@ export default function Navbar() {
             className={`${styles.avatarWrapper} position-relative ms-3 d-flex justify-content-center align-items-center`}
             ref={navMenuRef} // Ref for the dropdown menu
           >
-            <img
+            <Image
+              cloudName={process.env.REACT_APP_CLOUD_NAME}
+              publicId={userNow.userAvatar}
               className={`${styles.userAvatar}`}
-              src={`http://localhost:19000/assets/${
-                userNow.userAvatar !== ""
-                  ? userNow.userAvatar
-                  : "defaultUserAvatar.png"
-              }`}
-              alt=""
             />
             <div
               onClick={() => setIsDropdownNavMenu(!isDropdownNavMenu)}

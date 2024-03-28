@@ -17,6 +17,7 @@ import Tutorials from "../../assets/11.png";
 import Courses from "../../assets/12.png";
 import { Link, NavLink } from "react-router-dom";
 import { MyContext } from "../../hook/context/state";
+import { Image } from "cloudinary-react";
 
 export default function Menu() {
   const userNow = useSelector((state) => state.persistedReducer.slice.userNow);
@@ -48,14 +49,10 @@ export default function Menu() {
           } col p-3 d-flex align-items-center`
         }
       >
-        <img
+        <Image
+          cloudName={process.env.REACT_APP_CLOUD_NAME}
+          publicId={userNow.userAvatar}
           className={`${styles.userAvatar} me-3`}
-          src={`http://localhost:19000/assets/${
-            userNow.userAvatar !== ""
-              ? userNow.userAvatar
-              : "defaultUserAvatar.png"
-          }`}
-          alt=""
         />
         <div className={`${styles.userName}`}>{userNow.userName}</div>
       </NavLink>
