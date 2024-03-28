@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: `${process.env.REACT_APP_API_SERVER}/api`,
-  baseURL: `https://mern-social-internship.onrender.com/api`,
+  baseURL: `${process.env.REACT_APP_API_SERVER}/api`,
 });
 
 API.interceptors.request.use(
