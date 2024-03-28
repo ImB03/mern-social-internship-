@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://mern-social-internship.onrender.com/api",
+  baseURL: "http://localhost:19000/api",
 });
 
 API.interceptors.request.use(

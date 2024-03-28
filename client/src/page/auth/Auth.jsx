@@ -16,7 +16,13 @@ export default function Auth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
-  const [dataUser, setDataUser] = useState({});
+  const [dataUser, setDataUser] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  console.log(dataUser);
 
   const getDataUser = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
@@ -132,7 +138,12 @@ export default function Auth() {
           />
           <button
             // className={`${styles.btn} ${isLoading && styles.disabled}`}
-            className={`${styles.btn} mb-3`}
+            className={`${styles.btn} ${
+              ((isSignup && dataUser.userName === "") ||
+                dataUser.email === "" ||
+                dataUser.password === "") &&
+              styles.disabledBtn
+            } mb-3`}
             onClick={handleSubmit}
           >
             {isSignup ? "Register" : "Login"}

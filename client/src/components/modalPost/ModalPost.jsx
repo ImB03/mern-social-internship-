@@ -226,7 +226,7 @@ export default function ModalPost() {
               >
                 <img
                   className={`${styles.userAvatar} me-2`}
-                  src={`https://mern-social-internship.onrender.com/assets/${
+                  src={`http://localhost:19000/assets/${
                     userNow.userAvatar !== ""
                       ? userNow.userAvatar
                       : "defaultUserAvatar.png"
@@ -364,7 +364,7 @@ export default function ModalPost() {
               >
                 <img
                   className={`${styles.userAvatar} me-2`}
-                  src={`https://mern-social-internship.onrender.com/assets/${
+                  src={`http://localhost:19000/assets/${
                     processedPost?.creator?.userAvatar !== ""
                       ? processedPost?.creator?.userAvatar
                       : "defaultUserAvatar.png"
@@ -399,7 +399,7 @@ export default function ModalPost() {
               {processedPost.picturePath !== "" && (
                 <img
                   className={`${styles.picturePath}`}
-                  src={`https://mern-social-internship.onrender.com/assets/${processedPost.picturePath}`}
+                  src={`http://localhost:19000/assets/${processedPost.picturePath}`}
                   alt=""
                 />
               )}
@@ -456,7 +456,7 @@ export default function ModalPost() {
             >
               <img
                 className={`${styles.userAvatar} me-3`}
-                src={`https://mern-social-internship.onrender.com/assets/${
+                src={`http://localhost:19000/assets/${
                   userNow.userAvatar !== ""
                     ? userNow.userAvatar
                     : "defaultUserAvatar.png"

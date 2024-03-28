@@ -50,7 +50,7 @@ export default function InfoUser() {
       <div className="col-12 position-relative">
         <img
           className={`${styles.coverAvatar}`}
-          src={`https://mern-social-internship.onrender.com/assets/${
+          src={`http://localhost:19000/assets/${
             processedUsers.coverAvatar !== ""
               ? processedUsers.coverAvatar
               : "defaultCoverAvatar.png"
@@ -76,7 +76,7 @@ export default function InfoUser() {
           >
             <img
               className={`${styles.userAvatar}`}
-              src={`https://mern-social-internship.onrender.com/assets/${
+              src={`http://localhost:19000/assets/${
                 processedUsers.userAvatar !== ""
                   ? processedUsers.userAvatar
                   : "defaultUserAvatar.png"

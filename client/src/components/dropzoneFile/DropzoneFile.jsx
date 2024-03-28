@@ -27,7 +27,7 @@ export default function DropzoneFile({ inputFiles, setInputFiles }) {
             src={
               file !== ""
                 ? URL.createObjectURL(inputFiles)
-                : `https://mern-social-internship.onrender.com/assets/${inputFiles}`
+                : `http://localhost:19000/assets/${inputFiles}`
             }
             className={`${styles.fileImg}`}
             alt=""
