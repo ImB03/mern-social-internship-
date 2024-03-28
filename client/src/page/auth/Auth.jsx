@@ -22,8 +22,6 @@ export default function Auth() {
     password: "",
   });
 
-  console.log(dataUser);
-
   const getDataUser = (e) => {
     setDataUser({ ...dataUser, [e.target.name]: e.target.value });
   };

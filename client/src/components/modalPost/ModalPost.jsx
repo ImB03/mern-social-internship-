@@ -60,8 +60,6 @@ export default function ModalPost() {
     picturePath: "",
   });
 
-  console.log(posts.find((post) => post._id === postId));
-
   const handleSubmit = () => {
     const formData = new FormData();
     formData.append("description", dataPost.description);
